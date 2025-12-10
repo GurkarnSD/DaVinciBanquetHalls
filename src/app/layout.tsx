@@ -5,6 +5,7 @@ import { Geist, Playfair_Display } from 'next/font/google';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Analytics } from '@vercel/analytics/next';
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import StructuredData from '@/components/StructuredData';
 import { generateMetadata as generateSEOMetadata, generateStructuredData } from '@/lib/seo';
 
@@ -36,6 +37,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en" className={`${geist.variable} ${playfair.variable}`}>
       <Analytics />
+      <SpeedInsights />
       <body className="flex min-h-screen flex-col">
         <StructuredData data={structuredData} />
         <Header />
