@@ -1,11 +1,12 @@
+import { type Metadata } from 'next';
+import HomePageContent from '@/components/HomePageContent';
+
+export const metadata: Metadata = {
+  title: 'Da Vinci Banquet Halls | Elegant Venues for Your Celebrations',
+  description:
+    'Welcome to Da Vinci Banquet Halls. Experience elegance and sophistication for your most important celebrations.',
+};
+
 export default function HomePage() {
-  return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white">
-      <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16">
-        <h1 className="text-5xl font-extrabold tracking-tight text-white sm:text-[5rem]">
-          DaVinci Website
-        </h1>
-      </div>
-    </main>
-  );
+  return <HomePageContent />;
 }

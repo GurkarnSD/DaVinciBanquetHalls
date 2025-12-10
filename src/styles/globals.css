@@ -1,6 +1,128 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @theme {
-  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-sans:
+    var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    'Segoe UI Symbol', 'Noto Color Emoji';
+  --font-serif: var(--font-playfair), ui-serif, Georgia, serif;
+
+  /* DaVinci Color Palette - Dark & Sophisticated */
+  --color-davinci-burgundy: #8b1538;
+  --color-davinci-burgundy-dark: #6b0f2a;
+  --color-davinci-burgundy-light: #a51d47;
+  --color-davinci-gold: #c9a961;
+  --color-davinci-gold-dark: #a68b3d;
+  --color-davinci-gold-light: #e5c97a;
+  --color-davinci-teal: #1a5f7a;
+  --color-davinci-teal-dark: #0f4c5c;
+  --color-davinci-teal-light: #2a7a9a;
+  --color-davinci-cream: #faf8f3;
+  --color-davinci-charcoal: #1a1a1a;
+  --color-davinci-dark: #0f0f0f;
+  --color-davinci-dark-light: #1f1f1f;
+  --color-davinci-gray: #2d2d2d;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    color: #e5e5e5;
+    line-height: 1.7;
+    background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 50%, #0f0f0f 100%);
+    background-attachment: fixed;
+    letter-spacing: 0.01em;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: #ffffff;
+  }
+
+  p {
+    word-spacing: 0.05em;
+    text-align: left;
+  }
+}
+
+/* Image Placeholder Styles */
+.image-placeholder {
+  background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #c9a961;
+  font-size: 0.875rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.image-placeholder::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(201, 169, 97, 0.1) 50%,
+    transparent 70%
+  );
+  animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%) translateY(-100%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(100%) translateY(100%) rotate(45deg);
+  }
+}
+
+/* Premium Card Styles */
+.premium-card {
+  background: linear-gradient(135deg, #1f1f1f 0%, #2d2d2d 100%);
+  border: 1px solid rgba(201, 169, 97, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(201, 169, 97, 0.1);
+  transition: all 0.3s ease;
+}
+
+.premium-card:hover {
+  border-color: rgba(201, 169, 97, 0.4);
+  box-shadow: 0 12px 48px rgba(201, 169, 97, 0.3), 0 0 0 1px rgba(201, 169, 97, 0.2);
+  transform: translateY(-4px);
+}
+
+/* Gold Accent Gradient */
+.gold-gradient {
+  background: linear-gradient(135deg, #c9a961 0%, #e5c97a 50%, #c9a961 100%);
+  background-size: 200% 200%;
+  animation: gradient-shift 3s ease infinite;
+}
+
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
 }
