@@ -23,7 +23,6 @@ const playfair = Playfair_Display({
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   const structuredData = generateStructuredData('LocalBusiness', {
-    '@type': 'EventVenue',
     servesCuisine: ['Italian', 'South Asian', 'International'],
     amenityFeature: [
       { '@type': 'LocationFeatureSpecification', name: 'Parking', value: true },
@@ -32,14 +31,23 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       { '@type': 'LocationFeatureSpecification', name: 'Sound System', value: true },
       { '@type': 'LocationFeatureSpecification', name: 'Professional Lighting', value: true },
     ],
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '4.8',
+      reviewCount: '150',
+    },
+    sameAs: [
+      'https://www.facebook.com/DaVinciBanquetHalls/',
+      'https://www.instagram.com/davinci.banquethalls/',
+    ],
   });
 
   return (
     <html lang="en" className={`${geist.variable} ${playfair.variable}`}>
-      <Analytics />
-      <SpeedInsights />
       <body className="flex min-h-screen flex-col">
         <StructuredData data={structuredData} />
+        <Analytics />
+        <SpeedInsights />
         <Header />
         <main className="grow">{children}</main>
         <Footer />

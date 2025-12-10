@@ -77,13 +77,16 @@ export function generateStructuredData(
   type: 'LocalBusiness' | 'Event' | 'Organization',
   data?: Record<string, unknown>
 ) {
-  const baseStructuredData = {
+  const baseStructuredData: Record<string, unknown> = {
     '@context': 'https://schema.org',
     '@type': type,
     name: siteName,
     description: defaultDescription,
     url: baseUrl,
-    logo: `${baseUrl}/assets/images/logos/logo.png`,
+    logo: {
+      '@type': 'ImageObject',
+      url: `${baseUrl}/assets/images/logos/logo.png`,
+    },
     image: `${baseUrl}/assets/images/logos/logo.png`,
     address: {
       '@type': 'PostalAddress',
@@ -93,16 +96,20 @@ export function generateStructuredData(
       postalCode: 'L4L3A2',
       addressCountry: 'CA',
     },
-    telephone: '905-851-3131',
+    telephone: '+1-905-851-3131',
     email: 'contact@davincibanquethalls.com',
     priceRange: '$$',
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: '43.7833',
+      longitude: '-79.6000',
+    },
     openingHoursSpecification: [
       {
         '@type': 'OpeningHoursSpecification',
         dayOfWeek: 'Monday',
         opens: '00:00',
         closes: '00:00',
-        closed: true,
       },
       {
         '@type': 'OpeningHoursSpecification',
@@ -143,6 +150,12 @@ export function generateStructuredData(
     ],
     ...data,
   };
+
+  // Merge additional data, but ensure @type is not overridden
+  if (data) {
+    const { '@type': _, ...restData } = data;
+    Object.assign(baseStructuredData, restData);
+  }
 
   return baseStructuredData;
 }
