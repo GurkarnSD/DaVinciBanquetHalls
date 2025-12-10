@@ -4,7 +4,16 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { HiExternalLink } from 'react-icons/hi';
-import { FaBuilding, FaVolumeUp, FaLightbulb, FaChair, FaWineGlass, FaUtensils, FaKey, FaParking } from 'react-icons/fa';
+import {
+  FaBuilding,
+  FaVolumeUp,
+  FaLightbulb,
+  FaChair,
+  FaWineGlass,
+  FaUtensils,
+  FaKey,
+  FaParking,
+} from 'react-icons/fa';
 
 const floorplans = [
   {
@@ -45,7 +54,15 @@ export default function VenuePage() {
       {/* Hero Section */}
       <section className="relative mb-16 h-96">
         <div className="absolute inset-0">
-          <Image src="/assets/images/hero/venue.jpg" alt="Da Vinci Banquet Halls Venue" fill className="object-cover" />
+          <Image
+            src="/assets/images/hero/venue.jpg"
+            alt="Da Vinci Banquet Halls Venue"
+            fill
+            className="object-cover"
+            sizes="100vw"
+            priority
+            quality={85}
+          />
           <div className="absolute inset-0 bg-black/40" />
         </div>
         <div className="relative z-10 flex h-full items-center justify-center px-4 text-center text-white">
@@ -67,7 +84,9 @@ export default function VenuePage() {
             className="mb-12 text-center"
           >
             <h2 className="mb-6 font-serif text-4xl font-bold text-white md:text-5xl">
-              <span className="bg-linear-to-r from-davinci-gold to-davinci-gold-light bg-clip-text text-transparent">Venue Information</span>
+              <span className="from-davinci-gold to-davinci-gold-light bg-linear-to-r bg-clip-text text-transparent">
+                Venue Information
+              </span>
             </h2>
             <p className="text-center text-xl leading-relaxed text-gray-300">
               Our beautifully designed banquet halls offer flexible spaces that can accommodate events of all sizes.
@@ -89,7 +108,9 @@ export default function VenuePage() {
             className="mb-12 text-center"
           >
             <h2 className="mb-4 font-serif text-4xl font-bold text-white md:text-5xl">
-              <span className="bg-linear-to-r from-davinci-gold to-davinci-gold-light bg-clip-text text-transparent">Capacities & Floorplans</span>
+              <span className="from-davinci-gold to-davinci-gold-light bg-linear-to-r bg-clip-text text-transparent">
+                Capacities & Floorplans
+              </span>
             </h2>
             <p className="text-center text-xl text-gray-300">Choose the perfect space for your event</p>
           </motion.div>
@@ -111,7 +132,7 @@ export default function VenuePage() {
                     href={hall.pdf}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center font-medium text-davinci-gold hover:text-davinci-gold-light"
+                    className="text-davinci-gold hover:text-davinci-gold-light inline-flex items-center font-medium"
                   >
                     View Floorplan
                     <HiExternalLink className="ml-2 h-5 w-5" />
@@ -133,7 +154,9 @@ export default function VenuePage() {
           className="mb-12 text-center"
         >
           <h2 className="mb-4 font-serif text-4xl font-bold text-white md:text-5xl">
-            <span className="bg-linear-to-r from-davinci-gold to-davinci-gold-light bg-clip-text text-transparent">Venue Features</span>
+            <span className="from-davinci-gold to-davinci-gold-light bg-linear-to-r bg-clip-text text-transparent">
+              Venue Features
+            </span>
           </h2>
         </motion.div>
 
@@ -159,7 +182,7 @@ export default function VenuePage() {
                 className="premium-card rounded-2xl p-6 text-center"
               >
                 <div className="mb-3 flex justify-center">
-                  <IconComponent className="h-8 w-8 text-davinci-gold" />
+                  <IconComponent className="text-davinci-gold h-8 w-8" />
                 </div>
                 <h3 className="font-semibold text-white">{feature.name}</h3>
               </motion.div>
@@ -169,7 +192,7 @@ export default function VenuePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="mb-0 bg-linear-to-br from-davinci-gold via-davinci-gold-light to-davinci-gold py-16 text-davinci-dark">
+      <section className="from-davinci-gold via-davinci-gold-light to-davinci-gold text-davinci-dark mb-0 bg-linear-to-br py-16">
         <div className="container mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -183,7 +206,7 @@ export default function VenuePage() {
             </p>
             <Link
               href="/book"
-              className="inline-block rounded-full bg-davinci-dark px-8 py-4 text-lg font-medium text-white transition-all duration-200 hover:scale-105 hover:bg-davinci-charcoal"
+              className="bg-davinci-dark hover:bg-davinci-charcoal inline-block rounded-full px-8 py-4 text-lg font-medium text-white transition-all duration-200 hover:scale-105"
             >
               Book a Hall
             </Link>

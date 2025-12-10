@@ -32,9 +32,17 @@ export default function MenuSectionCard({
       transition={{ duration: 0.6 }}
       className="mb-20"
     >
-      <div className="overflow-hidden rounded-2xl premium-card">
+      <div className="premium-card overflow-hidden rounded-2xl">
         <div className="relative h-64 md:h-96">
-          <Image src={imageSrc} alt={imageAlt} fill className="object-cover" />
+          <Image
+            src={imageSrc}
+            alt={imageAlt}
+            fill
+            className="object-cover"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 1200px"
+            quality={80}
+            loading="lazy"
+          />
           <div className={`absolute inset-0 flex items-center justify-center ${gradientClass}`}>
             <h2 className="px-4 text-center font-serif text-5xl font-bold text-white md:text-6xl">{title}</h2>
           </div>
@@ -44,4 +52,3 @@ export default function MenuSectionCard({
     </motion.section>
   );
 }
-

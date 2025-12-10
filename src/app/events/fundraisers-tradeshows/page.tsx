@@ -1,8 +1,16 @@
-'use client';
-
+import { type Metadata } from 'next';
+import { generateMetadata } from '@/lib/seo';
 import EventPageHero from '@/components/EventPageHero';
 import ContentCard from '@/components/ContentCard';
 import Link from 'next/link';
+
+export const metadata: Metadata = generateMetadata({
+  title: 'Fundraisers & Trade Shows',
+  description:
+    'Spacious venues for fundraisers, trade shows, and large gatherings in Woodbridge, ON. Da Vinci Banquet Halls accommodates 50-1000 guests with professional facilities.',
+  path: '/events/fundraisers-tradeshows',
+  image: '/assets/images/events/fundraisers-tradeshows/hero.jpg',
+});
 
 export default function FundraisersTradeShowsEventsPage() {
   return (
@@ -19,13 +27,13 @@ export default function FundraisersTradeShowsEventsPage() {
         <ContentCard title="Fundraisers & Trade Shows" titleGradient={false}>
           <p>
             At Da Vinci Banquet Hall, we have a lot of experience in holding fundraisers and trade shows for various
-            organizations, businesses and even individuals. These events can be extremely important and you need to
-            put your best foot forward to impress the attendees.
+            organizations, businesses and even individuals. These events can be extremely important and you need to put
+            your best foot forward to impress the attendees.
           </p>
           <p>
-            Our team can help you organize your fundraiser and trade show down to the minutest detail. Our
-            professional staff can help you with planning the seating as well as registration and admission on the day
-            of the event so that everything is organized.
+            Our team can help you organize your fundraiser and trade show down to the minutest detail. Our professional
+            staff can help you with planning the seating as well as registration and admission on the day of the event
+            so that everything is organized.
           </p>
           <p>
             Our spaces have ample space and lighting that is imperative for these events. We have enough parking for
@@ -35,7 +43,7 @@ export default function FundraisersTradeShowsEventsPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-linear-to-br from-davinci-gold via-davinci-gold-light to-davinci-gold py-16 text-davinci-dark">
+      <section className="from-davinci-gold via-davinci-gold-light to-davinci-gold text-davinci-dark bg-linear-to-br py-16">
         <div className="container mx-auto px-4 text-center">
           <h2 className="mb-6 font-serif text-4xl font-bold md:text-5xl">
             Ready to Plan Your Fundraiser or Trade Show?
@@ -45,7 +53,7 @@ export default function FundraisersTradeShowsEventsPage() {
           </p>
           <Link
             href="/contact"
-            className="inline-block rounded-full bg-davinci-dark px-8 py-4 text-lg font-medium text-white transition-all duration-200 hover:scale-105 hover:bg-davinci-charcoal"
+            className="bg-davinci-dark hover:bg-davinci-charcoal inline-block rounded-full px-8 py-4 text-lg font-medium text-white transition-all duration-200 hover:scale-105"
           >
             Contact Us
           </Link>

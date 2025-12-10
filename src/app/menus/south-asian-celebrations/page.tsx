@@ -17,7 +17,9 @@ export default function SouthAsianCelebrationsMenuPage() {
           className="mb-16 text-center"
         >
           <h1 className="mb-6 font-serif text-6xl font-bold text-white md:text-7xl">
-            <span className="bg-linear-to-r from-davinci-gold to-davinci-gold-light bg-clip-text text-transparent">South Asian Celebrations</span>
+            <span className="from-davinci-gold to-davinci-gold-light bg-linear-to-r bg-clip-text text-transparent">
+              South Asian Celebrations
+            </span>
           </h1>
           <p className="mx-auto mb-8 max-w-3xl text-center text-2xl leading-relaxed text-gray-400 md:text-3xl">
             Specialized curated menus for South Asian celebrations
@@ -26,7 +28,7 @@ export default function SouthAsianCelebrationsMenuPage() {
             href="/assets/menus/SouthAsianCelebrationMenus.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center text-lg font-semibold text-davinci-gold transition-colors hover:text-davinci-gold-light"
+            className="text-davinci-gold hover:text-davinci-gold-light inline-flex items-center text-lg font-semibold transition-colors"
           >
             Download Full PDF Menu
             <HiExternalLink className="ml-2 h-6 w-6" />
@@ -41,9 +43,17 @@ export default function SouthAsianCelebrationsMenuPage() {
           transition={{ duration: 0.6 }}
           className="mb-20"
         >
-          <div className="overflow-hidden rounded-2xl premium-card">
+          <div className="premium-card overflow-hidden rounded-2xl">
             <div className="relative h-64 md:h-96">
-              <Image src="/assets/images/menus/south-asian-celebrations/gold-package.jpg" alt="Gold Package" fill className="object-cover" />
+              <Image
+                src="/assets/images/menus/south-asian-celebrations/gold-package.jpg"
+                alt="Gold Package"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 1200px"
+                quality={80}
+                loading="lazy"
+              />
               <div className="absolute inset-0 flex items-center justify-center bg-linear-to-br from-[#C9A961]/85 to-[#A68B3D]/85">
                 <h2 className="px-4 text-center font-serif text-5xl font-bold text-white md:text-6xl">Gold</h2>
               </div>
@@ -53,7 +63,7 @@ export default function SouthAsianCelebrationsMenuPage() {
                 {/* Appetizers */}
                 <div>
                   <h3 className="mb-4 text-center font-serif text-3xl font-bold text-white">Appetizers</h3>
-                  <div className="rounded-xl border-l-4 border-davinci-gold bg-linear-to-r from-davinci-gold/20 to-davinci-gold-light/20 p-6">
+                  <div className="border-davinci-gold from-davinci-gold/20 to-davinci-gold-light/20 rounded-xl border-l-4 bg-linear-to-r p-6">
                     <div className="grid gap-6 md:grid-cols-2">
                       <div>
                         <h4 className="mb-3 text-xl font-semibold text-white">Vegetarian</h4>
@@ -61,9 +71,7 @@ export default function SouthAsianCelebrationsMenuPage() {
                       </div>
                       <div>
                         <h4 className="mb-3 text-xl font-semibold text-white">Non-Vegetarian</h4>
-                        <p className="text-lg leading-relaxed text-gray-200">
-                          Choice of 2 Non-Vegetarian Appetizers
-                        </p>
+                        <p className="text-lg leading-relaxed text-gray-200">Choice of 2 Non-Vegetarian Appetizers</p>
                       </div>
                     </div>
                   </div>
@@ -77,9 +85,7 @@ export default function SouthAsianCelebrationsMenuPage() {
                       <div className="grid gap-6 md:grid-cols-2">
                         <div>
                           <h4 className="mb-3 text-xl font-semibold text-white">Vegetarian</h4>
-                          <p className="text-lg leading-relaxed text-gray-200">
-                            Choice of 2 Vegetarian Dinner Items
-                          </p>
+                          <p className="text-lg leading-relaxed text-gray-200">Choice of 2 Vegetarian Dinner Items</p>
                         </div>
                         <div>
                           <h4 className="mb-3 text-xl font-semibold text-white">Non-Vegetarian</h4>
@@ -101,7 +107,7 @@ export default function SouthAsianCelebrationsMenuPage() {
                 {/* Dessert */}
                 <div>
                   <h3 className="mb-4 text-center font-serif text-3xl font-bold text-white">Dessert</h3>
-                  <div className="rounded-xl bg-davinci-dark-light border border-davinci-gold/20 p-6">
+                  <div className="bg-davinci-dark-light border-davinci-gold/20 rounded-xl border p-6">
                     <div className="space-y-3 text-center text-lg leading-relaxed text-gray-200">
                       <p>Choice of 1 Sweet (Raas Malai, Gulab Jamun, Moong Halwa, and/or Gajar Halwa)</p>
                       <p>Choice of 1 Ice Cream</p>
@@ -121,9 +127,17 @@ export default function SouthAsianCelebrationsMenuPage() {
           transition={{ duration: 0.6 }}
           className="mb-20"
         >
-          <div className="overflow-hidden rounded-2xl premium-card">
+          <div className="premium-card overflow-hidden rounded-2xl">
             <div className="relative h-64 md:h-96">
-              <Image src="/assets/images/menus/south-asian-celebrations/diamond-package.jpg" alt="Diamond Package" fill className="object-cover" />
+              <Image
+                src="/assets/images/menus/south-asian-celebrations/diamond-package.jpg"
+                alt="Diamond Package"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 1200px"
+                quality={80}
+                loading="lazy"
+              />
               <div className="absolute inset-0 flex items-center justify-center bg-linear-to-br from-[#1A5F7A]/85 to-[#0F4C5C]/85">
                 <h2 className="px-4 text-center font-serif text-5xl font-bold text-white md:text-6xl">Diamond</h2>
               </div>
@@ -131,15 +145,15 @@ export default function SouthAsianCelebrationsMenuPage() {
             <div className="p-8 md:p-12">
               <div className="space-y-8">
                 {/* Cocktail Hour */}
-                <div className="rounded-xl bg-davinci-dark-light border border-davinci-gold/20 p-6 text-center">
-                  <h3 className="mb-2 font-serif text-2xl font-bold text-davinci-gold">Cocktail Hour</h3>
+                <div className="bg-davinci-dark-light border-davinci-gold/20 rounded-xl border p-6 text-center">
+                  <h3 className="text-davinci-gold mb-2 font-serif text-2xl font-bold">Cocktail Hour</h3>
                   <p className="text-lg leading-relaxed text-gray-200">Choice of 1 Welcome Drink</p>
                 </div>
 
                 {/* Appetizers */}
                 <div>
                   <h3 className="mb-4 text-center font-serif text-3xl font-bold text-white">Appetizers</h3>
-                  <div className="rounded-xl border-l-4 border-davinci-gold bg-linear-to-r from-davinci-gold/20 to-davinci-gold-light/20 p-6">
+                  <div className="border-davinci-gold from-davinci-gold/20 to-davinci-gold-light/20 rounded-xl border-l-4 bg-linear-to-r p-6">
                     <div className="grid gap-6 md:grid-cols-2">
                       <div>
                         <h4 className="mb-3 text-xl font-semibold text-white">Vegetarian</h4>
@@ -147,9 +161,7 @@ export default function SouthAsianCelebrationsMenuPage() {
                       </div>
                       <div>
                         <h4 className="mb-3 text-xl font-semibold text-white">Non-Vegetarian</h4>
-                        <p className="text-lg leading-relaxed text-gray-200">
-                          Choice of 2 Non-Vegetarian Appetizers
-                        </p>
+                        <p className="text-lg leading-relaxed text-gray-200">Choice of 2 Non-Vegetarian Appetizers</p>
                       </div>
                     </div>
                   </div>
@@ -163,9 +175,7 @@ export default function SouthAsianCelebrationsMenuPage() {
                       <div className="grid gap-6 md:grid-cols-2">
                         <div>
                           <h4 className="mb-3 text-xl font-semibold text-white">Vegetarian</h4>
-                          <p className="text-lg leading-relaxed text-gray-200">
-                            Choice of 3 Vegetarian Dinner Items
-                          </p>
+                          <p className="text-lg leading-relaxed text-gray-200">Choice of 3 Vegetarian Dinner Items</p>
                         </div>
                         <div>
                           <h4 className="mb-3 text-xl font-semibold text-white">Non-Vegetarian</h4>
@@ -188,7 +198,7 @@ export default function SouthAsianCelebrationsMenuPage() {
                 {/* Dessert */}
                 <div>
                   <h3 className="mb-4 text-center font-serif text-3xl font-bold text-white">Dessert</h3>
-                  <div className="rounded-xl bg-davinci-dark-light border border-davinci-gold/20 p-6">
+                  <div className="bg-davinci-dark-light border-davinci-gold/20 rounded-xl border p-6">
                     <div className="space-y-3 text-center text-lg leading-relaxed text-gray-200">
                       <p>Choice of 2 Sweets (Raas Malai, Gulab Jamun, Moong Halwa, and/or Gajar Halwa)</p>
                       <p>Choice of 1 Ice Cream</p>
@@ -208,25 +218,33 @@ export default function SouthAsianCelebrationsMenuPage() {
           transition={{ duration: 0.6 }}
           className="mb-20"
         >
-          <div className="overflow-hidden rounded-2xl premium-card">
+          <div className="premium-card overflow-hidden rounded-2xl">
             <div className="relative h-64 md:h-96">
-              <Image src="/assets/images/menus/south-asian-celebrations/platinum-package.jpg" alt="Platinum Package" fill className="object-cover" />
-              <div className="absolute inset-0 flex items-center justify-center bg-linear-to-br from-davinci-gold/85 to-davinci-gold-light/85">
+              <Image
+                src="/assets/images/menus/south-asian-celebrations/platinum-package.jpg"
+                alt="Platinum Package"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 1200px"
+                quality={80}
+                loading="lazy"
+              />
+              <div className="from-davinci-gold/85 to-davinci-gold-light/85 absolute inset-0 flex items-center justify-center bg-linear-to-br">
                 <h2 className="px-4 text-center font-serif text-5xl font-bold text-white md:text-6xl">Platinum</h2>
               </div>
             </div>
             <div className="p-8 md:p-12">
               <div className="space-y-8">
                 {/* Cocktail Hour */}
-                <div className="rounded-xl bg-davinci-dark-light border border-davinci-gold/20 p-6 text-center">
-                  <h3 className="mb-2 font-serif text-2xl font-bold text-davinci-gold">Cocktail Hour</h3>
+                <div className="bg-davinci-dark-light border-davinci-gold/20 rounded-xl border p-6 text-center">
+                  <h3 className="text-davinci-gold mb-2 font-serif text-2xl font-bold">Cocktail Hour</h3>
                   <p className="text-lg leading-relaxed text-gray-200">Choice of 1 Welcome Drink</p>
                 </div>
 
                 {/* Appetizers */}
                 <div>
                   <h3 className="mb-4 text-center font-serif text-3xl font-bold text-white">Appetizers</h3>
-                  <div className="rounded-xl border-l-4 border-davinci-gold bg-linear-to-r from-davinci-gold/20 to-davinci-gold-light/20 p-6">
+                  <div className="border-davinci-gold from-davinci-gold/20 to-davinci-gold-light/20 rounded-xl border-l-4 bg-linear-to-r p-6">
                     <div className="grid gap-6 md:grid-cols-2">
                       <div>
                         <h4 className="mb-3 text-xl font-semibold text-white">Vegetarian</h4>
@@ -234,9 +252,7 @@ export default function SouthAsianCelebrationsMenuPage() {
                       </div>
                       <div>
                         <h4 className="mb-3 text-xl font-semibold text-white">Non-Vegetarian</h4>
-                        <p className="text-lg leading-relaxed text-gray-200">
-                          Choice of 3 Non-Vegetarian Appetizers
-                        </p>
+                        <p className="text-lg leading-relaxed text-gray-200">Choice of 3 Non-Vegetarian Appetizers</p>
                       </div>
                     </div>
                   </div>
@@ -250,9 +266,7 @@ export default function SouthAsianCelebrationsMenuPage() {
                       <div className="grid gap-6 md:grid-cols-2">
                         <div>
                           <h4 className="mb-3 text-xl font-semibold text-white">Vegetarian</h4>
-                          <p className="text-lg leading-relaxed text-gray-200">
-                            Choice of 4 Vegetarian Dinner Items
-                          </p>
+                          <p className="text-lg leading-relaxed text-gray-200">Choice of 4 Vegetarian Dinner Items</p>
                         </div>
                         <div>
                           <h4 className="mb-3 text-xl font-semibold text-white">Non-Vegetarian</h4>
@@ -274,7 +288,7 @@ export default function SouthAsianCelebrationsMenuPage() {
                 {/* Dessert */}
                 <div>
                   <h3 className="mb-4 text-center font-serif text-3xl font-bold text-white">Dessert</h3>
-                  <div className="rounded-xl bg-davinci-dark-light border border-davinci-gold/20 p-6">
+                  <div className="bg-davinci-dark-light border-davinci-gold/20 rounded-xl border p-6">
                     <div className="space-y-3 text-center text-lg leading-relaxed text-gray-200">
                       <p>Choice of 2 Sweets (Raas Malai, Gulab Jamun, Moong Halwa, and/or Gajar Halwa)</p>
                       <p>Choice of 2 Ice Creams</p>
@@ -295,9 +309,17 @@ export default function SouthAsianCelebrationsMenuPage() {
           transition={{ duration: 0.6 }}
           className="mb-20"
         >
-          <div className="overflow-hidden rounded-2xl premium-card">
+          <div className="premium-card overflow-hidden rounded-2xl">
             <div className="relative h-64 md:h-96">
-              <Image src="/assets/images/menus/south-asian-celebrations/exclusive-package.jpg" alt="Exclusive Package" fill className="object-cover" />
+              <Image
+                src="/assets/images/menus/south-asian-celebrations/exclusive-package.jpg"
+                alt="Exclusive Package"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 1200px"
+                quality={80}
+                loading="lazy"
+              />
               <div className="absolute inset-0 flex items-center justify-center bg-linear-to-br from-[#C9A961]/85 to-[#A68B3D]/85">
                 <h2 className="px-4 text-center font-serif text-5xl font-bold text-white md:text-6xl">Exclusive</h2>
               </div>
@@ -307,7 +329,7 @@ export default function SouthAsianCelebrationsMenuPage() {
                 {/* Cocktail Hour */}
                 <div>
                   <h3 className="mb-4 text-center font-serif text-3xl font-bold text-white">Cocktail Hour</h3>
-                  <div className="rounded-xl bg-davinci-dark-light border border-davinci-gold/20 p-6">
+                  <div className="bg-davinci-dark-light border-davinci-gold/20 rounded-xl border p-6">
                     <div className="space-y-3 text-center text-lg leading-relaxed text-gray-200">
                       <p>Choice of 1 Welcome Drink</p>
                       <p>Chef&apos;s Choice Hors D&apos;Oeuvres</p>
@@ -318,7 +340,7 @@ export default function SouthAsianCelebrationsMenuPage() {
                 {/* Appetizers */}
                 <div>
                   <h3 className="mb-4 text-center font-serif text-3xl font-bold text-white">Appetizers</h3>
-                  <div className="rounded-xl border-l-4 border-davinci-gold bg-linear-to-r from-davinci-gold/20 to-davinci-gold-light/20 p-6">
+                  <div className="border-davinci-gold from-davinci-gold/20 to-davinci-gold-light/20 rounded-xl border-l-4 bg-linear-to-r p-6">
                     <div className="mb-4 grid gap-6 md:grid-cols-2">
                       <div>
                         <h4 className="mb-3 text-xl font-semibold text-white">Vegetarian</h4>
@@ -326,9 +348,7 @@ export default function SouthAsianCelebrationsMenuPage() {
                       </div>
                       <div>
                         <h4 className="mb-3 text-xl font-semibold text-white">Non-Vegetarian</h4>
-                        <p className="text-lg leading-relaxed text-gray-200">
-                          Choice of 3 Non-Vegetarian Appetizers
-                        </p>
+                        <p className="text-lg leading-relaxed text-gray-200">Choice of 3 Non-Vegetarian Appetizers</p>
                       </div>
                     </div>
                     <div className="border-t border-[#C9A961]/30 pt-4 text-center">
@@ -347,9 +367,7 @@ export default function SouthAsianCelebrationsMenuPage() {
                       <div className="grid gap-6 md:grid-cols-2">
                         <div>
                           <h4 className="mb-3 text-xl font-semibold text-white">Vegetarian</h4>
-                          <p className="text-lg leading-relaxed text-gray-200">
-                            Choice of 4 Vegetarian Dinner Items
-                          </p>
+                          <p className="text-lg leading-relaxed text-gray-200">Choice of 4 Vegetarian Dinner Items</p>
                         </div>
                         <div>
                           <h4 className="mb-3 text-xl font-semibold text-white">Non-Vegetarian</h4>
@@ -373,7 +391,7 @@ export default function SouthAsianCelebrationsMenuPage() {
                 {/* Sweet Table */}
                 <div>
                   <h3 className="mb-4 text-center font-serif text-3xl font-bold text-white">Sweet Table</h3>
-                  <div className="rounded-xl bg-davinci-dark-light border border-davinci-gold/20 p-6">
+                  <div className="bg-davinci-dark-light border-davinci-gold/20 rounded-xl border p-6">
                     <div className="space-y-4">
                       <p className="text-center text-lg leading-relaxed text-gray-300">
                         Choice of 2 Sweets (Raas Malai, Gulab Jamun, Moong Halwa, and/or Gajar Halwa)
@@ -403,14 +421,14 @@ export default function SouthAsianCelebrationsMenuPage() {
           transition={{ duration: 0.6 }}
           className="text-center"
         >
-          <div className="rounded-2xl bg-linear-to-br from-davinci-gold via-davinci-gold-light to-davinci-gold p-12 text-davinci-dark">
+          <div className="from-davinci-gold via-davinci-gold-light to-davinci-gold text-davinci-dark rounded-2xl bg-linear-to-br p-12">
             <h3 className="mb-4 font-serif text-4xl font-bold">Ready to Customize Your Celebration Menu?</h3>
             <p className="mb-8 text-center text-xl leading-relaxed opacity-90">
               Contact us to discuss your South Asian celebration and create the perfect menu
             </p>
             <Link
               href="/contact"
-              className="inline-block rounded-full bg-davinci-dark px-8 py-4 text-lg font-semibold text-white transition-all duration-200 hover:scale-105 hover:bg-davinci-charcoal"
+              className="bg-davinci-dark hover:bg-davinci-charcoal inline-block rounded-full px-8 py-4 text-lg font-semibold text-white transition-all duration-200 hover:scale-105"
             >
               Contact Us
             </Link>

@@ -1,8 +1,16 @@
-'use client';
-
+import { type Metadata } from 'next';
+import { generateMetadata } from '@/lib/seo';
 import EventPageHero from '@/components/EventPageHero';
 import ContentCard from '@/components/ContentCard';
 import Link from 'next/link';
+
+export const metadata: Metadata = generateMetadata({
+  title: 'Social Events',
+  description:
+    "Celebrate life's special moments at Da Vinci Banquet Halls in Woodbridge, ON. Beautiful venues for birthdays, anniversaries, family reunions, and social gatherings.",
+  path: '/events/social',
+  image: '/assets/images/events/social/hero.jpg',
+});
 
 export default function SocialEventsPage() {
   return (
@@ -46,7 +54,7 @@ export default function SocialEventsPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-linear-to-br from-davinci-gold via-davinci-gold-light to-davinci-gold py-16 text-davinci-dark">
+      <section className="from-davinci-gold via-davinci-gold-light to-davinci-gold text-davinci-dark bg-linear-to-br py-16">
         <div className="container mx-auto px-4 text-center">
           <h2 className="mb-6 font-serif text-4xl font-bold md:text-5xl">Ready to Plan Your Social Event?</h2>
           <p className="mx-auto mb-8 max-w-2xl text-center text-xl opacity-90">
@@ -54,7 +62,7 @@ export default function SocialEventsPage() {
           </p>
           <Link
             href="/contact"
-            className="inline-block rounded-full bg-davinci-dark px-8 py-4 text-lg font-medium text-white transition-all duration-200 hover:scale-105 hover:bg-davinci-charcoal"
+            className="bg-davinci-dark hover:bg-davinci-charcoal inline-block rounded-full px-8 py-4 text-lg font-medium text-white transition-all duration-200 hover:scale-105"
           >
             Contact Us
           </Link>

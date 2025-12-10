@@ -9,7 +9,15 @@ export default function AboutPage() {
       {/* Hero Section */}
       <section className="relative mb-16 h-96">
         <div className="absolute inset-0">
-          <Image src="/assets/images/hero/about.jpg" alt="About Da Vinci Banquet Halls" fill className="object-cover" />
+          <Image
+            src="/assets/images/hero/about.jpg"
+            alt="About Da Vinci Banquet Halls"
+            fill
+            className="object-cover"
+            sizes="100vw"
+            priority
+            quality={85}
+          />
           <div className="absolute inset-0 bg-black/40" />
         </div>
         <div className="relative z-10 flex h-full items-center justify-center px-4 text-center text-white">
@@ -31,7 +39,7 @@ export default function AboutPage() {
             className="mb-12 text-center"
           >
             <h2 className="mb-6 font-serif text-4xl font-bold md:text-5xl">
-              <span className="bg-linear-to-r from-davinci-gold to-davinci-gold-light bg-clip-text text-transparent">
+              <span className="from-davinci-gold to-davinci-gold-light bg-linear-to-r bg-clip-text text-transparent">
                 Our Mission
               </span>
             </h2>
@@ -53,8 +61,8 @@ export default function AboutPage() {
               <h3 className="mb-4 font-serif text-3xl font-bold text-white">Excellence in Every Detail</h3>
               <p className="mb-4 leading-relaxed text-gray-400">
                 We believe that every celebration deserves the finest attention to detail. From the moment you step
-                through our doors, you&apos;ll experience the elegance and sophistication that sets Da Vinci Banquet Halls
-                apart.
+                through our doors, you&apos;ll experience the elegance and sophistication that sets Da Vinci Banquet
+                Halls apart.
               </p>
               <p className="leading-relaxed text-gray-400">
                 Our team is committed to understanding your vision and bringing it to life, ensuring that your event
@@ -95,7 +103,7 @@ export default function AboutPage() {
             className="mb-12 text-center"
           >
             <h2 className="mb-4 font-serif text-4xl font-bold md:text-5xl">
-              <span className="bg-linear-to-r from-davinci-gold to-davinci-gold-light bg-clip-text text-transparent">
+              <span className="from-davinci-gold to-davinci-gold-light bg-linear-to-r bg-clip-text text-transparent">
                 Our Values
               </span>
             </h2>
@@ -125,7 +133,7 @@ export default function AboutPage() {
                 transition={{ duration: 0.5, delay: index * 0.2 }}
                 className="premium-card rounded-2xl p-8 text-center"
               >
-                <h3 className="mb-4 font-serif text-2xl font-bold text-davinci-gold">{value.title}</h3>
+                <h3 className="text-davinci-gold mb-4 font-serif text-2xl font-bold">{value.title}</h3>
                 <p className="text-gray-300">{value.description}</p>
               </motion.div>
             ))}

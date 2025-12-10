@@ -16,9 +16,11 @@ export default function GalleryPage() {
           className="text-center"
         >
           <h1 className="mb-6 font-serif text-6xl font-bold text-white md:text-7xl">
-            <span className="bg-linear-to-r from-davinci-gold to-davinci-gold-light bg-clip-text text-transparent">Gallery</span>
+            <span className="from-davinci-gold to-davinci-gold-light bg-linear-to-r bg-clip-text text-transparent">
+              Gallery
+            </span>
           </h1>
-          <p className="mx-auto max-w-3xl text-2xl leading-relaxed text-gray-400 md:text-3xl text-center">
+          <p className="mx-auto max-w-3xl text-center text-2xl leading-relaxed text-gray-400 md:text-3xl">
             Explore our beautiful venues and see the elegance we bring to every celebration
           </p>
         </motion.div>

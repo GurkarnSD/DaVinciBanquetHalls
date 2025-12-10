@@ -106,7 +106,10 @@ export default function ImageCarousel({ images, autoPlayInterval = 8000, classNa
             alt={`Slide ${currentIndex + 1}`}
             fill
             className="object-cover"
+            sizes="100vw"
             priority={currentIndex === 0}
+            quality={currentIndex === 0 ? 85 : 80}
+            loading={currentIndex === 0 ? 'eager' : 'lazy'}
           />
         </motion.div>
       </AnimatePresence>

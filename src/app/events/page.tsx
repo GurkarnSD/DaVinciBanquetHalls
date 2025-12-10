@@ -48,7 +48,9 @@ export default function EventsPage() {
           className="text-center"
         >
           <h1 className="mb-6 font-serif text-6xl font-bold text-white md:text-7xl">
-            <span className="bg-linear-to-r from-davinci-gold to-davinci-gold-light bg-clip-text text-transparent">Our Events</span>
+            <span className="from-davinci-gold to-davinci-gold-light bg-linear-to-r bg-clip-text text-transparent">
+              Our Events
+            </span>
           </h1>
           <p className="mx-auto max-w-3xl text-center text-2xl leading-relaxed text-gray-400 md:text-3xl">
             From intimate gatherings to grand celebrations, we provide the perfect venue and exceptional service for
@@ -90,7 +92,7 @@ export default function EventsPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="mt-20 mb-0 bg-linear-to-br from-davinci-gold via-davinci-gold-light to-davinci-gold py-16 text-davinci-dark">
+      <section className="from-davinci-gold via-davinci-gold-light to-davinci-gold text-davinci-dark mt-20 mb-0 bg-linear-to-br py-16">
         <div className="container mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -104,7 +106,7 @@ export default function EventsPage() {
             </p>
             <a
               href="/contact"
-              className="inline-block rounded-full bg-davinci-dark px-8 py-4 text-lg font-medium text-white transition-all duration-200 hover:scale-105 hover:bg-davinci-charcoal"
+              className="bg-davinci-dark hover:bg-davinci-charcoal inline-block rounded-full px-8 py-4 text-lg font-medium text-white transition-all duration-200 hover:scale-105"
             >
               Get Started
             </a>

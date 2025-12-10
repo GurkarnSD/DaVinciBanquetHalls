@@ -70,7 +70,9 @@ export default function MenusPage() {
           className="text-center"
         >
           <h1 className="mb-6 font-serif text-6xl font-bold text-white md:text-7xl">
-            <span className="bg-linear-to-r from-davinci-gold to-davinci-gold-light bg-clip-text text-transparent">Our Menus</span>
+            <span className="from-davinci-gold to-davinci-gold-light bg-linear-to-r bg-clip-text text-transparent">
+              Our Menus
+            </span>
           </h1>
           <p className="mx-auto max-w-3xl text-center text-2xl leading-relaxed text-gray-400 md:text-3xl">
             Discover our complete culinary offerings and curated sample menus, all crafted to perfection for your
@@ -90,12 +92,14 @@ export default function MenusPage() {
         >
           <div className="mb-8 text-center">
             <div className="mb-4 inline-block">
-              <span className="rounded-full bg-davinci-gold/10 px-4 py-2 text-sm font-semibold tracking-wider text-davinci-gold uppercase">
+              <span className="bg-davinci-gold/10 text-davinci-gold rounded-full px-4 py-2 text-sm font-semibold tracking-wider uppercase">
                 Complete Menu Catalogs
               </span>
             </div>
             <h2 className="mb-4 font-serif text-4xl font-bold text-white md:text-5xl">
-              <span className="bg-linear-to-r from-davinci-gold to-davinci-gold-light bg-clip-text text-transparent">Explore All Options</span>
+              <span className="from-davinci-gold to-davinci-gold-light bg-linear-to-r bg-clip-text text-transparent">
+                Explore All Options
+              </span>
             </h2>
             <p className="mx-auto max-w-2xl text-center text-lg leading-relaxed text-gray-300 md:text-xl">
               Browse our complete selection of dishes and options. These comprehensive menus showcase every item
@@ -137,12 +141,14 @@ export default function MenusPage() {
           >
             <div className="mb-8 text-center">
               <div className="mb-4 inline-block">
-                <span className="rounded-full bg-davinci-teal/10 px-4 py-2 text-sm font-semibold tracking-wider text-davinci-teal uppercase">
+                <span className="bg-davinci-teal/10 text-davinci-teal rounded-full px-4 py-2 text-sm font-semibold tracking-wider uppercase">
                   Sample Menus
                 </span>
               </div>
               <h2 className="mb-4 font-serif text-4xl font-bold text-white md:text-5xl">
-                <span className="bg-linear-to-r from-davinci-gold to-davinci-gold-light bg-clip-text text-transparent">Curated Selections</span>
+                <span className="from-davinci-gold to-davinci-gold-light bg-linear-to-r bg-clip-text text-transparent">
+                  Curated Selections
+                </span>
               </h2>
               <p className="mx-auto max-w-3xl text-center text-lg leading-relaxed text-gray-300 md:text-xl">
                 Every event is unique, but sometimes you need a place to start. We&apos;ve created sample menus based on
@@ -175,7 +181,7 @@ export default function MenusPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="mb-0 bg-linear-to-br from-davinci-gold via-davinci-gold-light to-davinci-gold py-16 text-davinci-dark">
+      <section className="from-davinci-gold via-davinci-gold-light to-davinci-gold text-davinci-dark mb-0 bg-linear-to-br py-16">
         <div className="container mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -185,12 +191,12 @@ export default function MenusPage() {
           >
             <h2 className="mb-6 font-serif text-4xl font-bold md:text-5xl">Customize Your Menu</h2>
             <p className="mx-auto mb-8 max-w-2xl text-center text-xl leading-relaxed opacity-90">
-              Have specific dietary requirements or preferences? We&apos;re happy to work with you to create a customized
-              menu tailored to your event.
+              Have specific dietary requirements or preferences? We&apos;re happy to work with you to create a
+              customized menu tailored to your event.
             </p>
             <Link
               href="/contact"
-              className="inline-block rounded-full bg-davinci-dark px-8 py-4 text-lg font-medium text-white transition-all duration-200 hover:scale-105 hover:bg-davinci-charcoal"
+              className="bg-davinci-dark hover:bg-davinci-charcoal inline-block rounded-full px-8 py-4 text-lg font-medium text-white transition-all duration-200 hover:scale-105"
             >
               Contact Us
             </Link>

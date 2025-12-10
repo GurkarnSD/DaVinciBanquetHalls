@@ -4,8 +4,8 @@ import { FaFacebook, FaInstagram, FaFacebookMessenger } from 'react-icons/fa';
 
 export default function Footer() {
   return (
-    <footer className="relative border-t border-davinci-gold/20 bg-linear-to-b from-davinci-dark to-davinci-dark-light text-gray-300">
-      <div className="container relative z-10 mx-auto px-4 py-12">
+    <footer className="border-davinci-gold/20 from-davinci-dark to-davinci-dark-light relative border-t bg-linear-to-b text-gray-300">
+      <div className="relative z-10 container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
           {/* Logo and Description */}
           <div className="col-span-1 md:col-span-1">
@@ -18,10 +18,8 @@ export default function Footer() {
                 className="h-16 w-auto"
               />
             </Link>
-            <p className="text-sm text-gray-400">
-              Elegant banquet halls for your most important celebrations.
-            </p>
-            <div className="mt-4 h-1 w-20 bg-linear-to-r from-davinci-gold to-davinci-gold-light" />
+            <p className="text-sm text-gray-400">Elegant banquet halls for your most important celebrations.</p>
+            <div className="from-davinci-gold to-davinci-gold-light mt-4 h-1 w-20 bg-linear-to-r" />
           </div>
 
           {/* Contact Information */}
@@ -115,14 +113,14 @@ export default function Footer() {
             </div>
             <Link
               href="/book"
-              className="mt-6 inline-block rounded-full bg-linear-to-r from-davinci-gold to-davinci-gold-light px-6 py-2 text-sm font-medium text-davinci-dark transition-all duration-200 hover:from-davinci-gold-light hover:to-davinci-gold hover:scale-105"
+              className="from-davinci-gold to-davinci-gold-light text-davinci-dark hover:from-davinci-gold-light hover:to-davinci-gold mt-6 inline-block rounded-full bg-linear-to-r px-6 py-2 text-sm font-medium transition-all duration-200 hover:scale-105"
             >
               Book a Hall
             </Link>
           </div>
         </div>
 
-        <div className="mt-8 border-t border-davinci-gold/20 pt-8 text-center text-sm text-gray-500">
+        <div className="border-davinci-gold/20 mt-8 border-t pt-8 text-center text-sm text-gray-500">
           <p suppressHydrationWarning>&copy; {new Date().getFullYear()} Da Vinci Banquet Halls. All rights reserved.</p>
         </div>
       </div>

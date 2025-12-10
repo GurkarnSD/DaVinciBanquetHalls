@@ -17,7 +17,9 @@ export default function ContactPage() {
             className="mb-12 text-center"
           >
             <h1 className="mb-6 font-serif text-5xl font-bold text-white md:text-6xl">
-              <span className="bg-linear-to-r from-davinci-gold to-davinci-gold-light bg-clip-text text-transparent">Contact Us</span>
+              <span className="from-davinci-gold to-davinci-gold-light bg-linear-to-r bg-clip-text text-transparent">
+                Contact Us
+              </span>
             </h1>
             <p className="mx-auto max-w-2xl text-center text-xl text-gray-300">
               Have questions or ready to plan your event? We&apos;d love to hear from you.
@@ -29,13 +31,13 @@ export default function ContactPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="mb-12 premium-card rounded-2xl p-8 md:p-12"
+            className="premium-card mb-12 rounded-2xl p-8 md:p-12"
           >
             <h2 className="mb-6 font-serif text-2xl font-bold text-white md:text-3xl">Get in Touch</h2>
             <div className="space-y-5">
               <div className="flex items-start space-x-4">
                 <div className="shrink-0">
-                  <span className="text-lg font-semibold text-davinci-gold">Address:</span>
+                  <span className="text-davinci-gold text-lg font-semibold">Address:</span>
                 </div>
                 <p className="text-base text-gray-300">
                   5732 Highway 7
@@ -45,23 +47,29 @@ export default function ContactPage() {
               </div>
               <div className="flex items-center space-x-4">
                 <div className="shrink-0">
-                  <span className="text-lg font-semibold text-davinci-gold">Phone:</span>
+                  <span className="text-davinci-gold text-lg font-semibold">Phone:</span>
                 </div>
-                <a href="tel:905-851-3131" className="text-base text-davinci-gold hover:text-davinci-gold-light transition-colors">
+                <a
+                  href="tel:905-851-3131"
+                  className="text-davinci-gold hover:text-davinci-gold-light text-base transition-colors"
+                >
                   905-851-3131
                 </a>
               </div>
               <div className="flex items-center space-x-4">
                 <div className="shrink-0">
-                  <span className="text-lg font-semibold text-davinci-gold">Email:</span>
+                  <span className="text-davinci-gold text-lg font-semibold">Email:</span>
                 </div>
-                <a href="mailto:contact@davincibanquethalls.com" className="text-base text-davinci-gold hover:text-davinci-gold-light transition-colors break-all">
+                <a
+                  href="mailto:contact@davincibanquethalls.com"
+                  className="text-davinci-gold hover:text-davinci-gold-light text-base break-all transition-colors"
+                >
                   contact@davincibanquethalls.com
                 </a>
               </div>
               <div className="flex items-start space-x-4">
                 <div className="shrink-0">
-                  <span className="text-lg font-semibold text-davinci-gold">Hours:</span>
+                  <span className="text-davinci-gold text-lg font-semibold">Hours:</span>
                 </div>
                 <p className="text-base text-gray-300">
                   Mon: Closed
@@ -77,14 +85,14 @@ export default function ContactPage() {
               </div>
               <div className="flex items-center space-x-4 pt-2">
                 <div className="shrink-0">
-                  <span className="text-lg font-semibold text-davinci-gold">Follow Us:</span>
+                  <span className="text-davinci-gold text-lg font-semibold">Follow Us:</span>
                 </div>
                 <div className="flex items-center space-x-6">
                   <a
                     href="https://www.facebook.com/DaVinciBanquetHalls/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center space-x-2 text-base text-gray-300 transition-colors hover:text-davinci-gold"
+                    className="hover:text-davinci-gold flex items-center space-x-2 text-base text-gray-300 transition-colors"
                   >
                     <FaFacebook className="h-5 w-5" />
                     <span>Facebook</span>
@@ -93,7 +101,7 @@ export default function ContactPage() {
                     href="https://www.instagram.com/davinci.banquethalls/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center space-x-2 text-base text-gray-300 transition-colors hover:text-davinci-gold"
+                    className="hover:text-davinci-gold flex items-center space-x-2 text-base text-gray-300 transition-colors"
                   >
                     <FaInstagram className="h-5 w-5" />
                     <span>Instagram</span>
@@ -102,7 +110,7 @@ export default function ContactPage() {
                     href="http://m.me/DaVinciBanquetHalls"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center space-x-2 text-base text-gray-300 transition-colors hover:text-davinci-gold"
+                    className="hover:text-davinci-gold flex items-center space-x-2 text-base text-gray-300 transition-colors"
                   >
                     <FaFacebookMessenger className="h-5 w-5" />
                     <span>Messenger</span>

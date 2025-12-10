@@ -35,15 +35,13 @@ export default function SouthAsianMenuPage() {
             ].map((item) => (
               <div
                 key={item}
-                className="rounded-lg bg-davinci-dark-light border border-davinci-gold/20 p-4 text-center text-lg leading-relaxed text-gray-200"
+                className="bg-davinci-dark-light border-davinci-gold/20 rounded-lg border p-4 text-center text-lg leading-relaxed text-gray-200"
               >
                 • {item}
               </div>
             ))}
           </div>
-          <p className="mt-4 text-center text-sm text-gray-400 italic">
-            ** Premium - additional charges will apply
-          </p>
+          <p className="mt-4 text-center text-sm text-gray-400 italic">** Premium - additional charges will apply</p>
         </MenuSectionCard>
 
         {/* Hors D'Oeuvres Section */}
@@ -80,9 +78,7 @@ export default function SouthAsianMenuPage() {
 
             {/* Non-Vegetarian Options */}
             <div>
-              <h3 className="mb-6 text-center font-serif text-3xl font-bold text-white">
-                Non-Vegetarian Options
-              </h3>
+              <h3 className="mb-6 text-center font-serif text-3xl font-bold text-white">Non-Vegetarian Options</h3>
               <div className="space-y-3">
                 {[
                   'Tempura Shrimps',
@@ -101,9 +97,7 @@ export default function SouthAsianMenuPage() {
 
           {/* Specialty Live Stations */}
           <div className="mt-8">
-            <h3 className="mb-6 text-center font-serif text-3xl font-bold text-white">
-              Specialty Live Stations
-            </h3>
+            <h3 className="mb-6 text-center font-serif text-3xl font-bold text-white">Specialty Live Stations</h3>
             <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
               {[
                 'Gol Gappe / Pani Puri',
@@ -115,7 +109,7 @@ export default function SouthAsianMenuPage() {
               ].map((item) => (
                 <div
                   key={item}
-                  className="rounded-xl border border-davinci-gold/20 bg-linear-to-br from-davinci-gold/10 to-davinci-gold-light/10 p-4 text-center"
+                  className="border-davinci-gold/20 from-davinci-gold/10 to-davinci-gold-light/10 rounded-xl border bg-linear-to-br p-4 text-center"
                 >
                   <p className="text-lg leading-relaxed font-semibold text-white">{item}</p>
                 </div>
@@ -132,11 +126,19 @@ export default function SouthAsianMenuPage() {
           transition={{ duration: 0.6 }}
           className="mb-20"
         >
-          <div className="overflow-hidden rounded-2xl premium-card">
+          <div className="premium-card overflow-hidden rounded-2xl">
             <div className="grid md:grid-cols-2">
               <div className="relative h-64 min-h-[400px] md:h-full">
-                <Image src="/assets/images/menus/south-asian/appetizers.jpg" alt="Appetizers" fill className="object-cover" />
-                <div className="absolute inset-0 flex items-center justify-center bg-linear-to-br from-davinci-teal/85 to-davinci-teal-dark/85 p-8">
+                <Image
+                  src="/assets/images/menus/south-asian/appetizers.jpg"
+                  alt="Appetizers"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  quality={80}
+                  loading="lazy"
+                />
+                <div className="from-davinci-teal/85 to-davinci-teal-dark/85 absolute inset-0 flex items-center justify-center bg-linear-to-br p-8">
                   <h2 className="text-center font-serif text-5xl font-bold text-white md:text-6xl">Appetizers</h2>
                 </div>
               </div>
@@ -178,9 +180,7 @@ export default function SouthAsianMenuPage() {
                   </div>
                 </div>
                 <div>
-                  <h3 className="mb-6 text-center font-serif text-3xl font-bold text-white">
-                    Non-Vegetarian Options
-                  </h3>
+                  <h3 className="mb-6 text-center font-serif text-3xl font-bold text-white">Non-Vegetarian Options</h3>
                   <div className="grid grid-cols-2 gap-3">
                     {[
                       'Chicken Tikka',
@@ -211,11 +211,7 @@ export default function SouthAsianMenuPage() {
         </motion.section>
 
         {/* Dinner Section */}
-        <MenuSectionCard
-          imageSrc="/assets/images/menus/south-asian/dinner.jpg"
-          imageAlt="Dinner"
-          title="Dinner"
-        >
+        <MenuSectionCard imageSrc="/assets/images/menus/south-asian/dinner.jpg" imageAlt="Dinner" title="Dinner">
           <div className="grid gap-8 md:grid-cols-3">
             {/* Rice */}
             <div>
@@ -277,14 +273,15 @@ export default function SouthAsianMenuPage() {
             <h3 className="mb-4 text-center font-serif text-2xl font-bold text-white">Bread</h3>
             <div className="grid grid-cols-2 gap-4 md:grid-cols-5">
               {['Butter Naan', 'Garlic Naan', 'Tandoori Roti', 'Tawa Roti**', 'Pouri'].map((item) => (
-                <div key={item} className="rounded-lg bg-davinci-dark-light border border-davinci-gold/20 p-4 text-center">
+                <div
+                  key={item}
+                  className="bg-davinci-dark-light border-davinci-gold/20 rounded-lg border p-4 text-center"
+                >
                   <p className="text-lg leading-relaxed font-semibold text-white">{item}</p>
                 </div>
               ))}
             </div>
-            <p className="mt-4 text-center text-sm text-gray-400 italic">
-              ** Premium - additional charges will apply
-            </p>
+            <p className="mt-4 text-center text-sm text-gray-400 italic">** Premium - additional charges will apply</p>
           </div>
         </MenuSectionCard>
 
@@ -350,9 +347,7 @@ export default function SouthAsianMenuPage() {
 
             {/* Non-Vegetarian Options */}
             <div>
-              <h3 className="mb-6 text-center font-serif text-3xl font-bold text-white">
-                Non-Vegetarian Options
-              </h3>
+              <h3 className="mb-6 text-center font-serif text-3xl font-bold text-white">Non-Vegetarian Options</h3>
               <div className="space-y-2">
                 {[
                   'Butter Chicken',
@@ -390,7 +385,7 @@ export default function SouthAsianMenuPage() {
           transition={{ duration: 0.6 }}
           className="mb-20"
         >
-          <div className="overflow-hidden rounded-2xl premium-card">
+          <div className="premium-card overflow-hidden rounded-2xl">
             <div className="grid md:grid-cols-2">
               <div className="order-2 p-8 md:order-1 md:p-12">
                 <h2 className="mb-8 font-serif text-4xl font-bold text-white md:text-5xl">Dessert</h2>
@@ -471,8 +466,16 @@ export default function SouthAsianMenuPage() {
                 </div>
               </div>
               <div className="relative order-1 h-64 min-h-[600px] md:order-2 md:h-full">
-                <Image src="/assets/images/menus/south-asian/desserts.jpg" alt="Desserts" fill className="object-cover" />
-                <div className="absolute inset-0 flex items-center justify-center bg-linear-to-br from-davinci-gold/85 to-davinci-gold-dark/85 p-8">
+                <Image
+                  src="/assets/images/menus/south-asian/desserts.jpg"
+                  alt="Desserts"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  quality={80}
+                  loading="lazy"
+                />
+                <div className="from-davinci-gold/85 to-davinci-gold-dark/85 absolute inset-0 flex items-center justify-center bg-linear-to-br p-8">
                   <h2 className="text-center font-serif text-5xl font-bold text-white md:text-6xl">Desserts</h2>
                 </div>
               </div>
@@ -488,14 +491,14 @@ export default function SouthAsianMenuPage() {
           gradientFrom="teal"
         >
           <div className="space-y-8">
-            <div className="rounded-xl border border-davinci-gold/20 bg-linear-to-br from-davinci-gold/10 to-davinci-gold-light/10 p-8">
+            <div className="border-davinci-gold/20 from-davinci-gold/10 to-davinci-gold-light/10 rounded-xl border bg-linear-to-br p-8">
               <h3 className="mb-4 text-center font-serif text-2xl font-bold text-white">Non-Alcoholic</h3>
               <p className="text-lg leading-relaxed text-gray-200">
                 Soft Drinks, Juices, Still & Sparkling Water, Coffee, Tea, Espresso
               </p>
             </div>
 
-            <div className="rounded-xl border border-davinci-gold/20 bg-linear-to-br from-davinci-gold/10 to-davinci-gold-light/10 p-8">
+            <div className="border-davinci-gold/20 from-davinci-gold/10 to-davinci-gold-light/10 rounded-xl border bg-linear-to-br p-8">
               <h3 className="mb-4 text-center font-serif text-2xl font-bold text-white">Deluxe Bar</h3>
               <div className="space-y-2 text-lg leading-relaxed text-gray-200">
                 <p>Red & White Wine, Vodka, Gin, Rum, Tequila, Whiskey, Scotch</p>
@@ -505,7 +508,7 @@ export default function SouthAsianMenuPage() {
               </div>
             </div>
 
-            <div className="rounded-xl border border-davinci-gold/20 bg-linear-to-br from-davinci-gold/10 to-davinci-gold-light/10 p-8">
+            <div className="border-davinci-gold/20 from-davinci-gold/10 to-davinci-gold-light/10 rounded-xl border bg-linear-to-br p-8">
               <h3 className="mb-4 text-center font-serif text-2xl font-bold text-white">Premium Bar</h3>
               <p className="mb-3 text-lg font-semibold text-white">Premium Brand Upgrades:</p>
               <div className="space-y-2 text-lg leading-relaxed text-gray-200">
@@ -525,7 +528,10 @@ export default function SouthAsianMenuPage() {
             <h3 className="mb-4 text-center font-serif text-2xl font-bold text-white">Specialty Items</h3>
             <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
               {['Martini Bar', 'Prosecco station', 'Sangria station', 'Espresso Martini Station'].map((item) => (
-                <div key={item} className="rounded-lg border border-davinci-gold/20 bg-davinci-dark-light p-4 text-center">
+                <div
+                  key={item}
+                  className="border-davinci-gold/20 bg-davinci-dark-light rounded-lg border p-4 text-center"
+                >
                   <p className="text-lg leading-relaxed font-semibold text-white">{item}</p>
                 </div>
               ))}

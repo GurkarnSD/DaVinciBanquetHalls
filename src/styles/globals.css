@@ -79,12 +79,7 @@
   left: -50%;
   width: 200%;
   height: 200%;
-  background: linear-gradient(
-    45deg,
-    transparent 30%,
-    rgba(201, 169, 97, 0.1) 50%,
-    transparent 70%
-  );
+  background: linear-gradient(45deg, transparent 30%, rgba(201, 169, 97, 0.1) 50%, transparent 70%);
   animation: shimmer 3s infinite;
 }
 
@@ -101,13 +96,17 @@
 .premium-card {
   background: linear-gradient(135deg, #1f1f1f 0%, #2d2d2d 100%);
   border: 1px solid rgba(201, 169, 97, 0.2);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(201, 169, 97, 0.1);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(201, 169, 97, 0.1);
   transition: all 0.3s ease;
 }
 
 .premium-card:hover {
   border-color: rgba(201, 169, 97, 0.4);
-  box-shadow: 0 12px 48px rgba(201, 169, 97, 0.3), 0 0 0 1px rgba(201, 169, 97, 0.2);
+  box-shadow:
+    0 12px 48px rgba(201, 169, 97, 0.3),
+    0 0 0 1px rgba(201, 169, 97, 0.2);
   transform: translateY(-4px);
 }
 
@@ -119,7 +118,8 @@
 }
 
 @keyframes gradient-shift {
-  0%, 100% {
+  0%,
+  100% {
     background-position: 0% 50%;
   }
   50% {

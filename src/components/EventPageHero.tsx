@@ -14,7 +14,7 @@ export default function EventPageHero({ imageSrc, imageAlt, title, subtitle }: E
   return (
     <section className="relative mb-16 h-96">
       <div className="absolute inset-0">
-        <Image src={imageSrc} alt={imageAlt} fill className="object-cover" />
+        <Image src={imageSrc} alt={imageAlt} fill className="object-cover" sizes="100vw" priority quality={85} />
         <div className="bg-davinci-charcoal/40 absolute inset-0" />
       </div>
       <div className="relative z-10 flex h-full items-center justify-center px-4 text-center text-white">
@@ -26,4 +26,3 @@ export default function EventPageHero({ imageSrc, imageAlt, title, subtitle }: E
     </section>
   );
 }
-

@@ -1,8 +1,16 @@
-'use client';
-
+import { type Metadata } from 'next';
+import { generateMetadata } from '@/lib/seo';
 import MenuPageHeader from '@/components/MenuPageHeader';
 import MenuSectionCard from '@/components/MenuSectionCard';
 import MenuCTA from '@/components/MenuCTA';
+
+export const metadata: Metadata = generateMetadata({
+  title: 'Holiday Menus',
+  description:
+    'Festive curated menus for holiday celebrations at Da Vinci Banquet Halls in Woodbridge, ON. Special holiday menus for Christmas and seasonal celebrations.',
+  path: '/menus/holiday',
+  image: '/assets/images/menus/holiday/menu-1.jpg',
+});
 
 export default function HolidayMenuPage() {
   return (
@@ -20,17 +28,15 @@ export default function HolidayMenuPage() {
           imageAlt="Holiday Menu 1"
           title="Holiday Menu 1"
         >
-          <div className="mb-8 rounded-xl border border-davinci-gold/20 bg-linear-to-r from-davinci-gold/10 to-davinci-gold-light/10 p-4 text-center">
-            <p className="text-lg font-semibold text-davinci-gold">BUFFET STYLE</p>
+          <div className="border-davinci-gold/20 from-davinci-gold/10 to-davinci-gold-light/10 mb-8 rounded-xl border bg-linear-to-r p-4 text-center">
+            <p className="text-davinci-gold text-lg font-semibold">BUFFET STYLE</p>
           </div>
 
           <div className="space-y-8">
             {/* Antipasto Items */}
             <div>
-              <h3 className="mb-4 text-center font-serif text-3xl font-bold text-white">
-                Antipasto Items
-              </h3>
-              <div className="rounded-xl border-l-4 border-davinci-gold bg-linear-to-r from-davinci-gold/20 to-davinci-gold-light/20 p-6">
+              <h3 className="mb-4 text-center font-serif text-3xl font-bold text-white">Antipasto Items</h3>
+              <div className="border-davinci-gold from-davinci-gold/20 to-davinci-gold-light/20 rounded-xl border-l-4 bg-linear-to-r p-6">
                 <div className="grid grid-cols-2 gap-3 text-lg leading-relaxed text-gray-200 md:grid-cols-3">
                   <p>• Assorted Cold Cuts</p>
                   <p>• Assorted Cheese</p>
@@ -46,7 +52,7 @@ export default function HolidayMenuPage() {
             {/* Pasta Items */}
             <div>
               <h3 className="mb-4 text-center font-serif text-3xl font-bold text-white">Pasta Items</h3>
-              <div className="rounded-xl border-l-4 border-davinci-gold bg-linear-to-r from-davinci-gold/20 to-davinci-gold-light/20 p-6">
+              <div className="border-davinci-gold from-davinci-gold/20 to-davinci-gold-light/20 rounded-xl border-l-4 bg-linear-to-r p-6">
                 <div className="space-y-3 text-lg leading-relaxed text-gray-200">
                   <p>• Rigatoni a&apos;la Forno (Meat or Vegetarian)</p>
                   <p>• Cheese Tortellini in Vodka Sauce</p>
@@ -57,7 +63,7 @@ export default function HolidayMenuPage() {
             {/* Entree Items */}
             <div>
               <h3 className="mb-4 text-center font-serif text-3xl font-bold text-white">Entree Items</h3>
-              <div className="rounded-xl border border-davinci-gold/20 bg-linear-to-br from-davinci-gold/10 to-davinci-gold-light/10 p-6">
+              <div className="border-davinci-gold/20 from-davinci-gold/10 to-davinci-gold-light/10 rounded-xl border bg-linear-to-br p-6">
                 <div className="space-y-3 text-lg leading-relaxed text-gray-200">
                   <p>• Chicken Breast alla Marsala</p>
                   <p>• Italian Sausage, Peppers & Onions</p>
@@ -69,17 +75,15 @@ export default function HolidayMenuPage() {
             {/* Dessert */}
             <div>
               <h3 className="mb-4 text-center font-serif text-3xl font-bold text-white">Dessert</h3>
-              <div className="rounded-xl bg-davinci-dark-light border border-davinci-gold/20 p-6 text-center">
-                <p className="text-lg leading-relaxed text-gray-200">
-                  Ice Cream Crepe with Strawberry Coulis
-                </p>
+              <div className="bg-davinci-dark-light border-davinci-gold/20 rounded-xl border p-6 text-center">
+                <p className="text-lg leading-relaxed text-gray-200">Ice Cream Crepe with Strawberry Coulis</p>
               </div>
             </div>
 
             {/* Bar Options */}
             <div>
               <h3 className="mb-4 text-center font-serif text-3xl font-bold text-white">Bar Options</h3>
-              <div className="rounded-xl border border-davinci-teal/20 bg-linear-to-br from-davinci-teal/10 to-davinci-teal-dark/10 p-6">
+              <div className="border-davinci-teal/20 from-davinci-teal/10 to-davinci-teal-dark/10 rounded-xl border bg-linear-to-br p-6">
                 <div className="space-y-3 text-lg leading-relaxed text-gray-200">
                   <p>• Wine & Beer Bar</p>
                   <p>• Open Standard Bar</p>
@@ -96,17 +100,15 @@ export default function HolidayMenuPage() {
           title="Holiday Menu 2"
           gradientFrom="teal"
         >
-          <div className="mb-8 rounded-xl border border-davinci-gold/20 bg-linear-to-r from-davinci-gold/10 to-davinci-gold-light/10 p-4 text-center">
-            <p className="text-lg font-semibold text-davinci-gold">BUFFET STYLE</p>
+          <div className="border-davinci-gold/20 from-davinci-gold/10 to-davinci-gold-light/10 mb-8 rounded-xl border bg-linear-to-r p-4 text-center">
+            <p className="text-davinci-gold text-lg font-semibold">BUFFET STYLE</p>
           </div>
 
           <div className="space-y-8">
             {/* Plated Antipasto */}
             <div>
-              <h3 className="mb-4 text-center font-serif text-3xl font-bold text-white">
-                Plated Antipasto
-              </h3>
-              <div className="rounded-xl border-l-4 border-davinci-gold bg-linear-to-r from-davinci-gold/20 to-davinci-gold-light/20 p-6">
+              <h3 className="mb-4 text-center font-serif text-3xl font-bold text-white">Plated Antipasto</h3>
+              <div className="border-davinci-gold from-davinci-gold/20 to-davinci-gold-light/20 rounded-xl border-l-4 bg-linear-to-r p-6">
                 <div className="grid grid-cols-2 gap-3 text-lg leading-relaxed text-gray-200 md:grid-cols-3">
                   <p>• Proscuitto</p>
                   <p>• Melone</p>
@@ -120,7 +122,7 @@ export default function HolidayMenuPage() {
             {/* Pasta */}
             <div>
               <h3 className="mb-4 text-center font-serif text-3xl font-bold text-white">Pasta</h3>
-              <div className="rounded-xl border-l-4 border-davinci-gold bg-linear-to-r from-davinci-gold/20 to-davinci-gold-light/20 p-6">
+              <div className="border-davinci-gold from-davinci-gold/20 to-davinci-gold-light/20 rounded-xl border-l-4 bg-linear-to-r p-6">
                 <div className="space-y-3 text-lg leading-relaxed text-gray-200">
                   <p>• Casareccia in Tomato Basil</p>
                   <p>• Manicotti Stuffed with Ricotta & Spinach in Rose</p>
@@ -131,7 +133,7 @@ export default function HolidayMenuPage() {
             {/* Entree */}
             <div>
               <h3 className="mb-4 text-center font-serif text-3xl font-bold text-white">Entree</h3>
-              <div className="rounded-xl border border-davinci-gold/20 bg-linear-to-br from-davinci-gold/10 to-davinci-gold-light/10 p-6">
+              <div className="border-davinci-gold/20 from-davinci-gold/10 to-davinci-gold-light/10 rounded-xl border bg-linear-to-br p-6">
                 <div className="space-y-3 text-lg leading-relaxed text-gray-200">
                   <p>• Veal Scallopini in Mushroom Sauce</p>
                   <p>• Chicken Breast alla Limone</p>
@@ -144,17 +146,15 @@ export default function HolidayMenuPage() {
             {/* Dessert */}
             <div>
               <h3 className="mb-4 text-center font-serif text-3xl font-bold text-white">Dessert</h3>
-              <div className="rounded-xl bg-davinci-dark-light border border-davinci-gold/20 p-6 text-center">
-                <p className="text-lg leading-relaxed text-gray-200">
-                  Ice Cream Crepe with Strawberry Coulis
-                </p>
+              <div className="bg-davinci-dark-light border-davinci-gold/20 rounded-xl border p-6 text-center">
+                <p className="text-lg leading-relaxed text-gray-200">Ice Cream Crepe with Strawberry Coulis</p>
               </div>
             </div>
 
             {/* Bar Options */}
             <div>
               <h3 className="mb-4 text-center font-serif text-3xl font-bold text-white">Bar Options</h3>
-              <div className="rounded-xl border border-davinci-teal/20 bg-linear-to-br from-davinci-teal/10 to-davinci-teal-dark/10 p-6">
+              <div className="border-davinci-teal/20 from-davinci-teal/10 to-davinci-teal-dark/10 rounded-xl border bg-linear-to-br p-6">
                 <div className="space-y-3 text-lg leading-relaxed text-gray-200">
                   <p>• Wine & Beer Bar</p>
                   <p>• Open Standard Bar</p>
@@ -173,10 +173,8 @@ export default function HolidayMenuPage() {
           <div className="space-y-8">
             {/* Plated Antipasto */}
             <div>
-              <h3 className="mb-4 text-center font-serif text-3xl font-bold text-white">
-                Plated Antipasto
-              </h3>
-              <div className="rounded-xl border-l-4 border-davinci-gold bg-linear-to-r from-davinci-gold/20 to-davinci-gold-light/20 p-6">
+              <h3 className="mb-4 text-center font-serif text-3xl font-bold text-white">Plated Antipasto</h3>
+              <div className="border-davinci-gold from-davinci-gold/20 to-davinci-gold-light/20 rounded-xl border-l-4 bg-linear-to-r p-6">
                 <div className="grid grid-cols-2 gap-3 text-lg leading-relaxed text-gray-200 md:grid-cols-3">
                   <p>• Proscuitto</p>
                   <p>• Melone</p>
@@ -190,7 +188,7 @@ export default function HolidayMenuPage() {
             {/* Pasta */}
             <div>
               <h3 className="mb-4 text-center font-serif text-3xl font-bold text-white">Pasta</h3>
-              <div className="rounded-xl border-l-4 border-davinci-gold bg-linear-to-r from-davinci-gold/20 to-davinci-gold-light/20 p-6">
+              <div className="border-davinci-gold from-davinci-gold/20 to-davinci-gold-light/20 rounded-xl border-l-4 bg-linear-to-r p-6">
                 <div className="space-y-3 text-lg leading-relaxed text-gray-200">
                   <p>• Casareccia in Tomato Basil</p>
                   <p>• Manicotti Stuffed with Ricotta & Spinach in Rose</p>
@@ -201,7 +199,7 @@ export default function HolidayMenuPage() {
             {/* Entree */}
             <div>
               <h3 className="mb-4 text-center font-serif text-3xl font-bold text-white">Entree</h3>
-              <div className="rounded-xl border border-davinci-gold/20 bg-linear-to-br from-davinci-gold/10 to-davinci-gold-light/10 p-6">
+              <div className="border-davinci-gold/20 from-davinci-gold/10 to-davinci-gold-light/10 rounded-xl border bg-linear-to-br p-6">
                 <div className="space-y-3 text-lg leading-relaxed text-gray-200">
                   <p>• 10 oz Grilled Veal Chop</p>
                   <p>• Whole Baked Potato</p>
@@ -214,17 +212,15 @@ export default function HolidayMenuPage() {
             {/* Dessert */}
             <div>
               <h3 className="mb-4 text-center font-serif text-3xl font-bold text-white">Dessert</h3>
-              <div className="rounded-xl bg-davinci-dark-light border border-davinci-gold/20 p-6 text-center">
-                <p className="text-lg leading-relaxed text-gray-200">
-                  Ice Cream Crepe with Strawberry Coulis
-                </p>
+              <div className="bg-davinci-dark-light border-davinci-gold/20 rounded-xl border p-6 text-center">
+                <p className="text-lg leading-relaxed text-gray-200">Ice Cream Crepe with Strawberry Coulis</p>
               </div>
             </div>
 
             {/* Bar */}
             <div>
               <h3 className="mb-4 text-center font-serif text-3xl font-bold text-white">Bar</h3>
-              <div className="rounded-xl border border-davinci-teal/20 bg-linear-to-br from-davinci-teal/10 to-davinci-teal-dark/10 p-6">
+              <div className="border-davinci-teal/20 from-davinci-teal/10 to-davinci-teal-dark/10 rounded-xl border bg-linear-to-br p-6">
                 <p className="text-lg leading-relaxed text-gray-200">Open Standard Bar</p>
               </div>
             </div>
@@ -238,15 +234,15 @@ export default function HolidayMenuPage() {
           title="Holiday Menu 4"
           gradientFrom="teal"
         >
-          <div className="mb-8 rounded-xl border border-davinci-gold/20 bg-linear-to-r from-davinci-gold/10 to-davinci-gold-light/10 p-4 text-center">
-            <p className="text-lg font-semibold text-davinci-gold">ITALIAN / INDIAN BUFFET</p>
+          <div className="border-davinci-gold/20 from-davinci-gold/10 to-davinci-gold-light/10 mb-8 rounded-xl border bg-linear-to-r p-4 text-center">
+            <p className="text-davinci-gold text-lg font-semibold">ITALIAN / INDIAN BUFFET</p>
           </div>
 
           <div className="space-y-8">
             {/* Starters */}
             <div>
               <h3 className="mb-4 text-center font-serif text-3xl font-bold text-white">Starters</h3>
-              <div className="rounded-xl border-l-4 border-davinci-gold bg-linear-to-r from-davinci-gold/20 to-davinci-gold-light/20 p-6">
+              <div className="border-davinci-gold from-davinci-gold/20 to-davinci-gold-light/20 rounded-xl border-l-4 bg-linear-to-r p-6">
                 <div className="grid grid-cols-2 gap-3 text-lg leading-relaxed text-gray-200 md:grid-cols-3">
                   <p>• Assorted Cold Cuts</p>
                   <p>• Bocconcini & Tomatoes</p>
@@ -264,7 +260,7 @@ export default function HolidayMenuPage() {
             {/* Pasta Items */}
             <div>
               <h3 className="mb-4 text-center font-serif text-3xl font-bold text-white">Pasta Items</h3>
-              <div className="rounded-xl border-l-4 border-davinci-gold bg-linear-to-r from-davinci-gold/20 to-davinci-gold-light/20 p-6">
+              <div className="border-davinci-gold from-davinci-gold/20 to-davinci-gold-light/20 rounded-xl border-l-4 bg-linear-to-r p-6">
                 <div className="space-y-3 text-lg leading-relaxed text-gray-200">
                   <p>• Rigatoni in Tomato Basil Sauce</p>
                   <p>• Cheese Tortellini in Vodka Sauce</p>
@@ -275,7 +271,7 @@ export default function HolidayMenuPage() {
             {/* Entree Items */}
             <div>
               <h3 className="mb-4 text-center font-serif text-3xl font-bold text-white">Entree Items</h3>
-              <div className="rounded-xl border border-davinci-gold/20 bg-linear-to-br from-davinci-gold/10 to-davinci-gold-light/10 p-6">
+              <div className="border-davinci-gold/20 from-davinci-gold/10 to-davinci-gold-light/10 rounded-xl border bg-linear-to-br p-6">
                 <div className="space-y-3 text-lg leading-relaxed text-gray-200">
                   <p>• Chicken Breast in Mushroom Sauce</p>
                   <p>• Italian Sausage, Peppers & Onions</p>
@@ -288,17 +284,15 @@ export default function HolidayMenuPage() {
             {/* Dessert */}
             <div>
               <h3 className="mb-4 text-center font-serif text-3xl font-bold text-white">Dessert</h3>
-              <div className="rounded-xl bg-davinci-dark-light border border-davinci-gold/20 p-6 text-center">
-                <p className="text-lg leading-relaxed text-gray-200">
-                  Ice Cream Crepe with Strawberry Coulis
-                </p>
+              <div className="bg-davinci-dark-light border-davinci-gold/20 rounded-xl border p-6 text-center">
+                <p className="text-lg leading-relaxed text-gray-200">Ice Cream Crepe with Strawberry Coulis</p>
               </div>
             </div>
 
             {/* Bar Options */}
             <div>
               <h3 className="mb-4 text-center font-serif text-3xl font-bold text-white">Bar Options</h3>
-              <div className="rounded-xl border border-davinci-teal/20 bg-linear-to-br from-davinci-teal/10 to-davinci-teal-dark/10 p-6">
+              <div className="border-davinci-teal/20 from-davinci-teal/10 to-davinci-teal-dark/10 rounded-xl border bg-linear-to-br p-6">
                 <div className="space-y-3 text-lg leading-relaxed text-gray-200">
                   <p>• Wine & Beer Bar</p>
                   <p>• Open Standard Bar</p>

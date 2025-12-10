@@ -35,15 +35,18 @@ export default function MenuCard({
               alt={title}
               fill
               className="object-cover transition-transform duration-500 group-hover:scale-110"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              quality={75}
+              loading="lazy"
             />
             <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
           </div>
           <div className="p-6">
-            <h3 className="mb-2 text-2xl font-bold text-white transition-colors group-hover:text-davinci-gold">
+            <h3 className="group-hover:text-davinci-gold mb-2 text-2xl font-bold text-white transition-colors">
               {title}
             </h3>
             {description && <p className="mb-4 text-gray-400">{description}</p>}
-            <span className="font-medium text-davinci-gold group-hover:underline">View Menu →</span>
+            <span className="text-davinci-gold font-medium group-hover:underline">View Menu →</span>
           </div>
         </div>
       </Link>

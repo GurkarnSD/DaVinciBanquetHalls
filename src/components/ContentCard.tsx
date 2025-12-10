@@ -20,7 +20,7 @@ export default function ContentCard({ title, children, titleGradient = true }: C
     >
       <h2 className="mb-6 text-center font-serif text-4xl font-bold text-white md:text-5xl">
         {titleGradient ? (
-          <span className="bg-linear-to-r from-davinci-gold to-davinci-gold-light bg-clip-text text-transparent">
+          <span className="from-davinci-gold to-davinci-gold-light bg-linear-to-r bg-clip-text text-transparent">
             {title}
           </span>
         ) : (
@@ -31,4 +31,3 @@ export default function ContentCard({ title, children, titleGradient = true }: C
     </motion.div>
   );
 }
-

@@ -19,7 +19,7 @@ export default function MenuPageHeader({ title, subtitle, pdfLink }: MenuPageHea
       className="mb-16 text-center"
     >
       <h1 className="mb-6 font-serif text-6xl font-bold text-white md:text-7xl">
-        <span className="bg-linear-to-r from-davinci-gold to-davinci-gold-light bg-clip-text text-transparent">
+        <span className="from-davinci-gold to-davinci-gold-light bg-linear-to-r bg-clip-text text-transparent">
           {title}
         </span>
       </h1>
@@ -31,7 +31,7 @@ export default function MenuPageHeader({ title, subtitle, pdfLink }: MenuPageHea
           href={pdfLink}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center text-lg font-semibold text-davinci-gold transition-colors hover:text-davinci-gold-light"
+          className="text-davinci-gold hover:text-davinci-gold-light inline-flex items-center text-lg font-semibold transition-colors"
         >
           Download Full PDF Menu
           <HiExternalLink className="ml-2 h-6 w-6" />
@@ -40,4 +40,3 @@ export default function MenuPageHeader({ title, subtitle, pdfLink }: MenuPageHea
     </motion.div>
   );
 }
-

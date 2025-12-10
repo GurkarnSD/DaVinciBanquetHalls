@@ -21,15 +21,16 @@ export default function HomePageContent() {
               transition={{ duration: 0.8 }}
               className="mb-8"
             >
-              <h1 className="font-serif text-5xl font-light italic leading-relaxed md:text-7xl lg:text-8xl text-white text-shadow:0_4px_20px_rgba(0,0,0,0.8),_0_2px_8px_rgba(0,0,0,0.6)">
-                &ldquo;Simplicity is the<br className="hidden md:block" /> Ultimate Sophistication.&rdquo;
+              <h1 className="text-shadow:0_4px_20px_rgba(0,0,0,0.8),_0_2px_8px_rgba(0,0,0,0.6) font-serif text-5xl leading-relaxed font-light text-white italic md:text-7xl lg:text-8xl">
+                &ldquo;Simplicity is the
+                <br className="hidden md:block" /> Ultimate Sophistication.&rdquo;
               </h1>
             </motion.div>
             <motion.p
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="mb-12 text-center text-xl md:text-2xl text-gray-100 font-light tracking-wider text-shadow:0_2px_12px_rgba(0,0,0,0.7)"
+              className="text-shadow:0_2px_12px_rgba(0,0,0,0.7) mb-12 text-center text-xl font-light tracking-wider text-gray-100 md:text-2xl"
             >
               — Leonardo da Vinci
             </motion.p>
@@ -41,13 +42,13 @@ export default function HomePageContent() {
             >
               <Link
                 href="/book"
-                className="group relative overflow-hidden rounded-full bg-linear-to-r from-davinci-gold to-davinci-gold-light px-8 py-4 text-lg font-medium text-davinci-dark transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-davinci-gold/50"
+                className="group from-davinci-gold to-davinci-gold-light text-davinci-dark hover:shadow-davinci-gold/50 relative overflow-hidden rounded-full bg-linear-to-r px-8 py-4 text-lg font-medium transition-all duration-300 hover:scale-105 hover:shadow-2xl"
               >
                 <span className="relative z-10">Book Your Event</span>
               </Link>
               <Link
                 href="/venue"
-                className="rounded-full border-2 border-davinci-gold bg-davinci-gold/10 px-8 py-4 text-lg font-medium text-white backdrop-blur-sm transition-all duration-300 hover:bg-davinci-gold/20 hover:scale-105"
+                className="border-davinci-gold bg-davinci-gold/10 hover:bg-davinci-gold/20 rounded-full border-2 px-8 py-4 text-lg font-medium text-white backdrop-blur-sm transition-all duration-300 hover:scale-105"
               >
                 Explore Our Venues
               </Link>
@@ -58,8 +59,8 @@ export default function HomePageContent() {
 
       {/* Features Section */}
       <section className="relative py-24">
-        <div className="absolute inset-0 bg-linear-to-b from-transparent via-davinci-dark to-transparent" />
-        <div className="container relative z-10 mx-auto px-4">
+        <div className="via-davinci-dark absolute inset-0 bg-linear-to-b from-transparent to-transparent" />
+        <div className="relative z-10 container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -68,7 +69,7 @@ export default function HomePageContent() {
             className="mb-16 text-center"
           >
             <h2 className="mb-4 font-serif text-4xl font-bold md:text-5xl">
-              <span className="bg-linear-to-r from-davinci-gold to-davinci-gold-light bg-clip-text text-transparent">
+              <span className="from-davinci-gold to-davinci-gold-light bg-linear-to-r bg-clip-text text-transparent">
                 Experience Excellence
               </span>
             </h2>
@@ -108,7 +109,9 @@ export default function HomePageContent() {
                   transition={{ duration: 0.5, delay: index * 0.2 }}
                   className="premium-card group relative overflow-hidden rounded-2xl p-8 text-center"
                 >
-                  <div className={`absolute inset-0 bg-linear-to-br ${feature.gradient} opacity-0 transition-opacity duration-300 group-hover:opacity-10`} />
+                  <div
+                    className={`absolute inset-0 bg-linear-to-br ${feature.gradient} opacity-0 transition-opacity duration-300 group-hover:opacity-10`}
+                  />
                   <div className="relative z-10">
                     <div className="mb-6 flex justify-center">
                       <div className={`rounded-full bg-linear-to-br ${feature.gradient} p-4`}>
@@ -136,13 +139,11 @@ export default function HomePageContent() {
             className="mb-12 text-center"
           >
             <h2 className="mb-4 font-serif text-4xl font-bold md:text-5xl">
-              <span className="bg-linear-to-r from-davinci-gold to-davinci-gold-light bg-clip-text text-transparent">
+              <span className="from-davinci-gold to-davinci-gold-light bg-linear-to-r bg-clip-text text-transparent">
                 Our Venues
               </span>
             </h2>
-            <p className="mx-auto max-w-2xl text-center text-xl text-gray-200">
-              Step into elegance and sophistication
-            </p>
+            <p className="mx-auto max-w-2xl text-center text-xl text-gray-200">Step into elegance and sophistication</p>
           </motion.div>
 
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -153,7 +154,7 @@ export default function HomePageContent() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="group relative rounded-2xl border-2 border-davinci-gold"
+                className="group border-davinci-gold relative rounded-2xl border-2"
               >
                 <ImagePlaceholder
                   height={300}
@@ -161,7 +162,7 @@ export default function HomePageContent() {
                   className="h-[300px] transition-transform duration-500 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 rounded-2xl bg-linear-to-t from-black/80 via-black/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                <div className="absolute bottom-0 left-0 right-0 rounded-b-2xl p-6 text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                <div className="absolute right-0 bottom-0 left-0 rounded-b-2xl p-6 text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                   <h3 className="font-serif text-2xl font-bold">Elegant Space {i}</h3>
                   <p className="text-sm text-gray-300">Perfect for your celebration</p>
                 </div>
@@ -178,7 +179,7 @@ export default function HomePageContent() {
           >
             <Link
               href="/gallery"
-              className="inline-block rounded-full border-2 border-davinci-gold bg-davinci-gold/10 px-8 py-4 text-lg font-medium text-davinci-gold transition-all duration-300 hover:bg-davinci-gold/20 hover:scale-105"
+              className="border-davinci-gold bg-davinci-gold/10 text-davinci-gold hover:bg-davinci-gold/20 inline-block rounded-full border-2 px-8 py-4 text-lg font-medium transition-all duration-300 hover:scale-105"
             >
               View Full Gallery
             </Link>
@@ -197,9 +198,13 @@ export default function HomePageContent() {
             className="mb-12 text-center"
           >
             <h2 className="mb-4 font-serif text-4xl font-bold text-white md:text-5xl">
-              <span className="bg-linear-to-r from-davinci-gold to-davinci-gold-light bg-clip-text text-transparent">Our Spaces</span>
+              <span className="from-davinci-gold to-davinci-gold-light bg-linear-to-r bg-clip-text text-transparent">
+                Our Spaces
+              </span>
             </h2>
-            <p className="mx-auto max-w-2xl text-xl text-gray-200 text-center">Take a glimpse into our elegant banquet halls</p>
+            <p className="mx-auto max-w-2xl text-center text-xl text-gray-200">
+              Take a glimpse into our elegant banquet halls
+            </p>
           </motion.div>
           <div className="mx-auto max-w-6xl">
             <div className="h-[500px] overflow-hidden rounded-lg shadow-2xl">
@@ -211,8 +216,8 @@ export default function HomePageContent() {
 
       {/* Call to Action */}
       <section className="relative mb-0 overflow-hidden py-24">
-        <div className="absolute inset-0 bg-linear-to-br from-davinci-gold via-davinci-gold-light to-davinci-gold" />
-        <div className="container relative z-10 mx-auto px-4 text-center">
+        <div className="from-davinci-gold via-davinci-gold-light to-davinci-gold absolute inset-0 bg-linear-to-br" />
+        <div className="relative z-10 container mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -220,19 +225,19 @@ export default function HomePageContent() {
             transition={{ duration: 0.6 }}
           >
             <h2 className="mb-6 font-serif text-4xl font-bold md:text-5xl">Ready to Plan Your Event?</h2>
-            <p className="mx-auto mb-8 max-w-2xl text-xl text-gray-100 text-center">
+            <p className="mx-auto mb-8 max-w-2xl text-center text-xl text-gray-100">
               Contact us today to discuss your celebration and let us help make it unforgettable.
             </p>
             <div className="flex flex-col justify-center gap-4 sm:flex-row">
               <Link
                 href="/contact"
-                className="group relative overflow-hidden rounded-full bg-davinci-dark px-8 py-4 text-lg font-medium text-white transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-davinci-dark/50"
+                className="group bg-davinci-dark hover:shadow-davinci-dark/50 relative overflow-hidden rounded-full px-8 py-4 text-lg font-medium text-white transition-all duration-300 hover:scale-105 hover:shadow-2xl"
               >
                 <span className="relative z-10">Get in Touch</span>
               </Link>
               <Link
                 href="/book"
-                className="rounded-full border-2 border-white bg-white/10 px-8 py-4 text-lg font-medium text-white backdrop-blur-sm transition-all duration-300 hover:bg-white/20 hover:scale-105"
+                className="rounded-full border-2 border-white bg-white/10 px-8 py-4 text-lg font-medium text-white backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:bg-white/20"
               >
                 Book a Hall
               </Link>
