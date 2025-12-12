@@ -12,7 +12,7 @@ export default function HomePageContent() {
   return (
     <div className="relative">
       {/* Hero Section with Video Background */}
-      <VideoBackground fallbackImage="/assets/images/carousel/slider-1.jpg">
+      <VideoBackground fallbackImage="/assets/images/landing/fallback.jpg">
         <div className="relative z-10 px-4 text-center text-white">
           <div className="relative z-10 mx-auto max-w-5xl py-32 md:py-40">
             <motion.div
@@ -237,7 +237,7 @@ export default function HomePageContent() {
               </Link>
               <Link
                 href="/book"
-                className="rounded-full border-2 border-white bg-white/10 px-8 py-4 text-lg font-medium text-white backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:bg-white/20"
+                className="bg-white text-davinci-dark hover:bg-gray-100 rounded-full px-8 py-4 text-lg font-medium transition-all duration-300 hover:scale-105"
               >
                 Book a Hall
               </Link>

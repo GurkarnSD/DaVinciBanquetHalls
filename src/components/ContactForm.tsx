@@ -40,26 +40,46 @@ export default function ContactForm({
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Placeholder: console.log for now
-    console.log('Form submitted:', formData);
+    try {
+      // Determine form type based on which fields are shown
+      const formType = showEventType || showDate || showGuests ? 'booking' : 'contact';
 
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData,
+          formType,
+        }),
+      });
 
-    setIsSubmitting(false);
-    setSubmitted(true);
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      message: '',
-      eventType: '',
-      date: '',
-      guests: '',
-    });
+      const data = (await response.json()) as { error?: string; message?: string; success?: boolean };
 
-    // Reset success message after 5 seconds
-    setTimeout(() => setSubmitted(false), 5000);
+      if (!response.ok) {
+        throw new Error(data.error ?? 'Failed to submit form');
+      }
+
+      setIsSubmitting(false);
+      setSubmitted(true);
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        message: '',
+        eventType: '',
+        date: '',
+        guests: '',
+      });
+
+      // Reset success message after 5 seconds
+      setTimeout(() => setSubmitted(false), 5000);
+    } catch (error) {
+      console.error('Form submission error:', error);
+      setIsSubmitting(false);
+      alert('Failed to submit form. Please try again or contact us directly.');
+    }
   };
 
   if (submitted) {
@@ -73,7 +93,7 @@ export default function ContactForm({
           <HiCheck className="mx-auto h-16 w-16" />
         </div>
         <h3 className="mb-2 text-2xl font-bold text-white">Thank You!</h3>
-        <p className="text-gray-300">Your message has been received. We&apos;ll get back to you soon.</p>
+        <p className="text-gray-300 text-center">Your message has been received. We&apos;ll get back to you soon.</p>
       </motion.div>
     );
   }
