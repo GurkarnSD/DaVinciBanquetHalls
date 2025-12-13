@@ -1,55 +1,37 @@
 'use client';
 
-import Image from 'next/image';
 import { motion } from 'framer-motion';
 
 export default function AboutPage() {
   return (
-    <div className="pt-24 pb-16">
+    <div className="min-h-screen pt-24 pb-16">
       {/* Hero Section */}
-      <section className="relative mb-16 h-96">
-        <div className="absolute inset-0">
-          <Image
-            src="/assets/images/hero/about.jpg"
-            alt="About Da Vinci Banquet Halls"
-            fill
-            className="object-cover"
-            sizes="100vw"
-            priority
-            quality={85}
-          />
-          <div className="absolute inset-0 bg-black/40" />
-        </div>
-        <div className="relative z-10 flex h-full items-center justify-center px-4 text-center text-white">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <h1 className="mb-4 font-serif text-5xl font-bold md:text-6xl">About Us</h1>
-            <p className="text-xl md:text-2xl">Our Story & Mission</p>
-          </motion.div>
-        </div>
+      <section className="container mx-auto mb-20 px-4">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-center"
+        >
+          <h1 className="mb-6 font-serif text-6xl font-bold text-white md:text-7xl">
+            <span className="from-davinci-gold to-davinci-gold-light bg-linear-to-r bg-clip-text text-transparent">
+              About Us
+            </span>
+          </h1>
+          <p className="mx-auto mb-6 max-w-3xl text-center text-2xl leading-relaxed text-gray-400 md:text-3xl">
+            Our Story & Mission
+          </p>
+          <p className="mx-auto max-w-3xl text-center text-xl leading-relaxed text-gray-300">
+            At Da Vinci Banquet Halls, we are dedicated to creating extraordinary experiences for your most important
+            celebrations. Our mission is to provide elegant, sophisticated venues where every detail is carefully
+            crafted to ensure your event is nothing short of perfection.
+          </p>
+        </motion.div>
       </section>
 
       {/* Mission Statement */}
       <section className="container mx-auto mb-16 px-4">
         <div className="mx-auto max-w-4xl">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="mb-12 text-center"
-          >
-            <h2 className="mb-6 font-serif text-4xl font-bold md:text-5xl">
-              <span className="from-davinci-gold to-davinci-gold-light bg-linear-to-r bg-clip-text text-transparent">
-                Our Mission
-              </span>
-            </h2>
-            <p className="text-center text-xl leading-relaxed text-gray-400">
-              At Da Vinci Banquet Halls, we are dedicated to creating extraordinary experiences for your most important
-              celebrations. Our mission is to provide elegant, sophisticated venues where every detail is carefully
-              crafted to ensure your event is nothing short of perfection.
-            </p>
-          </motion.div>
-
           <div className="mt-16 grid grid-cols-1 gap-12 md:grid-cols-2">
             <motion.div
               initial={{ opacity: 0, x: -20 }}

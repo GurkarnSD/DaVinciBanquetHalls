@@ -153,6 +153,7 @@ export function generateStructuredData(
 
   // Merge additional data, but ensure @type is not overridden
   if (data) {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { '@type': _, ...restData } = data;
     Object.assign(baseStructuredData, restData);
   }

@@ -72,15 +72,19 @@ export default function ContactPage() {
                   <span className="text-davinci-gold text-lg font-semibold">Hours:</span>
                 </div>
                 <p className="text-base text-gray-300">
-                  Mon: Closed
+                  Monday: 11:00 AM - 8:00 PM
                   <br />
-                  Tues: 11:00 AM - 6:00 PM
+                  Tuesday: 11:00 AM - 8:00 PM
                   <br />
-                  Wed-Thurs: 12:00 PM - 8:00 PM
+                  Wednesday: 11:00 AM - 8:00 PM
                   <br />
-                  Fri-Sun: 11:00 AM - 5:00 PM
+                  Thursday: 11:00 AM - 8:00 PM
                   <br />
-                  <span className="italic">(By Appointment Only)</span>
+                  Friday: 11:00 AM - 5:00 PM
+                  <br />
+                  Saturday: 11:00 AM - 5:00 PM
+                  <br />
+                  Sunday: 11:00 AM - 5:00 PM
                 </p>
               </div>
               <div className="flex items-center space-x-4 pt-2">

@@ -3,7 +3,6 @@
 import Link from 'next/link';
 import VideoBackground from '@/components/VideoBackground';
 import ImageCarousel from '@/components/ImageCarousel';
-import ImagePlaceholder from '@/components/ImagePlaceholder';
 import { carouselImages } from '@/config/carousel-images';
 import { motion } from 'framer-motion';
 import { FaBuilding, FaUtensils, FaStar } from 'react-icons/fa';
@@ -12,7 +11,7 @@ export default function HomePageContent() {
   return (
     <div className="relative">
       {/* Hero Section with Video Background */}
-      <VideoBackground fallbackImage="/assets/images/carousel/slider-1.jpg">
+      <VideoBackground fallbackImage="/assets/images/landing/fallback.jpg">
         <div className="relative z-10 px-4 text-center text-white">
           <div className="relative z-10 mx-auto max-w-5xl py-32 md:py-40">
             <motion.div
@@ -90,13 +89,13 @@ export default function HomePageContent() {
                 title: 'Exquisite Menus',
                 description: 'Culinary excellence with Italian and South Asian cuisine',
                 icon: FaUtensils,
-                gradient: 'from-[#c9a961] to-[#e5c97a]',
+                gradient: 'from-[#1a5f7a] to-[#2a7a9a]',
               },
               {
                 title: 'Memorable Events',
                 description: 'Creating unforgettable moments for your special occasions',
                 icon: FaStar,
-                gradient: 'from-[#1a5f7a] to-[#2a7a9a]',
+                gradient: 'from-[#c9a961] to-[#e5c97a]',
               },
             ].map((feature, index) => {
               const Icon = feature.icon;
@@ -128,8 +127,8 @@ export default function HomePageContent() {
         </div>
       </section>
 
-      {/* Gallery Preview Section */}
-      <section className="relative py-24">
+      {/* Gallery Preview Section - Hidden for now */}
+      {/* <section className="relative py-24">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -185,7 +184,7 @@ export default function HomePageContent() {
             </Link>
           </motion.div>
         </div>
-      </section>
+      </section> */}
 
       {/* Image Carousel Section */}
       <section className="py-20">
@@ -211,6 +210,20 @@ export default function HomePageContent() {
               <ImageCarousel images={carouselImages} />
             </div>
           </div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="mt-12 text-center"
+          >
+            <Link
+              href="/gallery"
+              className="border-davinci-gold bg-davinci-gold/10 text-davinci-gold hover:bg-davinci-gold/20 inline-block rounded-full border-2 px-8 py-4 text-lg font-medium transition-all duration-300 hover:scale-105"
+            >
+              View Full Gallery
+            </Link>
+          </motion.div>
         </div>
       </section>
 
@@ -237,7 +250,7 @@ export default function HomePageContent() {
               </Link>
               <Link
                 href="/book"
-                className="rounded-full border-2 border-white bg-white/10 px-8 py-4 text-lg font-medium text-white backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:bg-white/20"
+                className="bg-white text-davinci-dark hover:bg-gray-100 rounded-full px-8 py-4 text-lg font-medium transition-all duration-300 hover:scale-105"
               >
                 Book a Hall
               </Link>

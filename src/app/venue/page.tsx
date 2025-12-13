@@ -1,7 +1,6 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { HiExternalLink } from 'react-icons/hi';
 import {
@@ -52,49 +51,27 @@ export default function VenuePage() {
   return (
     <div className="pt-24 pb-0">
       {/* Hero Section */}
-      <section className="relative mb-16 h-96">
-        <div className="absolute inset-0">
-          <Image
-            src="/assets/images/hero/venue.jpg"
-            alt="Da Vinci Banquet Halls Venue"
-            fill
-            className="object-cover"
-            sizes="100vw"
-            priority
-            quality={85}
-          />
-          <div className="absolute inset-0 bg-black/40" />
-        </div>
-        <div className="relative z-10 flex h-full items-center justify-center px-4 text-center text-white">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <h1 className="mb-4 font-serif text-5xl font-bold md:text-6xl">Our Venues</h1>
-            <p className="text-xl md:text-2xl">Elegant Spaces for Every Occasion</p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Overview Section */}
       <section className="container mx-auto mb-16 px-4">
-        <div className="mx-auto max-w-4xl">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="mb-12 text-center"
-          >
-            <h2 className="mb-6 font-serif text-4xl font-bold text-white md:text-5xl">
-              <span className="from-davinci-gold to-davinci-gold-light bg-linear-to-r bg-clip-text text-transparent">
-                Venue Information
-              </span>
-            </h2>
-            <p className="text-center text-xl leading-relaxed text-gray-300">
-              Our beautifully designed banquet halls offer flexible spaces that can accommodate events of all sizes.
-              Each hall features elegant decor, state-of-the-art facilities, and the perfect ambiance for your
-              celebration.
-            </p>
-          </motion.div>
-        </div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-center"
+        >
+          <h1 className="mb-6 font-serif text-6xl font-bold text-white md:text-7xl">
+            <span className="from-davinci-gold to-davinci-gold-light bg-linear-to-r bg-clip-text text-transparent">
+              Our Venues
+            </span>
+          </h1>
+          <p className="mx-auto mb-6 max-w-3xl text-center text-2xl leading-relaxed text-gray-400 md:text-3xl">
+            Elegant Spaces for Every Occasion
+          </p>
+          <p className="mx-auto max-w-3xl text-center text-xl leading-relaxed text-gray-300">
+            Our beautifully designed banquet halls offer flexible spaces that can accommodate events of all sizes.
+            Each hall features elegant decor, state-of-the-art facilities, and the perfect ambiance for your
+            celebration.
+          </p>
+        </motion.div>
       </section>
 
       {/* Capacities Section */}

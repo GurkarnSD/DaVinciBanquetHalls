@@ -52,13 +52,13 @@ export default function Footer() {
           <div className="col-span-1">
             <h3 className="mb-4 text-lg font-semibold text-white">Hours</h3>
             <div className="space-y-1 text-sm">
-              <p>
-                Mon: <span className="text-gray-500">Closed</span>
-              </p>
-              <p>Tues: 11:00 AM - 6:00 PM</p>
-              <p>Wed-Thurs: 12:00 PM - 8:00 PM</p>
-              <p>Fri-Sun: 11:00 AM - 5:00 PM</p>
-              <p className="mt-2 text-xs text-gray-500 italic">(By Appointment Only)</p>
+              <p>Monday: 11:00 AM - 8:00 PM</p>
+              <p>Tuesday: 11:00 AM - 8:00 PM</p>
+              <p>Wednesday: 11:00 AM - 8:00 PM</p>
+              <p>Thursday: 11:00 AM - 8:00 PM</p>
+              <p>Friday: 11:00 AM - 5:00 PM</p>
+              <p>Saturday: 11:00 AM - 5:00 PM</p>
+              <p>Sunday: 11:00 AM - 5:00 PM</p>
             </div>
           </div>
 

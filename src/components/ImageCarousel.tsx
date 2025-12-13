@@ -14,7 +14,9 @@ interface ImageCarouselProps {
 export default function ImageCarousel({ images, autoPlayInterval = 8000, className = '' }: ImageCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0); // -1 for left, 1 for right
+  const [isNavigating, setIsNavigating] = useState(false);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  const navigationTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     if (images.length <= 1) return;
@@ -34,6 +36,9 @@ export default function ImageCarousel({ images, autoPlayInterval = 8000, classNa
     return () => {
       if (intervalRef.current) {
         clearInterval(intervalRef.current);
+      }
+      if (navigationTimeoutRef.current) {
+        clearTimeout(navigationTimeoutRef.current);
       }
     };
   }, [images.length, autoPlayInterval]);
@@ -57,15 +62,35 @@ export default function ImageCarousel({ images, autoPlayInterval = 8000, classNa
   };
 
   const goToPrevious = () => {
+    if (isNavigating) return;
+    
+    setIsNavigating(true);
     setDirection(-1);
     setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
     resetTimer();
+    
+    if (navigationTimeoutRef.current) {
+      clearTimeout(navigationTimeoutRef.current);
+    }
+    navigationTimeoutRef.current = setTimeout(() => {
+      setIsNavigating(false);
+    }, 500);
   };
 
   const goToNext = () => {
+    if (isNavigating) return;
+    
+    setIsNavigating(true);
     setDirection(1);
     setCurrentIndex((prev) => (prev + 1) % images.length);
     resetTimer();
+    
+    if (navigationTimeoutRef.current) {
+      clearTimeout(navigationTimeoutRef.current);
+    }
+    navigationTimeoutRef.current = setTimeout(() => {
+      setIsNavigating(false);
+    }, 500);
   };
 
   if (images.length === 0) return null;

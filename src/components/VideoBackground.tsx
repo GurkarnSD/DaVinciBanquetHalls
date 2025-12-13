@@ -18,7 +18,7 @@ export default function VideoBackground({
   const [videoError, setVideoError] = useState(false);
 
   return (
-    <div className="relative h-screen w-full overflow-hidden">
+    <div className="relative min-h-screen w-full overflow-hidden">
       {videoSrc && !videoError ? (
         <video
           autoPlay
@@ -39,7 +39,11 @@ export default function VideoBackground({
         />
       )}
       {overlay && <div className="absolute inset-0 bg-black/40" />}
-      {children && <div className="relative z-10 flex h-full items-center justify-center">{children}</div>}
+      {children && (
+        <div className="relative z-10 flex min-h-screen items-center justify-center px-4 pt-20 pb-16 sm:pt-24 sm:pb-20">
+          <div className="w-full">{children}</div>
+        </div>
+      )}
     </div>
   );
 }
