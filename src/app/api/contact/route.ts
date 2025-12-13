@@ -3,13 +3,12 @@ import { NextResponse } from 'next/server';
 import { z } from 'zod';
 import { render } from '@react-email/render';
 import React from 'react';
-import ContactConfirmationEmail from '@/emails/ContactConfirmationEmail';
 import BookingConfirmationEmail from '@/emails/BookingConfirmationEmail';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 // Form validation schema
-const contactSchema = z.object({
+const bookingSchema = z.object({
   name: z.string().min(1, 'Name is required'),
   email: z.string().email('Invalid email address'),
   phone: z.string().min(1, 'Phone is required'),
@@ -17,7 +16,6 @@ const contactSchema = z.object({
   eventType: z.string().optional(),
   date: z.string().optional(),
   guests: z.string().optional(),
-  formType: z.enum(['contact', 'booking']).default('contact'),
 });
 
 export async function POST(request: Request) {
@@ -25,75 +23,69 @@ export async function POST(request: Request) {
     const body = (await request.json()) as unknown;
 
     // Validate form data
-    const validatedData = contactSchema.parse(body as Record<string, unknown>);
+    const validatedData = bookingSchema.parse(body as Record<string, unknown>);
 
-    const { name, email, phone, message, eventType, date, guests, formType } = validatedData;
+    const { name, email, phone, message, eventType, date, guests } = validatedData;
 
     // Normalize email to lowercase to avoid errors
     const normalizedEmail = email.toLowerCase().trim();
 
     // Hardcoded email addresses
-    const staffEmail = 'gurkarnsd@outlook.com';
-    // Use Resend's domain for "from" (required for sending), but set reply-to to staff
-    // This way replies go directly to staff email
-    const fromEmail = 'DaVinci Banquet Halls <onboarding@resend.dev>';
+    const staffEmail = 'contact@davincibanquethalls.com';
+    // Use form subdomain as the from address
+    const fromEmail = 'Da Vinci Banquet Halls <noreply@form.davincibanquethalls.com>';
 
-    // Format date if provided
-    const formattedDate = date
-      ? new Date(date).toLocaleDateString('en-US', {
-          weekday: 'long',
-          year: 'numeric',
-          month: 'long',
-          day: 'numeric',
-        })
-      : null;
+    // Build descriptive subject line for easy identification
+    const eventTypeFormatted = eventType
+      ? eventType
+          .split('-')
+          .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+          .join(' ')
+      : 'Event';
 
-    // Subject line for email subject - includes customer name for easy identification
-    const emailSubject =
-      formType === 'booking'
-        ? eventType && date
-          ? `${name} - ${eventType.charAt(0).toUpperCase() + eventType.slice(1)} availability - ${formattedDate}`
-          : `${name} - Reservation Request`
-        : `${name} - Contact Form Submission`;
+    const emailSubject = `Da Vinci Reservation Request - ${name} - ${eventTypeFormatted}`;
 
-    // Render appropriate email template based on form type
-    let customerEmailHtml: string;
+    // Render booking confirmation email
+    const bookingEmailProps = {
+      name,
+      email: normalizedEmail,
+      phone,
+      message,
+      eventType,
+      date,
+      guests,
+    };
+    const emailHtml = await render(React.createElement(BookingConfirmationEmail, bookingEmailProps));
 
-    if (formType === 'booking') {
-      const bookingEmailProps = {
-        name,
-        email: normalizedEmail,
-        phone,
-        message,
-        eventType,
-        date,
-        guests,
-      };
-      customerEmailHtml = await render(React.createElement(BookingConfirmationEmail, bookingEmailProps));
-    } else {
-      const contactEmailProps = {
-        name,
-        email: normalizedEmail,
-        phone,
-        message,
-      };
-      customerEmailHtml = await render(React.createElement(ContactConfirmationEmail, contactEmailProps));
-    }
-
-    // Send single email: to customer, BCC staff, reply-to staff
-    // Customer receives confirmation, staff gets a copy, and replies go to staff
-    const emailResult = await resend.emails.send({
+    // Send two separate emails for bidirectional communication:
+    // 1. Email to customer with replyTo set to staff (customer replies go to staff)
+    // 2. Email to staff with replyTo set to customer (staff replies go to customer)
+    
+    const customerEmailResult = await resend.emails.send({
       from: fromEmail,
       to: normalizedEmail,
-      bcc: staffEmail, // Staff gets a copy in their inbox
-      replyTo: staffEmail, // When customer replies, it goes directly to staff
-      subject: `Thank You for Contacting Us - ${emailSubject}`,
-      html: customerEmailHtml,
+      replyTo: staffEmail, // When customer replies, it goes to staff
+      subject: emailSubject,
+      html: emailHtml,
     });
 
-    if (emailResult.error) {
-      console.error('Email sending error:', emailResult.error);
+    if (customerEmailResult.error) {
+      console.error('Customer email sending error:', customerEmailResult.error);
       return NextResponse.json({ error: 'Failed to send email' }, { status: 500 });
+    }
+
+    const staffEmailResult = await resend.emails.send({
+      from: fromEmail,
+      to: staffEmail,
+      replyTo: normalizedEmail, // When staff replies, it goes to customer
+      subject: `New Inquiry: ${emailSubject}`,
+      html: emailHtml,
+    });
+
+    if (staffEmailResult.error) {
+      console.error('Staff email sending error:', staffEmailResult.error);
+      // Don't fail the request if staff email fails, customer already got their confirmation
+      console.warn('Customer email sent successfully, but staff notification failed');
     }
 
     return NextResponse.json({ message: 'Form submitted successfully', success: true }, { status: 200 });

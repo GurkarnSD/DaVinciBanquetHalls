@@ -69,7 +69,7 @@ export default function Header() {
               className="from-davinci-gold to-davinci-gold-light text-davinci-dark hover:from-davinci-gold-light hover:to-davinci-gold shrink-0 rounded-full bg-linear-to-r px-6 py-2.5 font-medium whitespace-nowrap transition-all duration-200 hover:scale-105"
               style={{ fontSize: 'clamp(0.875rem, 1.1vw, 1rem)' }}
             >
-              Book a Hall
+              Book Your Event
             </Link>
           </nav>
 
@@ -102,7 +102,7 @@ export default function Header() {
                 className="from-davinci-gold to-davinci-gold-light text-davinci-dark hover:from-davinci-gold-light hover:to-davinci-gold mt-2 rounded-full bg-linear-to-r px-6 py-2 text-center font-medium transition-all duration-200 hover:scale-105"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                Book a Hall
+                Book Your Event
               </Link>
             </div>
           </div>

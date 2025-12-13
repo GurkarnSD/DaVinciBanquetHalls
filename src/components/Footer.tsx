@@ -115,7 +115,7 @@ export default function Footer() {
               href="/book"
               className="from-davinci-gold to-davinci-gold-light text-davinci-dark hover:from-davinci-gold-light hover:to-davinci-gold mt-6 inline-block rounded-full bg-linear-to-r px-6 py-2 text-sm font-medium transition-all duration-200 hover:scale-105"
             >
-              Book a Hall
+              Book Your Event
             </Link>
           </div>
         </div>

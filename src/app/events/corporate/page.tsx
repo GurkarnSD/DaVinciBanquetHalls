@@ -9,14 +9,14 @@ export const metadata: Metadata = generateMetadata({
   description:
     'Professional corporate event venues in Woodbridge, ON. Perfect for meetings, conferences, corporate celebrations, and business gatherings at Da Vinci Banquet Halls.',
   path: '/events/corporate',
-  image: '/assets/images/events/corporate/hero.jpg',
+  image: '/assets/images/events/corporate/hero.webp',
 });
 
 export default function CorporateEventsPage() {
   return (
     <div className="min-h-screen pt-24 pb-0">
       <EventPageHero
-        imageSrc="/assets/images/events/corporate/hero.jpg"
+        imageSrc="/assets/images/events/corporate/hero.webp"
         imageAlt="Corporate Events"
         title="Corporate Events"
         subtitle="Professional Venues for Business Success"

@@ -15,7 +15,7 @@ const fullMenus = [
     title: 'South Asian Menu',
     description: 'Full range of traditional South Asian cuisine options',
     href: '/menus/south-asian',
-    image: '/assets/images/menus/south-asian/appetizers.jpg',
+    image: '/assets/images/menus/south-asian/card.webp',
   },
 ];
 
@@ -42,13 +42,13 @@ const sampleMenus = [
     title: 'South Asian Celebrations',
     description: 'Specialized curated menus for South Asian celebrations',
     href: '/menus/south-asian-celebrations',
-    image: '/assets/images/menus/south-asian-celebrations/gold-package.jpg',
+    image: '/assets/images/menus/south-asian-celebrations/diamond-package.jpg',
   },
   {
     title: 'Celebration of Life',
     description: 'Thoughtful menu selections for memorial services',
     href: '/menus/celebration-of-life',
-    image: '/assets/images/menus/weddings/menu-1.jpg',
+    image: '/assets/images/menus/celebration-of-life/card.webp',
   },
   {
     title: 'Holiday Menus',

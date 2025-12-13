@@ -252,7 +252,7 @@ export default function HomePageContent() {
                 href="/book"
                 className="bg-white text-davinci-dark hover:bg-gray-100 rounded-full px-8 py-4 text-lg font-medium transition-all duration-300 hover:scale-105"
               >
-                Book a Hall
+                Book Your Event
               </Link>
             </div>
           </motion.div>

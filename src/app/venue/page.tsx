@@ -17,12 +17,12 @@ import {
 const floorplans = [
   {
     name: 'Hall A',
-    capacity: '180-380 guests',
+    capacity: '150-380 guests',
     pdf: '/assets/floorplans/DaVinci Floorplan Hall A.pdf',
   },
   {
     name: 'Hall A & B',
-    capacity: '350-550 guests',
+    capacity: '320-550 guests',
     pdf: '/assets/floorplans/DaVinci Floorplan Hall AB.pdf',
   },
   {
@@ -32,12 +32,12 @@ const floorplans = [
   },
   {
     name: 'Hall B & C',
-    capacity: '200-400 guests',
+    capacity: '150-380 guests',
     pdf: '/assets/floorplans/DaVinci Floorplan Hall BC.pdf',
   },
   {
     name: 'Hall C',
-    capacity: '80-200 guests',
+    capacity: '80-260 guests',
     pdf: '/assets/floorplans/DaVinci Floorplan Hall C.pdf',
   },
   {
@@ -60,7 +60,7 @@ export default function VenuePage() {
         >
           <h1 className="mb-6 font-serif text-6xl font-bold text-white md:text-7xl">
             <span className="from-davinci-gold to-davinci-gold-light bg-linear-to-r bg-clip-text text-transparent">
-              Our Venues
+              Our Venue
             </span>
           </h1>
           <p className="mx-auto mb-6 max-w-3xl text-center text-2xl leading-relaxed text-gray-400 md:text-3xl">
@@ -185,7 +185,7 @@ export default function VenuePage() {
               href="/book"
               className="bg-davinci-dark hover:bg-davinci-charcoal inline-block rounded-full px-8 py-4 text-lg font-medium text-white transition-all duration-200 hover:scale-105"
             >
-              Book a Hall
+              Book Your Event
             </Link>
           </motion.div>
         </div>

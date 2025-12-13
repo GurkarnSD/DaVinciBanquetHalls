@@ -14,13 +14,13 @@ const events = [
     title: 'Social Events',
     description: "Celebrate life's special moments with family and friends in our beautiful banquet halls",
     href: '/events/social',
-    image: '/assets/images/events/social/hero.jpg',
+    image: '/assets/images/events/social/hero.webp',
   },
   {
     title: 'Corporate Events',
     description: 'Professional venues and services for meetings, conferences, and corporate celebrations',
     href: '/events/corporate',
-    image: '/assets/images/events/corporate/hero.jpg',
+    image: '/assets/images/events/corporate/hero.webp',
   },
   {
     title: 'South Asian Events',

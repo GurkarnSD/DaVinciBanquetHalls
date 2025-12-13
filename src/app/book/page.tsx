@@ -17,7 +17,7 @@ export default function BookPage() {
           >
             <h1 className="mb-6 font-serif text-5xl font-bold text-white md:text-6xl">
               <span className="from-davinci-gold to-davinci-gold-light bg-linear-to-r bg-clip-text text-transparent">
-                Book a Hall
+                Book Your Event
               </span>
             </h1>
             <p className="mx-auto max-w-2xl text-center text-xl text-gray-300">

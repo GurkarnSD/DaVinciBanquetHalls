@@ -9,14 +9,14 @@ export const metadata: Metadata = generateMetadata({
   description:
     "Celebrate life's special moments at Da Vinci Banquet Halls in Woodbridge, ON. Beautiful venues for birthdays, anniversaries, family reunions, and social gatherings.",
   path: '/events/social',
-  image: '/assets/images/events/social/hero.jpg',
+  image: '/assets/images/events/social/hero.webp',
 });
 
 export default function SocialEventsPage() {
   return (
     <div className="min-h-screen pt-24 pb-0">
       <EventPageHero
-        imageSrc="/assets/images/events/social/hero.jpg"
+        imageSrc="/assets/images/events/social/hero.webp"
         imageAlt="Social Events"
         title="Social Events"
         subtitle="Celebrate Life's Special Moments"

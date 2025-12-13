@@ -124,8 +124,8 @@ export default function ContactPage() {
             </div>
           </motion.div>
 
-          {/* Contact Form */}
-          <ContactForm title="Send Us a Message" />
+          {/* Booking Form */}
+          <ContactForm title="Inquire About Your Event" showEventType={true} showDate={true} showGuests={true} />
         </div>
       </div>
     </div>

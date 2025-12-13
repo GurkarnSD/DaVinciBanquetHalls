@@ -12,7 +12,7 @@ interface ContactFormProps {
 }
 
 export default function ContactForm({
-  title = 'Contact Us',
+  title = 'Book Your Event',
   showEventType = false,
   showDate = false,
   showGuests = false,
@@ -41,9 +41,6 @@ export default function ContactForm({
     setIsSubmitting(true);
 
     try {
-      // Determine form type based on which fields are shown
-      const formType = showEventType || showDate || showGuests ? 'booking' : 'contact';
-
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
@@ -51,7 +48,6 @@ export default function ContactForm({
         },
         body: JSON.stringify({
           ...formData,
-          formType,
         }),
       });
 
