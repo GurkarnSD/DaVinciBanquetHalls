@@ -9,7 +9,12 @@ import { SpeedInsights } from '@vercel/speed-insights/next';
 import StructuredData from '@/components/StructuredData';
 import { generateMetadata as generateSEOMetadata, generateStructuredData } from '@/lib/seo';
 
-export const metadata: Metadata = generateSEOMetadata();
+export const metadata: Metadata = {
+  ...generateSEOMetadata(),
+  verification: {
+    google: 'xpEKXVZoru8mamiSFwJYBEuK45UDhuzmeNUmNOvO10Q',
+  },
+};
 
 const geist = Geist({
   subsets: ['latin'],
