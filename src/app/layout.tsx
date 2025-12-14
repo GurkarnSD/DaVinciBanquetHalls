@@ -5,7 +5,7 @@ import { Geist, Playfair_Display } from 'next/font/google';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Analytics } from '@vercel/analytics/next';
-import { SpeedInsights } from "@vercel/speed-insights/next"
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import StructuredData from '@/components/StructuredData';
 import { generateMetadata as generateSEOMetadata, generateStructuredData } from '@/lib/seo';
 
@@ -36,10 +36,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       ratingValue: '4.8',
       reviewCount: '150',
     },
-    sameAs: [
-      'https://www.facebook.com/DaVinciBanquetHalls/',
-      'https://www.instagram.com/davinci.banquethalls/',
-    ],
+    sameAs: ['https://www.instagram.com/davinci.banquethalls/'],
   });
 
   return (

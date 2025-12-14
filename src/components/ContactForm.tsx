@@ -89,7 +89,7 @@ export default function ContactForm({
           <HiCheck className="mx-auto h-16 w-16" />
         </div>
         <h3 className="mb-2 text-2xl font-bold text-white">Thank You!</h3>
-        <p className="text-gray-300 text-center">Your message has been received. We&apos;ll get back to you soon.</p>
+        <p className="text-center text-gray-300">Your message has been received. We&apos;ll get back to you soon.</p>
       </motion.div>
     );
   }

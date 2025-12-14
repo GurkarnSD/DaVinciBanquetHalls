@@ -67,9 +67,8 @@ export default function VenuePage() {
             Elegant Spaces for Every Occasion
           </p>
           <p className="mx-auto max-w-3xl text-center text-xl leading-relaxed text-gray-300">
-            Our beautifully designed banquet halls offer flexible spaces that can accommodate events of all sizes.
-            Each hall features elegant decor, state-of-the-art facilities, and the perfect ambiance for your
-            celebration.
+            Our beautifully designed banquet halls offer flexible spaces that can accommodate events of all sizes. Each
+            hall features elegant decor, state-of-the-art facilities, and the perfect ambiance for your celebration.
           </p>
         </motion.div>
       </section>

@@ -60,7 +60,7 @@ export async function POST(request: Request) {
     // Send two separate emails for bidirectional communication:
     // 1. Email to customer with replyTo set to staff (customer replies go to staff)
     // 2. Email to staff with replyTo set to customer (staff replies go to customer)
-    
+
     const customerEmailResult = await resend.emails.send({
       from: fromEmail,
       to: normalizedEmail,

@@ -20,12 +20,12 @@ const getBaseUrl = () => {
   if (process.env.NEXT_PUBLIC_BASE_URL) {
     return process.env.NEXT_PUBLIC_BASE_URL;
   }
-  
+
   // In production, use custom domain
   if (process.env.NODE_ENV === 'production') {
     return 'https://davincibanquethalls.com';
   }
-  
+
   // Default to localhost for local development
   return 'http://localhost:3000';
 };
@@ -183,7 +183,8 @@ export const BookingConfirmationEmail = ({
             <Section style={thankYouSection}>
               <Heading style={thankYouHeading}>Thank you for contacting us.</Heading>
               <Text style={thankYouText}>
-                We have received your form submission. Our staff will review your inquiry and contact you within 24 hours to assist you further.
+                We have received your form submission. Our staff will review your inquiry and contact you within 24
+                hours to assist you further.
               </Text>
             </Section>
           </Section>
@@ -205,9 +206,7 @@ export const BookingConfirmationEmail = ({
                 </Text>
               </Column>
               <Column style={footerRightCol}>
-                <Text style={footerTextRight}>
-                  Address: 5732 Highway 7 Woodbridge, ON, L4L3A2
-                </Text>
+                <Text style={footerTextRight}>Address: 5732 Highway 7 Woodbridge, ON, L4L3A2</Text>
               </Column>
             </Row>
           </Section>

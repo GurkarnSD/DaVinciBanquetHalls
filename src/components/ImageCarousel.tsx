@@ -63,12 +63,12 @@ export default function ImageCarousel({ images, autoPlayInterval = 8000, classNa
 
   const goToPrevious = () => {
     if (isNavigating) return;
-    
+
     setIsNavigating(true);
     setDirection(-1);
     setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
     resetTimer();
-    
+
     if (navigationTimeoutRef.current) {
       clearTimeout(navigationTimeoutRef.current);
     }
@@ -79,12 +79,12 @@ export default function ImageCarousel({ images, autoPlayInterval = 8000, classNa
 
   const goToNext = () => {
     if (isNavigating) return;
-    
+
     setIsNavigating(true);
     setDirection(1);
     setCurrentIndex((prev) => (prev + 1) % images.length);
     resetTimer();
-    
+
     if (navigationTimeoutRef.current) {
       clearTimeout(navigationTimeoutRef.current);
     }

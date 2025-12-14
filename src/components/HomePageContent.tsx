@@ -49,7 +49,7 @@ export default function HomePageContent() {
                 href="/venue"
                 className="border-davinci-gold bg-davinci-gold/10 hover:bg-davinci-gold/20 rounded-full border-2 px-8 py-4 text-lg font-medium text-white backdrop-blur-sm transition-all duration-300 hover:scale-105"
               >
-                Explore Our Venues
+                Explore Our Venue
               </Link>
             </motion.div>
           </div>
@@ -250,7 +250,7 @@ export default function HomePageContent() {
               </Link>
               <Link
                 href="/book"
-                className="bg-white text-davinci-dark hover:bg-gray-100 rounded-full px-8 py-4 text-lg font-medium transition-all duration-300 hover:scale-105"
+                className="text-davinci-dark rounded-full bg-white px-8 py-4 text-lg font-medium transition-all duration-300 hover:scale-105 hover:bg-gray-100"
               >
                 Book Your Event
               </Link>

@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { FaFacebook, FaInstagram, FaFacebookMessenger } from 'react-icons/fa';
+import { FaInstagram } from 'react-icons/fa';
 
 export default function Footer() {
   return (
@@ -84,15 +84,6 @@ export default function Footer() {
             </div>
             <div className="flex space-x-4">
               <a
-                href="https://www.facebook.com/DaVinciBanquetHalls/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="transition-colors hover:text-[#C9A961]"
-                aria-label="Facebook"
-              >
-                <FaFacebook className="h-6 w-6" />
-              </a>
-              <a
                 href="https://www.instagram.com/davinci.banquethalls/"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -100,15 +91,6 @@ export default function Footer() {
                 aria-label="Instagram"
               >
                 <FaInstagram className="h-6 w-6" />
-              </a>
-              <a
-                href="http://m.me/DaVinciBanquetHalls"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="transition-colors hover:text-[#C9A961]"
-                aria-label="Facebook Messenger"
-              >
-                <FaFacebookMessenger className="h-6 w-6" />
               </a>
             </div>
             <Link

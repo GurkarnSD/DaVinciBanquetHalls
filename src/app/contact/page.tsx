@@ -2,7 +2,7 @@
 
 import ContactForm from '@/components/ContactForm';
 import { motion } from 'framer-motion';
-import { FaFacebook, FaInstagram, FaFacebookMessenger } from 'react-icons/fa';
+import { FaInstagram } from 'react-icons/fa';
 
 export default function ContactPage() {
   return (
@@ -93,15 +93,6 @@ export default function ContactPage() {
                 </div>
                 <div className="flex items-center space-x-6">
                   <a
-                    href="https://www.facebook.com/DaVinciBanquetHalls/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-davinci-gold flex items-center space-x-2 text-base text-gray-300 transition-colors"
-                  >
-                    <FaFacebook className="h-5 w-5" />
-                    <span>Facebook</span>
-                  </a>
-                  <a
                     href="https://www.instagram.com/davinci.banquethalls/"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -109,15 +100,6 @@ export default function ContactPage() {
                   >
                     <FaInstagram className="h-5 w-5" />
                     <span>Instagram</span>
-                  </a>
-                  <a
-                    href="http://m.me/DaVinciBanquetHalls"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-davinci-gold flex items-center space-x-2 text-base text-gray-300 transition-colors"
-                  >
-                    <FaFacebookMessenger className="h-5 w-5" />
-                    <span>Messenger</span>
                   </a>
                 </div>
               </div>
