@@ -5,7 +5,7 @@ import { generateMetadata } from '@/lib/seo';
 export const metadata: Metadata = generateMetadata({
   title: '',
   description:
-    'Welcome to Da Vinci Banquet Halls. Experience elegance and sophistication for your most important celebrations. Located in Woodbridge, ON. Perfect for weddings, corporate events, and special occasions.',
+    'Da Vinci Banquet Halls - Premier wedding and event venues serving Woodbridge, Brampton, Mississauga, Vaughan, and the Greater Toronto Area (GTA). Elegant banquet halls perfect for weddings, corporate events, and celebrations. Book your event today.',
   path: '/',
   image: '/assets/images/hero/video.jpg',
 });

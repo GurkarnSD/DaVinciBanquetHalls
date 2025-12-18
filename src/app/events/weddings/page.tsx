@@ -7,7 +7,7 @@ import Link from 'next/link';
 export const metadata: Metadata = generateMetadata({
   title: 'Wedding Events',
   description:
-    'Plan your perfect wedding at Da Vinci Banquet Halls in Woodbridge, ON. Elegant venues for weddings, stag parties, and bridal showers. Customizable decor, exceptional service, and memorable celebrations.',
+    'Plan your perfect wedding at Da Vinci Banquet Halls - serving Woodbridge, Brampton, Mississauga, Vaughan, and the GTA. Elegant wedding venues for ceremonies, stag parties, and bridal showers. Customizable decor, exceptional service, and memorable celebrations.',
   path: '/events/weddings',
   image: '/assets/images/events/weddings/hero.jpg',
 });

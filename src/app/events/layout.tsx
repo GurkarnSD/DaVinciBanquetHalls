@@ -4,7 +4,7 @@ import { generateMetadata } from '@/lib/seo';
 export const metadata: Metadata = generateMetadata({
   title: 'Events',
   description:
-    'Da Vinci Banquet Halls hosts weddings, corporate events, social gatherings, South Asian celebrations, and fundraisers in Woodbridge, ON. Perfect venues for every occasion.',
+    'Da Vinci Banquet Halls hosts weddings, corporate events, social gatherings, South Asian celebrations, and fundraisers. Serving Woodbridge, Brampton, Mississauga, Vaughan, and the GTA. Perfect venues for every occasion.',
   path: '/events',
 });
 

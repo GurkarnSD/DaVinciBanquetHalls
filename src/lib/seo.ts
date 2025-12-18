@@ -2,8 +2,40 @@ import { type Metadata } from 'next';
 
 const baseUrl = 'https://davincibanquethalls.com'; // Update with your actual domain
 const siteName = 'Da Vinci Banquet Halls';
+
+// GTA locations for SEO targeting
+const gtaLocations = [
+  'Woodbridge',
+  'Brampton',
+  'Mississauga',
+  'Vaughan',
+  'Toronto',
+  'Richmond Hill',
+  'Markham',
+  'Etobicoke',
+  'North York',
+  'Scarborough',
+  'Oakville',
+  'Burlington',
+  'Ajax',
+  'Pickering',
+  'Whitby',
+];
+
+const locationKeywords = gtaLocations
+  .map((loc) => [
+    `banquet halls ${loc}`,
+    `wedding venues ${loc}`,
+    `event venues ${loc}`,
+    `banquet hall ${loc}`,
+    `wedding hall ${loc}`,
+    `reception hall ${loc}`,
+  ])
+  .flat()
+  .join(', ');
+
 const defaultDescription =
-  'Da Vinci Banquet Halls offers elegant venues for weddings, corporate events, and celebrations. Located in Woodbridge, ON. Book your event today.';
+  'Da Vinci Banquet Halls offers elegant banquet halls and wedding venues serving Woodbridge, Brampton, Mississauga, Vaughan, and the Greater Toronto Area (GTA). Perfect for weddings, corporate events, and celebrations. Book your event today.';
 const defaultImage = `${baseUrl}/assets/images/logos/logo.png`;
 
 interface SEOProps {
@@ -30,6 +62,7 @@ export function generateMetadata({
   return {
     title: fullTitle,
     description,
+    keywords: locationKeywords,
     alternates: {
       canonical: url,
     },
@@ -77,6 +110,14 @@ export function generateStructuredData(
   type: 'LocalBusiness' | 'Event' | 'Organization',
   data?: Record<string, unknown>
 ) {
+  // Create service area for structured data
+  const areaServed = gtaLocations.map((locality) => ({
+    '@type': 'City',
+    name: locality,
+    addressRegion: 'ON',
+    addressCountry: 'CA',
+  }));
+
   const baseStructuredData: Record<string, unknown> = {
     '@context': 'https://schema.org',
     '@type': type,
@@ -96,6 +137,7 @@ export function generateStructuredData(
       postalCode: 'L4L3A2',
       addressCountry: 'CA',
     },
+    areaServed: areaServed,
     telephone: '+1-905-851-3131',
     email: 'contact@davincibanquethalls.com',
     priceRange: '$$',

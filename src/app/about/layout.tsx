@@ -4,7 +4,7 @@ import { generateMetadata } from '@/lib/seo';
 export const metadata: Metadata = generateMetadata({
   title: 'About Us',
   description:
-    'Learn about Da Vinci Banquet Halls - our mission, values, and commitment to creating extraordinary experiences for your most important celebrations in Woodbridge, ON.',
+    'Learn about Da Vinci Banquet Halls - our mission, values, and commitment to creating extraordinary experiences for your most important celebrations. Serving Woodbridge, Brampton, Mississauga, Vaughan, and the Greater Toronto Area.',
   path: '/about',
   image: '/assets/images/hero/about.jpg',
 });

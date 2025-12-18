@@ -7,7 +7,7 @@ import Link from 'next/link';
 export const metadata: Metadata = generateMetadata({
   title: 'Corporate Events',
   description:
-    'Professional corporate event venues in Woodbridge, ON. Perfect for meetings, conferences, corporate celebrations, and business gatherings at Da Vinci Banquet Halls.',
+    'Professional corporate event venues serving Woodbridge, Brampton, Mississauga, Vaughan, and the Greater Toronto Area. Perfect for meetings, conferences, corporate celebrations, and business gatherings at Da Vinci Banquet Halls.',
   path: '/events/corporate',
   image: '/assets/images/events/corporate/hero.webp',
 });
