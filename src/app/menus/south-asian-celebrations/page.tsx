@@ -331,7 +331,7 @@ export default function SouthAsianCelebrationsMenuPage() {
                   <h3 className="mb-4 text-center font-serif text-3xl font-bold text-white">Cocktail Hour</h3>
                   <div className="bg-davinci-dark-light border-davinci-gold/20 rounded-xl border p-6">
                     <div className="space-y-3 text-center text-lg leading-relaxed text-gray-200">
-                      <p>Choice of 1 Welcome Drink</p>
+                      <p>Choice of 2 Welcome Drinks</p>
                       <p>Chef&apos;s Choice Hors D&apos;Oeuvres</p>
                     </div>
                   </div>
