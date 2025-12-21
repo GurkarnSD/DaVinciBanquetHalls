@@ -22,7 +22,7 @@ const gtaLocations = [
   'Whitby',
 ];
 
-const locationKeywords = gtaLocations
+const seoLocationKeywords = gtaLocations
   .map((loc) => [
     `banquet halls ${loc}`,
     `wedding venues ${loc}`,
@@ -45,6 +45,7 @@ interface SEOProps {
   path?: string;
   type?: 'website' | 'article';
   noindex?: boolean;
+  locationKeywords?: string; // Optional location keywords for title (e.g., "Woodbridge, Brampton, Mississauga")
 }
 
 export function generateMetadata({
@@ -54,15 +55,33 @@ export function generateMetadata({
   path = '',
   type = 'website',
   noindex = false,
+  locationKeywords,
 }: SEOProps = {}): Metadata {
-  const fullTitle = title ? `${title} | ${siteName}` : `${siteName} | Elegant Venues for Your Celebrations`;
+  // Build title with location keywords after brand name
+  let fullTitle: string;
+  if (title) {
+    // If location keywords provided, add them after the brand name
+    if (locationKeywords) {
+      fullTitle = `${title} | ${siteName} | Serving ${locationKeywords}`;
+    } else {
+      fullTitle = `${title} | ${siteName}`;
+    }
+  } else {
+    // Default homepage title
+    if (locationKeywords) {
+      fullTitle = `${siteName} | Serving ${locationKeywords}`;
+    } else {
+      fullTitle = `${siteName} | Elegant Venues for Your Celebrations`;
+    }
+  }
+
   const url = `${baseUrl}${path}`;
   const ogImage = image.startsWith('http') ? image : `${baseUrl}${image}`;
 
   return {
     title: fullTitle,
     description,
-    keywords: locationKeywords,
+    keywords: seoLocationKeywords,
     alternates: {
       canonical: url,
     },

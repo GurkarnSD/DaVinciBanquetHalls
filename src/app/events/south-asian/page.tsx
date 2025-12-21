@@ -6,6 +6,7 @@ import Link from 'next/link';
 
 export const metadata: Metadata = generateMetadata({
   title: 'South Asian Events',
+  locationKeywords: 'Woodbridge, Brampton, Mississauga, Vaughan, GTA',
   description:
     'Specialized South Asian event venues serving Woodbridge, Brampton, Mississauga, Vaughan, and the GTA. Expert services for weddings, celebrations, and cultural events with authentic cuisine and traditional decor at Da Vinci Banquet Halls.',
   path: '/events/south-asian',

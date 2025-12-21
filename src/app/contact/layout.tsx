@@ -3,6 +3,7 @@ import { generateMetadata } from '@/lib/seo';
 
 export const metadata: Metadata = generateMetadata({
   title: 'Contact Us',
+  locationKeywords: 'Woodbridge, Brampton, Mississauga, Vaughan, GTA',
   description:
     'Contact Da Vinci Banquet Halls - serving Woodbridge, Brampton, Mississauga, Vaughan, and the GTA. Located at 5732 Highway 7, Woodbridge, ON. Call 905-851-3131 or email us to plan your perfect event.',
   path: '/contact',

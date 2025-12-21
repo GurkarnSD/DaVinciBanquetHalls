@@ -6,6 +6,7 @@ import Link from 'next/link';
 
 export const metadata: Metadata = generateMetadata({
   title: 'Social Events',
+  locationKeywords: 'Woodbridge, Brampton, Mississauga, Vaughan, GTA',
   description:
     "Celebrate life's special moments at Da Vinci Banquet Halls - serving Woodbridge, Brampton, Mississauga, Vaughan, and the GTA. Beautiful venues for birthdays, anniversaries, family reunions, and social gatherings.",
   path: '/events/social',

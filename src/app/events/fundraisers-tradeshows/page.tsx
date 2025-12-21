@@ -6,6 +6,7 @@ import Link from 'next/link';
 
 export const metadata: Metadata = generateMetadata({
   title: 'Fundraisers & Trade Shows',
+  locationKeywords: 'Woodbridge, Brampton, Mississauga, Vaughan, GTA',
   description:
     'Spacious venues for fundraisers, trade shows, and large gatherings serving Woodbridge, Brampton, Mississauga, Vaughan, and the Greater Toronto Area. Da Vinci Banquet Halls accommodates 50-1000 guests with professional facilities.',
   path: '/events/fundraisers-tradeshows',
