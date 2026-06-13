@@ -19,12 +19,35 @@ export default function VerticalVideo({
   autoPlay = true,
   controls = false,
 }: VerticalVideoProps) {
+  const figureRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const [hasError, setHasError] = useState(false);
-  const showPlaceholder = !slot.src || hasError;
+  const [isNearViewport, setIsNearViewport] = useState(false);
+  const showPlaceholder = !slot.src || hasError || !isNearViewport;
 
   useEffect(() => {
-    if (!slot.src || hasError || !autoPlay) return;
+    if (!slot.src || hasError) return;
+
+    const figure = figureRef.current;
+    if (!figure || !('IntersectionObserver' in window)) {
+      setIsNearViewport(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsNearViewport(Boolean(entry?.isIntersecting));
+      },
+      { rootMargin: '160px 120px', threshold: 0.01 }
+    );
+
+    observer.observe(figure);
+
+    return () => observer.disconnect();
+  }, [slot.src, hasError]);
+
+  useEffect(() => {
+    if (!slot.src || hasError || !autoPlay || !isNearViewport) return;
 
     const video = videoRef.current;
     if (!video) return;
@@ -53,24 +76,44 @@ export default function VerticalVideo({
 
     observer.observe(video);
 
-    return () => observer.disconnect();
-  }, [slot.src, hasError, autoPlay]);
+    return () => {
+      observer.disconnect();
+      video.pause();
+    };
+  }, [slot.src, hasError, autoPlay, isNearViewport]);
+
+  useEffect(() => {
+    if (isNearViewport) return;
+
+    const video = videoRef.current;
+    if (!video) return;
+
+    video.pause();
+    video.removeAttribute('src');
+    video.querySelectorAll('source').forEach((source) => source.removeAttribute('src'));
+    video.load();
+  }, [isNearViewport]);
 
   return (
-    <figure className={`media-frame relative mx-auto w-full max-w-[260px] sm:max-w-[280px] ${className}`}>
+    <figure
+      ref={figureRef}
+      className={`media-frame relative mx-auto w-full max-w-[260px] sm:max-w-[280px] ${className}`}
+    >
       <div className="relative aspect-9/16 w-full">
         {showPlaceholder ? (
-          <MediaPlaceholder title={slot.title} aspect={slot.aspect} category="Video" slotId={slot.id} />
+          <MediaPlaceholder />
         ) : (
           <video
             ref={videoRef}
             aria-label={slot.title}
             controls={controls}
             disablePictureInPicture
+            disableRemotePlayback
             loop
             muted
             playsInline
             preload="none"
+            controlsList="nodownload noplaybackrate noremoteplayback"
             className="h-full w-full object-cover"
             onError={() => setHasError(true)}
           >

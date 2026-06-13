@@ -37,12 +37,7 @@ export default function VideoBackground({
         </video>
       ) : fallbackSlot ? (
         <div className="absolute inset-0">
-          <MediaPlaceholder
-            title={fallbackSlot.title}
-            aspect={fallbackSlot.aspect}
-            category={fallbackSlot.category}
-            slotId={fallbackSlot.id}
-          />
+          <MediaPlaceholder />
         </div>
       ) : (
         <div className="bg-davinci-dark absolute inset-0" />

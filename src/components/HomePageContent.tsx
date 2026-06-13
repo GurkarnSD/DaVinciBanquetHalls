@@ -5,7 +5,7 @@ import ImageCarousel from '@/components/ImageCarousel';
 import VerticalVideoReel from '@/components/VerticalVideoReel';
 import SectionHeading from '@/components/SectionHeading';
 import CTASection from '@/components/CTASection';
-import MediaPlaceholder from '@/components/MediaPlaceholder';
+import MediaImage from '@/components/MediaImage';
 import { carouselSlots, homeHeroSlot } from '@/config/media-slots';
 import { homeReelVideoSlots } from '@/config/video-slots';
 
@@ -14,23 +14,25 @@ export default function HomePageContent() {
     <div>
       <section className="section-edge relative min-h-[88vh] border-b">
         <div className="absolute inset-0">
-          <MediaPlaceholder
-            title={homeHeroSlot.title}
-            aspect={homeHeroSlot.aspect}
-            category={homeHeroSlot.category}
-            slotId={homeHeroSlot.id}
+          <MediaImage
+            slot={homeHeroSlot}
+            fill
+            imageClassName="object-cover object-left-top md:object-top"
+            sizes="100vw"
+            priority
+            quality={85}
           />
         </div>
         <div className="media-scrim absolute inset-0" />
         <div className="on-media relative z-10 flex min-h-[88vh] items-center px-4 pt-24 pb-16 sm:pt-28 sm:pb-20">
-          <div className="container mx-auto">
-            <div className="max-w-2xl">
+          <div className="container mx-auto flex">
+            <div className="max-w-2xl md:ml-auto md:max-w-xl md:translate-x-10 lg:max-w-2xl xl:translate-x-16">
               <p className="eyebrow mb-6">Woodbridge, Ontario</p>
               <h1 className="mb-6 font-serif text-4xl leading-[1.12] font-medium md:text-5xl lg:text-6xl">
-                Banquet halls for weddings, corporate events, and private celebrations.
+                Banquet Halls for Weddings, Corporate Events, and Private Celebrations.
               </h1>
               <p className="lead mb-10 max-w-lg">
-                Renovated halls, full-service catering, and flexible room configurations for 50 to 1,000 guests.
+                Event coordination, full-service catering, and flexible room configurations for 50 to 1,000 guests.
               </p>
               <div className="flex flex-col gap-3 sm:flex-row">
                 <Link href="/book" className="btn-primary px-7 py-3">
@@ -68,20 +70,16 @@ export default function HomePageContent() {
 
       <VerticalVideoReel
         eyebrow="Events"
-        title="Recent celebrations"
+        title="Recent Celebrations"
         subtitle="Weddings, cultural events, and corporate functions across our halls."
         slots={homeReelVideoSlots}
       />
 
       <section className="section-edge border-t py-16 md:py-20">
         <div className="container mx-auto px-4">
-          <SectionHeading
-            eyebrow="Venue"
-            title="Our halls"
-            subtitle="Interior and exterior views of Da Vinci Banquet Halls."
-          />
+          <SectionHeading eyebrow="Venue" title="Our Halls" />
           <div className="relative mx-auto max-w-5xl">
-            <div className="media-frame relative h-[360px] md:h-[440px]">
+            <div className="media-frame relative aspect-[3/2]">
               <ImageCarousel slots={carouselSlots} />
             </div>
           </div>
@@ -94,7 +92,7 @@ export default function HomePageContent() {
       </section>
 
       <CTASection
-        title="Plan your event"
+        title="Plan Your Event"
         description="Share your date, guest count, and event type. We will outline hall options and menu selections."
         primaryLabel="Book a consultation"
         primaryHref="/book"

@@ -46,18 +46,18 @@ export default function VenuePage() {
       <div className="container mx-auto max-w-5xl px-4">
         <PageHero
           eyebrow="Venue"
-          title="Spaces that scale with your guest list"
+          title="Spaces That Scale with Your Guest List"
           description="Renovated halls with flexible configurations, from intimate dinners to events of a thousand."
         />
       </div>
 
-      <VerticalVideoReel eyebrow="Walkthrough" title="The halls in motion" slots={venueVideoSlots} />
+      <VerticalVideoReel eyebrow="Walkthrough" title="The Halls in Motion" slots={venueVideoSlots} />
 
       <section className="section-edge container mx-auto max-w-5xl border-t px-4 py-16">
         <SectionHeading
           eyebrow="Gallery"
-          title="The space"
-          subtitle="Exterior, lobby, halls, and bridal suite."
+          title="The Space"
+          subtitle="Exterior, lobby, halls, and event setups."
           align="left"
         />
         <GalleryGrid slots={venueSlots} columns={3} />
@@ -91,7 +91,7 @@ export default function VenuePage() {
       </section>
 
       <section className="section-edge container mx-auto max-w-5xl border-t px-4 py-16">
-        <SectionHeading title="Included amenities" align="left" />
+        <SectionHeading title="Included Amenities" align="left" />
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {features.map((feature) => {
             const Icon = feature.icon;
@@ -106,7 +106,7 @@ export default function VenuePage() {
       </section>
 
       <CTASection
-        title="Schedule a tour"
+        title="Schedule a Tour"
         description="Walk the halls in person and discuss layout options with our team."
         primaryLabel="Book your event"
         primaryHref="/book"

@@ -12,7 +12,7 @@ const fullMenus = [
     title: 'Italian Menu',
     description: 'Complete selection of authentic Italian dishes.',
     href: '/menus/italian',
-    image: '/assets/images/menus/italian/appetizers.jpg',
+    image: '/assets/images/catering/tortellini-casarecce.jpeg',
   },
   {
     title: 'South Asian Menu',
@@ -67,7 +67,7 @@ export default function MenusPage() {
       <div className="container mx-auto px-4">
         <PageHero
           eyebrow="Menus"
-          title="Cuisine shaped around your event"
+          title="Cuisine Shaped Around Your Event"
           description="Full catalogs list every available item. Sample menus offer a starting point — each can be adjusted to your preferences."
           align="center"
           className="mx-auto max-w-3xl"
@@ -77,7 +77,7 @@ export default function MenusPage() {
       <section className="container mx-auto px-4 py-12">
         <SectionHeading
           eyebrow="Catalogs"
-          title="Full menus"
+          title="Full Menus"
           subtitle="Browse complete dish lists and build a custom selection."
           align="left"
           className="max-w-4xl"
@@ -89,12 +89,12 @@ export default function MenusPage() {
         </div>
       </section>
 
-      <VerticalVideoReel eyebrow="Catering" title="Food & table presentations" slots={foodVideoSlots} />
+      <VerticalVideoReel eyebrow="Catering" title="Food & Table Presentations" slots={foodVideoSlots} />
 
       <section className="section-edge container mx-auto border-t px-4 py-16">
         <SectionHeading
           eyebrow="Samples"
-          title="Curated starting points"
+          title="Curated Starting Points"
           subtitle="Each sample menu can be customized — items can be added or removed."
           align="left"
         />
@@ -106,7 +106,7 @@ export default function MenusPage() {
       </section>
 
       <CTASection
-        title="Customize your menu"
+        title="Customize Your Menu"
         description="Dietary requirements or specific preferences? We will work with you on a tailored selection."
         primaryLabel="Contact us"
         primaryHref="/contact"

@@ -11,7 +11,7 @@ export const metadata: Metadata = generateMetadata({
   description:
     'Professional corporate event venues serving Woodbridge, Brampton, Mississauga, Vaughan, and the Greater Toronto Area.',
   path: '/events/corporate',
-  image: '/assets/images/logos/logo.png',
+  image: '/assets/images/events/corporate/hero.webp',
 });
 
 export default function CorporateEventsPage() {
@@ -24,7 +24,7 @@ export default function CorporateEventsPage() {
       />
 
       <section className="container mx-auto mb-12 max-w-3xl px-4">
-        <ContentCard title="Corporate events">
+        <ContentCard title="Corporate Events">
           <p>
             From small meetings to large conferences, our halls support breakout sessions, AV requirements, and
             full-service catering.
@@ -41,7 +41,7 @@ export default function CorporateEventsPage() {
       </section>
 
       <CTASection
-        title="Plan your corporate event"
+        title="Plan Your Corporate Event"
         description="Tell us about your format, guest count, and technical needs."
         primaryLabel="Contact us"
         primaryHref="/contact"

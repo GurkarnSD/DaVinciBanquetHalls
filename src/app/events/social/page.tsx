@@ -11,7 +11,7 @@ export const metadata: Metadata = generateMetadata({
   description:
     'Social event venues at Da Vinci Banquet Halls — birthdays, baptisms, anniversaries, and family gatherings. Serving Woodbridge, Brampton, Mississauga, Vaughan, and the GTA.',
   path: '/events/social',
-  image: '/assets/images/logos/logo.png',
+  image: '/assets/images/events/social/hero.webp',
 });
 
 export default function SocialEventsPage() {
@@ -28,13 +28,13 @@ export default function SocialEventsPage() {
           <p>Birthday events with sit-down dinner or buffet service, across hall sizes from 50 to 1,000 guests.</p>
         </ContentCard>
 
-        <ContentCard title="Communion, confirmation & baptism">
+        <ContentCard title="Communion, Confirmation & Baptism">
           <p>Flexible menus, hall layouts, and AV support for presentations and music.</p>
         </ContentCard>
       </section>
 
       <CTASection
-        title="Plan your social event"
+        title="Plan Your Social Event"
         description="Share your date, guest count, and event type."
         primaryLabel="Contact us"
         primaryHref="/contact"

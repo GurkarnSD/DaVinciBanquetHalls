@@ -21,7 +21,7 @@ export default function AboutPage() {
 
         <div className="mb-20 grid gap-8 md:grid-cols-2">
           <article className="section-edge border-t pt-6">
-            <h3 className="text-theme-heading mb-4 font-serif text-2xl font-medium">Venue & catering</h3>
+            <h3 className="text-theme-heading mb-4 font-serif text-2xl font-medium">Venue & Catering</h3>
             <p className="text-theme-body mb-4 text-sm leading-relaxed">
               Halls accommodate 50 to 1,000 guests with flexible seating, professional lighting, sound, and a
               full-service bar. Italian and South Asian menus are available across all event types.
@@ -32,7 +32,7 @@ export default function AboutPage() {
           </article>
 
           <article className="section-edge border-t pt-6">
-            <h3 className="text-theme-heading mb-4 font-serif text-2xl font-medium">Event types</h3>
+            <h3 className="text-theme-heading mb-4 font-serif text-2xl font-medium">Event Types</h3>
             <p className="text-theme-body mb-4 text-sm leading-relaxed">
               Weddings, corporate meetings, South Asian celebrations, social gatherings, fundraisers, and trade shows
               across the Greater Toronto Area.
@@ -43,12 +43,12 @@ export default function AboutPage() {
           </article>
         </div>
 
-        <SectionHeading eyebrow="Amenities" title="Included with every booking" align="left" />
+        <SectionHeading eyebrow="Amenities" title="Included with Every Booking" align="left" />
         <div className="grid gap-8 md:grid-cols-3">
           {[
-            { title: 'Halls & AV', description: 'Configurable rooms, lighting, and sound.' },
-            { title: 'Catering & bar', description: 'In-house kitchen and full bar service.' },
-            { title: 'Coordination', description: 'On-site staff for setup and event flow.' },
+            { title: 'Event Space', description: 'Configurable rooms and flexible seating layouts.' },
+            { title: 'Catering & Bar', description: 'In-house kitchen and full bar service.' },
+            { title: 'Coordination', description: 'On-site support for setup and event flow.' },
           ].map((item) => (
             <div key={item.title} className="section-edge border-t pt-5">
               <h3 className="text-theme-heading mb-2 font-serif text-lg font-medium">{item.title}</h3>

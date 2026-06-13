@@ -46,14 +46,14 @@ export default function EventsPage() {
       <div className="container mx-auto px-4">
         <PageHero
           eyebrow="Events"
-          title="Every occasion, one consistent standard"
+          title="Every Occasion, One Consistent Standard"
           description="Browse by event type or watch recent highlights below."
           align="center"
           className="mx-auto max-w-3xl"
         />
       </div>
 
-      <VerticalVideoReel eyebrow="Highlights" title="Recent celebrations" slots={eventVideoSlots} />
+      <VerticalVideoReel eyebrow="Highlights" title="Recent Celebrations" slots={eventVideoSlots} />
 
       <section className="section-edge container mx-auto border-t px-4 py-16">
         <div className="mb-10 grid gap-10 md:grid-cols-3">
@@ -81,7 +81,7 @@ export default function EventsPage() {
       </section>
 
       <CTASection
-        title="Tell us about your event"
+        title="Tell Us About Your Event"
         description="Share your date, guest count, and event type. We will outline hall options and next steps."
         primaryLabel="Get started"
         primaryHref="/contact"

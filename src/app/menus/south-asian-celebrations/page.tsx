@@ -369,7 +369,7 @@ export default function SouthAsianCelebrationsMenuPage() {
         </section>
 
         <MenuCTA
-          title="Customize your celebration menu"
+          title="Customize Your Celebration Menu"
           description="Contact us to discuss your South Asian celebration and build the right menu."
         />
       </div>

@@ -10,7 +10,7 @@ export const metadata: Metadata = generateMetadata({
   locationKeywords: 'Woodbridge, Brampton, Mississauga, Vaughan, GTA',
   description: 'Specialized South Asian event venues serving Woodbridge, Brampton, Mississauga, Vaughan, and the GTA.',
   path: '/events/south-asian',
-  image: '/assets/images/logos/logo.png',
+  image: '/assets/images/events/south-asian/hero.jpg',
 });
 
 export default function SouthAsianEventsPage() {
@@ -43,7 +43,7 @@ export default function SouthAsianEventsPage() {
       </section>
 
       <CTASection
-        title="Plan your celebration"
+        title="Plan Your Celebration"
         description="Share your event type and timeline. We will outline hall and menu options."
         primaryLabel="Contact us"
         primaryHref="/contact"

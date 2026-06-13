@@ -4,10 +4,10 @@ import ContactForm from '@/components/ContactForm';
 import PageHero from '@/components/PageHero';
 
 const STEPS = [
-  { step: '1', title: 'Submit this form', detail: 'Include your date, guest count, and event type.' },
-  { step: '2', title: 'We confirm availability', detail: 'Response within 24–48 hours by email or phone.' },
-  { step: '3', title: 'Venue tour', detail: 'Walk the halls and review floorplan options.' },
-  { step: '4', title: 'Menu & booking', detail: 'Finalize hall, catering, and deposit details.' },
+  { step: '1', title: 'Submit This Form', detail: 'Include your date, guest count, and event type.' },
+  { step: '2', title: 'We Confirm Availability', detail: 'Response within 24–48 hours by email or phone.' },
+  { step: '3', title: 'Venue Tour', detail: 'Walk the halls and review floorplan options.' },
+  { step: '4', title: 'Menu & Booking', detail: 'Finalize hall, catering, and deposit details.' },
 ];
 
 export default function BookPage() {
@@ -16,16 +16,16 @@ export default function BookPage() {
       <div className="container mx-auto max-w-5xl px-4">
         <PageHero
           eyebrow="Book"
-          title="Reserve your date"
+          title="Reserve Your Date"
           description="Submit your event details below. Our team will confirm availability and schedule a tour."
         />
 
         <div className="grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
-          <ContactForm title="Reservation request" variant="booking" />
+          <ContactForm title="Reservation Request" variant="booking" />
 
           <aside className="space-y-6">
             <div className="surface p-8">
-              <h2 className="text-theme-heading mb-6 font-serif text-xl font-medium">What happens next</h2>
+              <h2 className="text-theme-heading mb-6 font-serif text-xl font-medium">What Happens Next</h2>
               <ol className="space-y-5">
                 {STEPS.map((item) => (
                   <li key={item.step} className="flex gap-4">
@@ -42,7 +42,7 @@ export default function BookPage() {
             </div>
 
             <div className="surface text-theme-body p-8 text-sm">
-              <p className="text-theme-heading mb-1 font-medium">Questions before booking?</p>
+              <p className="text-theme-heading mb-1 font-medium">Questions Before Booking?</p>
               <p className="mb-3">Call or email us directly.</p>
               <p>
                 <a href="tel:905-851-3131" className="text-theme-heading font-medium hover:underline">

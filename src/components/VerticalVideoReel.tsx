@@ -9,13 +9,15 @@ interface VerticalVideoReelProps {
   eyebrow?: string;
   title?: string;
   subtitle?: string;
+  maxSlots?: number;
 }
 
-export default function VerticalVideoReel({ slots, eyebrow, title }: VerticalVideoReelProps) {
+export default function VerticalVideoReel({ slots, eyebrow, title, maxSlots = 8 }: VerticalVideoReelProps) {
   if (slots.length === 0) return null;
 
   const showHeader = Boolean(title) || Boolean(eyebrow);
-  const movingSlots = [...slots, ...slots];
+  const visibleSlots = slots.slice(0, maxSlots);
+  const movingSlots = [...visibleSlots, ...visibleSlots];
 
   return (
     <section className="py-16 md:py-20">
@@ -34,7 +36,7 @@ export default function VerticalVideoReel({ slots, eyebrow, title }: VerticalVid
             {movingSlots.map((slot, index) => (
               <div
                 key={`${slot.id}-${index}`}
-                aria-hidden={index >= slots.length}
+                aria-hidden={index >= visibleSlots.length}
                 className="w-[62vw] max-w-[230px] shrink-0 sm:w-[220px] md:max-w-[245px]"
               >
                 <VerticalVideo slot={slot} className="max-w-none" />

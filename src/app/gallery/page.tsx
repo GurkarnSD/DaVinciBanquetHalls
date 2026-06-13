@@ -13,19 +13,19 @@ export default function GalleryPage() {
       <div className="container mx-auto px-4">
         <PageHero
           eyebrow="Gallery"
-          title="The venue, the setup, the celebration"
+          title="The Venue, The Setup, The Celebration"
           description="Photos and video from events, catering, and our halls."
           align="center"
           className="mx-auto max-w-3xl"
         />
       </div>
 
-      <VerticalVideoReel eyebrow="Events" title="Event highlights" slots={eventVideoSlots} />
+      <VerticalVideoReel eyebrow="Events" title="Event Highlights" slots={eventVideoSlots} />
 
-      <VerticalVideoReel eyebrow="Catering" title="Food & table setups" slots={foodVideoSlots} />
+      <VerticalVideoReel eyebrow="Catering" title="Food & Table Setups" slots={foodVideoSlots} />
 
       <section className="section-edge container mx-auto border-t px-4 pt-16">
-        <SectionHeading title="The venue" subtitle="Lobby, halls, stage, bar, and exterior." align="left" />
+        <SectionHeading title="The Venue" subtitle="Lobby, halls, stage, and exterior." align="left" />
         <GalleryGrid slots={gallerySlots} columns={3} />
       </section>
     </div>

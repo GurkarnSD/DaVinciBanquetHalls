@@ -11,7 +11,7 @@ export const metadata: Metadata = generateMetadata({
   description:
     'Wedding venues at Da Vinci Banquet Halls — ceremonies, receptions, stags, and showers. Serving Woodbridge, Brampton, Mississauga, Vaughan, and the GTA.',
   path: '/events/weddings',
-  image: '/assets/images/logos/logo.png',
+  image: '/assets/images/events/weddings/hero.jpg',
 });
 
 export default function WeddingsEventsPage() {
@@ -24,7 +24,7 @@ export default function WeddingsEventsPage() {
       />
 
       <section className="container mx-auto mb-12 max-w-3xl space-y-8 px-4">
-        <ContentCard title="Wedding service">
+        <ContentCard title="Wedding Service">
           <p>
             Venue layout, décor, cuisine, and service for guest counts from intimate gatherings to large receptions.
           </p>
@@ -40,13 +40,13 @@ export default function WeddingsEventsPage() {
           </p>
         </ContentCard>
 
-        <ContentCard title="Bridal shower">
+        <ContentCard title="Bridal Shower">
           <p>Bridal and wedding showers with seated or buffet menus across our smaller and mid-size halls.</p>
         </ContentCard>
       </section>
 
       <CTASection
-        title="Plan your wedding"
+        title="Plan Your Wedding"
         description="Share your date and guest count. We will outline hall options and menu selections."
         primaryLabel="Contact us"
         primaryHref="/contact"

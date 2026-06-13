@@ -49,7 +49,7 @@ export default function ContactPage() {
       <div className="container mx-auto max-w-3xl px-4">
         <PageHero
           eyebrow="Contact"
-          title="Get in touch"
+          title="Get in Touch"
           description="Questions about availability, capacity, or menus? Send us a note and we will follow up."
         />
 
@@ -73,7 +73,7 @@ export default function ContactPage() {
           </a>
         </div>
 
-        <ContactForm title="Send a message" variant="contact" />
+        <ContactForm title="Send a Message" variant="contact" />
       </div>
     </div>
   );

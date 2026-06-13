@@ -11,7 +11,7 @@ export const metadata: Metadata = generateMetadata({
   description:
     'Spacious venues for fundraisers, trade shows, and large gatherings serving Woodbridge, Brampton, Mississauga, Vaughan, and the Greater Toronto Area.',
   path: '/events/fundraisers-tradeshows',
-  image: '/assets/images/logos/logo.png',
+  image: '/assets/images/events/fundraisers-tradeshows/hero.jpg',
 });
 
 export default function FundraisersTradeShowsEventsPage() {
@@ -24,7 +24,7 @@ export default function FundraisersTradeShowsEventsPage() {
       />
 
       <section className="container mx-auto mb-12 max-w-3xl px-4">
-        <ContentCard title="Fundraisers & trade shows">
+        <ContentCard title="Fundraisers & Trade Shows">
           <p>
             We support fundraisers and trade shows with flexible floor plans, registration flow, lighting, and catering
             for attendees throughout the day.
@@ -33,7 +33,7 @@ export default function FundraisersTradeShowsEventsPage() {
       </section>
 
       <CTASection
-        title="Plan your event"
+        title="Plan Your Event"
         description="Tell us about your format, capacity needs, and schedule."
         primaryLabel="Contact us"
         primaryHref="/contact"

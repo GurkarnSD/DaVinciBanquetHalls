@@ -1,10 +1,9 @@
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
-import Image from 'next/image';
 import { HiChevronLeft, HiChevronRight } from 'react-icons/hi';
 import type { MediaSlot } from '@/config/media-slots';
-import MediaPlaceholder from './MediaPlaceholder';
+import MediaImage from './MediaImage';
 
 interface ImageCarouselProps {
   slots: MediaSlot[];
@@ -12,14 +11,20 @@ interface ImageCarouselProps {
   className?: string;
 }
 
-export default function ImageCarousel({ slots, autoPlayInterval = 6000, className = '' }: ImageCarouselProps) {
+export default function ImageCarousel({ slots, autoPlayInterval = 4200, className = '' }: ImageCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const [dragStartX, setDragStartX] = useState<number | null>(null);
+  const [dragOffset, setDragOffset] = useState(0);
+  const hasMultipleSlides = slots.length > 1;
 
   const goTo = useCallback(
     (index: number) => {
       if (slots.length === 0) return;
       const next = ((index % slots.length) + slots.length) % slots.length;
       setCurrentIndex(next);
+      setDragStartX(null);
+      setDragOffset(0);
     },
     [slots.length]
   );
@@ -28,44 +33,78 @@ export default function ImageCarousel({ slots, autoPlayInterval = 6000, classNam
   const goToPrevious = useCallback(() => goTo(currentIndex - 1), [currentIndex, goTo]);
 
   useEffect(() => {
-    if (slots.length <= 1) return;
+    if (!hasMultipleSlides || isPaused || autoPlayInterval <= 0) return;
 
     const timer = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % slots.length);
     }, autoPlayInterval);
 
     return () => clearInterval(timer);
-  }, [slots.length, autoPlayInterval]);
+  }, [slots.length, autoPlayInterval, hasMultipleSlides, isPaused]);
+
+  const handlePointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
+    if (!hasMultipleSlides || (event.pointerType === 'mouse' && event.button !== 0)) return;
+
+    setIsPaused(true);
+    setDragStartX(event.clientX);
+    setDragOffset(0);
+    event.currentTarget.setPointerCapture(event.pointerId);
+  };
+
+  const handlePointerMove = (event: React.PointerEvent<HTMLDivElement>) => {
+    if (dragStartX === null) return;
+
+    setDragOffset(event.clientX - dragStartX);
+  };
+
+  const finishDrag = (event: React.PointerEvent<HTMLDivElement>) => {
+    if (dragStartX === null) return;
+
+    const swipeThreshold = 56;
+    if (dragOffset > swipeThreshold) {
+      goToPrevious();
+    } else if (dragOffset < -swipeThreshold) {
+      goToNext();
+    } else {
+      setDragStartX(null);
+      setDragOffset(0);
+    }
+
+    setIsPaused(false);
+    event.currentTarget.releasePointerCapture(event.pointerId);
+  };
 
   if (slots.length === 0) return null;
 
   return (
-    <div className={`bg-theme-media relative h-full w-full overflow-hidden ${className}`}>
-      {slots.map((slot, index) => (
-        <div
-          key={slot.id}
-          className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
-            index === currentIndex ? 'z-10 opacity-100' : 'z-0 opacity-0'
-          }`}
-          aria-hidden={index !== currentIndex}
-        >
-          {slot.src ? (
-            <Image
-              src={slot.src}
-              alt={slot.title}
+    <div
+      className={`bg-theme-media relative h-full w-full overflow-hidden ${className}`}
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+    >
+      <div
+        className={`flex h-full touch-pan-y select-none ${dragStartX === null ? 'transition-transform duration-500 ease-out' : ''}`}
+        style={{ transform: `translateX(calc(${-currentIndex * 100}% + ${dragOffset}px))` }}
+        onPointerDown={handlePointerDown}
+        onPointerMove={handlePointerMove}
+        onPointerUp={finishDrag}
+        onPointerCancel={finishDrag}
+      >
+        {slots.map((slot, index) => (
+          <div key={slot.id} className="relative h-full w-full flex-[0_0_100%]" aria-hidden={index !== currentIndex}>
+            <MediaImage
+              slot={slot}
               fill
-              className="object-cover"
+              imageClassName="object-cover"
               sizes="(max-width: 768px) 100vw, 1200px"
               priority={index === 0}
               quality={index === 0 ? 85 : 80}
             />
-          ) : (
-            <MediaPlaceholder title={slot.title} aspect={slot.aspect} category={slot.category} slotId={slot.id} />
-          )}
-        </div>
-      ))}
+          </div>
+        ))}
+      </div>
 
-      {slots.length > 1 && (
+      {hasMultipleSlides && (
         <>
           <button
             type="button"
@@ -90,12 +129,25 @@ export default function ImageCarousel({ slots, autoPlayInterval = 6000, classNam
                 key={slot.id}
                 type="button"
                 onClick={() => goTo(index)}
-                className={`h-1.5 transition-all ${
-                  index === currentIndex ? 'bg-davinci-gold w-8' : 'hover:bg-davinci-gold/60 w-1.5 bg-white/40'
+                className={`relative h-1.5 overflow-hidden transition-all ${
+                  index === currentIndex ? 'w-10 bg-white/25' : 'hover:bg-davinci-gold/60 w-1.5 bg-white/40'
                 }`}
                 aria-label={`Go to slide ${index + 1}`}
                 aria-current={index === currentIndex}
-              />
+              >
+                {index === currentIndex && (
+                  <span
+                    key={`${slot.id}-${currentIndex}`}
+                    className="image-carousel-progress bg-davinci-gold absolute inset-y-0 left-0"
+                    style={
+                      {
+                        '--image-carousel-progress-duration': `${autoPlayInterval}ms`,
+                        animationPlayState: isPaused ? 'paused' : 'running',
+                      } as React.CSSProperties
+                    }
+                  />
+                )}
+              </button>
             ))}
           </div>
         </>

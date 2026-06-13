@@ -36,7 +36,13 @@ const seoLocationKeywords = gtaLocations
 
 const defaultDescription =
   'Da Vinci Banquet Halls offers elegant banquet halls and wedding venues serving Woodbridge, Brampton, Mississauga, Vaughan, and the Greater Toronto Area (GTA). Perfect for weddings, corporate events, and celebrations. Book your event today.';
-const defaultImage = `${baseUrl}/assets/images/logos/logo.png`;
+const defaultImage = `${baseUrl}/assets/images/venue/exterior-front-head-on.jpg`;
+const businessImages = [
+  `${baseUrl}/assets/images/venue/exterior-front-head-on.jpg`,
+  `${baseUrl}/assets/images/venue/front-lobby-entrance.jpg`,
+  `${baseUrl}/assets/images/venue/hall-ab-wide-corner.jpg`,
+  `${baseUrl}/assets/images/venue/stage-loveseat-left.jpg`,
+];
 
 interface SEOProps {
   title?: string;
@@ -147,7 +153,7 @@ export function generateStructuredData(
       '@type': 'ImageObject',
       url: `${baseUrl}/assets/images/logos/logo.png`,
     },
-    image: `${baseUrl}/assets/images/logos/logo.png`,
+    image: businessImages,
     address: {
       '@type': 'PostalAddress',
       streetAddress: '5732 Highway 7',
