@@ -1,127 +1,62 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import PageHero from '@/components/PageHero';
+import SectionHeading from '@/components/SectionHeading';
+import GalleryGrid from '@/components/GalleryGrid';
+import { aboutSlots } from '@/config/media-slots';
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen pt-24 pb-16">
-      {/* Hero Section */}
-      <section className="container mx-auto mb-20 px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center"
-        >
-          <h1 className="mb-6 font-serif text-6xl font-bold text-white md:text-7xl">
-            <span className="from-davinci-gold to-davinci-gold-light bg-linear-to-r bg-clip-text text-transparent">
-              About Us
-            </span>
-          </h1>
-          <p className="mx-auto mb-6 max-w-3xl text-center text-2xl leading-relaxed text-gray-400 md:text-3xl">
-            Our Story & Mission
-          </p>
-          <p className="mx-auto max-w-3xl text-center text-xl leading-relaxed text-gray-300">
-            At Da Vinci Banquet Halls, we are dedicated to creating extraordinary experiences for your most important
-            celebrations. Our mission is to provide elegant, sophisticated venues where every detail is carefully
-            crafted to ensure your event is nothing short of perfection.
-          </p>
-        </motion.div>
-      </section>
+    <div className="page-shell pb-16">
+      <div className="container mx-auto max-w-5xl px-4">
+        <PageHero
+          eyebrow="About"
+          title="Da Vinci Banquet Halls"
+          description="Wedding and event venue in Woodbridge with six configurable halls, in-house catering, and on-site coordination."
+        />
 
-      {/* Mission Statement */}
-      <section className="container mx-auto mb-16 px-4">
-        <div className="mx-auto max-w-4xl">
-          <div className="mt-16 grid grid-cols-1 gap-12 md:grid-cols-2">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="premium-card rounded-2xl p-8"
-            >
-              <h3 className="mb-4 font-serif text-3xl font-bold text-white">Excellence in Every Detail</h3>
-              <p className="mb-4 leading-relaxed text-gray-400">
-                We believe that every celebration deserves the finest attention to detail. From the moment you step
-                through our doors, you&apos;ll experience the elegance and sophistication that sets Da Vinci Banquet
-                Halls apart.
-              </p>
-              <p className="leading-relaxed text-gray-400">
-                Our team is committed to understanding your vision and bringing it to life, ensuring that your event
-                exceeds expectations and creates lasting memories.
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="premium-card rounded-2xl p-8"
-            >
-              <h3 className="mb-4 font-serif text-3xl font-bold text-white">A Legacy of Celebration</h3>
-              <p className="mb-4 leading-relaxed text-gray-400">
-                With years of experience in hosting memorable events, we have built a reputation for excellence in the
-                banquet hall industry. Our venues have been the backdrop for countless weddings, corporate gatherings,
-                and special celebrations.
-              </p>
-              <p className="leading-relaxed text-gray-400">
-                We take pride in being part of your most important moments and are honored to help you create memories
-                that will last a lifetime.
-              </p>
-            </motion.div>
-          </div>
+        <div className="mb-16">
+          <GalleryGrid slots={aboutSlots} columns={2} />
         </div>
-      </section>
 
-      {/* Values Section */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="mb-12 text-center"
-          >
-            <h2 className="mb-4 font-serif text-4xl font-bold md:text-5xl">
-              <span className="from-davinci-gold to-davinci-gold-light bg-linear-to-r bg-clip-text text-transparent">
-                Our Values
-              </span>
-            </h2>
-          </motion.div>
+        <div className="mb-20 grid gap-8 md:grid-cols-2">
+          <article className="section-edge border-t pt-6">
+            <h3 className="text-theme-heading mb-4 font-serif text-2xl font-medium">Venue & catering</h3>
+            <p className="text-theme-body mb-4 text-sm leading-relaxed">
+              Halls accommodate 50 to 1,000 guests with flexible seating, professional lighting, sound, and a
+              full-service bar. Italian and South Asian menus are available across all event types.
+            </p>
+            <p className="text-theme-body text-sm leading-relaxed">
+              Layout, décor, and service are coordinated with your event requirements.
+            </p>
+          </article>
 
-          <div className="mx-auto grid max-w-5xl grid-cols-1 gap-8 md:grid-cols-3">
-            {[
-              {
-                title: 'Elegance',
-                description:
-                  'We maintain the highest standards of elegance and sophistication in every aspect of our service.',
-              },
-              {
-                title: 'Excellence',
-                description: 'We strive for excellence in everything we do, from venue design to culinary offerings.',
-              },
-              {
-                title: 'Experience',
-                description: 'We are dedicated to creating unforgettable experiences that exceed your expectations.',
-              },
-            ].map((value, index) => (
-              <motion.div
-                key={value.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.2 }}
-                className="premium-card rounded-2xl p-8 text-center"
-              >
-                <h3 className="text-davinci-gold mb-4 font-serif text-2xl font-bold">{value.title}</h3>
-                <p className="text-gray-300">{value.description}</p>
-              </motion.div>
-            ))}
-          </div>
+          <article className="section-edge border-t pt-6">
+            <h3 className="text-theme-heading mb-4 font-serif text-2xl font-medium">Event types</h3>
+            <p className="text-theme-body mb-4 text-sm leading-relaxed">
+              Weddings, corporate meetings, South Asian celebrations, social gatherings, fundraisers, and trade shows
+              across the Greater Toronto Area.
+            </p>
+            <p className="text-theme-body text-sm leading-relaxed">
+              Located at 5732 Highway 7, Woodbridge, with ample on-site parking.
+            </p>
+          </article>
         </div>
-      </section>
+
+        <SectionHeading eyebrow="Amenities" title="Included with every booking" align="left" />
+        <div className="grid gap-8 md:grid-cols-3">
+          {[
+            { title: 'Halls & AV', description: 'Configurable rooms, lighting, and sound.' },
+            { title: 'Catering & bar', description: 'In-house kitchen and full bar service.' },
+            { title: 'Coordination', description: 'On-site staff for setup and event flow.' },
+          ].map((item) => (
+            <div key={item.title} className="section-edge border-t pt-5">
+              <h3 className="text-theme-heading mb-2 font-serif text-lg font-medium">{item.title}</h3>
+              <p className="text-theme-muted text-sm">{item.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }

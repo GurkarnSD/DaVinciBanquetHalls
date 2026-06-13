@@ -1,27 +1,28 @@
-'use client';
-
+import type { MediaSlot } from '@/config/media-slots';
+import MediaPlaceholder from './MediaPlaceholder';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
 
 interface EventPageHeroProps {
-  imageSrc: string;
-  imageAlt: string;
+  slot: MediaSlot;
   title: string;
   subtitle: string;
 }
 
-export default function EventPageHero({ imageSrc, imageAlt, title, subtitle }: EventPageHeroProps) {
+export default function EventPageHero({ slot, title, subtitle }: EventPageHeroProps) {
   return (
-    <section className="relative mb-16 h-96">
-      <div className="absolute inset-0">
-        <Image src={imageSrc} alt={imageAlt} fill className="object-cover" sizes="100vw" priority quality={85} />
-        <div className="bg-davinci-charcoal/40 absolute inset-0" />
-      </div>
-      <div className="relative z-10 flex h-full items-center justify-center px-4 text-center text-white">
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-          <h1 className="mb-4 font-serif text-5xl font-bold md:text-6xl">{title}</h1>
-          <p className="text-center text-xl md:text-2xl">{subtitle}</p>
-        </motion.div>
+    <section className="section-edge relative mb-14 border-b">
+      <div className="media-frame relative aspect-[21/9] max-h-[420px] w-full md:aspect-[21/8]">
+        {slot.src ? (
+          <Image src={slot.src} alt={slot.title} fill className="object-cover" sizes="100vw" priority quality={85} />
+        ) : (
+          <MediaPlaceholder title={slot.title} aspect={slot.aspect} category={slot.category} slotId={slot.id} />
+        )}
+        <div className="media-scrim absolute inset-0" />
+        <div className="on-media absolute inset-0 flex flex-col justify-end p-6 md:p-10">
+          <p className="eyebrow mb-3">Events</p>
+          <h1 className="mb-2 font-serif text-4xl font-medium md:text-5xl">{title}</h1>
+          <p className="max-w-xl text-sm md:text-base">{subtitle}</p>
+        </div>
       </div>
     </section>
   );

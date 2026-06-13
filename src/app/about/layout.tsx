@@ -7,7 +7,7 @@ export const metadata: Metadata = generateMetadata({
   description:
     'Learn about Da Vinci Banquet Halls - our mission, values, and commitment to creating extraordinary experiences for your most important celebrations. Serving Woodbridge, Brampton, Mississauga, Vaughan, and the Greater Toronto Area.',
   path: '/about',
-  image: '/assets/images/hero/about.jpg',
+  image: '/assets/images/logos/logo.png',
 });
 
 export default function AboutLayout({ children }: { children: React.ReactNode }) {

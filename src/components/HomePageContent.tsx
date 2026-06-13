@@ -1,263 +1,106 @@
 'use client';
 
 import Link from 'next/link';
-import VideoBackground from '@/components/VideoBackground';
 import ImageCarousel from '@/components/ImageCarousel';
-import { carouselImages } from '@/config/carousel-images';
-import { motion } from 'framer-motion';
-import { FaBuilding, FaUtensils, FaStar } from 'react-icons/fa';
+import VerticalVideoReel from '@/components/VerticalVideoReel';
+import SectionHeading from '@/components/SectionHeading';
+import CTASection from '@/components/CTASection';
+import MediaPlaceholder from '@/components/MediaPlaceholder';
+import { carouselSlots, homeHeroSlot } from '@/config/media-slots';
+import { homeReelVideoSlots } from '@/config/video-slots';
 
 export default function HomePageContent() {
   return (
-    <div className="relative">
-      {/* Hero Section with Video Background */}
-      <VideoBackground fallbackImage="/assets/images/landing/fallback.jpg">
-        <div className="relative z-10 px-4 text-center text-white">
-          <div className="relative z-10 mx-auto max-w-5xl py-32 md:py-40">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="mb-8"
-            >
-              <h1 className="text-shadow:0_4px_20px_rgba(0,0,0,0.8),_0_2px_8px_rgba(0,0,0,0.6) font-serif text-5xl leading-relaxed font-light text-white italic md:text-7xl lg:text-8xl">
-                &ldquo;Simplicity is the
-                <br className="hidden md:block" /> Ultimate Sophistication.&rdquo;
+    <div>
+      <section className="section-edge relative min-h-[88vh] border-b">
+        <div className="absolute inset-0">
+          <MediaPlaceholder
+            title={homeHeroSlot.title}
+            aspect={homeHeroSlot.aspect}
+            category={homeHeroSlot.category}
+            slotId={homeHeroSlot.id}
+          />
+        </div>
+        <div className="media-scrim absolute inset-0" />
+        <div className="on-media relative z-10 flex min-h-[88vh] items-center px-4 pt-24 pb-16 sm:pt-28 sm:pb-20">
+          <div className="container mx-auto">
+            <div className="max-w-2xl">
+              <p className="eyebrow mb-6">Woodbridge, Ontario</p>
+              <h1 className="mb-6 font-serif text-4xl leading-[1.12] font-medium md:text-5xl lg:text-6xl">
+                Banquet halls for weddings, corporate events, and private celebrations.
               </h1>
-            </motion.div>
-            <motion.p
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-shadow:0_2px_12px_rgba(0,0,0,0.7) mb-12 text-center text-xl font-light tracking-wider text-gray-100 md:text-2xl"
-            >
-              — Leonardo da Vinci
-            </motion.p>
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="flex flex-col justify-center gap-4 sm:flex-row"
-            >
-              <Link
-                href="/book"
-                className="group from-davinci-gold to-davinci-gold-light text-davinci-dark hover:shadow-davinci-gold/50 relative overflow-hidden rounded-full bg-linear-to-r px-8 py-4 text-lg font-medium transition-all duration-300 hover:scale-105 hover:shadow-2xl"
-              >
-                <span className="relative z-10">Book Your Event</span>
-              </Link>
-              <Link
-                href="/venue"
-                className="border-davinci-gold bg-davinci-gold/10 hover:bg-davinci-gold/20 rounded-full border-2 px-8 py-4 text-lg font-medium text-white backdrop-blur-sm transition-all duration-300 hover:scale-105"
-              >
-                Explore Our Venue
-              </Link>
-            </motion.div>
-          </div>
-        </div>
-      </VideoBackground>
-
-      {/* Features Section */}
-      <section className="relative py-24">
-        <div className="via-davinci-dark absolute inset-0 bg-linear-to-b from-transparent to-transparent" />
-        <div className="relative z-10 container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="mb-16 text-center"
-          >
-            <h2 className="mb-4 font-serif text-4xl font-bold md:text-5xl">
-              <span className="from-davinci-gold to-davinci-gold-light bg-linear-to-r bg-clip-text text-transparent">
-                Experience Excellence
-              </span>
-            </h2>
-            <p className="mx-auto max-w-2xl text-center text-xl text-gray-400">
-              From intimate gatherings to grand celebrations, we provide exceptional service and elegant spaces.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-            {[
-              {
-                title: 'Elegant Venues',
-                description: 'Beautifully designed spaces that accommodate events of all sizes',
-                icon: FaBuilding,
-                gradient: 'from-[#c9a961] to-[#e5c97a]',
-              },
-              {
-                title: 'Exquisite Menus',
-                description: 'Culinary excellence with Italian and South Asian cuisine',
-                icon: FaUtensils,
-                gradient: 'from-[#1a5f7a] to-[#2a7a9a]',
-              },
-              {
-                title: 'Memorable Events',
-                description: 'Creating unforgettable moments for your special occasions',
-                icon: FaStar,
-                gradient: 'from-[#c9a961] to-[#e5c97a]',
-              },
-            ].map((feature, index) => {
-              const Icon = feature.icon;
-              return (
-                <motion.div
-                  key={feature.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.2 }}
-                  className="premium-card group relative overflow-hidden rounded-2xl p-8 text-center"
-                >
-                  <div
-                    className={`absolute inset-0 bg-linear-to-br ${feature.gradient} opacity-0 transition-opacity duration-300 group-hover:opacity-10`}
-                  />
-                  <div className="relative z-10">
-                    <div className="mb-6 flex justify-center">
-                      <div className={`rounded-full bg-linear-to-br ${feature.gradient} p-4`}>
-                        <Icon className="h-8 w-8 text-white" />
-                      </div>
-                    </div>
-                    <h3 className="mb-3 font-serif text-2xl font-bold">{feature.title}</h3>
-                    <p className="text-gray-400">{feature.description}</p>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Gallery Preview Section - Hidden for now */}
-      {/* <section className="relative py-24">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="mb-12 text-center"
-          >
-            <h2 className="mb-4 font-serif text-4xl font-bold md:text-5xl">
-              <span className="from-davinci-gold to-davinci-gold-light bg-linear-to-r bg-clip-text text-transparent">
-                Our Venues
-              </span>
-            </h2>
-            <p className="mx-auto max-w-2xl text-center text-xl text-gray-200">Step into elegance and sophistication</p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {[1, 2, 3].map((i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="group border-davinci-gold relative rounded-2xl border-2"
-              >
-                <ImagePlaceholder
-                  height={300}
-                  label={`Venue Image ${i}`}
-                  className="h-[300px] transition-transform duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 rounded-2xl bg-linear-to-t from-black/80 via-black/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                <div className="absolute right-0 bottom-0 left-0 rounded-b-2xl p-6 text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                  <h3 className="font-serif text-2xl font-bold">Elegant Space {i}</h3>
-                  <p className="text-sm text-gray-300">Perfect for your celebration</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="mt-12 text-center"
-          >
-            <Link
-              href="/gallery"
-              className="border-davinci-gold bg-davinci-gold/10 text-davinci-gold hover:bg-davinci-gold/20 inline-block rounded-full border-2 px-8 py-4 text-lg font-medium transition-all duration-300 hover:scale-105"
-            >
-              View Full Gallery
-            </Link>
-          </motion.div>
-        </div>
-      </section> */}
-
-      {/* Image Carousel Section */}
-      <section className="py-20">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="mb-12 text-center"
-          >
-            <h2 className="mb-4 font-serif text-4xl font-bold text-white md:text-5xl">
-              <span className="from-davinci-gold to-davinci-gold-light bg-linear-to-r bg-clip-text text-transparent">
-                Our Spaces
-              </span>
-            </h2>
-            <p className="mx-auto max-w-2xl text-center text-xl text-gray-200">
-              Take a glimpse into our elegant banquet halls
-            </p>
-          </motion.div>
-          <div className="mx-auto max-w-6xl">
-            <div className="h-[500px] overflow-hidden rounded-lg shadow-2xl">
-              <ImageCarousel images={carouselImages} />
+              <p className="lead mb-10 max-w-lg">
+                Renovated halls, full-service catering, and flexible room configurations for 50 to 1,000 guests.
+              </p>
+              <div className="flex flex-col gap-3 sm:flex-row">
+                <Link href="/book" className="btn-primary px-7 py-3">
+                  Book Your Event
+                </Link>
+                <Link href="/venue" className="btn-secondary px-7 py-3">
+                  View the Venue
+                </Link>
+              </div>
             </div>
           </div>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="mt-12 text-center"
-          >
-            <Link
-              href="/gallery"
-              className="border-davinci-gold bg-davinci-gold/10 text-davinci-gold hover:bg-davinci-gold/20 inline-block rounded-full border-2 px-8 py-4 text-lg font-medium transition-all duration-300 hover:scale-105"
-            >
-              View Full Gallery
-            </Link>
-          </motion.div>
         </div>
       </section>
 
-      {/* Call to Action */}
-      <section className="relative mb-0 overflow-hidden py-24">
-        <div className="from-davinci-gold via-davinci-gold-light to-davinci-gold absolute inset-0 bg-linear-to-br" />
-        <div className="relative z-10 container mx-auto px-4 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="mb-6 font-serif text-4xl font-bold md:text-5xl">Ready to Plan Your Event?</h2>
-            <p className="mx-auto mb-8 max-w-2xl text-center text-xl text-gray-100">
-              Contact us today to discuss your celebration and let us help make it unforgettable.
-            </p>
-            <div className="flex flex-col justify-center gap-4 sm:flex-row">
-              <Link
-                href="/contact"
-                className="group bg-davinci-dark hover:shadow-davinci-dark/50 relative overflow-hidden rounded-full px-8 py-4 text-lg font-medium text-white transition-all duration-300 hover:scale-105 hover:shadow-2xl"
-              >
-                <span className="relative z-10">Get in Touch</span>
-              </Link>
-              <Link
-                href="/book"
-                className="text-davinci-dark rounded-full bg-white px-8 py-4 text-lg font-medium transition-all duration-300 hover:scale-105 hover:bg-gray-100"
-              >
-                Book Your Event
-              </Link>
+      <section className="section-edge border-b py-20 md:py-24">
+        <div className="container mx-auto grid gap-12 px-4 md:grid-cols-3 md:gap-8">
+          {[
+            {
+              title: 'The Space',
+              description: 'Six configurable halls, professional lighting, sound, and flexible seating.',
+            },
+            { title: 'The Menu', description: 'Italian and South Asian cuisine with packages for every event type.' },
+            {
+              title: 'The Service',
+              description: 'On-site coordination, bar service, and catering from setup through service.',
+            },
+          ].map((item) => (
+            <div key={item.title} className="section-edge accent-top border-t pt-6">
+              <h3 className="text-theme-heading mb-3 font-serif text-xl font-medium">{item.title}</h3>
+              <p className="text-theme-body text-sm leading-relaxed">{item.description}</p>
             </div>
-          </motion.div>
+          ))}
         </div>
       </section>
+
+      <VerticalVideoReel
+        eyebrow="Events"
+        title="Recent celebrations"
+        subtitle="Weddings, cultural events, and corporate functions across our halls."
+        slots={homeReelVideoSlots}
+      />
+
+      <section className="section-edge border-t py-16 md:py-20">
+        <div className="container mx-auto px-4">
+          <SectionHeading
+            eyebrow="Venue"
+            title="Our halls"
+            subtitle="Interior and exterior views of Da Vinci Banquet Halls."
+          />
+          <div className="relative mx-auto max-w-5xl">
+            <div className="media-frame relative h-[360px] md:h-[440px]">
+              <ImageCarousel slots={carouselSlots} />
+            </div>
+          </div>
+          <div className="mt-8 flex justify-center">
+            <Link href="/gallery" className="btn-text">
+              View gallery
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <CTASection
+        title="Plan your event"
+        description="Share your date, guest count, and event type. We will outline hall options and menu selections."
+        primaryLabel="Book a consultation"
+        primaryHref="/book"
+        secondaryLabel="Contact us"
+        secondaryHref="/contact"
+      />
     </div>
   );
 }

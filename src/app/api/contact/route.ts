@@ -23,7 +23,7 @@ export async function POST(request: Request) {
     const body = (await request.json()) as unknown;
 
     // Validate form data
-    const validatedData = bookingSchema.parse(body as Record<string, unknown>);
+    const validatedData = bookingSchema.parse(body);
 
     const { name, email, phone, message, eventType, date, guests } = validatedData;
 

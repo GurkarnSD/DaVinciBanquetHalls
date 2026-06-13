@@ -1,178 +1,104 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
-import { motion, AnimatePresence } from 'framer-motion';
 import { HiChevronLeft, HiChevronRight } from 'react-icons/hi';
+import type { MediaSlot } from '@/config/media-slots';
+import MediaPlaceholder from './MediaPlaceholder';
 
 interface ImageCarouselProps {
-  images: string[];
+  slots: MediaSlot[];
   autoPlayInterval?: number;
   className?: string;
 }
 
-export default function ImageCarousel({ images, autoPlayInterval = 8000, className = '' }: ImageCarouselProps) {
+export default function ImageCarousel({ slots, autoPlayInterval = 6000, className = '' }: ImageCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [direction, setDirection] = useState(0); // -1 for left, 1 for right
-  const [isNavigating, setIsNavigating] = useState(false);
-  const intervalRef = useRef<NodeJS.Timeout | null>(null);
-  const navigationTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  const goTo = useCallback(
+    (index: number) => {
+      if (slots.length === 0) return;
+      const next = ((index % slots.length) + slots.length) % slots.length;
+      setCurrentIndex(next);
+    },
+    [slots.length]
+  );
+
+  const goToNext = useCallback(() => goTo(currentIndex + 1), [currentIndex, goTo]);
+  const goToPrevious = useCallback(() => goTo(currentIndex - 1), [currentIndex, goTo]);
 
   useEffect(() => {
-    if (images.length <= 1) return;
+    if (slots.length <= 1) return;
 
-    const startTimer = () => {
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current);
-      }
-      intervalRef.current = setInterval(() => {
-        setDirection(1);
-        setCurrentIndex((prev) => (prev + 1) % images.length);
-      }, autoPlayInterval);
-    };
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % slots.length);
+    }, autoPlayInterval);
 
-    startTimer();
+    return () => clearInterval(timer);
+  }, [slots.length, autoPlayInterval]);
 
-    return () => {
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current);
-      }
-      if (navigationTimeoutRef.current) {
-        clearTimeout(navigationTimeoutRef.current);
-      }
-    };
-  }, [images.length, autoPlayInterval]);
-
-  const resetTimer = () => {
-    if (intervalRef.current) {
-      clearInterval(intervalRef.current);
-    }
-    if (images.length > 1) {
-      intervalRef.current = setInterval(() => {
-        setDirection(1);
-        setCurrentIndex((prev) => (prev + 1) % images.length);
-      }, autoPlayInterval);
-    }
-  };
-
-  const goToSlide = (index: number) => {
-    setDirection(index > currentIndex ? 1 : -1);
-    setCurrentIndex(index);
-    resetTimer();
-  };
-
-  const goToPrevious = () => {
-    if (isNavigating) return;
-
-    setIsNavigating(true);
-    setDirection(-1);
-    setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
-    resetTimer();
-
-    if (navigationTimeoutRef.current) {
-      clearTimeout(navigationTimeoutRef.current);
-    }
-    navigationTimeoutRef.current = setTimeout(() => {
-      setIsNavigating(false);
-    }, 500);
-  };
-
-  const goToNext = () => {
-    if (isNavigating) return;
-
-    setIsNavigating(true);
-    setDirection(1);
-    setCurrentIndex((prev) => (prev + 1) % images.length);
-    resetTimer();
-
-    if (navigationTimeoutRef.current) {
-      clearTimeout(navigationTimeoutRef.current);
-    }
-    navigationTimeoutRef.current = setTimeout(() => {
-      setIsNavigating(false);
-    }, 500);
-  };
-
-  if (images.length === 0) return null;
-
-  const slideVariants = {
-    enter: (direction: number) => ({
-      x: direction > 0 ? '100%' : '-100%',
-      opacity: 1,
-    }),
-    center: {
-      x: 0,
-      opacity: 1,
-    },
-    exit: (direction: number) => ({
-      x: direction > 0 ? '-100%' : '100%',
-      opacity: 1,
-    }),
-  };
+  if (slots.length === 0) return null;
 
   return (
-    <div className={`relative h-full w-full overflow-hidden bg-black ${className}`}>
-      <AnimatePresence initial={false} custom={direction}>
-        <motion.div
-          key={currentIndex}
-          custom={direction}
-          variants={slideVariants}
-          initial="enter"
-          animate="center"
-          exit="exit"
-          transition={{
-            x: { type: 'spring', stiffness: 300, damping: 30 },
-            opacity: { duration: 0.3 },
-          }}
-          className="absolute inset-0"
+    <div className={`bg-theme-media relative h-full w-full overflow-hidden ${className}`}>
+      {slots.map((slot, index) => (
+        <div
+          key={slot.id}
+          className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
+            index === currentIndex ? 'z-10 opacity-100' : 'z-0 opacity-0'
+          }`}
+          aria-hidden={index !== currentIndex}
         >
-          <Image
-            src={images[currentIndex] ?? '/assets/images/slider-1.jpg'}
-            alt={`Slide ${currentIndex + 1}`}
-            fill
-            className="object-cover"
-            sizes="100vw"
-            priority={currentIndex === 0}
-            quality={currentIndex === 0 ? 85 : 80}
-            loading={currentIndex === 0 ? 'eager' : 'lazy'}
-          />
-        </motion.div>
-      </AnimatePresence>
+          {slot.src ? (
+            <Image
+              src={slot.src}
+              alt={slot.title}
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 1200px"
+              priority={index === 0}
+              quality={index === 0 ? 85 : 80}
+            />
+          ) : (
+            <MediaPlaceholder title={slot.title} aspect={slot.aspect} category={slot.category} slotId={slot.id} />
+          )}
+        </div>
+      ))}
 
-      {/* Navigation Arrows */}
-      {images.length > 1 && (
+      {slots.length > 1 && (
         <>
           <button
+            type="button"
             onClick={goToPrevious}
-            className="absolute top-1/2 left-4 z-10 -translate-y-1/2 rounded-full bg-white/20 p-2 text-white backdrop-blur-sm transition-all hover:bg-white/40"
+            className="absolute top-1/2 left-3 z-20 -translate-y-1/2 border border-white/20 bg-black/50 p-2 text-white transition-colors hover:bg-black/70"
             aria-label="Previous slide"
           >
-            <HiChevronLeft className="h-6 w-6" />
+            <HiChevronLeft className="h-5 w-5" />
           </button>
           <button
+            type="button"
             onClick={goToNext}
-            className="absolute top-1/2 right-4 z-10 -translate-y-1/2 rounded-full bg-white/20 p-2 text-white backdrop-blur-sm transition-all hover:bg-white/40"
+            className="absolute top-1/2 right-3 z-20 -translate-y-1/2 border border-white/20 bg-black/50 p-2 text-white transition-colors hover:bg-black/70"
             aria-label="Next slide"
           >
-            <HiChevronRight className="h-6 w-6" />
+            <HiChevronRight className="h-5 w-5" />
           </button>
-        </>
-      )}
 
-      {/* Dots Indicator */}
-      {images.length > 1 && (
-        <div className="absolute bottom-4 left-1/2 z-10 flex -translate-x-1/2 space-x-2">
-          {images.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => goToSlide(index)}
-              className={`h-2 w-2 rounded-full transition-all ${
-                index === currentIndex ? 'w-8 bg-white' : 'bg-white/50 hover:bg-white/75'
-              }`}
-              aria-label={`Go to slide ${index + 1}`}
-            />
-          ))}
-        </div>
+          <div className="absolute bottom-4 left-1/2 z-20 flex -translate-x-1/2 gap-2">
+            {slots.map((slot, index) => (
+              <button
+                key={slot.id}
+                type="button"
+                onClick={() => goTo(index)}
+                className={`h-1.5 transition-all ${
+                  index === currentIndex ? 'bg-davinci-gold w-8' : 'hover:bg-davinci-gold/60 w-1.5 bg-white/40'
+                }`}
+                aria-label={`Go to slide ${index + 1}`}
+                aria-current={index === currentIndex}
+              />
+            ))}
+          </div>
+        </>
       )}
     </div>
   );

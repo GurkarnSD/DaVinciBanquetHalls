@@ -4,106 +4,85 @@ import { FaInstagram } from 'react-icons/fa';
 
 export default function Footer() {
   return (
-    <footer className="border-davinci-gold/20 from-davinci-dark to-davinci-dark-light relative border-t bg-linear-to-b text-gray-300">
-      <div className="relative z-10 container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
-          {/* Logo and Description */}
-          <div className="col-span-1 md:col-span-1">
-            <Link href="/" className="mb-4 inline-block">
+    <footer
+      className="section-edge border-t transition-colors duration-200"
+      style={{ backgroundColor: 'var(--bg-page)', borderColor: 'var(--border)' }}
+    >
+      <div className="container mx-auto px-4 py-14">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-4">
+          <div>
+            <Link href="/" className="mb-5 inline-block">
               <Image
                 src="/assets/images/logos/logo.png"
                 alt="Da Vinci Banquet Halls"
                 width={150}
                 height={75}
-                className="h-16 w-auto"
+                className="site-logo h-12 w-auto"
               />
             </Link>
-            <p className="text-sm text-gray-400">Elegant banquet halls for your most important celebrations.</p>
-            <div className="from-davinci-gold to-davinci-gold-light mt-4 h-1 w-20 bg-linear-to-r" />
+            <p className="text-theme-body max-w-xs text-sm leading-relaxed">
+              Banquet halls for weddings, corporate events, and private celebrations in Woodbridge.
+            </p>
           </div>
 
-          {/* Contact Information */}
-          <div className="col-span-1">
-            <h3 className="mb-4 text-lg font-semibold text-white">Contact Us</h3>
-            <div className="space-y-2 text-sm">
+          <div>
+            <h3 className="footer-heading">Contact</h3>
+            <div className="text-theme-body space-y-2 text-sm">
               <p>
-                <span className="font-medium">Address:</span>
-                <br />
                 5732 Highway 7
                 <br />
-                Woodbridge, ON, L4L3A2
+                Woodbridge, ON L4L 3A2
               </p>
               <p>
-                <span className="font-medium">Phone:</span>{' '}
-                <a href="tel:905-851-3131" className="transition-colors hover:text-[#C9A961]">
+                <a href="tel:905-851-3131" className="link-subtle">
                   905-851-3131
                 </a>
               </p>
               <p>
-                <span className="font-medium">Email:</span>{' '}
-                <a href="mailto:contact@davincibanquethalls.com" className="transition-colors hover:text-[#C9A961]">
+                <a href="mailto:contact@davincibanquethalls.com" className="link-subtle">
                   contact@davincibanquethalls.com
                 </a>
               </p>
             </div>
           </div>
 
-          {/* Hours */}
-          <div className="col-span-1">
-            <h3 className="mb-4 text-lg font-semibold text-white">Hours</h3>
-            <div className="space-y-1 text-sm">
-              <p>Monday: 11:00 AM - 8:00 PM</p>
-              <p>Tuesday: 11:00 AM - 8:00 PM</p>
-              <p>Wednesday: 11:00 AM - 8:00 PM</p>
-              <p>Thursday: 11:00 AM - 8:00 PM</p>
-              <p>Friday: 11:00 AM - 5:00 PM</p>
-              <p>Saturday: 11:00 AM - 5:00 PM</p>
-              <p>Sunday: 11:00 AM - 5:00 PM</p>
+          <div>
+            <h3 className="footer-heading">Hours</h3>
+            <div className="text-theme-body space-y-1 text-sm">
+              <p>Mon – Thu: 11 AM – 8 PM</p>
+              <p>Fri – Sun: 11 AM – 5 PM</p>
             </div>
           </div>
 
-          {/* Quick Links & Social */}
-          <div className="col-span-1">
-            <h3 className="mb-4 text-lg font-semibold text-white">Quick Links</h3>
-            <div className="mb-6 space-y-2 text-sm">
-              <Link href="/about" className="block transition-colors hover:text-[#C9A961]">
-                About Us
-              </Link>
-              <Link href="/venue" className="block transition-colors hover:text-[#C9A961]">
-                Venue Info
-              </Link>
-              <Link href="/menus" className="block transition-colors hover:text-[#C9A961]">
-                Menus
-              </Link>
-              <Link href="/events" className="block transition-colors hover:text-[#C9A961]">
-                Events
-              </Link>
-              <Link href="/gallery" className="block transition-colors hover:text-[#C9A961]">
-                Gallery
-              </Link>
+          <div>
+            <h3 className="footer-heading">Explore</h3>
+            <div className="space-y-2">
+              {[
+                { href: '/venue', label: 'Venue' },
+                { href: '/menus', label: 'Menus' },
+                { href: '/events', label: 'Events' },
+                { href: '/gallery', label: 'Gallery' },
+                { href: '/book', label: 'Book' },
+              ].map((link) => (
+                <Link key={link.href} href={link.href} className="footer-link">
+                  {link.label}
+                </Link>
+              ))}
             </div>
-            <div className="flex space-x-4">
-              <a
-                href="https://www.instagram.com/davinci.banquethalls/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="transition-colors hover:text-[#C9A961]"
-                aria-label="Instagram"
-              >
-                <FaInstagram className="h-6 w-6" />
-              </a>
-            </div>
-            <Link
-              href="/book"
-              className="from-davinci-gold to-davinci-gold-light text-davinci-dark hover:from-davinci-gold-light hover:to-davinci-gold mt-6 inline-block rounded-full bg-linear-to-r px-6 py-2 text-sm font-medium transition-all duration-200 hover:scale-105"
+            <a
+              href="https://www.instagram.com/davinci.banquethalls/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="footer-link mt-5 inline-flex"
+              aria-label="Instagram"
             >
-              Book Your Event
-            </Link>
+              <FaInstagram className="h-4 w-4" />
+            </a>
           </div>
         </div>
 
-        <div className="border-davinci-gold/20 mt-8 border-t pt-8 text-center text-sm text-gray-500">
-          <p suppressHydrationWarning>&copy; {new Date().getFullYear()} Da Vinci Banquet Halls. All rights reserved.</p>
+        <div className="section-edge text-theme-muted mt-12 border-t pt-6 text-center text-xs">
+          <p suppressHydrationWarning>&copy; {new Date().getFullYear()} Da Vinci Banquet Halls</p>
         </div>
       </div>
     </footer>

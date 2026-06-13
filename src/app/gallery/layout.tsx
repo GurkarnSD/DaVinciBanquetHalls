@@ -7,7 +7,7 @@ export const metadata: Metadata = generateMetadata({
   description:
     'View our photo gallery showcasing elegant venues, beautiful decor, and memorable celebrations at Da Vinci Banquet Halls. Serving Woodbridge, Brampton, Mississauga, Vaughan, and the Greater Toronto Area.',
   path: '/gallery',
-  image: '/assets/images/gallery/gallery-1.jpg',
+  image: '/assets/images/logos/logo.png',
 });
 
 export default function GalleryLayout({ children }: { children: React.ReactNode }) {

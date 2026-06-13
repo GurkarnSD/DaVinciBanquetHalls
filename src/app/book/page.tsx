@@ -1,62 +1,61 @@
 'use client';
 
 import ContactForm from '@/components/ContactForm';
-import { motion } from 'framer-motion';
+import PageHero from '@/components/PageHero';
+
+const STEPS = [
+  { step: '1', title: 'Submit this form', detail: 'Include your date, guest count, and event type.' },
+  { step: '2', title: 'We confirm availability', detail: 'Response within 24–48 hours by email or phone.' },
+  { step: '3', title: 'Venue tour', detail: 'Walk the halls and review floorplan options.' },
+  { step: '4', title: 'Menu & booking', detail: 'Finalize hall, catering, and deposit details.' },
+];
 
 export default function BookPage() {
   return (
-    <div className="min-h-screen pt-24 pb-16">
-      <div className="container mx-auto px-4">
-        <div className="mx-auto max-w-4xl">
-          {/* Header */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="mb-12 text-center"
-          >
-            <h1 className="mb-6 font-serif text-5xl font-bold text-white md:text-6xl">
-              <span className="from-davinci-gold to-davinci-gold-light bg-linear-to-r bg-clip-text text-transparent">
-                Book Your Event
-              </span>
-            </h1>
-            <p className="mx-auto max-w-2xl text-center text-xl text-gray-300">
-              Reserve your date and let us help create your perfect celebration. Fill out the form below and we&apos;ll
-              get back to you soon.
-            </p>
-          </motion.div>
+    <div className="page-shell pb-16">
+      <div className="container mx-auto max-w-5xl px-4">
+        <PageHero
+          eyebrow="Book"
+          title="Reserve your date"
+          description="Submit your event details below. Our team will confirm availability and schedule a tour."
+        />
 
-          {/* Booking Form */}
-          <ContactForm title="Reservation Request" showEventType={true} showDate={true} showGuests={true} />
+        <div className="grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
+          <ContactForm title="Reservation request" variant="booking" />
 
-          {/* Additional Info */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="premium-card mt-12 rounded-2xl p-8"
-          >
-            <h2 className="mb-4 font-serif text-2xl font-bold text-white">What Happens Next?</h2>
-            <ul className="space-y-3 text-gray-300">
-              <li className="flex items-start">
-                <span className="text-davinci-gold mr-3">✓</span>
-                <span>We&apos;ll review your request and contact you within 24-48 hours</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-davinci-gold mr-3">✓</span>
-                <span>We&apos;ll schedule a venue tour at your convenience</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-davinci-gold mr-3">✓</span>
-                <span>We&apos;ll work with you to customize your event details</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-davinci-gold mr-3">✓</span>
-                <span>We&apos;ll confirm your booking and help you plan every detail</span>
-              </li>
-            </ul>
-          </motion.div>
+          <aside className="space-y-6">
+            <div className="surface p-8">
+              <h2 className="text-theme-heading mb-6 font-serif text-xl font-medium">What happens next</h2>
+              <ol className="space-y-5">
+                {STEPS.map((item) => (
+                  <li key={item.step} className="flex gap-4">
+                    <span className="border-theme text-theme-heading flex h-8 w-8 shrink-0 items-center justify-center border text-xs font-medium">
+                      {item.step}
+                    </span>
+                    <div>
+                      <p className="text-theme-heading text-sm font-medium">{item.title}</p>
+                      <p className="text-theme-body text-sm">{item.detail}</p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+            </div>
+
+            <div className="surface text-theme-body p-8 text-sm">
+              <p className="text-theme-heading mb-1 font-medium">Questions before booking?</p>
+              <p className="mb-3">Call or email us directly.</p>
+              <p>
+                <a href="tel:905-851-3131" className="text-theme-heading font-medium hover:underline">
+                  905-851-3131
+                </a>
+              </p>
+              <p>
+                <a href="mailto:contact@davincibanquethalls.com" className="hover:underline">
+                  contact@davincibanquethalls.com
+                </a>
+              </p>
+            </div>
+          </aside>
         </div>
       </div>
     </div>

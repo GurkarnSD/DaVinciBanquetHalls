@@ -1,22 +1,36 @@
 'use client';
 
 import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { HiCheck } from 'react-icons/hi';
+import { HiCheck, HiPhone } from 'react-icons/hi';
+import Link from 'next/link';
 
 interface ContactFormProps {
   title?: string;
-  showEventType?: boolean;
-  showDate?: boolean;
-  showGuests?: boolean;
+  variant?: 'contact' | 'booking';
 }
 
-export default function ContactForm({
-  title = 'Book Your Event',
-  showEventType = false,
-  showDate = false,
-  showGuests = false,
-}: ContactFormProps) {
+const EVENT_TYPES = [
+  { value: 'wedding', label: 'Wedding' },
+  { value: 'corporate', label: 'Corporate' },
+  { value: 'social', label: 'Social event' },
+  { value: 'south-asian', label: 'South Asian celebration' },
+  { value: 'fundraiser', label: 'Fundraiser / trade show' },
+  { value: 'other', label: 'Other' },
+];
+
+const GUEST_RANGES = [
+  { value: '', label: 'Select guest count' },
+  { value: '50-120', label: '50 – 120 (Hall D)' },
+  { value: '80-260', label: '80 – 260 (Hall C)' },
+  { value: '150-380', label: '150 – 380 (Hall A or B/C)' },
+  { value: '320-550', label: '320 – 550 (Hall A & B)' },
+  { value: '500-1000', label: '500 – 1,000 (Hall A, B & C)' },
+  { value: 'unsure', label: 'Not sure yet' },
+];
+
+export default function ContactForm({ title, variant = 'contact' }: ContactFormProps) {
+  const isBooking = variant === 'booking';
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -28,93 +42,134 @@ export default function ContactForm({
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+    if (error) setError('');
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setError('');
 
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          ...formData,
-        }),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...formData }),
       });
 
-      const data = (await response.json()) as { error?: string; message?: string; success?: boolean };
+      const data = (await response.json()) as { error?: string };
+      if (!response.ok) throw new Error(data.error ?? 'Something went wrong. Please try again.');
 
-      if (!response.ok) {
-        throw new Error(data.error ?? 'Failed to submit form');
-      }
-
-      setIsSubmitting(false);
       setSubmitted(true);
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        message: '',
-        eventType: '',
-        date: '',
-        guests: '',
-      });
-
-      // Reset success message after 5 seconds
-      setTimeout(() => setSubmitted(false), 5000);
-    } catch (error) {
-      console.error('Form submission error:', error);
+      setFormData({ name: '', email: '', phone: '', message: '', eventType: '', date: '', guests: '' });
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Something went wrong. Please try again.');
+    } finally {
       setIsSubmitting(false);
-      alert('Failed to submit form. Please try again or contact us directly.');
     }
   };
 
+  const inputClass =
+    'w-full rounded-sm border border-theme bg-theme-input px-4 py-3 text-sm text-theme-heading placeholder:text-theme-faint focus:border-theme-strong focus:outline-none';
+
+  const labelClass = 'mb-1.5 block text-sm font-medium text-theme-heading';
+
   if (submitted) {
     return (
-      <motion.div
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        className="premium-card border-davinci-gold/30 rounded-2xl border p-8 text-center"
-      >
-        <div className="text-davinci-gold mb-4">
-          <HiCheck className="mx-auto h-16 w-16" />
+      <div className="surface p-8 md:p-10">
+        <div className="mx-auto max-w-md text-center">
+          <div className="border-theme bg-theme-elevated mx-auto mb-5 flex h-12 w-12 items-center justify-center rounded-full border">
+            <HiCheck className="text-theme-heading h-6 w-6" />
+          </div>
+          <h3 className="text-theme-heading mb-2 font-serif text-2xl font-medium">
+            {isBooking ? 'Request received' : 'Message sent'}
+          </h3>
+          <p className="text-theme-body mb-6 text-sm leading-relaxed">
+            {isBooking
+              ? 'Our team will review your date and guest count, then respond within 24–48 hours to confirm availability and schedule a tour.'
+              : 'We received your message and will respond within 24–48 hours.'}
+          </p>
+          <div className="surface text-theme-body mb-6 p-4 text-left text-sm">
+            <p className="text-theme-heading mb-1 font-medium">Need a faster response?</p>
+            <a
+              href="tel:905-851-3131"
+              className="hover:text-theme-heading inline-flex items-center gap-2 transition-colors"
+            >
+              <HiPhone className="h-4 w-4" />
+              905-851-3131
+            </a>
+          </div>
+          <button type="button" onClick={() => setSubmitted(false)} className="btn-text">
+            Submit another request
+          </button>
         </div>
-        <h3 className="mb-2 text-2xl font-bold text-white">Thank You!</h3>
-        <p className="text-center text-gray-300">Your message has been received. We&apos;ll get back to you soon.</p>
-      </motion.div>
+      </div>
     );
   }
 
+  const today = new Date().toISOString().split('T')[0];
+
   return (
-    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="premium-card rounded-2xl p-8">
-      <h2 className="mb-6 text-3xl font-bold text-white">{title}</h2>
-      <form onSubmit={handleSubmit} className="space-y-6">
-        <div>
-          <label htmlFor="name" className="mb-2 block text-sm font-medium text-gray-300">
-            Name *
-          </label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            required
-            value={formData.name}
-            onChange={handleChange}
-            className="bg-davinci-dark-light focus:border-davinci-gold focus:ring-davinci-gold w-full rounded-lg border border-gray-600 px-4 py-2 text-white placeholder-gray-500 focus:ring-2 focus:outline-none"
-          />
+    <div className="surface p-8 md:p-10">
+      {title && <h2 className="text-theme-heading mb-2 font-serif text-2xl font-medium">{title}</h2>}
+      <p className="text-theme-body mb-8 text-sm">
+        {isBooking
+          ? 'Fields marked with * are required. We typically respond within 24–48 hours.'
+          : 'Fill in your details and we will get back to you within 24–48 hours.'}
+      </p>
+
+      {error && (
+        <div className="alert-error mb-6 px-4 py-3 text-sm" role="alert">
+          {error} Or call{' '}
+          <a href="tel:905-851-3131" className="underline">
+            905-851-3131
+          </a>
+          .
+        </div>
+      )}
+
+      <form onSubmit={handleSubmit} className="space-y-6" noValidate>
+        <div className="grid gap-6 md:grid-cols-2">
+          <div>
+            <label htmlFor="name" className={labelClass}>
+              Full name *
+            </label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              required
+              autoComplete="name"
+              placeholder="Your name"
+              value={formData.name}
+              onChange={handleChange}
+              className={inputClass}
+            />
+          </div>
+          <div>
+            <label htmlFor="phone" className={labelClass}>
+              Phone *
+            </label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              required
+              autoComplete="tel"
+              placeholder="905-555-0100"
+              value={formData.phone}
+              onChange={handleChange}
+              className={inputClass}
+            />
+          </div>
         </div>
 
         <div>
-          <label htmlFor="email" className="mb-2 block text-sm font-medium text-gray-300">
+          <label htmlFor="email" className={labelClass}>
             Email *
           </label>
           <input
@@ -122,120 +177,136 @@ export default function ContactForm({
             id="email"
             name="email"
             required
+            autoComplete="email"
+            placeholder="you@email.com"
             value={formData.email}
             onChange={handleChange}
-            className="bg-davinci-dark-light focus:border-davinci-gold focus:ring-davinci-gold w-full rounded-lg border border-gray-600 px-4 py-2 text-white placeholder-gray-500 focus:ring-2 focus:outline-none"
+            className={inputClass}
           />
         </div>
 
-        <div>
-          <label htmlFor="phone" className="mb-2 block text-sm font-medium text-gray-300">
-            Phone *
-          </label>
-          <input
-            type="tel"
-            id="phone"
-            name="phone"
-            required
-            value={formData.phone}
-            onChange={handleChange}
-            className="bg-davinci-dark-light focus:border-davinci-gold focus:ring-davinci-gold w-full rounded-lg border border-gray-600 px-4 py-2 text-white placeholder-gray-500 focus:ring-2 focus:outline-none"
-          />
-        </div>
+        {isBooking && (
+          <div className="grid gap-6 md:grid-cols-2">
+            <div>
+              <label htmlFor="eventType" className={labelClass}>
+                Event type *
+              </label>
+              <select
+                id="eventType"
+                name="eventType"
+                required
+                value={formData.eventType}
+                onChange={handleChange}
+                className={inputClass}
+              >
+                <option value="">Select event type</option>
+                {EVENT_TYPES.map((type) => (
+                  <option key={type.value} value={type.value}>
+                    {type.label}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div>
+              <label htmlFor="date" className={labelClass}>
+                Preferred date *
+              </label>
+              <input
+                type="date"
+                id="date"
+                name="date"
+                required
+                min={today}
+                value={formData.date}
+                onChange={handleChange}
+                className={inputClass}
+              />
+            </div>
+          </div>
+        )}
 
-        {showEventType && (
+        {isBooking && (
           <div>
-            <label htmlFor="eventType" className="mb-2 block text-sm font-medium text-gray-300">
-              Event Type
+            <label htmlFor="guests" className={labelClass}>
+              Estimated guests
             </label>
-            <select
-              id="eventType"
-              name="eventType"
-              value={formData.eventType}
-              onChange={handleChange}
-              className="bg-davinci-dark-light focus:border-davinci-gold focus:ring-davinci-gold w-full rounded-lg border border-gray-600 px-4 py-2 text-white focus:ring-2 focus:outline-none"
-            >
-              <option value="" className="bg-davinci-dark-light text-white">
-                Select event type
-              </option>
-              <option value="wedding" className="bg-davinci-dark-light text-white">
-                Wedding
-              </option>
-              <option value="corporate" className="bg-davinci-dark-light text-white">
-                Corporate
-              </option>
-              <option value="social" className="bg-davinci-dark-light text-white">
-                Social Event
-              </option>
-              <option value="south-asian" className="bg-davinci-dark-light text-white">
-                South Asian Celebration
-              </option>
-              <option value="fundraiser" className="bg-davinci-dark-light text-white">
-                Fundraiser
-              </option>
-              <option value="other" className="bg-davinci-dark-light text-white">
-                Other
-              </option>
+            <select id="guests" name="guests" value={formData.guests} onChange={handleChange} className={inputClass}>
+              {GUEST_RANGES.map((range) => (
+                <option key={range.value || 'empty'} value={range.value}>
+                  {range.label}
+                </option>
+              ))}
             </select>
           </div>
         )}
 
-        {showDate && (
-          <div>
-            <label htmlFor="date" className="mb-2 block text-sm font-medium text-gray-300">
-              Preferred Date
-            </label>
-            <input
-              type="date"
-              id="date"
-              name="date"
-              value={formData.date}
-              onChange={handleChange}
-              className="bg-davinci-dark-light focus:border-davinci-gold focus:ring-davinci-gold w-full rounded-lg border border-gray-600 px-4 py-2 text-white placeholder-gray-500 focus:ring-2 focus:outline-none"
-            />
-          </div>
-        )}
-
-        {showGuests && (
-          <div>
-            <label htmlFor="guests" className="mb-2 block text-sm font-medium text-gray-300">
-              Number of Guests
-            </label>
-            <input
-              type="number"
-              id="guests"
-              name="guests"
-              min="1"
-              value={formData.guests}
-              onChange={handleChange}
-              className="bg-davinci-dark-light focus:border-davinci-gold focus:ring-davinci-gold w-full rounded-lg border border-gray-600 px-4 py-2 text-white placeholder-gray-500 focus:ring-2 focus:outline-none"
-            />
+        {!isBooking && (
+          <div className="grid gap-6 md:grid-cols-2">
+            <div>
+              <label htmlFor="eventType" className={labelClass}>
+                Event type
+              </label>
+              <select
+                id="eventType"
+                name="eventType"
+                value={formData.eventType}
+                onChange={handleChange}
+                className={inputClass}
+              >
+                <option value="">Select (optional)</option>
+                {EVENT_TYPES.map((type) => (
+                  <option key={type.value} value={type.value}>
+                    {type.label}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div>
+              <label htmlFor="date" className={labelClass}>
+                Preferred date
+              </label>
+              <input
+                type="date"
+                id="date"
+                name="date"
+                min={today}
+                value={formData.date}
+                onChange={handleChange}
+                className={inputClass}
+              />
+            </div>
           </div>
         )}
 
         <div>
-          <label htmlFor="message" className="mb-2 block text-sm font-medium text-gray-300">
-            Message *
+          <label htmlFor="message" className={labelClass}>
+            {isBooking ? 'Additional details' : 'Message'} *
           </label>
           <textarea
             id="message"
             name="message"
             required
-            rows={5}
+            rows={4}
+            placeholder={
+              isBooking ? 'Hall preference, menu interest, setup notes, or questions...' : 'How can we help?'
+            }
             value={formData.message}
             onChange={handleChange}
-            className="bg-davinci-dark-light focus:border-davinci-gold focus:ring-davinci-gold w-full rounded-lg border border-gray-600 px-4 py-2 text-white placeholder-gray-500 focus:ring-2 focus:outline-none"
+            className={inputClass}
           />
         </div>
 
-        <button
-          type="submit"
-          disabled={isSubmitting}
-          className="from-davinci-gold to-davinci-gold-light text-davinci-dark hover:from-davinci-gold-light hover:to-davinci-gold w-full rounded-lg bg-linear-to-r py-3 font-medium transition-all hover:scale-[1.02] disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:scale-100"
-        >
-          {isSubmitting ? 'Submitting...' : 'Submit'}
+        <button type="submit" disabled={isSubmitting} className="btn-primary w-full py-3.5 disabled:opacity-50">
+          {isSubmitting ? 'Sending…' : isBooking ? 'Submit reservation request' : 'Send message'}
         </button>
+
+        <p className="text-theme-muted text-center text-xs">
+          Prefer to talk?{' '}
+          <Link href="tel:905-851-3131" className="hover:text-theme-heading underline">
+            905-851-3131
+          </Link>
+        </p>
       </form>
-    </motion.div>
+    </div>
   );
 }

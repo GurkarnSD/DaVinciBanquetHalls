@@ -1,0 +1,448 @@
+/** Video registry — set `src` on each entry to publish. Titles are used as labels when clips are active. */
+
+export type VideoLayout = 'vertical' | 'landscape';
+
+export interface VideoSlot {
+  id: string;
+  title: string;
+  aspect: string;
+  layout?: VideoLayout;
+  category: 'home' | 'events' | 'food' | 'venue';
+  src?: string;
+}
+
+const videoSrc = (folder: 'home' | 'events' | 'food' | 'venue', fileName: string) =>
+  `/assets/videos/${folder}/${fileName}`;
+
+/** Homepage hero — full-bleed background */
+export const homeHeroVideoSlot: VideoSlot = {
+  id: 'video-home-hero',
+  category: 'home',
+  title: 'Main hall celebration',
+  aspect: '16:9 · 1920×1080',
+  layout: 'landscape',
+};
+
+/** Homepage reel — vertical clips */
+export const homeReelVideoSlots: VideoSlot[] = [
+  {
+    id: 'video-home-reel-01',
+    category: 'events',
+    title: 'Indian reception setup and celebration',
+    aspect: '9:16 vertical · MP4',
+    layout: 'vertical',
+    src: videoSrc('home', 'indian-reception-showcase.mp4'),
+  },
+  {
+    id: 'video-home-reel-02',
+    category: 'events',
+    title: 'Full Indian party in the main hall',
+    aspect: '9:16 vertical · MP4',
+    layout: 'vertical',
+    src: videoSrc('home', 'full-indian-party.mp4'),
+  },
+  {
+    id: 'video-home-reel-03',
+    category: 'events',
+    title: 'Sparkler entrance onto the dance floor',
+    aspect: '9:16 vertical · MP4',
+    layout: 'vertical',
+    src: videoSrc('home', 'dancefloor-sparklers-entry.mp4'),
+  },
+  {
+    id: 'video-home-reel-04',
+    category: 'food',
+    title: 'Indian buffet walkthrough',
+    aspect: '9:16 vertical · MP4',
+    layout: 'vertical',
+    src: videoSrc('home', 'indian-buffet-walkthrough.mp4'),
+  },
+  {
+    id: 'video-home-reel-05',
+    category: 'venue',
+    title: 'Lobby appetizer service',
+    aspect: '9:16 vertical · MP4',
+    layout: 'vertical',
+    src: videoSrc('home', 'lobby-appetizer-service.mp4'),
+  },
+  {
+    id: 'video-home-reel-06',
+    category: 'venue',
+    title: 'Stage and loveseat setup',
+    aspect: '9:16 vertical · MP4',
+    layout: 'vertical',
+    src: videoSrc('home', 'stage-loveseat-setup.mp4'),
+  },
+];
+
+/** Events — gallery, events hub, home */
+export const eventVideoSlots: VideoSlot[] = [
+  {
+    id: 'video-event-wedding-sparklers',
+    category: 'events',
+    title: 'Wedding dance with smoke and sparklers',
+    aspect: '9:16 vertical · MP4',
+    layout: 'vertical',
+    src: videoSrc('events', 'wedding-smoke-sparklers-dance.mp4'),
+  },
+  {
+    id: 'video-event-wedding-dancefloor',
+    category: 'events',
+    title: 'Bride and groom on the dance floor',
+    aspect: '9:16 vertical · MP4',
+    layout: 'vertical',
+    src: videoSrc('events', 'wedding-dancefloor-money.mp4'),
+  },
+  {
+    id: 'video-event-sparkler-entry',
+    category: 'events',
+    title: 'Sparkler entrance onto the dance floor',
+    aspect: '9:16 vertical · MP4',
+    layout: 'vertical',
+    src: videoSrc('events', 'dancefloor-sparklers-entry.mp4'),
+  },
+  {
+    id: 'video-event-dancefloor-lighting',
+    category: 'events',
+    title: 'Dance floor lighting and crowd energy',
+    aspect: '9:16 vertical · MP4',
+    layout: 'vertical',
+    src: videoSrc('events', 'dancefloor-lighting.mp4'),
+  },
+  {
+    id: 'video-event-dancefloor-train',
+    category: 'events',
+    title: 'Close-up dance floor train',
+    aspect: '9:16 vertical · MP4',
+    layout: 'vertical',
+    src: videoSrc('events', 'dancefloor-train-closeup.mp4'),
+  },
+  {
+    id: 'video-event-dancefloor-lift',
+    category: 'events',
+    title: 'Dance floor shoulder lift celebration',
+    aspect: '9:16 vertical · MP4',
+    layout: 'vertical',
+    src: videoSrc('events', 'dancefloor-shoulder-lift.mp4'),
+  },
+  {
+    id: 'video-event-hyped-group',
+    category: 'events',
+    title: 'Hyped group on the dance floor',
+    aspect: '9:16 vertical · MP4',
+    layout: 'vertical',
+    src: videoSrc('events', 'dancefloor-hyped-group.mp4'),
+  },
+  {
+    id: 'video-event-performance',
+    category: 'events',
+    title: 'Reception performance entrance',
+    aspect: '9:16 vertical · MP4',
+    layout: 'vertical',
+    src: videoSrc('events', 'reception-performance-entrance.mp4'),
+  },
+  {
+    id: 'video-event-indian-party',
+    category: 'events',
+    title: 'Full Indian party atmosphere',
+    aspect: '9:16 vertical · MP4',
+    layout: 'vertical',
+    src: videoSrc('events', 'full-indian-party.mp4'),
+  },
+  {
+    id: 'video-event-reception-setup',
+    category: 'events',
+    title: 'Indian reception setup showcase',
+    aspect: '9:16 vertical · MP4',
+    layout: 'vertical',
+    src: videoSrc('events', 'indian-reception-setup-showcase.mp4'),
+  },
+  {
+    id: 'video-event-reception-party',
+    category: 'events',
+    title: 'Indian reception setup and party',
+    aspect: '9:16 vertical · MP4',
+    layout: 'vertical',
+    src: videoSrc('events', 'indian-reception-setup-and-party.mp4'),
+  },
+  {
+    id: 'video-event-stage-setup',
+    category: 'events',
+    title: 'Stage and loveseat setup',
+    aspect: '9:16 vertical · MP4',
+    layout: 'vertical',
+    src: videoSrc('events', 'stage-loveseat-setup.mp4'),
+  },
+  {
+    id: 'video-event-stage-wide',
+    category: 'events',
+    title: 'Wide stage and loveseat view',
+    aspect: '9:16 vertical · MP4',
+    layout: 'vertical',
+    src: videoSrc('events', 'stage-loveseat-wide.mp4'),
+  },
+  {
+    id: 'video-event-photobooth-guests',
+    category: 'events',
+    title: 'Photobooth guests with props',
+    aspect: '9:16 vertical · MP4',
+    layout: 'vertical',
+    src: videoSrc('events', 'photobooth-guests-with-props.mp4'),
+  },
+  {
+    id: 'video-event-photobooth-table',
+    category: 'events',
+    title: 'Photobooth prop table',
+    aspect: '9:16 vertical · MP4',
+    layout: 'vertical',
+    src: videoSrc('events', 'photobooth-prop-table.mp4'),
+  },
+  {
+    id: 'video-event-dj',
+    category: 'events',
+    title: 'DJ booth and event lighting',
+    aspect: '9:16 vertical · MP4',
+    layout: 'vertical',
+    src: videoSrc('events', 'dj-booth.mp4'),
+  },
+  {
+    id: 'video-event-musician',
+    category: 'events',
+    title: 'String instrument performer',
+    aspect: '9:16 vertical · MP4',
+    layout: 'vertical',
+    src: videoSrc('events', 'string-instrument-performer.mp4'),
+  },
+  {
+    id: 'video-event-aerial-service',
+    category: 'events',
+    title: 'Aerial drink service moment',
+    aspect: '9:16 vertical · MP4',
+    layout: 'vertical',
+    src: videoSrc('events', 'aerial-drink-service.mp4'),
+  },
+  {
+    id: 'video-event-bartenders',
+    category: 'events',
+    title: 'Bartenders mixing drinks in the lobby',
+    aspect: '9:16 vertical · MP4',
+    layout: 'vertical',
+    src: videoSrc('events', 'lobby-bartenders-mixing.mp4'),
+  },
+];
+
+/** Venue walkthrough — dedicated clips per space */
+export const venueVideoSlots: VideoSlot[] = [
+  {
+    id: 'video-venue-arrival',
+    category: 'venue',
+    title: 'Walking into the hall as guests arrive',
+    aspect: '9:16 vertical · MP4',
+    layout: 'vertical',
+    src: videoSrc('venue', 'walking-into-hall-guests-arriving.mp4'),
+  },
+  {
+    id: 'video-venue-hall-overview',
+    category: 'venue',
+    title: 'Hall overview from a higher point of view',
+    aspect: '9:16 vertical · MP4',
+    layout: 'vertical',
+    src: videoSrc('venue', 'hall-overview-high-pov.mp4'),
+  },
+  {
+    id: 'video-venue-hall-setup',
+    category: 'venue',
+    title: 'Hall setup with stage photos',
+    aspect: '9:16 vertical · MP4',
+    layout: 'vertical',
+    src: videoSrc('venue', 'hall-setup-panover-stage-photos.mp4'),
+  },
+  {
+    id: 'video-venue-hall-room',
+    category: 'venue',
+    title: 'Another completed hall setup',
+    aspect: '9:16 vertical · MP4',
+    layout: 'vertical',
+    src: videoSrc('venue', 'hall-setup-overview.mp4'),
+  },
+  {
+    id: 'video-venue-stage',
+    category: 'venue',
+    title: 'Stage and loveseat setup',
+    aspect: '9:16 vertical · MP4',
+    layout: 'vertical',
+    src: videoSrc('venue', 'stage-loveseat-setup.mp4'),
+  },
+  {
+    id: 'video-venue-stage-wide',
+    category: 'venue',
+    title: 'Wide stage and loveseat view',
+    aspect: '9:16 vertical · MP4',
+    layout: 'vertical',
+    src: videoSrc('venue', 'stage-loveseat-wide.mp4'),
+  },
+  {
+    id: 'video-venue-lobby-guests',
+    category: 'venue',
+    title: 'Full lobby with guests mingling',
+    aspect: '9:16 vertical · MP4',
+    layout: 'vertical',
+    src: videoSrc('venue', 'lobby-guests-mingling.mp4'),
+  },
+  {
+    id: 'video-venue-lobby-service',
+    category: 'venue',
+    title: 'Lobby appetizer service',
+    aspect: '9:16 vertical · MP4',
+    layout: 'vertical',
+    src: videoSrc('venue', 'lobby-appetizer-service.mp4'),
+  },
+  {
+    id: 'video-venue-main-bar',
+    category: 'venue',
+    title: 'Main bar bartender moment',
+    aspect: '9:16 vertical · MP4',
+    layout: 'vertical',
+    src: videoSrc('venue', 'main-bar-bartender-dancing.mp4'),
+  },
+  {
+    id: 'video-venue-lobby-bar',
+    category: 'venue',
+    title: 'Lobby bartenders mixing drinks',
+    aspect: '9:16 vertical · MP4',
+    layout: 'vertical',
+    src: videoSrc('venue', 'lobby-bartenders-mixing.mp4'),
+  },
+  {
+    id: 'video-venue-drinks',
+    category: 'venue',
+    title: 'Bartender pouring drinks in the lobby',
+    aspect: '9:16 vertical · MP4',
+    layout: 'vertical',
+    src: videoSrc('venue', 'lobby-bartender-pouring-drinks.mp4'),
+  },
+  {
+    id: 'video-venue-photobooth',
+    category: 'venue',
+    title: 'Photobooth prop table',
+    aspect: '9:16 vertical · MP4',
+    layout: 'vertical',
+    src: videoSrc('venue', 'photobooth-prop-table.mp4'),
+  },
+];
+
+/** Food & catering */
+export const foodVideoSlots: VideoSlot[] = [
+  {
+    id: 'video-food-buffet-pan',
+    category: 'food',
+    title: 'Indian buffet pan over',
+    aspect: '9:16 vertical · MP4',
+    layout: 'vertical',
+    src: videoSrc('food', 'indian-buffet-pan-over.mp4'),
+  },
+  {
+    id: 'video-food-dinner-walkthrough',
+    category: 'food',
+    title: 'Indian dinner buffet walkthrough',
+    aspect: '9:16 vertical · MP4',
+    layout: 'vertical',
+    src: videoSrc('food', 'indian-dinner-buffet-walkthrough.mp4'),
+  },
+  {
+    id: 'video-food-fresh-buffet',
+    category: 'food',
+    title: 'Fresh Indian dinner buffet',
+    aspect: '9:16 vertical · MP4',
+    layout: 'vertical',
+    src: videoSrc('food', 'fresh-indian-dinner-buffet.mp4'),
+  },
+  {
+    id: 'video-food-buffet-guests',
+    category: 'food',
+    title: 'Buffet walkthrough while guests are served',
+    aspect: '9:16 vertical · MP4',
+    layout: 'vertical',
+    src: videoSrc('food', 'indian-buffet-guests-serving.mp4'),
+  },
+  {
+    id: 'video-food-buffet-room',
+    category: 'food',
+    title: 'Dedicated buffet room during dinner',
+    aspect: '9:16 vertical · MP4',
+    layout: 'vertical',
+    src: videoSrc('food', 'dedicated-buffet-room-service.mp4'),
+  },
+  {
+    id: 'video-food-salad-bar',
+    category: 'food',
+    title: 'Salad bar walkthrough',
+    aspect: '9:16 vertical · MP4',
+    layout: 'vertical',
+    src: videoSrc('food', 'salad-bar-walkthrough.mp4'),
+  },
+  {
+    id: 'video-food-pizza',
+    category: 'food',
+    title: 'Midnight pizza station',
+    aspect: '9:16 vertical · MP4',
+    layout: 'vertical',
+    src: videoSrc('food', 'midnight-pizza-station.mp4'),
+  },
+  {
+    id: 'video-food-dessert-setup',
+    category: 'food',
+    title: 'Dessert table setup',
+    aspect: '9:16 vertical · MP4',
+    layout: 'vertical',
+    src: videoSrc('food', 'dessert-table-setup.mp4'),
+  },
+  {
+    id: 'video-food-dessert-chill',
+    category: 'food',
+    title: 'Chill dessert table view',
+    aspect: '9:16 vertical · MP4',
+    layout: 'vertical',
+    src: videoSrc('food', 'dessert-table-chill.mp4'),
+  },
+  {
+    id: 'video-food-dessert-overview',
+    category: 'food',
+    title: 'Dessert table overview',
+    aspect: '9:16 vertical · MP4',
+    layout: 'vertical',
+    src: videoSrc('food', 'dessert-table-overview.mp4'),
+  },
+  {
+    id: 'video-food-dessert-hype',
+    category: 'food',
+    title: 'Dessert display close-up',
+    aspect: '9:16 vertical · MP4',
+    layout: 'vertical',
+    src: videoSrc('food', 'dessert-table-hype.mp4'),
+  },
+  {
+    id: 'video-food-sweet-desserts',
+    category: 'food',
+    title: 'Sweet dessert selection',
+    aspect: '9:16 vertical · MP4',
+    layout: 'vertical',
+    src: videoSrc('food', 'sweet-desserts.mp4'),
+  },
+  {
+    id: 'video-food-appetizers',
+    category: 'food',
+    title: 'Lobby appetizer service',
+    aspect: '9:16 vertical · MP4',
+    layout: 'vertical',
+    src: videoSrc('food', 'lobby-appetizer-service.mp4'),
+  },
+];
+
+export const videoShotList: { page: string; slots: VideoSlot[] }[] = [
+  { page: 'Home — hero background', slots: [homeHeroVideoSlot] },
+  { page: 'Home — reel carousel', slots: homeReelVideoSlots },
+  { page: 'Events / Gallery — event reel', slots: eventVideoSlots },
+  { page: 'Venue — walkthrough reel', slots: venueVideoSlots },
+  { page: 'Gallery / Menus — food reel', slots: foodVideoSlots },
+];

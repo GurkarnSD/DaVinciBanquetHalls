@@ -4,6 +4,7 @@ import { type Metadata } from 'next';
 import { Geist, Playfair_Display } from 'next/font/google';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import Providers from '@/components/Providers';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import StructuredData from '@/components/StructuredData';
@@ -26,6 +27,8 @@ const playfair = Playfair_Display({
   variable: '--font-playfair',
 });
 
+const themeScript = `(function(){try{var t=localStorage.getItem('theme');document.documentElement.setAttribute('data-theme',t==='light'?'light':'dark');}catch(e){}})();`;
+
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   const structuredData = generateStructuredData('LocalBusiness', {
     servesCuisine: ['Italian', 'South Asian', 'International'],
@@ -45,14 +48,19 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   });
 
   return (
-    <html lang="en" className={`${geist.variable} ${playfair.variable}`}>
+    <html lang="en" className={`${geist.variable} ${playfair.variable}`} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
       <body className="flex min-h-screen flex-col">
         <StructuredData data={structuredData} />
         <Analytics />
         <SpeedInsights />
-        <Header />
-        <main className="grow">{children}</main>
-        <Footer />
+        <Providers>
+          <Header />
+          <main className="grow">{children}</main>
+          <Footer />
+        </Providers>
       </body>
     </html>
   );

@@ -8,7 +8,7 @@ export const metadata: Metadata = generateMetadata({
   description:
     'Da Vinci Banquet Halls - Premier wedding and event venues serving Woodbridge, Brampton, Mississauga, Vaughan, and the Greater Toronto Area (GTA). Elegant banquet halls perfect for weddings, corporate events, and celebrations. Book your event today.',
   path: '/',
-  image: '/assets/images/hero/video.jpg',
+  image: '/assets/images/logos/logo.png',
 });
 
 export default function HomePage() {

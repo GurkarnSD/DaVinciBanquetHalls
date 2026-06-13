@@ -1,118 +1,93 @@
 'use client';
 
 import EventCard from '@/components/EventCard';
-import { motion } from 'framer-motion';
+import PageHero from '@/components/PageHero';
+import CTASection from '@/components/CTASection';
+import VerticalVideoReel from '@/components/VerticalVideoReel';
+import { eventCardSlots } from '@/config/media-slots';
+import { eventVideoSlots } from '@/config/video-slots';
 
 const events = [
   {
     title: 'Weddings',
-    description: 'Create unforgettable memories on your special day with our elegant wedding venues and services',
+    description: 'Ceremonies and receptions across our largest and most intimate halls.',
     href: '/events/weddings',
-    image: '/assets/images/events/weddings/hero.jpg',
+    slotKey: 'weddings' as const,
   },
   {
     title: 'Social Events',
-    description: "Celebrate life's special moments with family and friends in our beautiful banquet halls",
+    description: 'Milestones, anniversaries, and gatherings with family and friends.',
     href: '/events/social',
-    image: '/assets/images/events/social/hero.webp',
+    slotKey: 'social' as const,
   },
   {
     title: 'Corporate Events',
-    description: 'Professional venues and services for meetings, conferences, and corporate celebrations',
+    description: 'Meetings, conferences, and company celebrations with full AV support.',
     href: '/events/corporate',
-    image: '/assets/images/events/corporate/hero.webp',
+    slotKey: 'corporate' as const,
   },
   {
     title: 'South Asian Events',
-    description: 'Specialized services and venues for South Asian celebrations and cultural events',
+    description: 'Cultural celebrations with menus and layouts tailored to tradition.',
     href: '/events/south-asian',
-    image: '/assets/images/events/south-asian/hero.jpg',
+    slotKey: 'south-asian' as const,
   },
   {
     title: 'Fundraisers & Trade Shows',
-    description: 'Spacious venues perfect for fundraisers, trade shows, and large gatherings',
+    description: 'Large-format events with flexible floor plans and catering options.',
     href: '/events/fundraisers-tradeshows',
-    image: '/assets/images/events/fundraisers-tradeshows/hero.jpg',
+    slotKey: 'fundraisers-tradeshows' as const,
   },
 ];
 
 export default function EventsPage() {
   return (
-    <div className="pt-24 pb-0">
-      {/* Hero Section */}
-      <section className="container mx-auto mb-16 px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center"
-        >
-          <h1 className="mb-6 font-serif text-6xl font-bold text-white md:text-7xl">
-            <span className="from-davinci-gold to-davinci-gold-light bg-linear-to-r bg-clip-text text-transparent">
-              Our Events
-            </span>
-          </h1>
-          <p className="mx-auto max-w-3xl text-center text-2xl leading-relaxed text-gray-400 md:text-3xl">
-            From intimate gatherings to grand celebrations, we provide the perfect venue and exceptional service for
-            every occasion.
-          </p>
-        </motion.div>
-      </section>
+    <div className="page-shell pb-0">
+      <div className="container mx-auto px-4">
+        <PageHero
+          eyebrow="Events"
+          title="Every occasion, one consistent standard"
+          description="Browse by event type or watch recent highlights below."
+          align="center"
+          className="mx-auto max-w-3xl"
+        />
+      </div>
 
-      {/* Event Cards Grid */}
-      <section className="container mx-auto px-4">
-        {/* Top Row - 3 Cards */}
-        <div className="mb-8 grid grid-cols-1 gap-8 md:grid-cols-3">
-          {events.slice(0, 3).map((event, index) => (
+      <VerticalVideoReel eyebrow="Highlights" title="Recent celebrations" slots={eventVideoSlots} />
+
+      <section className="section-edge container mx-auto border-t px-4 py-16">
+        <div className="mb-10 grid gap-10 md:grid-cols-3">
+          {events.slice(0, 3).map((event) => (
             <EventCard
               key={event.href}
               title={event.title}
               description={event.description}
               href={event.href}
-              image={event.image}
-              delay={index * 0.1}
+              slot={eventCardSlots[event.slotKey]}
             />
           ))}
         </div>
-        {/* Bottom Row - 2 Cards Centered */}
-        <div className="flex justify-center">
-          <div className="grid max-w-4xl grid-cols-1 gap-8 md:grid-cols-2">
-            {events.slice(3, 5).map((event, index) => (
-              <EventCard
-                key={event.href}
-                title={event.title}
-                description={event.description}
-                href={event.href}
-                image={event.image}
-                delay={(index + 3) * 0.1}
-              />
-            ))}
-          </div>
+        <div className="mx-auto grid max-w-4xl gap-10 sm:grid-cols-2">
+          {events.slice(3).map((event) => (
+            <EventCard
+              key={event.href}
+              title={event.title}
+              description={event.description}
+              href={event.href}
+              slot={eventCardSlots[event.slotKey]}
+            />
+          ))}
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="from-davinci-gold via-davinci-gold-light to-davinci-gold text-davinci-dark mt-20 mb-0 bg-linear-to-br py-16">
-        <div className="container mx-auto px-4 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="mb-6 font-serif text-4xl font-bold md:text-5xl">Plan Your Perfect Event</h2>
-            <p className="mx-auto mb-8 max-w-2xl text-center text-xl opacity-90">
-              Let us help you create an unforgettable experience. Contact us today to discuss your event needs.
-            </p>
-            <a
-              href="/contact"
-              className="bg-davinci-dark hover:bg-davinci-charcoal inline-block rounded-full px-8 py-4 text-lg font-medium text-white transition-all duration-200 hover:scale-105"
-            >
-              Get Started
-            </a>
-          </motion.div>
-        </div>
-      </section>
+      <CTASection
+        title="Tell us about your event"
+        description="Share your date, guest count, and event type. We will outline hall options and next steps."
+        primaryLabel="Get started"
+        primaryHref="/contact"
+        secondaryLabel="Book now"
+        secondaryHref="/book"
+      />
     </div>
   );
 }

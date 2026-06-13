@@ -23,8 +23,8 @@ export default function CelebrationOfLifeMenuPage() {
           <div className="space-y-8">
             {/* Antipasto */}
             <div>
-              <h3 className="mb-4 text-center font-serif text-3xl font-bold text-white">Antipasto</h3>
-              <div className="border-davinci-gold from-davinci-gold/20 to-davinci-gold-light/20 rounded-xl border-l-4 bg-linear-to-r p-6">
+              <h3 className="menu-section-title">Antipasto</h3>
+              <div className="menu-panel-accent">
                 <div className="grid grid-cols-2 gap-3 text-lg leading-relaxed text-gray-200 md:grid-cols-3">
                   <p>• Proscuitto</p>
                   <p>• Assorted Cold Cuts</p>
@@ -42,8 +42,8 @@ export default function CelebrationOfLifeMenuPage() {
 
             {/* Pasta */}
             <div>
-              <h3 className="mb-4 text-center font-serif text-3xl font-bold text-white">Pasta</h3>
-              <div className="border-davinci-gold from-davinci-gold/20 to-davinci-gold-light/20 rounded-xl border-l-4 bg-linear-to-r p-6">
+              <h3 className="menu-section-title">Pasta</h3>
+              <div className="menu-panel-accent">
                 <div className="space-y-3 text-lg leading-relaxed text-gray-200">
                   <p>• Casarecce al Pomodoro</p>
                   <p>• Tortellini Alla Panna</p>
@@ -53,8 +53,8 @@ export default function CelebrationOfLifeMenuPage() {
 
             {/* Entree */}
             <div>
-              <h3 className="mb-4 text-center font-serif text-3xl font-bold text-white">Entree</h3>
-              <div className="border-davinci-gold/20 from-davinci-gold/10 to-davinci-gold-light/10 rounded-xl border bg-linear-to-br p-6">
+              <h3 className="menu-section-title">Entree</h3>
+              <div className="menu-panel">
                 <div className="space-y-3 text-lg leading-relaxed text-gray-200">
                   <p>• Veal Parmigiana</p>
                   <p>• Oven Roasted Chicken</p>
@@ -66,8 +66,8 @@ export default function CelebrationOfLifeMenuPage() {
 
             {/* Dessert */}
             <div>
-              <h3 className="mb-4 text-center font-serif text-3xl font-bold text-white">Dessert</h3>
-              <div className="bg-davinci-dark-light border-davinci-gold/20 rounded-xl border p-6">
+              <h3 className="menu-section-title">Dessert</h3>
+              <div className="menu-panel">
                 <div className="space-y-3 text-lg leading-relaxed text-gray-200">
                   <p>• Assorted Fruit</p>
                   <p>• Fresh Baked Cookies</p>
@@ -77,8 +77,8 @@ export default function CelebrationOfLifeMenuPage() {
 
             {/* Bar */}
             <div>
-              <h3 className="mb-4 text-center font-serif text-3xl font-bold text-white">Bar</h3>
-              <div className="border-davinci-teal/20 from-davinci-teal/10 to-davinci-teal-dark/10 rounded-xl border bg-linear-to-br p-6">
+              <h3 className="menu-section-title">Bar</h3>
+              <div className="menu-panel">
                 <div className="space-y-3 text-lg leading-relaxed text-gray-200">
                   <p>• Coffee, Tea, Espresso</p>
                   <p>• Red & White Wine on Tables</p>

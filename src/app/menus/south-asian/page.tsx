@@ -4,7 +4,6 @@ import MenuPageHeader from '@/components/MenuPageHeader';
 import MenuSectionCard from '@/components/MenuSectionCard';
 import MenuCTA from '@/components/MenuCTA';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
 
 export default function SouthAsianMenuPage() {
   return (
@@ -33,10 +32,7 @@ export default function SouthAsianMenuPage() {
               'Roohafza',
               'Sangria',
             ].map((item) => (
-              <div
-                key={item}
-                className="bg-davinci-dark-light border-davinci-gold/20 rounded-lg border p-4 text-center text-lg leading-relaxed text-gray-200"
-              >
+              <div key={item} className="menu-panel">
                 • {item}
               </div>
             ))}
@@ -107,10 +103,7 @@ export default function SouthAsianMenuPage() {
                 'Bhel Puri',
                 'Shrimp Flambe',
               ].map((item) => (
-                <div
-                  key={item}
-                  className="border-davinci-gold/20 from-davinci-gold/10 to-davinci-gold-light/10 rounded-xl border bg-linear-to-br p-4 text-center"
-                >
+                <div key={item} className="menu-panel">
                   <p className="text-lg leading-relaxed font-semibold text-white">{item}</p>
                 </div>
               ))}
@@ -119,14 +112,8 @@ export default function SouthAsianMenuPage() {
         </MenuSectionCard>
 
         {/* Appetizers Section - Special Layout */}
-        <motion.section
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-20"
-        >
-          <div className="premium-card overflow-hidden rounded-2xl">
+        <section className="mb-20">
+          <div className="overflow-hidden border border-white/8">
             <div className="grid md:grid-cols-2">
               <div className="relative h-64 min-h-[400px] md:h-full">
                 <Image
@@ -138,7 +125,7 @@ export default function SouthAsianMenuPage() {
                   quality={80}
                   loading="lazy"
                 />
-                <div className="from-davinci-teal/85 to-davinci-teal-dark/85 absolute inset-0 flex items-center justify-center bg-linear-to-br p-8">
+                <div className="absolute inset-0 flex items-center justify-center bg-black/50 p-8">
                   <h2 className="text-center font-serif text-5xl font-bold text-white md:text-6xl">Appetizers</h2>
                 </div>
               </div>
@@ -208,7 +195,7 @@ export default function SouthAsianMenuPage() {
               </div>
             </div>
           </div>
-        </motion.section>
+        </section>
 
         {/* Dinner Section */}
         <MenuSectionCard imageSrc="/assets/images/menus/south-asian/dinner.jpg" imageAlt="Dinner" title="Dinner">
@@ -273,10 +260,7 @@ export default function SouthAsianMenuPage() {
             <h3 className="mb-4 text-center font-serif text-2xl font-bold text-white">Bread</h3>
             <div className="grid grid-cols-2 gap-4 md:grid-cols-5">
               {['Butter Naan', 'Garlic Naan', 'Tandoori Roti', 'Tawa Roti**', 'Pouri'].map((item) => (
-                <div
-                  key={item}
-                  className="bg-davinci-dark-light border-davinci-gold/20 rounded-lg border p-4 text-center"
-                >
+                <div key={item} className="menu-panel">
                   <p className="text-lg leading-relaxed font-semibold text-white">{item}</p>
                 </div>
               ))}
@@ -378,14 +362,8 @@ export default function SouthAsianMenuPage() {
         </MenuSectionCard>
 
         {/* Dessert Section - Special Layout */}
-        <motion.section
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-20"
-        >
-          <div className="premium-card overflow-hidden rounded-2xl">
+        <section className="mb-20">
+          <div className="overflow-hidden border border-white/8">
             <div className="grid md:grid-cols-2">
               <div className="order-2 p-8 md:order-1 md:p-12">
                 <h2 className="mb-8 font-serif text-4xl font-bold text-white md:text-5xl">Dessert</h2>
@@ -475,30 +453,29 @@ export default function SouthAsianMenuPage() {
                   quality={80}
                   loading="lazy"
                 />
-                <div className="from-davinci-gold/85 to-davinci-gold-dark/85 absolute inset-0 flex items-center justify-center bg-linear-to-br p-8">
+                <div className="absolute inset-0 flex items-center justify-center bg-black/50 p-8">
                   <h2 className="text-center font-serif text-5xl font-bold text-white md:text-6xl">Desserts</h2>
                 </div>
               </div>
             </div>
           </div>
-        </motion.section>
+        </section>
 
         {/* Bar Section */}
         <MenuSectionCard
           imageSrc="/assets/images/menus/south-asian/bar.jpg"
           imageAlt="Bar Selections"
           title="Bar Selections"
-          gradientFrom="teal"
         >
           <div className="space-y-8">
-            <div className="border-davinci-gold/20 from-davinci-gold/10 to-davinci-gold-light/10 rounded-xl border bg-linear-to-br p-8">
+            <div className="menu-panel">
               <h3 className="mb-4 text-center font-serif text-2xl font-bold text-white">Non-Alcoholic</h3>
               <p className="text-lg leading-relaxed text-gray-200">
                 Soft Drinks, Juices, Still & Sparkling Water, Coffee, Tea, Espresso
               </p>
             </div>
 
-            <div className="border-davinci-gold/20 from-davinci-gold/10 to-davinci-gold-light/10 rounded-xl border bg-linear-to-br p-8">
+            <div className="menu-panel">
               <h3 className="mb-4 text-center font-serif text-2xl font-bold text-white">Deluxe Bar</h3>
               <div className="space-y-2 text-lg leading-relaxed text-gray-200">
                 <p>Red & White Wine, Vodka, Gin, Rum, Tequila, Whiskey, Scotch</p>
@@ -508,7 +485,7 @@ export default function SouthAsianMenuPage() {
               </div>
             </div>
 
-            <div className="border-davinci-gold/20 from-davinci-gold/10 to-davinci-gold-light/10 rounded-xl border bg-linear-to-br p-8">
+            <div className="menu-panel">
               <h3 className="mb-4 text-center font-serif text-2xl font-bold text-white">Premium Bar</h3>
               <p className="mb-3 text-lg font-semibold text-white">Premium Brand Upgrades:</p>
               <div className="space-y-2 text-lg leading-relaxed text-gray-200">
@@ -528,10 +505,7 @@ export default function SouthAsianMenuPage() {
             <h3 className="mb-4 text-center font-serif text-2xl font-bold text-white">Specialty Items</h3>
             <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
               {['Martini Bar', 'Prosecco station', 'Sangria station', 'Espresso Martini Station'].map((item) => (
-                <div
-                  key={item}
-                  className="border-davinci-gold/20 bg-davinci-dark-light rounded-lg border p-4 text-center"
-                >
+                <div key={item} className="menu-panel">
                   <p className="text-lg leading-relaxed font-semibold text-white">{item}</p>
                 </div>
               ))}
