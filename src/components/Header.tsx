@@ -1,8 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import { useState, useEffect } from 'react';
 import { HiMenu, HiX } from 'react-icons/hi';
 import ThemeToggle from './ThemeToggle';
 
@@ -37,6 +37,7 @@ export default function Header() {
             width={120}
             height={60}
             className="site-logo h-10 w-auto md:h-11"
+            priority
           />
         </Link>
 

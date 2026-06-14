@@ -21,7 +21,6 @@ const config = {
     remotePatterns: [],
     contentDispositionType: 'inline',
     dangerouslyAllowSVG: false,
-    maximumRedirects: 0,
   },
   compress: true,
   poweredByHeader: false,

@@ -5,21 +5,6 @@ import MenuSectionCard from '@/components/MenuSectionCard';
 import MenuCTA from '@/components/MenuCTA';
 import Image from 'next/image';
 
-const italianFoodHighlights = [
-  {
-    title: 'Premade Antipasto Plate',
-    image: '/assets/images/catering/premade-antipasto-plate.jpeg',
-  },
-  {
-    title: 'Tortellini and Casarecce',
-    image: '/assets/images/catering/tortellini-casarecce.jpeg',
-  },
-  {
-    title: 'Plated Veal Chop',
-    image: '/assets/images/catering/veal-chop-plate.jpeg',
-  },
-];
-
 export default function ItalianMenuPage() {
   return (
     <div className="min-h-screen pt-32 pb-16">
@@ -29,32 +14,6 @@ export default function ItalianMenuPage() {
           subtitle="Authentic Italian cuisine crafted with passion and tradition"
           pdfLink="/assets/menus/ItalianMenu.pdf"
         />
-
-        <section className="section-edge mb-16 border-b pb-16">
-          <div className="mb-8 text-center">
-            <h2 className="font-serif text-3xl font-medium text-white md:text-4xl">Featured Italian Dishes</h2>
-          </div>
-          <div className="grid gap-5 md:grid-cols-3">
-            {italianFoodHighlights.map((item) => (
-              <article key={item.image} className="media-frame overflow-hidden">
-                <div className="relative aspect-[4/5]">
-                  <Image
-                    src={item.image}
-                    alt={item.title}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                    quality={85}
-                  />
-                  <div className="media-scrim absolute inset-0" />
-                  <div className="on-media absolute inset-x-0 bottom-0 p-5">
-                    <h3 className="font-serif text-2xl font-medium text-white">{item.title}</h3>
-                  </div>
-                </div>
-              </article>
-            ))}
-          </div>
-        </section>
 
         {/* Appetizers Section */}
         <MenuSectionCard

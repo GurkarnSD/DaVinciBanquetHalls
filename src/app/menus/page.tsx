@@ -12,7 +12,7 @@ const fullMenus = [
     title: 'Italian Menu',
     description: 'Complete selection of authentic Italian dishes.',
     href: '/menus/italian',
-    image: '/assets/images/catering/tortellini-casarecce.jpeg',
+    image: '/assets/images/menus/italian/appetizers.jpg',
   },
   {
     title: 'South Asian Menu',

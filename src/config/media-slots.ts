@@ -3,7 +3,7 @@
 export type SlotLayout = 'landscape' | 'square' | 'banner' | 'card';
 
 const venueImage = (filename: string) => `/assets/images/venue/${filename}`;
-const eventImage = (eventType: string, filename: string) => `/assets/images/events/${eventType}/${filename}`;
+const eventImage = (category: string, filename: string) => `/assets/images/events/${category}/${filename}`;
 
 export interface MediaSlot {
   id: string;
@@ -185,7 +185,7 @@ export const venueSlots: MediaSlot[] = [
     title: 'Buffet room and service area',
     aspect: '3:2 landscape · 1200×800',
     layout: 'landscape',
-    src: venueImage('hall-c-buffet-room.jpg'),
+    src: venueImage('hall-a-buffet-room.jpg'),
   },
   {
     id: 'venue-stage-loveseat',

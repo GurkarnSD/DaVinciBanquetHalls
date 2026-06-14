@@ -15,8 +15,8 @@ export default function Footer() {
               <Image
                 src="/assets/images/logos/logo.png"
                 alt="Da Vinci Banquet Halls"
-                width={150}
-                height={75}
+                width={140}
+                height={70}
                 className="site-logo h-12 w-auto"
               />
             </Link>

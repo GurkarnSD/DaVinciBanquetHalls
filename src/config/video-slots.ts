@@ -12,7 +12,7 @@ export interface VideoSlot {
 }
 
 const videoSrc = (folder: 'home' | 'events' | 'food' | 'venue', fileName: string) =>
-  `/assets/videos/${folder}/${fileName}`;
+  `/assets/videos-optimized/${folder}/${fileName}`;
 
 /** Homepage hero — full-bleed background */
 export const homeHeroVideoSlot: VideoSlot = {
@@ -26,7 +26,7 @@ export const homeHeroVideoSlot: VideoSlot = {
 /** Homepage reel — vertical clips */
 export const homeReelVideoSlots: VideoSlot[] = [
   {
-    id: 'video-home-approved-bride-groom-twirling',
+    id: 'video-home-bride-groom-twirling',
     category: 'events',
     title: 'Bride and groom twirling on the dance floor',
     aspect: '9:16 vertical · MP4',
@@ -34,7 +34,7 @@ export const homeReelVideoSlots: VideoSlot[] = [
     src: videoSrc('events', 'bride-groom-dance-floor-twirling.mp4'),
   },
   {
-    id: 'video-home-approved-spotlight-hall',
+    id: 'video-home-spotlight-hall',
     category: 'venue',
     title: 'Black, gold, and white hall setup with spotlights',
     aspect: '9:16 vertical · MP4',
@@ -42,31 +42,31 @@ export const homeReelVideoSlots: VideoSlot[] = [
     src: videoSrc('venue', 'black-gold-white-spotlight-tables.mp4'),
   },
   {
-    id: 'video-home-approved-alice-wonderland',
+    id: 'video-home-storybook-celebration',
     category: 'events',
-    title: 'Alice in Wonderland themed celebration',
+    title: 'Storybook-themed celebration',
     aspect: '9:16 vertical · MP4',
     layout: 'vertical',
-    src: videoSrc('events', 'alice-wonderland.mp4'),
+    src: videoSrc('events', 'storybook-themed-celebration.mp4'),
   },
   {
-    id: 'video-home-approved-indian-buffet',
+    id: 'video-home-fresh-indian-buffet',
     category: 'food',
     title: 'Fresh Indian dinner buffet',
     aspect: '9:16 vertical · MP4',
     layout: 'vertical',
-    src: videoSrc('food', 'fresh-indian-dinner-buffet-approved.mp4'),
+    src: videoSrc('food', 'fresh-indian-dinner-buffet-display.mp4'),
   },
   {
-    id: 'video-home-approved-dessert-room',
+    id: 'video-home-dessert-room',
     category: 'food',
     title: 'Dessert room and sweet table',
     aspect: '9:16 vertical · MP4',
     layout: 'vertical',
-    src: videoSrc('food', 'dessert-room-instagram-video.mp4'),
+    src: videoSrc('food', 'dessert-room-sweet-table.mp4'),
   },
   {
-    id: 'video-home-approved-white-gold-walkthrough',
+    id: 'video-home-white-gold-walkthrough',
     category: 'venue',
     title: 'Walking into a white and gold hall setup',
     aspect: '9:16 vertical · MP4',
@@ -84,10 +84,10 @@ export const homeReelVideoSlots: VideoSlot[] = [
   {
     id: 'video-home-reel-02',
     category: 'events',
-    title: 'Full Indian party in the main hall',
+    title: 'Indian reception celebration in the main hall',
     aspect: '9:16 vertical · MP4',
     layout: 'vertical',
-    src: videoSrc('home', 'full-indian-party.mp4'),
+    src: videoSrc('home', 'indian-reception-celebration.mp4'),
   },
   {
     id: 'video-home-reel-03',
@@ -126,7 +126,7 @@ export const homeReelVideoSlots: VideoSlot[] = [
 /** Events — gallery, events hub, home */
 export const eventVideoSlots: VideoSlot[] = [
   {
-    id: 'video-event-approved-bride-groom-twirling',
+    id: 'video-event-bride-groom-twirling',
     category: 'events',
     title: 'Bride and groom twirling on the dance floor',
     aspect: '9:16 vertical · MP4',
@@ -134,20 +134,20 @@ export const eventVideoSlots: VideoSlot[] = [
     src: videoSrc('events', 'bride-groom-dance-floor-twirling.mp4'),
   },
   {
-    id: 'video-event-approved-alice-wonderland',
+    id: 'video-event-storybook-celebration',
     category: 'events',
-    title: 'Alice in Wonderland themed celebration',
+    title: 'Storybook-themed celebration',
     aspect: '9:16 vertical · MP4',
     layout: 'vertical',
-    src: videoSrc('events', 'alice-wonderland.mp4'),
+    src: videoSrc('events', 'storybook-themed-celebration.mp4'),
   },
   {
-    id: 'video-event-approved-ceremony-hall-a',
+    id: 'video-event-wedding-ceremony-chair-setup',
     category: 'events',
-    title: 'Wedding ceremony chair setup in Hall A',
+    title: 'Wedding ceremony chair setup',
     aspect: '9:16 vertical · MP4',
     layout: 'vertical',
-    src: videoSrc('events', 'wedding-ceremony-hall-a-chair-setup.mp4'),
+    src: videoSrc('events', 'wedding-ceremony-chair-setup.mp4'),
   },
   {
     id: 'video-event-wedding-sparklers',
@@ -160,10 +160,10 @@ export const eventVideoSlots: VideoSlot[] = [
   {
     id: 'video-event-wedding-dancefloor',
     category: 'events',
-    title: 'Bride and groom on the dance floor',
+    title: 'Wedding dance floor celebration',
     aspect: '9:16 vertical · MP4',
     layout: 'vertical',
-    src: videoSrc('events', 'wedding-dancefloor-money.mp4'),
+    src: videoSrc('events', 'wedding-dance-floor-celebration.mp4'),
   },
   {
     id: 'video-event-sparkler-entry',
@@ -198,12 +198,12 @@ export const eventVideoSlots: VideoSlot[] = [
     src: videoSrc('events', 'dancefloor-shoulder-lift.mp4'),
   },
   {
-    id: 'video-event-hyped-group',
+    id: 'video-event-group-celebration',
     category: 'events',
-    title: 'Hyped group on the dance floor',
+    title: 'Group celebration on the dance floor',
     aspect: '9:16 vertical · MP4',
     layout: 'vertical',
-    src: videoSrc('events', 'dancefloor-hyped-group.mp4'),
+    src: videoSrc('events', 'dance-floor-group-celebration.mp4'),
   },
   {
     id: 'video-event-performance',
@@ -216,10 +216,10 @@ export const eventVideoSlots: VideoSlot[] = [
   {
     id: 'video-event-indian-party',
     category: 'events',
-    title: 'Full Indian party atmosphere',
+    title: 'Indian reception celebration',
     aspect: '9:16 vertical · MP4',
     layout: 'vertical',
-    src: videoSrc('events', 'full-indian-party.mp4'),
+    src: videoSrc('events', 'indian-reception-celebration.mp4'),
   },
   {
     id: 'video-event-reception-setup',
@@ -232,10 +232,10 @@ export const eventVideoSlots: VideoSlot[] = [
   {
     id: 'video-event-reception-party',
     category: 'events',
-    title: 'Indian reception setup and party',
+    title: 'Indian reception setup and celebration',
     aspect: '9:16 vertical · MP4',
     layout: 'vertical',
-    src: videoSrc('events', 'indian-reception-setup-and-party.mp4'),
+    src: videoSrc('events', 'indian-reception-setup-celebration.mp4'),
   },
   {
     id: 'video-event-stage-setup',
@@ -306,7 +306,7 @@ export const eventVideoSlots: VideoSlot[] = [
 /** Venue walkthrough — dedicated clips per space */
 export const venueVideoSlots: VideoSlot[] = [
   {
-    id: 'video-venue-approved-spotlight-tables',
+    id: 'video-venue-spotlight-tables',
     category: 'venue',
     title: 'Black, gold, and white hall setup with spotlights',
     aspect: '9:16 vertical · MP4',
@@ -314,15 +314,15 @@ export const venueVideoSlots: VideoSlot[] = [
     src: videoSrc('venue', 'black-gold-white-spotlight-tables.mp4'),
   },
   {
-    id: 'video-venue-approved-hype-black-gold',
+    id: 'video-venue-black-gold-lighting-setup',
     category: 'venue',
-    title: 'Hype black and gold hall setup',
+    title: 'Black and gold hall lighting setup',
     aspect: '9:16 vertical · MP4',
     layout: 'vertical',
-    src: videoSrc('venue', 'hype-black-gold-setup.mp4'),
+    src: videoSrc('venue', 'black-gold-hall-lighting-setup.mp4'),
   },
   {
-    id: 'video-venue-approved-black-gold',
+    id: 'video-venue-black-gold',
     category: 'venue',
     title: 'Black and gold hall setup',
     aspect: '9:16 vertical · MP4',
@@ -330,7 +330,7 @@ export const venueVideoSlots: VideoSlot[] = [
     src: videoSrc('venue', 'black-and-gold-hall-setup.mp4'),
   },
   {
-    id: 'video-venue-approved-white-gold-walkthrough',
+    id: 'video-venue-white-gold-walkthrough',
     category: 'venue',
     title: 'Walking into a white and gold hall setup',
     aspect: '9:16 vertical · MP4',
@@ -338,15 +338,15 @@ export const venueVideoSlots: VideoSlot[] = [
     src: videoSrc('venue', 'walking-into-simple-white-gold.mp4'),
   },
   {
-    id: 'video-venue-approved-black-gold-white-scan',
+    id: 'video-venue-black-gold-white-overview',
     category: 'venue',
-    title: 'Black, gold, and white hall scan',
+    title: 'Black, gold, and white hall overview',
     aspect: '9:16 vertical · MP4',
     layout: 'vertical',
-    src: videoSrc('venue', 'black-gold-white-hall-scan.mp4'),
+    src: videoSrc('venue', 'black-gold-white-hall-overview.mp4'),
   },
   {
-    id: 'video-venue-approved-black-green',
+    id: 'video-venue-black-green',
     category: 'venue',
     title: 'Black and green hall setup',
     aspect: '9:16 vertical · MP4',
@@ -354,7 +354,7 @@ export const venueVideoSlots: VideoSlot[] = [
     src: videoSrc('venue', 'black-and-green-setup.mp4'),
   },
   {
-    id: 'video-venue-approved-simple-white-gold',
+    id: 'video-venue-simple-white-gold',
     category: 'venue',
     title: 'Simple white and gold hall setup',
     aspect: '9:16 vertical · MP4',
@@ -362,7 +362,7 @@ export const venueVideoSlots: VideoSlot[] = [
     src: videoSrc('venue', 'simple-white-gold-hall-setup.mp4'),
   },
   {
-    id: 'video-venue-approved-center-hall-chairs',
+    id: 'video-venue-center-hall-chairs',
     category: 'venue',
     title: 'Black, white, and gold chair setup from center hall',
     aspect: '9:16 vertical · MP4',
@@ -370,20 +370,20 @@ export const venueVideoSlots: VideoSlot[] = [
     src: videoSrc('venue', 'black-white-gold-chairs-center-hall.mp4'),
   },
   {
-    id: 'video-venue-hall-setups-edit',
+    id: 'video-venue-hall-setup-montage',
     category: 'venue',
-    title: 'Simple edit of completed hall setups',
+    title: 'Hall setup montage',
     aspect: '9:16 vertical · MP4',
     layout: 'vertical',
-    src: videoSrc('venue', 'hall-setups-simple-edit.mp4'),
+    src: videoSrc('venue', 'hall-setup-montage.mp4'),
   },
   {
-    id: 'video-venue-walkthrough-av-lights',
+    id: 'video-venue-walkthrough-lighting-setup',
     category: 'venue',
-    title: 'Walking into a hall setup with AV lighting',
+    title: 'Walking into a hall setup with event lighting',
     aspect: '9:16 vertical · MP4',
     layout: 'vertical',
-    src: videoSrc('venue', 'walking-into-hall-av-lights.mp4'),
+    src: videoSrc('venue', 'walking-into-hall-lighting-setup.mp4'),
   },
   {
     id: 'video-venue-arrival',
@@ -396,18 +396,18 @@ export const venueVideoSlots: VideoSlot[] = [
   {
     id: 'video-venue-hall-overview',
     category: 'venue',
-    title: 'Hall overview from a higher point of view',
+    title: 'Hall overview from an elevated view',
     aspect: '9:16 vertical · MP4',
     layout: 'vertical',
-    src: videoSrc('venue', 'hall-overview-high-pov.mp4'),
+    src: videoSrc('venue', 'hall-overview-elevated-view.mp4'),
   },
   {
     id: 'video-venue-hall-setup',
     category: 'venue',
-    title: 'Hall setup with stage photos',
+    title: 'Hall stage setup pan',
     aspect: '9:16 vertical · MP4',
     layout: 'vertical',
-    src: videoSrc('venue', 'hall-setup-panover-stage-photos.mp4'),
+    src: videoSrc('venue', 'hall-stage-setup-pan.mp4'),
   },
   {
     id: 'video-venue-hall-room',
@@ -452,10 +452,10 @@ export const venueVideoSlots: VideoSlot[] = [
   {
     id: 'video-venue-main-bar',
     category: 'venue',
-    title: 'Main bar bartender moment',
+    title: 'Main bar service moment',
     aspect: '9:16 vertical · MP4',
     layout: 'vertical',
-    src: videoSrc('venue', 'main-bar-bartender-dancing.mp4'),
+    src: videoSrc('venue', 'main-bar-service-moment.mp4'),
   },
   {
     id: 'video-venue-lobby-bar',
@@ -486,7 +486,7 @@ export const venueVideoSlots: VideoSlot[] = [
 /** Food & catering */
 export const foodVideoSlots: VideoSlot[] = [
   {
-    id: 'video-food-approved-coffee-bar-buffet',
+    id: 'video-food-coffee-bar-buffet',
     category: 'food',
     title: 'Coffee bar and buffet walkthrough',
     aspect: '9:16 vertical · MP4',
@@ -494,7 +494,7 @@ export const foodVideoSlots: VideoSlot[] = [
     src: videoSrc('food', 'coffee-bar-buffet-walkthrough.mp4'),
   },
   {
-    id: 'video-food-approved-indian-appetizer-bar',
+    id: 'video-food-indian-appetizer-bar',
     category: 'food',
     title: 'Indian appetizer bar',
     aspect: '9:16 vertical · MP4',
@@ -502,15 +502,7 @@ export const foodVideoSlots: VideoSlot[] = [
     src: videoSrc('food', 'indian-appetizer-bar.mp4'),
   },
   {
-    id: 'video-food-approved-fresh-indian-buffet',
-    category: 'food',
-    title: 'Fresh Indian dinner buffet',
-    aspect: '9:16 vertical · MP4',
-    layout: 'vertical',
-    src: videoSrc('food', 'fresh-indian-dinner-buffet-approved.mp4'),
-  },
-  {
-    id: 'video-food-approved-ice-cream-sweet-station',
+    id: 'video-food-ice-cream-sweet-station',
     category: 'food',
     title: 'Ice cream and sweet station walkthrough',
     aspect: '9:16 vertical · MP4',
@@ -518,15 +510,15 @@ export const foodVideoSlots: VideoSlot[] = [
     src: videoSrc('food', 'ice-cream-sweet-station-walkthrough.mp4'),
   },
   {
-    id: 'video-food-approved-dessert-room',
+    id: 'video-food-dessert-room',
     category: 'food',
     title: 'Dessert room and sweet table',
     aspect: '9:16 vertical · MP4',
     layout: 'vertical',
-    src: videoSrc('food', 'dessert-room-instagram-video.mp4'),
+    src: videoSrc('food', 'dessert-room-sweet-table.mp4'),
   },
   {
-    id: 'video-food-approved-bread-assortment',
+    id: 'video-food-bread-assortment',
     category: 'food',
     title: 'Bread assortment display',
     aspect: '9:16 vertical · MP4',
@@ -534,15 +526,23 @@ export const foodVideoSlots: VideoSlot[] = [
     src: videoSrc('food', 'bread-assortment.mp4'),
   },
   {
-    id: 'video-food-approved-salad-bar',
+    id: 'video-food-fresh-indian-buffet-display',
+    category: 'food',
+    title: 'Fresh Indian dinner buffet',
+    aspect: '9:16 vertical · MP4',
+    layout: 'vertical',
+    src: videoSrc('food', 'fresh-indian-dinner-buffet-display.mp4'),
+  },
+  {
+    id: 'video-food-salad-bar-setup',
     category: 'food',
     title: 'Salad bar setup',
     aspect: '9:16 vertical · MP4',
     layout: 'vertical',
-    src: videoSrc('food', 'salad-bar-setup-approved.mp4'),
+    src: videoSrc('food', 'salad-bar-setup.mp4'),
   },
   {
-    id: 'video-food-approved-antipasto-room',
+    id: 'video-food-antipasto-room',
     category: 'food',
     title: 'Antipasto bar room walkthrough',
     aspect: '9:16 vertical · MP4',
@@ -550,15 +550,15 @@ export const foodVideoSlots: VideoSlot[] = [
     src: videoSrc('food', 'antipasto-bar-room-walkthrough.mp4'),
   },
   {
-    id: 'video-food-approved-antipasto-bar',
+    id: 'video-food-antipasto-bar',
     category: 'food',
     title: 'Antipasto bar walkthrough',
     aspect: '9:16 vertical · MP4',
     layout: 'vertical',
-    src: videoSrc('food', 'approved-antipasto-bar-walkthrough.mp4'),
+    src: videoSrc('food', 'antipasto-bar-walkthrough.mp4'),
   },
   {
-    id: 'video-food-approved-antipasto-additional',
+    id: 'video-food-antipasto-additional',
     category: 'food',
     title: 'Antipasto bar additional items',
     aspect: '9:16 vertical · MP4',
@@ -566,7 +566,7 @@ export const foodVideoSlots: VideoSlot[] = [
     src: videoSrc('food', 'antipasto-bar-additional-items.mp4'),
   },
   {
-    id: 'video-food-approved-italian-buffet',
+    id: 'video-food-italian-buffet',
     category: 'food',
     title: 'Italian buffet walkthrough',
     aspect: '9:16 vertical · MP4',
@@ -574,7 +574,7 @@ export const foodVideoSlots: VideoSlot[] = [
     src: videoSrc('food', 'italian-buffet-walkthrough.mp4'),
   },
   {
-    id: 'video-food-approved-shrimp-flambee',
+    id: 'video-food-shrimp-flambee',
     category: 'food',
     title: 'Shrimp flambee station',
     aspect: '9:16 vertical · MP4',
@@ -582,7 +582,7 @@ export const foodVideoSlots: VideoSlot[] = [
     src: videoSrc('food', 'shrimp-flambee.mp4'),
   },
   {
-    id: 'video-food-approved-pav-bhaji',
+    id: 'video-food-pav-bhaji',
     category: 'food',
     title: 'Pav bhaji live station',
     aspect: '9:16 vertical · MP4',
@@ -590,7 +590,7 @@ export const foodVideoSlots: VideoSlot[] = [
     src: videoSrc('food', 'pav-bhaji-live-station.mp4'),
   },
   {
-    id: 'video-food-approved-dessert-cake',
+    id: 'video-food-dessert-cake',
     category: 'food',
     title: 'Dessert and cake setup',
     aspect: '9:16 vertical · MP4',
@@ -600,10 +600,10 @@ export const foodVideoSlots: VideoSlot[] = [
   {
     id: 'video-food-buffet-pan',
     category: 'food',
-    title: 'Indian buffet pan over',
+    title: 'Indian buffet pan',
     aspect: '9:16 vertical · MP4',
     layout: 'vertical',
-    src: videoSrc('food', 'indian-buffet-pan-over.mp4'),
+    src: videoSrc('food', 'indian-buffet-pan.mp4'),
   },
   {
     id: 'video-food-salad-bar',
@@ -654,12 +654,12 @@ export const foodVideoSlots: VideoSlot[] = [
     src: videoSrc('food', 'dessert-table-setup.mp4'),
   },
   {
-    id: 'video-food-dessert-chill',
+    id: 'video-food-dessert-display',
     category: 'food',
-    title: 'Chill dessert table view',
+    title: 'Dessert table display',
     aspect: '9:16 vertical · MP4',
     layout: 'vertical',
-    src: videoSrc('food', 'dessert-table-chill.mp4'),
+    src: videoSrc('food', 'dessert-table-display.mp4'),
   },
   {
     id: 'video-food-dessert-overview',
@@ -670,12 +670,12 @@ export const foodVideoSlots: VideoSlot[] = [
     src: videoSrc('food', 'dessert-table-overview.mp4'),
   },
   {
-    id: 'video-food-dessert-hype',
+    id: 'video-food-dessert-closeup',
     category: 'food',
     title: 'Dessert display close-up',
     aspect: '9:16 vertical · MP4',
     layout: 'vertical',
-    src: videoSrc('food', 'dessert-table-hype.mp4'),
+    src: videoSrc('food', 'dessert-display-closeup.mp4'),
   },
   {
     id: 'video-food-sweet-desserts',

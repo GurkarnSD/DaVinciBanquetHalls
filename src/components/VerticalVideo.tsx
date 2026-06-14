@@ -10,6 +10,7 @@ interface VerticalVideoProps {
   showLabel?: boolean;
   autoPlay?: boolean;
   controls?: boolean;
+  preload?: 'none' | 'metadata' | 'auto';
 }
 
 export default function VerticalVideo({
@@ -18,12 +19,15 @@ export default function VerticalVideo({
   showLabel = false,
   autoPlay = true,
   controls = false,
+  preload = 'none',
 }: VerticalVideoProps) {
   const figureRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const [hasError, setHasError] = useState(false);
   const [isNearViewport, setIsNearViewport] = useState(false);
+  const [previewFrameSrc, setPreviewFrameSrc] = useState<string>();
   const showPlaceholder = !slot.src || hasError || !isNearViewport;
+  const showPreviewPlaceholder = !showPlaceholder && previewFrameSrc !== slot.src;
 
   useEffect(() => {
     if (!slot.src || hasError) return;
@@ -83,6 +87,15 @@ export default function VerticalVideo({
   }, [slot.src, hasError, autoPlay, isNearViewport]);
 
   useEffect(() => {
+    if (!slot.src || hasError || autoPlay || !isNearViewport) return;
+
+    const video = videoRef.current;
+    if (!video) return;
+
+    video.load();
+  }, [slot.src, hasError, autoPlay, isNearViewport]);
+
+  useEffect(() => {
     if (isNearViewport) return;
 
     const video = videoRef.current;
@@ -103,22 +116,30 @@ export default function VerticalVideo({
         {showPlaceholder ? (
           <MediaPlaceholder />
         ) : (
-          <video
-            ref={videoRef}
-            aria-label={slot.title}
-            controls={controls}
-            disablePictureInPicture
-            disableRemotePlayback
-            loop
-            muted
-            playsInline
-            preload="none"
-            controlsList="nodownload noplaybackrate noremoteplayback"
-            className="h-full w-full object-cover"
-            onError={() => setHasError(true)}
-          >
-            <source src={slot.src} type="video/mp4" />
-          </video>
+          <>
+            {showPreviewPlaceholder && (
+              <div className="absolute inset-0">
+                <MediaPlaceholder />
+              </div>
+            )}
+            <video
+              ref={videoRef}
+              aria-label={slot.title}
+              controls={controls}
+              disablePictureInPicture
+              disableRemotePlayback
+              loop
+              muted
+              playsInline
+              preload={preload}
+              controlsList="nodownload noplaybackrate noremoteplayback"
+              className="h-full w-full object-cover"
+              onError={() => setHasError(true)}
+              onLoadedData={() => setPreviewFrameSrc(slot.src)}
+            >
+              <source src={slot.src} type="video/mp4" />
+            </video>
+          </>
         )}
       </div>
 

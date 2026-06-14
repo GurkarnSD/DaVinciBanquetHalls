@@ -1,6 +1,6 @@
 import { type Metadata } from 'next';
 
-const baseUrl = 'https://davincibanquethalls.com'; // Update with your actual domain
+const baseUrl = 'https://davincibanquethalls.com';
 const siteName = 'Da Vinci Banquet Halls';
 
 // GTA locations for SEO targeting
@@ -88,6 +88,10 @@ export function generateMetadata({
     title: fullTitle,
     description,
     keywords: seoLocationKeywords,
+    icons: {
+      icon: '/favicon.png',
+      apple: '/favicon.png',
+    },
     alternates: {
       canonical: url,
     },
@@ -124,10 +128,6 @@ export function generateMetadata({
         'max-snippet': -1,
       },
     },
-    icons: {
-      icon: '/favicon.png',
-      apple: '/favicon.png',
-    },
   };
 }
 
@@ -149,10 +149,6 @@ export function generateStructuredData(
     name: siteName,
     description: defaultDescription,
     url: baseUrl,
-    logo: {
-      '@type': 'ImageObject',
-      url: `${baseUrl}/assets/images/logos/logo.png`,
-    },
     image: businessImages,
     address: {
       '@type': 'PostalAddress',
