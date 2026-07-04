@@ -32,7 +32,7 @@ export default function SouthAsianEventsPage() {
 
         <ContentCard title="Mehndi">
           <p>
-            Engagement, mehndi, jago, sangeet, maiyaan, wedding, and reception — we support pre-wedding through
+            Engagement, mehndi, jago, sangeet, maiyaan, wedding, and reception. We support pre-wedding through
             reception with experienced coordination.
           </p>
         </ContentCard>

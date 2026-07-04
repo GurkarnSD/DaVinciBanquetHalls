@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef, useSyncExternalStore } from 'react';
 import { HiChevronLeft, HiChevronRight } from 'react-icons/hi';
 import type { MediaSlot } from '@/config/media-slots';
 import MediaImage from './MediaImage';
@@ -11,11 +11,27 @@ interface ImageCarouselProps {
   className?: string;
 }
 
+function subscribeToReducedMotion(callback: () => void) {
+  const media = window.matchMedia('(prefers-reduced-motion: reduce)');
+  media.addEventListener('change', callback);
+  return () => media.removeEventListener('change', callback);
+}
+
+function getReducedMotionSnapshot() {
+  return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+}
+
 export default function ImageCarousel({ slots, autoPlayInterval = 4200, className = '' }: ImageCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const [dragStartX, setDragStartX] = useState<number | null>(null);
   const [dragOffset, setDragOffset] = useState(0);
+  const dragStartTime = useRef<number | null>(null);
+  const prefersReducedMotion = useSyncExternalStore(
+    subscribeToReducedMotion,
+    getReducedMotionSnapshot,
+    () => false
+  );
   const hasMultipleSlides = slots.length > 1;
 
   const goTo = useCallback(
@@ -33,20 +49,21 @@ export default function ImageCarousel({ slots, autoPlayInterval = 4200, classNam
   const goToPrevious = useCallback(() => goTo(currentIndex - 1), [currentIndex, goTo]);
 
   useEffect(() => {
-    if (!hasMultipleSlides || isPaused || autoPlayInterval <= 0) return;
+    if (!hasMultipleSlides || isPaused || autoPlayInterval <= 0 || prefersReducedMotion) return;
 
     const timer = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % slots.length);
     }, autoPlayInterval);
 
     return () => clearInterval(timer);
-  }, [slots.length, autoPlayInterval, hasMultipleSlides, isPaused]);
+  }, [slots.length, autoPlayInterval, hasMultipleSlides, isPaused, prefersReducedMotion]);
 
   const handlePointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
     if (!hasMultipleSlides || (event.pointerType === 'mouse' && event.button !== 0)) return;
 
     setIsPaused(true);
     setDragStartX(event.clientX);
+    dragStartTime.current = Date.now();
     setDragOffset(0);
     event.currentTarget.setPointerCapture(event.pointerId);
   };
@@ -61,14 +78,20 @@ export default function ImageCarousel({ slots, autoPlayInterval = 4200, classNam
     if (dragStartX === null) return;
 
     const swipeThreshold = 56;
-    if (dragOffset > swipeThreshold) {
+    const elapsed = Date.now() - (dragStartTime.current ?? Date.now());
+    const velocity = Math.abs(dragOffset) / Math.max(elapsed, 1);
+    const flicked = velocity > 0.11 && Math.abs(dragOffset) > 20;
+
+    if (dragOffset > swipeThreshold || (flicked && dragOffset > 0)) {
       goToPrevious();
-    } else if (dragOffset < -swipeThreshold) {
+    } else if (dragOffset < -swipeThreshold || (flicked && dragOffset < 0)) {
       goToNext();
     } else {
       setDragStartX(null);
       setDragOffset(0);
     }
+
+    dragStartTime.current = null;
 
     setIsPaused(false);
     event.currentTarget.releasePointerCapture(event.pointerId);
@@ -83,7 +106,7 @@ export default function ImageCarousel({ slots, autoPlayInterval = 4200, classNam
       onMouseLeave={() => setIsPaused(false)}
     >
       <div
-        className={`flex h-full touch-pan-y select-none ${dragStartX === null ? 'transition-transform duration-500 ease-out' : ''}`}
+        className={`carousel-track flex h-full touch-pan-y select-none${dragStartX !== null ? ' carousel-track--dragging' : ''}`}
         style={{ transform: `translateX(calc(${-currentIndex * 100}% + ${dragOffset}px))` }}
         onPointerDown={handlePointerDown}
         onPointerMove={handlePointerMove}
@@ -109,7 +132,7 @@ export default function ImageCarousel({ slots, autoPlayInterval = 4200, classNam
           <button
             type="button"
             onClick={goToPrevious}
-            className="absolute top-1/2 left-3 z-20 -translate-y-1/2 border border-white/20 bg-black/50 p-2 text-white transition-colors hover:bg-black/70"
+            className="carousel-control absolute top-1/2 left-3 z-20 border border-white/20 bg-black/50 p-2 text-white hover:bg-black/70"
             aria-label="Previous slide"
           >
             <HiChevronLeft className="h-5 w-5" />
@@ -117,7 +140,7 @@ export default function ImageCarousel({ slots, autoPlayInterval = 4200, classNam
           <button
             type="button"
             onClick={goToNext}
-            className="absolute top-1/2 right-3 z-20 -translate-y-1/2 border border-white/20 bg-black/50 p-2 text-white transition-colors hover:bg-black/70"
+            className="carousel-control absolute top-1/2 right-3 z-20 border border-white/20 bg-black/50 p-2 text-white hover:bg-black/70"
             aria-label="Next slide"
           >
             <HiChevronRight className="h-5 w-5" />
@@ -129,13 +152,13 @@ export default function ImageCarousel({ slots, autoPlayInterval = 4200, classNam
                 key={slot.id}
                 type="button"
                 onClick={() => goTo(index)}
-                className={`relative h-1.5 overflow-hidden transition-all ${
+                className={`carousel-dot relative h-1.5 overflow-hidden ${
                   index === currentIndex ? 'w-10 bg-white/25' : 'hover:bg-davinci-gold/60 w-1.5 bg-white/40'
                 }`}
                 aria-label={`Go to slide ${index + 1}`}
                 aria-current={index === currentIndex}
               >
-                {index === currentIndex && (
+                {index === currentIndex && !prefersReducedMotion && (
                   <span
                     key={`${slot.id}-${currentIndex}`}
                     className="image-carousel-progress bg-davinci-gold absolute inset-y-0 left-0"

@@ -1,6 +1,7 @@
 import '@/styles/globals.css';
 
 import { type Metadata } from 'next';
+import Script from 'next/script';
 import { Geist, Playfair_Display } from 'next/font/google';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -9,6 +10,9 @@ import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import StructuredData from '@/components/StructuredData';
 import { generateMetadata as generateSEOMetadata, generateStructuredData } from '@/lib/seo';
+
+export const dynamic = 'force-static';
+export const revalidate = false;
 
 export const metadata: Metadata = {
   ...generateSEOMetadata(),
@@ -50,15 +54,20 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en" className={`${geist.variable} ${playfair.variable}`} suppressHydrationWarning>
       <head>
-        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        <Script id="theme-init" strategy="beforeInteractive" dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
       <body className="flex min-h-screen flex-col">
+        <a href="#main-content" className="skip-link">
+          Skip to content
+        </a>
         <StructuredData data={structuredData} />
         <Analytics />
         <SpeedInsights />
         <Providers>
           <Header />
-          <main className="grow">{children}</main>
+          <main id="main-content" className="grow">
+            {children}
+          </main>
           <Footer />
         </Providers>
       </body>

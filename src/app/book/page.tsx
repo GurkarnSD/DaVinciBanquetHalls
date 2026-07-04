@@ -1,11 +1,9 @@
-'use client';
-
 import ContactForm from '@/components/ContactForm';
 import PageHero from '@/components/PageHero';
 
 const STEPS = [
   { step: '1', title: 'Submit This Form', detail: 'Include your date, guest count, and event type.' },
-  { step: '2', title: 'We Confirm Availability', detail: 'Response within 24–48 hours by email or phone.' },
+  { step: '2', title: 'We Confirm Availability', detail: 'Response within 24-48 hours by email or phone.' },
   { step: '3', title: 'Venue Tour', detail: 'Walk the halls and review floorplan options.' },
   { step: '4', title: 'Menu & Booking', detail: 'Finalize hall, catering, and deposit details.' },
 ];
@@ -15,8 +13,7 @@ export default function BookPage() {
     <div className="page-shell pb-16">
       <div className="container mx-auto max-w-5xl px-4">
         <PageHero
-          eyebrow="Book"
-          title="Reserve Your Date"
+          title="Reserve your date"
           description="Submit your event details below. Our team will confirm availability and schedule a tour."
         />
 

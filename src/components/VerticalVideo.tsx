@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useSyncExternalStore } from 'react';
 import type { VideoSlot } from '@/config/video-slots';
 import MediaPlaceholder from './MediaPlaceholder';
 
@@ -12,6 +12,8 @@ interface VerticalVideoProps {
   controls?: boolean;
   preload?: 'none' | 'metadata' | 'auto';
 }
+
+const subscribeToClient = () => () => {};
 
 export default function VerticalVideo({
   slot,
@@ -26,17 +28,26 @@ export default function VerticalVideo({
   const [hasError, setHasError] = useState(false);
   const [isNearViewport, setIsNearViewport] = useState(false);
   const [previewFrameSrc, setPreviewFrameSrc] = useState<string>();
-  const showPlaceholder = !slot.src || hasError || !isNearViewport;
+  const [trackedSrc, setTrackedSrc] = useState(slot.src);
+  const isClient = useSyncExternalStore(subscribeToClient, () => true, () => false);
+  const lacksIntersectionObserver = isClient && !('IntersectionObserver' in window);
+
+  if (slot.src !== trackedSrc) {
+    setTrackedSrc(slot.src);
+    setHasError(false);
+    setIsNearViewport(false);
+    setPreviewFrameSrc(undefined);
+  }
+
+  const effectivelyNearViewport = lacksIntersectionObserver || isNearViewport;
+  const showPlaceholder = !slot.src || hasError || !effectivelyNearViewport;
   const showPreviewPlaceholder = !showPlaceholder && previewFrameSrc !== slot.src;
 
   useEffect(() => {
-    if (!slot.src || hasError) return;
+    if (!slot.src || hasError || lacksIntersectionObserver) return;
 
     const figure = figureRef.current;
-    if (!figure || !('IntersectionObserver' in window)) {
-      setIsNearViewport(true);
-      return;
-    }
+    if (!figure) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -48,10 +59,10 @@ export default function VerticalVideo({
     observer.observe(figure);
 
     return () => observer.disconnect();
-  }, [slot.src, hasError]);
+  }, [slot.src, hasError, lacksIntersectionObserver]);
 
   useEffect(() => {
-    if (!slot.src || hasError || !autoPlay || !isNearViewport) return;
+    if (!slot.src || hasError || !autoPlay || !effectivelyNearViewport) return;
 
     const video = videoRef.current;
     if (!video) return;
@@ -62,7 +73,7 @@ export default function VerticalVideo({
       });
     };
 
-    if (!('IntersectionObserver' in window)) {
+    if (lacksIntersectionObserver) {
       playVideo();
       return;
     }
@@ -84,19 +95,19 @@ export default function VerticalVideo({
       observer.disconnect();
       video.pause();
     };
-  }, [slot.src, hasError, autoPlay, isNearViewport]);
+  }, [slot.src, hasError, autoPlay, effectivelyNearViewport, lacksIntersectionObserver]);
 
   useEffect(() => {
-    if (!slot.src || hasError || autoPlay || !isNearViewport) return;
+    if (!slot.src || hasError || autoPlay || !effectivelyNearViewport) return;
 
     const video = videoRef.current;
     if (!video) return;
 
     video.load();
-  }, [slot.src, hasError, autoPlay, isNearViewport]);
+  }, [slot.src, hasError, autoPlay, effectivelyNearViewport]);
 
   useEffect(() => {
-    if (isNearViewport) return;
+    if (effectivelyNearViewport) return;
 
     const video = videoRef.current;
     if (!video) return;
@@ -105,7 +116,7 @@ export default function VerticalVideo({
     video.removeAttribute('src');
     video.querySelectorAll('source').forEach((source) => source.removeAttribute('src'));
     video.load();
-  }, [isNearViewport]);
+  }, [effectivelyNearViewport]);
 
   return (
     <figure

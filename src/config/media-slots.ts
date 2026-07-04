@@ -312,18 +312,3 @@ export const eventCardSlots = {
     src: eventImage('fundraisers-tradeshows', 'hero.jpg'),
   },
 } satisfies Record<string, MediaSlot>;
-
-/** Flat list for photographer / videographer reference */
-export const photoShotList: { page: string; slots: MediaSlot[] }[] = [
-  { page: 'Home — hero (optional still fallback)', slots: [homeHeroSlot] },
-  { page: 'Home — venue carousel', slots: carouselSlots },
-  { page: 'Gallery — venue grid', slots: gallerySlots },
-  { page: 'Venue — hall tour', slots: venueSlots },
-  { page: 'About', slots: aboutSlots },
-  { page: 'Events hub — category cards', slots: Object.values(eventCardSlots) },
-  { page: 'Events — Weddings banner', slots: [eventHeroSlots.weddings] },
-  { page: 'Events — Social banner', slots: [eventHeroSlots.social] },
-  { page: 'Events — Corporate banner', slots: [eventHeroSlots.corporate] },
-  { page: 'Events — South Asian banner', slots: [eventHeroSlots['south-asian']] },
-  { page: 'Events — Fundraisers banner', slots: [eventHeroSlots['fundraisers-tradeshows']] },
-];

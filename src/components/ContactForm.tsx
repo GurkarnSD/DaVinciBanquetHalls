@@ -20,11 +20,11 @@ const EVENT_TYPES = [
 
 const GUEST_RANGES = [
   { value: '', label: 'Select guest count' },
-  { value: '50-120', label: '50 – 120 (Hall D)' },
-  { value: '80-260', label: '80 – 260 (Hall C)' },
-  { value: '150-380', label: '150 – 380 (Hall A or B/C)' },
-  { value: '320-550', label: '320 – 550 (Hall A & B)' },
-  { value: '500-1000', label: '500 – 1,000 (Hall A, B & C)' },
+  { value: '50-120', label: '50-120 (Hall D)' },
+  { value: '80-260', label: '80-260 (Hall C)' },
+  { value: '150-380', label: '150-380 (Hall A or B/C)' },
+  { value: '320-550', label: '320-550 (Hall A & B)' },
+  { value: '500-1000', label: '500-1,000 (Hall A, B & C)' },
   { value: 'unsure', label: 'Not sure yet' },
 ];
 
@@ -90,8 +90,8 @@ export default function ContactForm({ title, variant = 'contact' }: ContactFormP
           </h3>
           <p className="text-theme-body mb-6 text-sm leading-relaxed">
             {isBooking
-              ? 'Our team will review your date and guest count, then respond within 24–48 hours to confirm availability and schedule a tour.'
-              : 'We received your message and will respond within 24–48 hours.'}
+              ? 'Our team will review your date and guest count, then respond within 24-48 hours to confirm availability and schedule a tour.'
+              : 'We received your message and will respond within 24-48 hours.'}
           </p>
           <div className="surface text-theme-body mb-6 p-4 text-left text-sm">
             <p className="text-theme-heading mb-1 font-medium">Need a faster response?</p>
@@ -118,8 +118,8 @@ export default function ContactForm({ title, variant = 'contact' }: ContactFormP
       {title && <h2 className="text-theme-heading mb-2 font-serif text-2xl font-medium">{title}</h2>}
       <p className="text-theme-body mb-8 text-sm">
         {isBooking
-          ? 'Fields marked with * are required. We typically respond within 24–48 hours.'
-          : 'Fill in your details and we will get back to you within 24–48 hours.'}
+          ? 'Fields marked with * are required. We typically respond within 24-48 hours.'
+          : 'Fill in your details and we will get back to you within 24-48 hours.'}
       </p>
 
       {error && (

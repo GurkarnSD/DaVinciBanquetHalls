@@ -1,5 +1,3 @@
-'use client';
-
 import PageHero from '@/components/PageHero';
 import SectionHeading from '@/components/SectionHeading';
 import GalleryGrid from '@/components/GalleryGrid';
@@ -10,7 +8,6 @@ export default function AboutPage() {
     <div className="page-shell pb-16">
       <div className="container mx-auto max-w-5xl px-4">
         <PageHero
-          eyebrow="About"
           title="Da Vinci Banquet Halls"
           description="Wedding and event venue in Woodbridge with six configurable halls, in-house catering, and on-site coordination."
         />
@@ -43,7 +40,7 @@ export default function AboutPage() {
           </article>
         </div>
 
-        <SectionHeading eyebrow="Amenities" title="Included with Every Booking" align="left" />
+        <SectionHeading title="Included with every booking" align="left" />
         <div className="grid gap-8 md:grid-cols-3">
           {[
             { title: 'Event Space', description: 'Configurable rooms and flexible seating layouts.' },

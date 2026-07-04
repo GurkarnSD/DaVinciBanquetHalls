@@ -49,8 +49,8 @@ export default function Footer() {
           <div>
             <h3 className="footer-heading">Hours</h3>
             <div className="text-theme-body space-y-1 text-sm">
-              <p>Mon – Thu: 11 AM – 8 PM</p>
-              <p>Fri – Sun: 11 AM – 5 PM</p>
+              <p>Mon-Thu: 11 AM - 8 PM</p>
+              <p>Fri-Sun: 11 AM - 5 PM</p>
             </div>
           </div>
 
@@ -81,8 +81,16 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="section-edge text-theme-muted mt-12 border-t pt-6 text-center text-xs">
+        <div className="section-edge text-theme-muted mt-12 flex flex-col items-center gap-3 border-t pt-6 text-center text-xs sm:flex-row sm:justify-between sm:text-left">
           <p suppressHydrationWarning>&copy; {new Date().getFullYear()} Da Vinci Banquet Halls</p>
+          <div className="flex gap-4">
+            <Link href="/privacy" className="link-subtle">
+              Privacy policy
+            </Link>
+            <Link href="/terms" className="link-subtle">
+              Terms of service
+            </Link>
+          </div>
         </div>
       </div>
     </footer>

@@ -1,5 +1,3 @@
-'use client';
-
 import ContactForm from '@/components/ContactForm';
 import PageHero from '@/components/PageHero';
 import { FaInstagram } from 'react-icons/fa';
@@ -35,9 +33,9 @@ const CONTACT_ITEMS = [
     label: 'Hours',
     content: (
       <>
-        Mon – Thu: 11 AM – 8 PM
+        Mon-Thu: 11 AM - 8 PM
         <br />
-        Fri – Sun: 11 AM – 5 PM
+        Fri-Sun: 11 AM - 5 PM
       </>
     ),
   },
@@ -48,8 +46,7 @@ export default function ContactPage() {
     <div className="page-shell pb-16">
       <div className="container mx-auto max-w-3xl px-4">
         <PageHero
-          eyebrow="Contact"
-          title="Get in Touch"
+          title="Get in touch"
           description="Questions about availability, capacity, or menus? Send us a note and we will follow up."
         />
 
@@ -57,7 +54,7 @@ export default function ContactPage() {
           <dl className="grid gap-6 sm:grid-cols-2">
             {CONTACT_ITEMS.map((item) => (
               <div key={item.label}>
-                <dt className="eyebrow mb-2 tracking-[0.14em] normal-case">{item.label}</dt>
+                <dt className="text-theme-heading mb-2 text-sm font-semibold">{item.label}</dt>
                 <dd className="text-theme-body text-sm leading-relaxed">{item.content}</dd>
               </div>
             ))}

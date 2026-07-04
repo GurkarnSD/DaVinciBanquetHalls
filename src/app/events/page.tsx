@@ -1,5 +1,3 @@
-'use client';
-
 import EventCard from '@/components/EventCard';
 import PageHero from '@/components/PageHero';
 import CTASection from '@/components/CTASection';
@@ -45,15 +43,14 @@ export default function EventsPage() {
     <div className="page-shell pb-0">
       <div className="container mx-auto px-4">
         <PageHero
-          eyebrow="Events"
-          title="Every Occasion, One Consistent Standard"
+          title="Every occasion, one consistent standard"
           description="Browse by event type or watch recent highlights below."
           align="center"
           className="mx-auto max-w-3xl"
         />
       </div>
 
-      <VerticalVideoReel eyebrow="Highlights" title="Recent Celebrations" slots={eventVideoSlots} />
+      <VerticalVideoReel title="Recent celebrations" slots={eventVideoSlots} />
 
       <section className="section-edge container mx-auto border-t px-4 py-16">
         <div className="mb-10 grid gap-10 md:grid-cols-3">
@@ -81,12 +78,12 @@ export default function EventsPage() {
       </section>
 
       <CTASection
-        title="Tell Us About Your Event"
+        title="Tell us about your event"
         description="Share your date, guest count, and event type. We will outline hall options and next steps."
-        primaryLabel="Get started"
-        primaryHref="/contact"
-        secondaryLabel="Book now"
-        secondaryHref="/book"
+        primaryLabel="Book your event"
+        primaryHref="/book"
+        secondaryLabel="Contact us"
+        secondaryHref="/contact"
       />
     </div>
   );

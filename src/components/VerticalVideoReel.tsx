@@ -31,8 +31,7 @@ export default function VerticalVideoReel({
   idlePlaybackLimit = DEFAULT_IDLE_PLAYBACK_LIMIT,
 }: VerticalVideoReelProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
-  const itemRefs = useRef(new Map<number, HTMLDivElement>());
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const itemRefs = useRef<Map<number, HTMLDivElement> | null>(null);
   const [visibleIndexes, setVisibleIndexes] = useState<Set<number>>(() => new Set());
 
   const visibleSlots = useMemo(() => slots.slice(0, maxSlots), [maxSlots, slots]);
@@ -72,7 +71,7 @@ export default function VerticalVideoReel({
       { root, threshold: [0, 0.35, 0.65] }
     );
 
-    itemRefs.current.forEach((item) => observer.observe(item));
+    itemRefs.current?.forEach((item) => observer.observe(item));
 
     return () => observer.disconnect();
   }, [movingSlots]);
@@ -106,12 +105,16 @@ export default function VerticalVideoReel({
         >
           <div className="video-reel-track flex w-max gap-4 md:gap-5">
             {movingSlots.map((slot, index) => {
-              const shouldPlay = hoveredIndex === null ? idlePlayableIndexes.has(index) : hoveredIndex === index;
+              const shouldPlay = idlePlayableIndexes.has(index);
 
               return (
                 <div
                   key={`${slot.id}-${index}`}
                   ref={(node) => {
+                    if (!itemRefs.current) {
+                      itemRefs.current = new Map();
+                    }
+
                     if (node) {
                       itemRefs.current.set(index, node);
                     } else {
@@ -121,16 +124,6 @@ export default function VerticalVideoReel({
                   data-reel-index={index}
                   aria-hidden={index >= visibleSlots.length}
                   className="w-[62vw] max-w-[230px] shrink-0 sm:w-[220px] md:max-w-[245px]"
-                  onPointerEnter={() => setHoveredIndex(index)}
-                  onPointerLeave={() => {
-                    setHoveredIndex((currentIndex) => (currentIndex === index ? null : currentIndex));
-                  }}
-                  onFocusCapture={() => setHoveredIndex(index)}
-                  onBlurCapture={(event) => {
-                    if (!event.currentTarget.contains(event.relatedTarget)) {
-                      setHoveredIndex((currentIndex) => (currentIndex === index ? null : currentIndex));
-                    }
-                  }}
                 >
                   <VerticalVideo
                     slot={slot}

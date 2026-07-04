@@ -1,5 +1,4 @@
-import Link from 'next/link';
-import { HiExternalLink } from 'react-icons/hi';
+import ExternalTextLink from '@/components/ExternalTextLink';
 import PageHero from './PageHero';
 
 interface MenuPageHeaderProps {
@@ -14,15 +13,7 @@ export default function MenuPageHeader({ title, subtitle, pdfLink }: MenuPageHea
       <PageHero title={title} description={subtitle} align="center" className="mx-auto mb-6 max-w-3xl" />
       {pdfLink && (
         <div className="text-center">
-          <Link
-            href={pdfLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-text inline-flex items-center gap-2"
-          >
-            Download PDF
-            <HiExternalLink className="h-4 w-4" />
-          </Link>
+          <ExternalTextLink href={pdfLink}>Download PDF</ExternalTextLink>
         </div>
       )}
     </div>

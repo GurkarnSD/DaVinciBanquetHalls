@@ -14,15 +14,6 @@ export interface VideoSlot {
 const videoSrc = (folder: 'home' | 'events' | 'food' | 'venue', fileName: string) =>
   `/assets/videos-optimized/${folder}/${fileName}`;
 
-/** Homepage hero — full-bleed background */
-export const homeHeroVideoSlot: VideoSlot = {
-  id: 'video-home-hero',
-  category: 'home',
-  title: 'Main hall celebration',
-  aspect: '16:9 · 1920×1080',
-  layout: 'landscape',
-};
-
 /** Homepage reel — vertical clips */
 export const homeReelVideoSlots: VideoSlot[] = [
   {
@@ -693,12 +684,4 @@ export const foodVideoSlots: VideoSlot[] = [
     layout: 'vertical',
     src: videoSrc('food', 'lobby-appetizer-service.mp4'),
   },
-];
-
-export const videoShotList: { page: string; slots: VideoSlot[] }[] = [
-  { page: 'Home — hero background', slots: [homeHeroVideoSlot] },
-  { page: 'Home — reel carousel', slots: homeReelVideoSlots },
-  { page: 'Events / Gallery — event reel', slots: eventVideoSlots },
-  { page: 'Venue — walkthrough reel', slots: venueVideoSlots },
-  { page: 'Gallery / Menus — food reel', slots: foodVideoSlots },
 ];

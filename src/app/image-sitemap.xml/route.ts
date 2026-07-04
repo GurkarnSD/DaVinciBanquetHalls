@@ -8,6 +8,7 @@ import {
   venueSlots,
   type MediaSlot,
 } from '@/config/media-slots';
+import { CACHE_STATIC_METADATA } from '@/lib/cache';
 
 const baseUrl = 'https://davincibanquethalls.com';
 
@@ -40,25 +41,29 @@ function absoluteImageUrl(src: string) {
   return src.startsWith('http') ? src : `${baseUrl}${src}`;
 }
 
+export const dynamic = 'force-static';
+export const revalidate = false;
+
 export function GET() {
   const urls = pageImages
     .map(({ path, slots }) => {
       const seen = new Set<string>();
-      const images = slots
-        .filter((slot): slot is MediaSlot & { src: string } => Boolean(slot.src))
-        .filter((slot) => {
-          if (seen.has(slot.src)) return false;
-          seen.add(slot.src);
-          return true;
-        })
-        .map(
-          (slot) => `    <image:image>
+      const imageEntries: string[] = [];
+
+      for (const slot of slots) {
+        if (!slot.src || seen.has(slot.src)) continue;
+        seen.add(slot.src);
+
+        imageEntries.push(
+          `    <image:image>
       <image:loc>${escapeXml(absoluteImageUrl(slot.src))}</image:loc>
       <image:title>${escapeXml(slot.title)}</image:title>
       <image:caption>${escapeXml(`${slot.title} at Da Vinci Banquet Halls`)}</image:caption>
     </image:image>`
-        )
-        .join('\n');
+        );
+      }
+
+      const images = imageEntries.join('\n');
 
       return `  <url>
     <loc>${escapeXml(`${baseUrl}${path}`)}</loc>
@@ -75,6 +80,7 @@ ${urls}
   return new Response(body, {
     headers: {
       'content-type': 'application/xml; charset=utf-8',
+      'cache-control': CACHE_STATIC_METADATA,
     },
   });
 }

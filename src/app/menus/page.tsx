@@ -1,5 +1,3 @@
-'use client';
-
 import MenuCard from '@/components/MenuCard';
 import PageHero from '@/components/PageHero';
 import SectionHeading from '@/components/SectionHeading';
@@ -66,9 +64,8 @@ export default function MenusPage() {
     <div className="page-shell pb-0">
       <div className="container mx-auto px-4">
         <PageHero
-          eyebrow="Menus"
-          title="Cuisine Shaped Around Your Event"
-          description="Full catalogs list every available item. Sample menus offer a starting point — each can be adjusted to your preferences."
+          title="Cuisine shaped around your event"
+          description="Full catalogs list every available item. Sample menus offer a starting point, and each can be adjusted to your preferences."
           align="center"
           className="mx-auto max-w-3xl"
         />
@@ -76,37 +73,35 @@ export default function MenusPage() {
 
       <section className="container mx-auto px-4 py-12">
         <SectionHeading
-          eyebrow="Catalogs"
-          title="Full Menus"
+          title="Full menus"
           subtitle="Browse complete dish lists and build a custom selection."
           align="left"
           className="max-w-4xl"
         />
         <div className="mx-auto grid max-w-4xl gap-10 md:grid-cols-2">
           {fullMenus.map((menu) => (
-            <MenuCard key={menu.href} {...menu} />
+            <MenuCard {...menu} key={menu.href} />
           ))}
         </div>
       </section>
 
-      <VerticalVideoReel eyebrow="Catering" title="Food & Table Presentations" slots={foodVideoSlots} />
+      <VerticalVideoReel title="Food and table presentations" slots={foodVideoSlots} />
 
       <section className="section-edge container mx-auto border-t px-4 py-16">
         <SectionHeading
-          eyebrow="Samples"
-          title="Curated Starting Points"
-          subtitle="Each sample menu can be customized — items can be added or removed."
+          title="Curated starting points"
+          subtitle="Each sample menu can be customized. Items can be added or removed."
           align="left"
         />
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
           {sampleMenus.map((menu) => (
-            <MenuCard key={menu.href} {...menu} />
+            <MenuCard {...menu} key={menu.href} />
           ))}
         </div>
       </section>
 
       <CTASection
-        title="Customize Your Menu"
+        title="Customize your menu"
         description="Dietary requirements or specific preferences? We will work with you on a tailored selection."
         primaryLabel="Contact us"
         primaryHref="/contact"
