@@ -1,0 +1,39 @@
+{
+  "title": "Da Vinci Banquet Halls — positioning",
+  "question": "What should future marketing work treat as the durable reason someone picks Da Vinci over another GTA banquet hall?",
+  "steer": true,
+  "options": [
+    {
+      "id": "scale-flexibility",
+      "label": "Scale + flexible halls",
+      "kicker": "CAPACITY",
+      "thesis": "Six configurable halls for 50–1,000 guests — one venue that fits intimate and large events.",
+      "case": "The property size and layout options are the honest differentiator.",
+      "body": "Position around capacity range and hall configurability."
+    },
+    {
+      "id": "cuisine-breadth",
+      "label": "Italian + South Asian catering",
+      "kicker": "MENUS",
+      "thesis": "In-house Italian and South Asian menus with event packages — cuisine fit without an outside caterer.",
+      "case": "Menu depth and cultural celebration packages are the differentiator.",
+      "body": "Position around dual cuisine and celebration packages."
+    },
+    {
+      "id": "full-service",
+      "label": "Full-service venue experience",
+      "kicker": "SERVICE",
+      "thesis": "Halls, catering, bar, lighting/sound, and on-site coordination in one booking.",
+      "case": "One-stop planning reduces vendor juggling for hosts.",
+      "body": "Position around turnkey venue + catering + coordination."
+    },
+    {
+      "id": "undecided",
+      "label": "Not decided yet",
+      "kicker": "OPEN",
+      "thesis": "Keep positioning as an open product fact; don't invent a claim.",
+      "case": "Use steer notes for any soft guidance; leave the claim undecided in PRODUCT.md.",
+      "body": "Record as undecided rather than forcing a slogan."
+    }
+  ]
+}
