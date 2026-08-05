@@ -7,7 +7,7 @@ import MenuCTA from '@/components/MenuCTA';
 export const metadata: Metadata = generateMetadata({
   title: 'Wedding Menus',
   description:
-    'Curated wedding menu selections at Da Vinci Banquet Halls in Woodbridge, ON. Elegant Italian cuisine, customizable options, and exceptional service for your special day.',
+    'Wedding menu samples at Da Vinci Banquet Halls in Woodbridge, ON. Italian cuisine with customizable options for receptions.',
   path: '/menus/weddings',
   image: '/assets/images/menus/weddings/menu-1.jpg',
 });
@@ -18,7 +18,7 @@ export default function WeddingsMenuPage() {
       <div className="container mx-auto max-w-7xl px-4">
         <MenuPageHeader
           title="Wedding Menus"
-          subtitle="Curated selections designed for your special day"
+          subtitle="Sample menus for receptions — dishes can be added or removed."
           pdfLink="/assets/menus/WeddingMenus.pdf"
         />
 
@@ -35,7 +35,7 @@ export default function WeddingsMenuPage() {
               <div className="menu-panel-accent">
                 <h4 className="mb-3 text-xl font-semibold text-white">Hors D&apos;Oeuvres</h4>
                 <p className="text-lg leading-relaxed text-gray-300">
-                  Assorted selection of elegant hors d&apos;oeuvres
+                  Assorted hors d&apos;oeuvres
                 </p>
               </div>
             </div>
@@ -223,7 +223,7 @@ export default function WeddingsMenuPage() {
               <div className="menu-panel-accent">
                 <h4 className="mb-3 text-xl font-semibold text-white">Hors D&apos;Oeuvres</h4>
                 <p className="text-lg leading-relaxed text-gray-300">
-                  Assorted selection of elegant hors d&apos;oeuvres
+                  Assorted hors d&apos;oeuvres
                 </p>
               </div>
             </div>
@@ -278,8 +278,8 @@ export default function WeddingsMenuPage() {
 
         {/* CTA */}
         <MenuCTA
-          title="Ready to Customize Your Wedding Menu?"
-          description="Contact us to discuss your special day and create the perfect menu for your celebration"
+          title="Finalize your wedding menu"
+          description="Share your guest count and preferences — we will help lock in the selection."
         />
       </div>
     </div>

@@ -35,12 +35,12 @@ const seoLocationKeywords = gtaLocations
   .join(', ');
 
 const defaultDescription =
-  'Da Vinci Banquet Halls offers elegant banquet halls and wedding venues serving Woodbridge, Brampton, Mississauga, Vaughan, and the Greater Toronto Area (GTA). Perfect for weddings, corporate events, and celebrations. Book your event today.';
+  'Da Vinci Banquet Halls in Woodbridge — six halls for 50 to 1,000 guests with Italian and South Asian catering. Serving Woodbridge, Brampton, Mississauga, Vaughan, and the GTA.';
 const defaultImage = `${baseUrl}/assets/images/venue/exterior-front-head-on.jpg`;
 const businessImages = [
   `${baseUrl}/assets/images/venue/exterior-front-head-on.jpg`,
   `${baseUrl}/assets/images/venue/front-lobby-entrance.jpg`,
-  `${baseUrl}/assets/images/venue/hall-ab-wide-corner.jpg`,
+  `${baseUrl}/assets/images/venue/hall-a-table-av-lights.jpg`,
   `${baseUrl}/assets/images/venue/stage-loveseat-left.jpg`,
 ];
 
@@ -77,7 +77,7 @@ export function generateMetadata({
     if (locationKeywords) {
       fullTitle = `${siteName} | Serving ${locationKeywords}`;
     } else {
-      fullTitle = `${siteName} | Elegant Venues for Your Celebrations`;
+      fullTitle = `${siteName} | Banquet Halls in Woodbridge`;
     }
   }
 

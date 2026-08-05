@@ -1,0 +1,359 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-05T05:07:00.000Z",
+  "title": "Design System: Da Vinci Banquet Halls",
+  "extensions": {
+    "colorMeta": {
+      "merlot": {
+        "role": "primary",
+        "displayName": "Merlot",
+        "canonical": "#6B1F2B",
+        "tonalRamp": [
+          "#2A0C11",
+          "#3F121A",
+          "#521722",
+          "#6B1F2B",
+          "#8A2E3C",
+          "#A85A66",
+          "#C9949C",
+          "#E8D0D3"
+        ]
+      },
+      "merlot-deep": {
+        "role": "primary",
+        "displayName": "Merlot Deep",
+        "canonical": "#521722",
+        "tonalRamp": [
+          "#1F090E",
+          "#2A0C11",
+          "#3F121A",
+          "#521722",
+          "#6B1F2B",
+          "#8A2E3C",
+          "#A85A66",
+          "#C9949C"
+        ]
+      },
+      "merlot-light": {
+        "role": "primary",
+        "displayName": "Merlot Light",
+        "canonical": "#8A2E3C",
+        "tonalRamp": [
+          "#3F121A",
+          "#521722",
+          "#6B1F2B",
+          "#8A2E3C",
+          "#A85A66",
+          "#C9949C",
+          "#E8D0D3",
+          "#F5EBEC"
+        ]
+      },
+      "bone": {
+        "role": "neutral",
+        "displayName": "Bone",
+        "canonical": "#F7F6F2",
+        "tonalRamp": [
+          "#2A2926",
+          "#4A4844",
+          "#6E6C66",
+          "#9A9790",
+          "#C4C1B8",
+          "#D8D6D0",
+          "#EDEAE3",
+          "#F7F6F2"
+        ]
+      },
+      "parchment": {
+        "role": "neutral",
+        "displayName": "Parchment",
+        "canonical": "#EDEAE3",
+        "tonalRamp": [
+          "#2A2926",
+          "#4A4844",
+          "#6E6C66",
+          "#9A9790",
+          "#C4C1B8",
+          "#D8D6D0",
+          "#EDEAE3",
+          "#F7F6F2"
+        ]
+      },
+      "stone": {
+        "role": "neutral",
+        "displayName": "Stone",
+        "canonical": "#D8D6D0",
+        "tonalRamp": [
+          "#2A2926",
+          "#4A4844",
+          "#6E6C66",
+          "#9A9790",
+          "#B8B5AE",
+          "#D8D6D0",
+          "#EDEAE3",
+          "#F7F6F2"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "#0B0B0B",
+        "tonalRamp": [
+          "#0B0B0B",
+          "#141414",
+          "#1A1A1A",
+          "#2A2A2A",
+          "#3F3F3F",
+          "#5C5C5C",
+          "#8A8A8A",
+          "#D0D0D0"
+        ]
+      },
+      "ink-body": {
+        "role": "neutral",
+        "displayName": "Ink Body",
+        "canonical": "#3F3F3F",
+        "tonalRamp": [
+          "#0B0B0B",
+          "#141414",
+          "#1A1A1A",
+          "#2A2A2A",
+          "#3F3F3F",
+          "#5C5C5C",
+          "#8A8A8A",
+          "#D0D0D0"
+        ]
+      },
+      "ink-muted": {
+        "role": "neutral",
+        "displayName": "Ink Muted",
+        "canonical": "#5C5C5C",
+        "tonalRamp": [
+          "#0B0B0B",
+          "#141414",
+          "#1A1A1A",
+          "#2A2A2A",
+          "#3F3F3F",
+          "#5C5C5C",
+          "#8A8A8A",
+          "#D0D0D0"
+        ]
+      },
+      "ink-faint": {
+        "role": "neutral",
+        "displayName": "Ink Faint",
+        "canonical": "#8A8A8A",
+        "tonalRamp": [
+          "#0B0B0B",
+          "#141414",
+          "#2A2A2A",
+          "#3F3F3F",
+          "#5C5C5C",
+          "#8A8A8A",
+          "#B8B8B8",
+          "#E8E8E8"
+        ]
+      },
+      "white": {
+        "role": "neutral",
+        "displayName": "White",
+        "canonical": "#FFFFFF",
+        "tonalRamp": [
+          "#0B0B0B",
+          "#2A2A2A",
+          "#5C5C5C",
+          "#8A8A8A",
+          "#B8B8B8",
+          "#D8D6D0",
+          "#F7F6F2",
+          "#FFFFFF"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Monumental Bodoni hero statements on lookbook surfaces."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section titles — one Bodoni line per chapter."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Sub-look and tertiary Bodoni headings within a section."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Geist supporting copy; keep lines short on hero (~34ch)."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Uppercase tracked Geist for nav, buttons, and look captions."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.23, 1, 0.32, 1)",
+        "purpose": "Primary easing for hero enter, scroll reveal, and button transitions."
+      },
+      {
+        "name": "ease-in-out",
+        "value": "cubic-bezier(0.77, 0, 0.175, 1)",
+        "purpose": "Secondary in-out easing for longer editorial transitions."
+      },
+      {
+        "name": "hero-enter",
+        "value": "0.72s cubic-bezier(0.23, 1, 0.32, 1)",
+        "purpose": "Staggered hero copy fade/rise (delays 80ms / 160ms / 260ms)."
+      },
+      {
+        "name": "scroll-reveal",
+        "value": "transform 0.55s cubic-bezier(0.23, 1, 0.32, 1)",
+        "purpose": "Section content rises into place; opacity stays readable."
+      },
+      {
+        "name": "media-zoom",
+        "value": "transform 0.45s–0.7s cubic-bezier(0.23, 1, 0.32, 1)",
+        "purpose": "Subtle image scale on look-strip / media-frame hover (~1.03–1.04)."
+      }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" },
+      { "name": "xl", "value": "1280px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Ink rectangle CTA — Call / Book primary actions.",
+      "html": "<button class=\"ds-btn-primary\" type=\"button\">Call now</button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; background: #0B0B0B; color: #F7F6F2; border: none; border-radius: 0; padding: 14px 28px; font-family: Geist, ui-sans-serif, system-ui, sans-serif; font-size: 0.6875rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; cursor: pointer; transition: background-color 0.2s cubic-bezier(0.23, 1, 0.32, 1), transform 0.16s cubic-bezier(0.23, 1, 0.32, 1); } .ds-btn-primary:hover { background: #2A2A2A; } .ds-btn-primary:active { transform: scale(0.97); } .ds-btn-primary:focus-visible { outline: 2px solid #6B1F2B; outline-offset: 3px; }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Hairline outline button for secondary booking actions.",
+      "html": "<button class=\"ds-btn-secondary\" type=\"button\">Book an inquiry</button>",
+      "css": ".ds-btn-secondary { display: inline-flex; align-items: center; justify-content: center; background: transparent; color: #0B0B0B; border: 1px solid rgba(11, 11, 11, 0.28); border-radius: 0; padding: 12px 28px; font-family: Geist, ui-sans-serif, system-ui, sans-serif; font-size: 0.6875rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; cursor: pointer; transition: background-color 0.2s cubic-bezier(0.23, 1, 0.32, 1), border-color 0.2s cubic-bezier(0.23, 1, 0.32, 1), color 0.2s cubic-bezier(0.23, 1, 0.32, 1), transform 0.16s cubic-bezier(0.23, 1, 0.32, 1); } .ds-btn-secondary:hover { background: #0B0B0B; border-color: #0B0B0B; color: #F7F6F2; } .ds-btn-secondary:active { transform: scale(0.97); } .ds-btn-secondary:focus-visible { outline: 2px solid #6B1F2B; outline-offset: 3px; }"
+    },
+    {
+      "name": "Text Button",
+      "kind": "button",
+      "refersTo": "button-text",
+      "description": "Quiet tracked text action; merlot on hover.",
+      "html": "<a class=\"ds-btn-text\" href=\"#\">Book an inquiry</a>",
+      "css": ".ds-btn-text { display: inline-block; font-family: Geist, ui-sans-serif, system-ui, sans-serif; font-size: 0.8125rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #0B0B0B; text-decoration: none; border-bottom: 1px solid currentColor; padding-bottom: 2px; transition: color 0.2s cubic-bezier(0.23, 1, 0.32, 1), transform 0.16s cubic-bezier(0.23, 1, 0.32, 1); } .ds-btn-text:hover { color: #6B1F2B; } .ds-btn-text:active { transform: scale(0.97); } .ds-btn-text:focus-visible { outline: 2px solid #6B1F2B; outline-offset: 3px; }"
+    },
+    {
+      "name": "Hairline Nav",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Fixed lookbook header — muted labels, merlot phone, ink Book.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Primary\"><a class=\"ds-nav-brand\" href=\"#\">Da Vinci</a><div class=\"ds-nav-links\"><a class=\"ds-nav-link\" href=\"#\">Venue</a><a class=\"ds-nav-link\" href=\"#\">Menus</a><a class=\"ds-nav-link\" href=\"#\">Events</a><a class=\"ds-nav-link\" href=\"#\">Gallery</a></div><div class=\"ds-nav-actions\"><a class=\"ds-nav-phone\" href=\"tel:905-851-3131\">905-851-3131</a><a class=\"ds-nav-book\" href=\"#\">Book</a></div></nav>",
+      "css": ".ds-nav { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1rem 1.25rem; border-bottom: 1px solid rgba(11, 11, 11, 0.12); background: rgba(247, 246, 242, 0.92); backdrop-filter: blur(8px); font-family: Geist, ui-sans-serif, system-ui, sans-serif; } .ds-nav-brand { font-family: Bodoni Moda, ui-serif, Times New Roman, serif; font-size: 1.125rem; font-weight: 400; color: #0B0B0B; text-decoration: none; letter-spacing: -0.02em; } .ds-nav-links { display: flex; gap: 1.75rem; } .ds-nav-link { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #5C5C5C; text-decoration: none; transition: color 0.2s ease; } .ds-nav-link:hover, .ds-nav-link:focus-visible { color: #0B0B0B; } .ds-nav-link:focus-visible { outline: 2px solid #6B1F2B; outline-offset: 3px; } .ds-nav-actions { display: flex; align-items: center; gap: 1.25rem; } .ds-nav-phone { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: #6B1F2B; text-decoration: none; } .ds-nav-phone:hover { opacity: 0.8; } .ds-nav-phone:focus-visible { outline: 2px solid #6B1F2B; outline-offset: 3px; } .ds-nav-book { display: inline-flex; align-items: center; justify-content: center; background: #0B0B0B; color: #F7F6F2; padding: 0.625rem 1.25rem; font-size: 0.6875rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; text-decoration: none; border-radius: 0; } .ds-nav-book:hover { background: #2A2A2A; } .ds-nav-book:focus-visible { outline: 2px solid #6B1F2B; outline-offset: 3px; }"
+    },
+    {
+      "name": "Text Field",
+      "kind": "input",
+      "refersTo": null,
+      "description": "White field on bone with merlot focus ring.",
+      "html": "<label class=\"ds-field\"><span class=\"ds-field-label\">Guest count</span><input class=\"ds-input\" type=\"text\" placeholder=\"150\" /></label>",
+      "css": ".ds-field { display: flex; flex-direction: column; gap: 0.5rem; font-family: Geist, ui-sans-serif, system-ui, sans-serif; } .ds-field-label { font-size: 0.6875rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: #5C5C5C; } .ds-input { width: 100%; padding: 0.75rem 1rem; background: #FFFFFF; color: #0B0B0B; border: 1px solid rgba(11, 11, 11, 0.12); border-radius: 0; font-size: 0.9375rem; line-height: 1.5; } .ds-input::placeholder { color: #8A8A8A; } .ds-input:hover { border-color: rgba(11, 11, 11, 0.28); } .ds-input:focus-visible { border-color: #6B1F2B; outline: 2px solid #6B1F2B; outline-offset: 0; }"
+    },
+    {
+      "name": "Look Strip Cell",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "Signature three-look photo cell under the split hero.",
+      "html": "<a class=\"ds-look\" href=\"#\"><span class=\"ds-look-media\" aria-hidden=\"true\"></span><span class=\"ds-look-label\">Hall</span></a>",
+      "css": ".ds-look { position: relative; display: block; height: 10rem; overflow: hidden; background: #D8D6D0; border-right: 1px solid rgba(11, 11, 11, 0.12); text-decoration: none; } .ds-look-media { position: absolute; inset: 0; background: linear-gradient(160deg, #5C5C5C 0%, #2A2A2A 55%, #0B0B0B 100%); transition: transform 0.7s cubic-bezier(0.23, 1, 0.32, 1); } .ds-look:hover .ds-look-media { transform: scale(1.03); } .ds-look:focus-visible { outline: 2px solid #6B1F2B; outline-offset: -2px; } .ds-look-label { position: absolute; left: 0.75rem; bottom: 0.75rem; font-family: Geist, ui-sans-serif, system-ui, sans-serif; font-size: 0.625rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: #FFFFFF; text-shadow: 0 1px 8px rgba(0, 0, 0, 0.45); }"
+    },
+    {
+      "name": "CTA Band",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "Parchment closing band — Call primary, Book secondary.",
+      "html": "<section class=\"ds-cta\"><h2 class=\"ds-cta-title\">Plan your event</h2><p class=\"ds-cta-body\">Share your date, guest count, and event type.</p><div class=\"ds-cta-actions\"><a class=\"ds-btn-primary\" href=\"tel:905-851-3131\">Call 905-851-3131</a><a class=\"ds-btn-secondary\" href=\"#\">Book an inquiry</a></div></section>",
+      "css": ".ds-cta { padding: 5rem 1.25rem; text-align: center; background: #EDEAE3; border-top: 1px solid rgba(11, 11, 11, 0.12); } .ds-cta-title { margin: 0 0 1rem; font-family: Bodoni Moda, ui-serif, Times New Roman, serif; font-size: clamp(1.875rem, 3vw, 2.25rem); font-weight: 400; letter-spacing: -0.02em; line-height: 1.15; color: #0B0B0B; } .ds-cta-body { margin: 0 auto 2rem; max-width: 36rem; font-family: Geist, ui-sans-serif, system-ui, sans-serif; font-size: 1rem; line-height: 1.65; color: #3F3F3F; } .ds-cta-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; } .ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; background: #0B0B0B; color: #F7F6F2; border: none; border-radius: 0; padding: 12px 28px; font-family: Geist, ui-sans-serif, system-ui, sans-serif; font-size: 0.6875rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; text-decoration: none; transition: background-color 0.2s cubic-bezier(0.23, 1, 0.32, 1); } .ds-btn-primary:hover { background: #2A2A2A; } .ds-btn-primary:focus-visible { outline: 2px solid #6B1F2B; outline-offset: 3px; } .ds-btn-secondary { display: inline-flex; align-items: center; justify-content: center; background: transparent; color: #0B0B0B; border: 1px solid rgba(11, 11, 11, 0.28); border-radius: 0; padding: 12px 28px; font-family: Geist, ui-sans-serif, system-ui, sans-serif; font-size: 0.6875rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; text-decoration: none; transition: background-color 0.2s cubic-bezier(0.23, 1, 0.32, 1), border-color 0.2s cubic-bezier(0.23, 1, 0.32, 1), color 0.2s cubic-bezier(0.23, 1, 0.32, 1); } .ds-btn-secondary:hover { background: #0B0B0B; border-color: #0B0B0B; color: #F7F6F2; } .ds-btn-secondary:focus-visible { outline: 2px solid #6B1F2B; outline-offset: 3px; }"
+    },
+    {
+      "name": "Surface Panel",
+      "kind": "card",
+      "refersTo": null,
+      "description": "Flat hairline panel for secondary surfaces — not a soft card.",
+      "html": "<article class=\"ds-panel\"><h3 class=\"ds-panel-title\">The space</h3><p class=\"ds-panel-body\">Six configurable halls, lighting, sound, and seating for 50 to 1,000 guests.</p></article>",
+      "css": ".ds-panel { background: #F7F6F2; border: 1px solid rgba(11, 11, 11, 0.12); border-radius: 0; padding: 1.5rem; transition: border-color 0.25s cubic-bezier(0.23, 1, 0.32, 1); } .ds-panel:hover { border-color: rgba(11, 11, 11, 0.28); } .ds-panel-title { margin: 0 0 0.75rem; font-family: Bodoni Moda, ui-serif, Times New Roman, serif; font-size: 1.5rem; font-weight: 400; letter-spacing: -0.02em; color: #0B0B0B; } .ds-panel-body { margin: 0; max-width: 20rem; font-family: Geist, ui-sans-serif, system-ui, sans-serif; font-size: 0.875rem; line-height: 1.65; color: #3F3F3F; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Lookbook Flagship",
+    "overview": "Da Vinci Banquet Halls presents as a luxury fashion lookbook translated to a banquet venue: real halls as looks, bone paper as the page, ink as structure, merlot as the rare accent. The system is editorial and spare — monumental Bodoni display against a quiet Geist grotesk, sharp ink rectangles, hairline rules, and venue photography as the only visual proof. Call is the loud act; everything else stays quiet enough that the halls and the booking path stay legible.\n\nDensity is low. Sections carry one job, one Bodoni headline, and short supporting copy. Surfaces stay flat on bone or parchment; depth comes from edge-to-edge media and hairline borders, not soft cards or gold glow. Light mode is the default lookbook; dark mode inverts to an ink-night lookbook using the same type and geometry.",
+    "keyCharacteristics": [
+      "Bone paper field (#F7F6F2) with ink (#0B0B0B) and merlot (#6B1F2B)",
+      "Bodoni Moda display + Geist body/label pairing",
+      "Sharp rectangles (0 radius) and 1px hairline borders",
+      "Real venue photography and video only — no stock fantasy",
+      "Primary CTA is Call; Book / inquiry is secondary",
+      "Refuses dark-gold banquet hero aesthetics"
+    ],
+    "rules": [
+      {
+        "name": "The Merlot Scarcity Rule",
+        "body": "Merlot appears as accent and focus — never as a full-bleed hero wash, gradient field, or dark-gold banquet glow. Ink rectangles and real photos carry the frame.",
+        "section": "colors"
+      },
+      {
+        "name": "The Bone Field Rule",
+        "body": "Default surfaces sit on bone or parchment. Do not reinstate a black full-page banquet shell as the light-mode identity.",
+        "section": "colors"
+      },
+      {
+        "name": "The Bodoni Display Rule",
+        "body": "Headings use Bodoni Moda at normal (400) weight on lookbook surfaces. Do not bold the display face into a banquet brochure weight for marketing heroes.",
+        "section": "typography"
+      },
+      {
+        "name": "The Quiet Label Rule",
+        "body": "UI chrome (nav, buttons) stays small, uppercase, tracked Geist — never competing with Bodoni for scale.",
+        "section": "typography"
+      },
+      {
+        "name": "The Split Editorial Rule",
+        "body": "The home first viewport is type left + real hall photo right + look strip below. Do not replace it with a dark full-bleed banquet hero or floating media card.",
+        "section": "layout"
+      },
+      {
+        "name": "The Flat Paper Rule",
+        "body": "No soft multi-layer shadows on lookbook surfaces. If a control needs presence, use ink fill, hairline border, or real media — not elevation theater.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Sharp Rectangle Rule",
+        "body": "Primary interactive and media shapes are square-cornered. Do not introduce rounded-full pills or soft marketing cards into the lookbook world.",
+        "section": "shapes"
+      }
+    ],
+    "dos": [
+      "Do keep Call as the primary loud action and Book / inquiry as secondary.",
+      "Do use real venue photography and video as the visual proof layer.",
+      "Do set display in Bodoni Moda and UI/body in Geist on the lookbook surfaces.",
+      "Do separate chapters with hairline rules and generous vertical rhythm.",
+      "Do treat merlot as a scarce accent (focus, phone, hover) on bone paper."
+    ],
+    "donts": [
+      "Don't reinstate a dark-gold banquet hero (black full-bleed + metallic gold glow / gold gradients).",
+      "Don't put soft elevated cards, floating media tiles, or rounded-full pill CTAs in the lookbook first viewport.",
+      "Don't invent stock lifestyle imagery, awards, or testimonials as proof.",
+      "Don't let eyebrow/kicker chips or badge clusters decorate the hero — the world leads with Bodoni statements and real media.",
+      "Don't use gold (#B8860B / metallic banquet gold) as a brand accent; the accent is merlot (#6B1F2B)."
+    ]
+  }
+}

@@ -7,7 +7,7 @@ import MenuCTA from '@/components/MenuCTA';
 export const metadata: Metadata = generateMetadata({
   title: 'Stag Menus',
   description:
-    'Perfect menu selections for stag parties and celebrations at Da Vinci Banquet Halls in Woodbridge, ON. Customizable options for your memorable event.',
+    'Stag party menu samples at Da Vinci Banquet Halls in Woodbridge, ON. Customizable for your guest count.',
   path: '/menus/stags',
   image: '/assets/images/menus/stags/menu.jpg',
 });
@@ -18,7 +18,7 @@ export default function StagsMenuPage() {
       <div className="container mx-auto max-w-7xl px-4">
         <MenuPageHeader
           title="Stag Menus"
-          subtitle="Perfect selections for stag parties and celebrations"
+          subtitle="Sample menus for stag parties."
           pdfLink="/assets/menus/StagMenu.pdf"
         />
 
@@ -86,8 +86,8 @@ export default function StagsMenuPage() {
 
         {/* CTA */}
         <MenuCTA
-          title="Ready to Customize Your Stag Menu?"
-          description="Contact us to discuss your stag party and create the perfect menu for your celebration"
+          title="Finalize your stag menu"
+          description="Share your guest count and preferences — we will help lock in the selection."
         />
       </div>
     </div>

@@ -14,7 +14,6 @@ export default function TermsPage() {
     <div className="page-shell pb-20">
       <div className="container mx-auto max-w-3xl px-4">
         <PageHero
-          eyebrow="Legal"
           title="Terms of service"
           description="Last updated July 2026. By using this website, you agree to the terms outlined below."
         />

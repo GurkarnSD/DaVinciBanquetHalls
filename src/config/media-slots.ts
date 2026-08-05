@@ -46,10 +46,10 @@ export const carouselSlots: MediaSlot[] = [
   {
     id: 'carousel-wide-hall',
     category: 'Venue',
-    title: 'Wide hall setup with neutral decor',
+    title: 'Hall A tables with lighting and AV',
     aspect: '3:2 landscape · 1200×800',
     layout: 'landscape',
-    src: venueImage('hall-ab-wide-corner.jpg'),
+    src: venueImage('hall-a-table-av-lights.jpg'),
   },
   {
     id: 'carousel-lobby',
@@ -90,10 +90,10 @@ export const gallerySlots: MediaSlot[] = [
   {
     id: 'gallery-hall-ab',
     category: 'Venue',
-    title: 'Hall A and B wide room setup',
+    title: 'Hall A dinner tables and lighting',
     aspect: '3:2 landscape · 1200×800',
     layout: 'landscape',
-    src: venueImage('hall-ab-wide-corner.jpg'),
+    src: venueImage('hall-a-table-av-lights.jpg'),
   },
   {
     id: 'gallery-hall-lobby',
@@ -174,10 +174,10 @@ export const venueSlots: MediaSlot[] = [
   {
     id: 'venue-hall-ab',
     category: 'Venue',
-    title: 'Hall A and B combined capacity view',
+    title: 'Hall A seated setup with AV lighting',
     aspect: '3:2 landscape · 1200×800',
     layout: 'landscape',
-    src: venueImage('hall-ab-wide-corner.jpg'),
+    src: venueImage('hall-a-table-av-lights.jpg'),
   },
   {
     id: 'venue-buffet-room',

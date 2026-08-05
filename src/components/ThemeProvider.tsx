@@ -29,11 +29,11 @@ function subscribeToTheme(listener: () => void) {
 
 function getThemeSnapshot(): Theme {
   const value = document.documentElement.getAttribute('data-theme');
-  return value === 'light' ? 'light' : 'dark';
+  return value === 'dark' ? 'dark' : 'light';
 }
 
 function getServerThemeSnapshot(): Theme {
-  return 'dark';
+  return 'light';
 }
 
 function applyTheme(theme: Theme) {

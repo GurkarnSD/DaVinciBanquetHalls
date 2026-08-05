@@ -4,7 +4,7 @@ import { generateMetadata } from '@/lib/seo';
 export const metadata: Metadata = generateMetadata({
   title: 'Celebration of Life Menu',
   description:
-    'Thoughtful menu selections for memorial services and celebration of life events at Da Vinci Banquet Halls in Woodbridge, ON.',
+    'Menu options for memorial services and celebration of life events at Da Vinci Banquet Halls in Woodbridge, ON.',
   path: '/menus/celebration-of-life',
 });
 

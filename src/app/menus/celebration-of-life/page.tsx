@@ -8,7 +8,7 @@ export default function CelebrationOfLifeMenuPage() {
       <div className="container mx-auto max-w-7xl px-4">
         <MenuPageHeader
           title="Celebration of Life"
-          subtitle="Thoughtful menu selections for memorial services"
+          subtitle="Menu options for memorial services."
           pdfLink="/assets/menus/CelebrationofLifeMenu.pdf"
         />
 
@@ -90,8 +90,8 @@ export default function CelebrationOfLifeMenuPage() {
 
         {/* CTA */}
         <MenuCTA
-          title="Ready to Customize Your Menu?"
-          description="Contact us to discuss your celebration of life service and create a thoughtful menu"
+          title="Discuss the menu"
+          description="Tell us about the gathering and we will help shape the menu."
         />
       </div>
     </div>

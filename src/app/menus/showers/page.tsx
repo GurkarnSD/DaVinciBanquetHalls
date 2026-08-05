@@ -7,7 +7,7 @@ import MenuCTA from '@/components/MenuCTA';
 export const metadata: Metadata = generateMetadata({
   title: 'Shower Menus',
   description:
-    'Curated menu selections for baby showers and bridal showers at Da Vinci Banquet Halls in Woodbridge, ON. Thoughtfully planned menus for your special celebration.',
+    'Shower menu samples for baby and bridal showers at Da Vinci Banquet Halls in Woodbridge, ON.',
   path: '/menus/showers',
   image: '/assets/images/menus/showers/menu-1.jpg',
 });
@@ -18,7 +18,7 @@ export default function ShowersMenuPage() {
       <div className="container mx-auto max-w-7xl px-4">
         <MenuPageHeader
           title="Shower Menus"
-          subtitle="Thoughtfully planned menus for baby and bridal showers"
+          subtitle="Sample menus for baby and bridal showers."
           pdfLink="/assets/menus/ShowerMenus.pdf"
         />
 
@@ -254,8 +254,8 @@ export default function ShowersMenuPage() {
 
         {/* CTA */}
         <MenuCTA
-          title="Ready to Customize Your Shower Menu?"
-          description="Contact us to discuss your shower celebration and create the perfect menu"
+          title="Finalize your shower menu"
+          description="Share your guest count and preferences — we will help lock in the selection."
         />
       </div>
     </div>

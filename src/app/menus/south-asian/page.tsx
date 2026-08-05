@@ -14,7 +14,7 @@ export default function SouthAsianMenuPage() {
       <div className="container mx-auto max-w-7xl px-4">
         <MenuPageHeader
           title="South Asian Menu"
-          subtitle="Authentic South Asian cuisine with rich flavors and traditional recipes"
+          subtitle="Full catalog — welcome drinks through dinner, dessert, and bar."
           pdfLink="/assets/menus/SouthAsianMenu.pdf"
         />
 
@@ -27,8 +27,8 @@ export default function SouthAsianMenuPage() {
         <BarSection />
 
         <MenuCTA
-          title="Ready to Customize Your Menu?"
-          description="Contact us to discuss your event and create the perfect South Asian menu"
+          title="Build your South Asian menu"
+          description="Share your event type and dietary needs — we will help finalize the selection."
         />
       </div>
     </div>

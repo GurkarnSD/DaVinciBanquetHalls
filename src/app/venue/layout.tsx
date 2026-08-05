@@ -5,9 +5,9 @@ export const metadata: Metadata = generateMetadata({
   title: 'Venue Information',
   locationKeywords: 'Woodbridge, Brampton, Mississauga, Vaughan, GTA',
   description:
-    'Explore our elegant banquet halls serving Woodbridge, Brampton, Mississauga, Vaughan, and the GTA. Flexible spaces accommodating 50-1000 guests. Features include state-of-the-art sound systems, professional lighting, full-service bar, and ample parking.',
+    'Banquet halls in Woodbridge for 50–1,000 guests. Sound, lighting, full-service bar, catering kitchen, and parking. Serving Woodbridge, Brampton, Mississauga, Vaughan, and the GTA.',
   path: '/venue',
-  image: '/assets/images/venue/hall-ab-wide-corner.jpg',
+  image: '/assets/images/venue/hall-a-table-av-lights.jpg',
 });
 
 export default function VenueLayout({ children }: { children: React.ReactNode }) {

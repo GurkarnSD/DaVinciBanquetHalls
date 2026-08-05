@@ -43,7 +43,7 @@ export default function EventsPage() {
     <div className="page-shell pb-0">
       <div className="container mx-auto px-4">
         <PageHero
-          title="Every occasion, one consistent standard"
+          title="Weddings, corporate, cultural, and social events"
           description="Browse by event type or watch recent highlights below."
           align="center"
           className="mx-auto max-w-3xl"
@@ -80,7 +80,7 @@ export default function EventsPage() {
       <CTASection
         title="Tell us about your event"
         description="Share your date, guest count, and event type. We will outline hall options and next steps."
-        primaryLabel="Book your event"
+        primaryLabel="Submit an inquiry"
         primaryHref="/book"
         secondaryLabel="Contact us"
         secondaryHref="/contact"

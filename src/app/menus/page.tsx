@@ -8,13 +8,13 @@ import { foodVideoSlots } from '@/config/video-slots';
 const fullMenus = [
   {
     title: 'Italian Menu',
-    description: 'Complete selection of authentic Italian dishes.',
+    description: 'Full catalog — appetizers through bar.',
     href: '/menus/italian',
     image: '/assets/images/menus/italian/appetizers.jpg',
   },
   {
     title: 'South Asian Menu',
-    description: 'Full range of traditional South Asian cuisine.',
+    description: 'Full catalog — welcome drinks through dessert.',
     href: '/menus/south-asian',
     image: '/assets/images/menus/south-asian/card.webp',
   },
@@ -23,7 +23,7 @@ const fullMenus = [
 const sampleMenus = [
   {
     title: 'Wedding Menus',
-    description: 'Curated selections for your wedding day.',
+    description: 'Sample menus for ceremonies and receptions.',
     href: '/menus/weddings',
     image: '/assets/images/menus/weddings/menu-1.jpg',
   },
@@ -35,7 +35,7 @@ const sampleMenus = [
   },
   {
     title: 'Stag Menus',
-    description: 'Selections for stag parties.',
+    description: 'Menus for stag parties.',
     href: '/menus/stags',
     image: '/assets/images/menus/stags/menu.jpg',
   },
@@ -47,13 +47,13 @@ const sampleMenus = [
   },
   {
     title: 'Celebration of Life',
-    description: 'Thoughtful menus for memorial services.',
+    description: 'Menus for memorial services.',
     href: '/menus/celebration-of-life',
     image: '/assets/images/menus/celebration-of-life/card.webp',
   },
   {
     title: 'Holiday Menus',
-    description: 'Festive menus for the season.',
+    description: 'Menus for holiday gatherings.',
     href: '/menus/holiday',
     image: '/assets/images/menus/holiday/menu-1.jpg',
   },
@@ -64,8 +64,8 @@ export default function MenusPage() {
     <div className="page-shell pb-0">
       <div className="container mx-auto px-4">
         <PageHero
-          title="Cuisine shaped around your event"
-          description="Full catalogs list every available item. Sample menus offer a starting point, and each can be adjusted to your preferences."
+          title="Italian and South Asian menus for every event type"
+          description="Full catalogs list every available item. Sample menus are starting points — dishes can be added or removed."
           align="center"
           className="mx-auto max-w-3xl"
         />
@@ -85,12 +85,12 @@ export default function MenusPage() {
         </div>
       </section>
 
-      <VerticalVideoReel title="Food and table presentations" slots={foodVideoSlots} />
+      <VerticalVideoReel title="Food and table setups" slots={foodVideoSlots} />
 
       <section className="section-edge container mx-auto border-t px-4 py-16">
         <SectionHeading
-          title="Curated starting points"
-          subtitle="Each sample menu can be customized. Items can be added or removed."
+          title="Sample menus"
+          subtitle="Starting points by event type. Items can be added or removed."
           align="left"
         />
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
@@ -101,8 +101,8 @@ export default function MenusPage() {
       </section>
 
       <CTASection
-        title="Customize your menu"
-        description="Dietary requirements or specific preferences? We will work with you on a tailored selection."
+        title="Build your menu"
+        description="Share dietary needs or dish preferences and we will help finalize the selection."
         primaryLabel="Contact us"
         primaryHref="/contact"
       />

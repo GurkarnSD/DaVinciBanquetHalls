@@ -6,7 +6,6 @@ export default function NotFound() {
     <div className="page-shell pb-20">
       <div className="container mx-auto max-w-3xl px-4 text-center">
         <PageHero
-          eyebrow="404"
           title="This page could not be found"
           description="The link may be outdated or the page may have moved. Head back to the homepage or contact us for help."
           align="center"

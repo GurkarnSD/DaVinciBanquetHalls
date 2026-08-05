@@ -28,7 +28,7 @@ const floorplans = [
 ];
 
 const features = [
-  { name: 'Elegant decor', icon: FaBuilding },
+  { name: 'Décor options', icon: FaBuilding },
   { name: 'Sound system', icon: FaVolumeUp },
   { name: 'Professional lighting', icon: FaLightbulb },
   { name: 'Flexible seating', icon: FaChair },
@@ -95,7 +95,7 @@ export default function VenuePage() {
       <CTASection
         title="Schedule a tour"
         description="Walk the halls in person and discuss layout options with our team."
-        primaryLabel="Book your event"
+        primaryLabel="Submit an inquiry"
         primaryHref="/book"
         secondaryLabel="Contact us"
         secondaryHref="/contact"

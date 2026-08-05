@@ -4,7 +4,7 @@ import { generateMetadata } from '@/lib/seo';
 export const metadata: Metadata = generateMetadata({
   title: 'Italian Menu',
   description:
-    'Complete Italian menu catalog at Da Vinci Banquet Halls in Woodbridge, ON. Authentic Italian cuisine including appetizers, pasta, entrees, seafood, desserts, and bar selections.',
+    'Complete Italian menu catalog at Da Vinci Banquet Halls in Woodbridge, ON — appetizers, pasta, entrées, seafood, desserts, and bar.',
   path: '/menus/italian',
   image: '/assets/images/menus/italian/appetizers.jpg',
 });

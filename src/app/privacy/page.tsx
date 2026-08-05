@@ -14,7 +14,6 @@ export default function PrivacyPage() {
     <div className="page-shell pb-20">
       <div className="container mx-auto max-w-3xl px-4">
         <PageHero
-          eyebrow="Legal"
           title="Privacy policy"
           description="Last updated July 2026. This policy describes how we handle information submitted through our website and booking forms."
         />

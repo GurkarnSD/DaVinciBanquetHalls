@@ -13,7 +13,7 @@ export default function ItalianMenuPage() {
       <div className="container mx-auto max-w-7xl px-4">
         <MenuPageHeader
           title="Italian Menu"
-          subtitle="Authentic Italian cuisine crafted with passion and tradition"
+          subtitle="Full catalog — appetizers, pasta, entrées, desserts, and bar."
           pdfLink="/assets/menus/ItalianMenu.pdf"
         />
 
@@ -25,8 +25,8 @@ export default function ItalianMenuPage() {
         <ItalianBarSection />
 
         <MenuCTA
-          title="Ready to Customize Your Menu?"
-          description="Contact us to discuss your event and create the perfect menu"
+          title="Build your Italian menu"
+          description="Share your event type and dietary needs — we will help finalize the selection."
         />
       </div>
     </div>

@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { useEffect, useRef, useState, useSyncExternalStore } from 'react';
 import type { VideoSlot } from '@/config/video-slots';
 import MediaPlaceholder from './MediaPlaceholder';
@@ -8,6 +9,8 @@ interface VerticalVideoProps {
   slot: VideoSlot;
   className?: string;
   showLabel?: boolean;
+  /** When false, keep the poster only — no MP4 network work. */
+  active?: boolean;
   autoPlay?: boolean;
   controls?: boolean;
   preload?: 'none' | 'metadata' | 'auto';
@@ -19,6 +22,7 @@ export default function VerticalVideo({
   slot,
   className = '',
   showLabel = false,
+  active = true,
   autoPlay = true,
   controls = false,
   preload = 'none',
@@ -27,7 +31,7 @@ export default function VerticalVideo({
   const videoRef = useRef<HTMLVideoElement>(null);
   const [hasError, setHasError] = useState(false);
   const [isNearViewport, setIsNearViewport] = useState(false);
-  const [previewFrameSrc, setPreviewFrameSrc] = useState<string>();
+  const [isReady, setIsReady] = useState(false);
   const [trackedSrc, setTrackedSrc] = useState(slot.src);
   const isClient = useSyncExternalStore(subscribeToClient, () => true, () => false);
   const lacksIntersectionObserver = isClient && !('IntersectionObserver' in window);
@@ -36,15 +40,16 @@ export default function VerticalVideo({
     setTrackedSrc(slot.src);
     setHasError(false);
     setIsNearViewport(false);
-    setPreviewFrameSrc(undefined);
+    setIsReady(false);
   }
 
   const effectivelyNearViewport = lacksIntersectionObserver || isNearViewport;
-  const showPlaceholder = !slot.src || hasError || !effectivelyNearViewport;
-  const showPreviewPlaceholder = !showPlaceholder && previewFrameSrc !== slot.src;
+  const shouldMountVideo = Boolean(slot.src) && active && !hasError && effectivelyNearViewport;
+  const hasPoster = Boolean(slot.poster);
+  const showFallbackPlaceholder = !hasPoster && (!shouldMountVideo || !isReady);
 
   useEffect(() => {
-    if (!slot.src || hasError || lacksIntersectionObserver) return;
+    if (!slot.src || hasError || !active || lacksIntersectionObserver) return;
 
     const figure = figureRef.current;
     if (!figure) return;
@@ -53,108 +58,106 @@ export default function VerticalVideo({
       ([entry]) => {
         setIsNearViewport(Boolean(entry?.isIntersecting));
       },
-      { rootMargin: '160px 120px', threshold: 0.01 }
+      { rootMargin: '120px 40px', threshold: 0.01 }
     );
 
     observer.observe(figure);
-
     return () => observer.disconnect();
-  }, [slot.src, hasError, lacksIntersectionObserver]);
+  }, [slot.src, hasError, active, lacksIntersectionObserver]);
 
   useEffect(() => {
-    if (!slot.src || hasError || !autoPlay || !effectivelyNearViewport) return;
+    if (!shouldMountVideo) return;
 
     const video = videoRef.current;
     if (!video) return;
 
+    if (!autoPlay) {
+      video.pause();
+      return () => {
+        video.pause();
+      };
+    }
+
     const playVideo = () => {
       void video.play().catch(() => {
-        // Some browser/device settings reject autoplay. The frame remains as a still preview.
+        // Autoplay can be blocked; poster stays visible.
       });
     };
 
     if (lacksIntersectionObserver) {
       playVideo();
-      return;
+      return () => {
+        video.pause();
+      };
     }
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry?.isIntersecting) {
+        if (entry?.isIntersecting && entry.intersectionRatio >= 0.25) {
           playVideo();
         } else {
           video.pause();
         }
       },
-      { threshold: 0.45 }
+      { threshold: [0, 0.25, 0.5] }
     );
 
     observer.observe(video);
-
     return () => {
       observer.disconnect();
       video.pause();
     };
-  }, [slot.src, hasError, autoPlay, effectivelyNearViewport, lacksIntersectionObserver]);
+  }, [shouldMountVideo, autoPlay, lacksIntersectionObserver, slot.src]);
 
   useEffect(() => {
-    if (!slot.src || hasError || autoPlay || !effectivelyNearViewport) return;
-
-    const video = videoRef.current;
-    if (!video) return;
-
-    video.load();
-  }, [slot.src, hasError, autoPlay, effectivelyNearViewport]);
-
-  useEffect(() => {
-    if (effectivelyNearViewport) return;
-
-    const video = videoRef.current;
-    if (!video) return;
-
-    video.pause();
-    video.removeAttribute('src');
-    video.querySelectorAll('source').forEach((source) => source.removeAttribute('src'));
-    video.load();
-  }, [effectivelyNearViewport]);
+    if (shouldMountVideo) return;
+    setIsReady(false);
+  }, [shouldMountVideo]);
 
   return (
     <figure
       ref={figureRef}
       className={`media-frame relative mx-auto w-full max-w-[260px] sm:max-w-[280px] ${className}`}
     >
-      <div className="relative aspect-9/16 w-full">
-        {showPlaceholder ? (
-          <MediaPlaceholder />
-        ) : (
-          <>
-            {showPreviewPlaceholder && (
-              <div className="absolute inset-0">
-                <MediaPlaceholder />
-              </div>
-            )}
-            <video
-              ref={videoRef}
-              aria-label={slot.title}
-              controls={controls}
-              disablePictureInPicture
-              disableRemotePlayback
-              loop
-              muted
-              playsInline
-              preload={preload}
-              controlsList="nodownload noplaybackrate noremoteplayback"
-              className="h-full w-full object-cover"
-              onError={() => setHasError(true)}
-              onLoadedData={() => setPreviewFrameSrc(slot.src)}
-            >
-              <source src={slot.src} type="video/mp4" />
-            </video>
-          </>
+      <div className="relative aspect-9/16 w-full overflow-hidden bg-[var(--bg-media)]">
+        {hasPoster && (
+          <Image
+            src={slot.poster!}
+            alt=""
+            fill
+            sizes="(max-width: 640px) 62vw, 245px"
+            className="object-cover"
+            aria-hidden
+          />
+        )}
+        {showFallbackPlaceholder && <MediaPlaceholder />}
+        {shouldMountVideo && (
+          <video
+            ref={videoRef}
+            key={slot.src}
+            aria-label={slot.title}
+            controls={controls}
+            disablePictureInPicture
+            disableRemotePlayback
+            loop
+            muted
+            playsInline
+            poster={slot.poster}
+            preload={preload === 'auto' ? 'metadata' : preload}
+            controlsList="nodownload noplaybackrate noremoteplayback"
+            className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-300 ${isReady ? 'opacity-100' : 'opacity-0'}`}
+            onError={() => setHasError(true)}
+            onPlaying={() => setIsReady(true)}
+            onLoadedData={() => {
+              if (!autoPlay) setIsReady(true);
+            }}
+          >
+            <source src={slot.src} type="video/mp4" />
+          </video>
         )}
       </div>
 
-      {showLabel && !showPlaceholder && (
+      {showLabel && (
         <figcaption className="border-t border-white/10 bg-black/70 px-3 py-2">
           <p className="text-xs leading-snug tracking-wide text-gray-300 uppercase">{slot.title}</p>
         </figcaption>

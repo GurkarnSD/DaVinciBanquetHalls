@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, type ComponentProps } from 'react';
+import { useEffect, useState, type ComponentProps } from 'react';
 import Image from 'next/image';
 import type { MediaSlot } from '@/config/media-slots';
 import MediaPlaceholder from './MediaPlaceholder';
@@ -20,24 +20,32 @@ export default function MediaImage({
   imageClassName = '',
   placeholderClassName = '',
   onLoad,
+  fill,
   ...imageProps
 }: MediaImageProps) {
   const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    setIsLoaded(false);
+  }, [slot.src]);
 
   if (!slot.src) {
     return <MediaPlaceholder className={className} />;
   }
 
+  const shellClass = fill
+    ? `bg-theme-media absolute inset-0 overflow-hidden ${className}`
+    : `bg-theme-media relative h-full w-full overflow-hidden ${className}`;
+
   return (
-    <div className={`bg-theme-media relative h-full w-full overflow-hidden ${className}`}>
-      <MediaPlaceholder
-        className={`absolute inset-0 transition-opacity duration-500 ${isLoaded ? 'opacity-0' : 'opacity-100'} ${placeholderClassName}`}
-      />
+    <div className={shellClass}>
+      {!isLoaded && <MediaPlaceholder className={`absolute inset-0 ${placeholderClassName}`} />}
       <Image
         {...imageProps}
+        fill={fill}
         src={slot.src}
         alt={slot.title}
-        className={`transition-opacity duration-500 ${isLoaded ? 'opacity-100' : 'opacity-0'} ${imageClassName}`}
+        className={imageClassName}
         onLoad={(event) => {
           setIsLoaded(true);
           onLoad?.(event);

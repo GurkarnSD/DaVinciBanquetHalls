@@ -11,7 +11,7 @@ export default function SouthAsianCelebrationsMenuPage() {
       <div className="container mx-auto max-w-5xl px-4">
         <MenuPageHeader
           title="South Asian Celebrations"
-          subtitle="Specialized curated menus for South Asian celebrations"
+          subtitle="Gold, Platinum, Diamond, and Exclusive packages."
           pdfLink="/assets/menus/SouthAsianCelebrationMenus.pdf"
         />
 
@@ -21,8 +21,8 @@ export default function SouthAsianCelebrationsMenuPage() {
         <ExclusivePackageSection />
 
         <MenuCTA
-          title="Customize Your Celebration Menu"
-          description="Contact us to discuss your South Asian celebration and build the right menu."
+          title="Choose a celebration package"
+          description="Tell us your event timeline and guest count — we will outline the right package."
         />
       </div>
     </div>

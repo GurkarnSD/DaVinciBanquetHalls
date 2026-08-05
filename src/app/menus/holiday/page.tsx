@@ -7,7 +7,7 @@ import MenuCTA from '@/components/MenuCTA';
 export const metadata: Metadata = generateMetadata({
   title: 'Holiday Menus',
   description:
-    'Festive curated menus for holiday celebrations at Da Vinci Banquet Halls in Woodbridge, ON. Special holiday menus for Christmas and seasonal celebrations.',
+    'Holiday menu samples at Da Vinci Banquet Halls in Woodbridge, ON — Christmas and seasonal gatherings.',
   path: '/menus/holiday',
   image: '/assets/images/menus/holiday/menu-1.jpg',
 });
@@ -18,7 +18,7 @@ export default function HolidayMenuPage() {
       <div className="container mx-auto max-w-7xl px-4">
         <MenuPageHeader
           title="Holiday Menus"
-          subtitle="Festive curated menus for holiday celebrations"
+          subtitle="Sample menus for holiday gatherings."
           pdfLink="/assets/menus/ChristmasMenus.pdf"
         />
 
@@ -302,8 +302,8 @@ export default function HolidayMenuPage() {
 
         {/* CTA */}
         <MenuCTA
-          title="Ready to Customize Your Holiday Menu?"
-          description="Contact us to discuss your holiday celebration and create a festive menu"
+          title="Finalize your holiday menu"
+          description="Share your guest count and preferences — we will help lock in the selection."
         />
       </div>
     </div>

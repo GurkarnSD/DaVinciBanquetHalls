@@ -5,18 +5,14 @@ import type { VideoSlot } from '@/config/video-slots';
 import SectionHeading from './SectionHeading';
 import VerticalVideo from './VerticalVideo';
 
-const DEFAULT_IDLE_PLAYBACK_LIMIT = 4;
-
-const getCenteredIndexes = (indexes: number[], limit: number) => {
-  if (indexes.length <= limit) return indexes;
-
-  const startIndex = Math.floor((indexes.length - limit) / 2);
-  return indexes.slice(startIndex, startIndex + limit);
-};
+/**
+ * Soft ceiling so a wide desktop strip cannot open a dozen decoders.
+ * Posters carry the look; we play every on-screen unique clip up to this cap.
+ */
+const DEFAULT_IDLE_PLAYBACK_LIMIT = 3;
 
 interface VerticalVideoReelProps {
   slots: VideoSlot[];
-  eyebrow?: string;
   title?: string;
   subtitle?: string;
   maxSlots?: number;
@@ -25,22 +21,43 @@ interface VerticalVideoReelProps {
 
 export default function VerticalVideoReel({
   slots,
-  eyebrow,
   title,
-  maxSlots = 8,
+  maxSlots = 6,
   idlePlaybackLimit = DEFAULT_IDLE_PLAYBACK_LIMIT,
 }: VerticalVideoReelProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const itemRefs = useRef<Map<number, HTMLDivElement> | null>(null);
   const [visibleIndexes, setVisibleIndexes] = useState<Set<number>>(() => new Set());
+  const [reelInView, setReelInView] = useState(false);
 
   const visibleSlots = useMemo(() => slots.slice(0, maxSlots), [maxSlots, slots]);
+  // Duplicate for seamless marquee — posters on both; only one instance of each clip plays.
   const movingSlots = useMemo(() => [...visibleSlots, ...visibleSlots], [visibleSlots]);
   const playbackLimit = Math.max(1, Math.floor(idlePlaybackLimit));
+  const primaryCount = visibleSlots.length;
 
   useEffect(() => {
-    if (movingSlots.length === 0) return;
+    if (!('IntersectionObserver' in window)) {
+      setReelInView(true);
+      return;
+    }
 
+    const root = scrollRef.current;
+    if (!root) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setReelInView(Boolean(entry?.isIntersecting));
+      },
+      { rootMargin: '160px 0px', threshold: 0.05 }
+    );
+
+    observer.observe(root);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (movingSlots.length === 0 || !reelInView) return;
     if (!('IntersectionObserver' in window)) return;
 
     const root = scrollRef.current;
@@ -56,7 +73,7 @@ export default function VerticalVideoReel({
             const index = Number((entry.target as HTMLElement).dataset.reelIndex);
             if (!Number.isFinite(index)) return;
 
-            const isVisible = entry.isIntersecting && entry.intersectionRatio >= 0.35;
+            const isVisible = entry.isIntersecting && entry.intersectionRatio >= 0.2;
             if (isVisible && !nextIndexes.has(index)) {
               nextIndexes.add(index);
               hasChanged = true;
@@ -68,33 +85,49 @@ export default function VerticalVideoReel({
           return hasChanged ? nextIndexes : currentIndexes;
         });
       },
-      { root, threshold: [0, 0.35, 0.65] }
+      { root, threshold: [0, 0.2, 0.45, 0.7] }
     );
 
     itemRefs.current?.forEach((item) => observer.observe(item));
-
     return () => observer.disconnect();
-  }, [movingSlots]);
+  }, [movingSlots, reelInView]);
 
-  const idlePlayableIndexes = useMemo(() => {
-    const visiblePlayableIndexes = Array.from(visibleIndexes)
-      .filter((index) => index < movingSlots.length)
-      .sort((firstIndex, secondIndex) => firstIndex - secondIndex);
-    const fallbackIndexes = movingSlots.map((_, index) => index);
+  const playableIndexes = useMemo(() => {
+    if (!reelInView) return new Set<number>();
 
-    return new Set(getCenteredIndexes(visiblePlayableIndexes.length > 0 ? visiblePlayableIndexes : fallbackIndexes, playbackLimit));
-  }, [movingSlots, playbackLimit, visibleIndexes]);
+    const sorted = Array.from(visibleIndexes).sort((a, b) => a - b);
+    const chosen = new Set<number>();
+    const seenIds = new Set<string>();
+
+    const consider = (index: number) => {
+      if (chosen.size >= playbackLimit) return;
+      const slot = movingSlots[index];
+      if (!slot || seenIds.has(slot.id)) return;
+      seenIds.add(slot.id);
+      chosen.add(index);
+    };
+
+    if (sorted.length === 0) {
+      for (let index = 0; index < Math.min(playbackLimit, primaryCount); index += 1) {
+        consider(index);
+      }
+      return chosen;
+    }
+
+    sorted.forEach(consider);
+    return chosen;
+  }, [visibleIndexes, reelInView, playbackLimit, movingSlots, primaryCount]);
 
   if (slots.length === 0) return null;
 
-  const showHeader = Boolean(title) || Boolean(eyebrow);
+  const showHeader = Boolean(title);
 
   return (
     <section className="py-16 md:py-20">
       <div className="container mx-auto px-4">
         {showHeader && (
           <div className="mb-8 md:mb-10">
-            <SectionHeading eyebrow={eyebrow} title={title ?? ''} align="left" className="mb-0 max-w-2xl" />
+            <SectionHeading title={title ?? ''} align="left" className="mb-0 max-w-2xl" />
           </div>
         )}
 
@@ -105,7 +138,7 @@ export default function VerticalVideoReel({
         >
           <div className="video-reel-track flex w-max gap-4 md:gap-5">
             {movingSlots.map((slot, index) => {
-              const shouldPlay = idlePlayableIndexes.has(index);
+              const shouldPlay = playableIndexes.has(index);
 
               return (
                 <div
@@ -122,13 +155,14 @@ export default function VerticalVideoReel({
                     }
                   }}
                   data-reel-index={index}
-                  aria-hidden={index >= visibleSlots.length}
+                  aria-hidden={index >= primaryCount}
                   className="w-[62vw] max-w-[230px] shrink-0 sm:w-[220px] md:max-w-[245px]"
                 >
                   <VerticalVideo
                     slot={slot}
+                    active={shouldPlay}
                     autoPlay={shouldPlay}
-                    preload={shouldPlay ? 'auto' : 'metadata'}
+                    preload="none"
                     className="max-w-none"
                   />
                 </div>
