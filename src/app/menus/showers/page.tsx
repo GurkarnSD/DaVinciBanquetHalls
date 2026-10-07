@@ -1,13 +1,13 @@
 import { type Metadata } from 'next';
 import { generateMetadata } from '@/lib/seo';
+import MenuCourse from '@/components/MenuCourse';
 import MenuPageHeader from '@/components/MenuPageHeader';
 import MenuSectionCard from '@/components/MenuSectionCard';
 import MenuCTA from '@/components/MenuCTA';
 
 export const metadata: Metadata = generateMetadata({
   title: 'Shower Menus',
-  description:
-    'Shower menu samples for baby and bridal showers at Da Vinci Banquet Halls in Woodbridge, ON.',
+  description: 'Shower menu samples for baby and bridal showers at Da Vinci Banquet Halls in Woodbridge, ON.',
   path: '/menus/showers',
   image: '/assets/images/menus/showers/menu-1.jpg',
 });
@@ -34,20 +34,20 @@ export default function ShowersMenuPage() {
               <h3 className="mb-2 font-serif text-xl font-medium text-white">Mimosas</h3>
             </div>
 
-            {/* Plated Antipasto */}
-            <div>
-              <h3 className="menu-section-title">Plated Antipasto</h3>
-              <div className="menu-panel-accent">
-                <div className="grid grid-cols-2 gap-3 text-lg leading-relaxed text-gray-300 md:grid-cols-3">
-                  <p>• Prosciutto</p>
-                  <p>• Melone</p>
-                  <p>• Bocconcino & Tomatoes</p>
-                  <p>• Grilled Vegetables</p>
-                  <p>• Assorted Olives</p>
-                  <p>• Assorted Cheese</p>
-                </div>
-              </div>
-            </div>
+            <MenuCourse
+              title="Plated Antipasto"
+              panel="accent"
+              layout="grid"
+              tone="muted"
+              items={[
+                '• Prosciutto',
+                '• Melone',
+                '• Bocconcino & Tomatoes',
+                '• Grilled Vegetables',
+                '• Assorted Olives',
+                '• Assorted Cheese',
+              ]}
+            />
 
             {/* Pasta */}
             <div>
@@ -57,17 +57,15 @@ export default function ShowersMenuPage() {
               </div>
             </div>
 
-            {/* Entrée */}
-            <div>
-              <h3 className="menu-section-title">Entrée</h3>
-              <div className="menu-panel">
-                <div className="space-y-3 text-lg leading-relaxed text-gray-300">
-                  <p className="font-semibold">• Choice of Veal Scallopini OR Chicken</p>
-                  <p>• Fresh Seasonal Vegetables</p>
-                  <p>• Oven Roasted Rosemary Potatoes</p>
-                </div>
-              </div>
-            </div>
+            <MenuCourse
+              title="Entrée"
+              tone="muted"
+              items={[
+                { label: '• Choice of Veal Scallopini OR Chicken', emphasis: true },
+                '• Fresh Seasonal Vegetables',
+                '• Oven Roasted Rosemary Potatoes',
+              ]}
+            />
 
             {/* Salad */}
             <div>
@@ -143,17 +141,15 @@ export default function ShowersMenuPage() {
               </div>
             </div>
 
-            {/* Entrée */}
-            <div>
-              <h3 className="menu-section-title">Entrée</h3>
-              <div className="menu-panel">
-                <div className="space-y-3 text-lg leading-relaxed text-gray-300">
-                  <p className="font-semibold">• Choice of Veal Scallopini OR Chicken</p>
-                  <p>• Fresh Seasonal Vegetables</p>
-                  <p>• Oven Roasted Rosemary Potatoes</p>
-                </div>
-              </div>
-            </div>
+            <MenuCourse
+              title="Entrée"
+              tone="muted"
+              items={[
+                { label: '• Choice of Veal Scallopini OR Chicken', emphasis: true },
+                '• Fresh Seasonal Vegetables',
+                '• Oven Roasted Rosemary Potatoes',
+              ]}
+            />
 
             {/* Salad */}
             <div>
@@ -204,18 +200,16 @@ export default function ShowersMenuPage() {
               <h3 className="mb-2 font-serif text-xl font-medium text-white">Mimosas</h3>
             </div>
 
-            {/* Hot Breakfast Items */}
-            <div>
-              <h3 className="menu-section-title">Hot Breakfast Items</h3>
-              <div className="menu-panel">
-                <div className="space-y-3 text-lg leading-relaxed text-gray-300">
-                  <p>• Scrambled Eggs</p>
-                  <p>• Breakfast Sausage & Bacon</p>
-                  <p>• Hash Browns</p>
-                  <p>• Bagels & Toasted Bread with Cream Cheese, Peanut Butter & Jam</p>
-                </div>
-              </div>
-            </div>
+            <MenuCourse
+              title="Hot Breakfast Items"
+              tone="muted"
+              items={[
+                '• Scrambled Eggs',
+                '• Breakfast Sausage & Bacon',
+                '• Hash Browns',
+                '• Bagels & Toasted Bread with Cream Cheese, Peanut Butter & Jam',
+              ]}
+            />
 
             {/* Continental Breakfast Items */}
             <div>

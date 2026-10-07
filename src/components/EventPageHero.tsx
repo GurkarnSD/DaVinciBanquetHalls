@@ -8,12 +8,7 @@ interface EventPageHeroProps {
   imageClassName?: string;
 }
 
-export default function EventPageHero({
-  slot,
-  title,
-  subtitle,
-  imageClassName = 'object-cover',
-}: EventPageHeroProps) {
+export default function EventPageHero({ slot, title, subtitle, imageClassName = 'object-cover' }: EventPageHeroProps) {
   return (
     <section className="section-edge relative mb-14 border-b">
       <div className="media-frame relative aspect-[21/9] max-h-[420px] w-full md:aspect-[21/8]">

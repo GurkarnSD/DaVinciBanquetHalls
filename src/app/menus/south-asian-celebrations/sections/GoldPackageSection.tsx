@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { CenteredMenuCourse, PackageAppetizers, PackageDinner } from '@/components/PackageMenuBlocks';
 
 export default function GoldPackageSection() {
   return (
@@ -20,60 +21,28 @@ export default function GoldPackageSection() {
         </div>
         <div className="p-8 md:p-12">
           <div className="space-y-8">
-            {/* Appetizers */}
-            <div>
-              <h3 className="menu-section-title">Appetizers</h3>
-              <div className="menu-panel-accent">
-                <div className="grid gap-6 md:grid-cols-2">
-                  <div>
-                    <h4 className="mb-3 text-xl font-semibold text-white">Vegetarian</h4>
-                    <p className="text-lg leading-relaxed text-gray-200">Choice of 2 Vegetarian Appetizers</p>
-                  </div>
-                  <div>
-                    <h4 className="mb-3 text-xl font-semibold text-white">Non-Vegetarian</h4>
-                    <p className="text-lg leading-relaxed text-gray-200">Choice of 2 Non-Vegetarian Appetizers</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Dinner */}
-            <div>
-              <h3 className="menu-section-title">Dinner</h3>
-              <div className="rounded-xl border border-[#C9A961]/20 bg-linear-to-br from-[#C9A961]/10 to-[#E5C97A]/10 p-6">
-                <div className="space-y-4">
-                  <div className="grid gap-6 md:grid-cols-2">
-                    <div>
-                      <h4 className="mb-3 text-xl font-semibold text-white">Vegetarian</h4>
-                      <p className="text-lg leading-relaxed text-gray-200">Choice of 2 Vegetarian Dinner Items</p>
-                    </div>
-                    <div>
-                      <h4 className="mb-3 text-xl font-semibold text-white">Non-Vegetarian</h4>
-                      <p className="text-lg leading-relaxed text-gray-200">
-                        Choice of 2 Non-Vegetarian Dinner Items
-                      </p>
-                    </div>
-                  </div>
-                  <div className="mt-4 grid grid-cols-2 gap-3 border-t border-[#C9A961]/20 pt-4 md:grid-cols-3">
-                    <p className="text-lg leading-relaxed text-gray-200">• Basmati Rice</p>
-                    <p className="text-lg leading-relaxed text-gray-200">• Cucumber Raita</p>
-                    <p className="text-lg leading-relaxed text-gray-200">• Garden Salad</p>
-                    <p className="text-lg leading-relaxed text-gray-200 md:col-span-3">• Fresh Butter Naan</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Dessert */}
-            <div>
-              <h3 className="menu-section-title">Dessert</h3>
-              <div className="menu-panel">
-                <div className="space-y-3 text-center text-lg leading-relaxed text-gray-200">
-                  <p>Choice of 1 Sweet (Raas Malai, Gulab Jamun, Moong Halwa, and/or Gajar Halwa)</p>
-                  <p>Choice of 1 Ice Cream</p>
-                </div>
-              </div>
-            </div>
+            <PackageAppetizers
+              vegetarian="Choice of 2 Vegetarian Appetizers"
+              nonVegetarian="Choice of 2 Non-Vegetarian Appetizers"
+            />
+            <PackageDinner
+              vegetarian="Choice of 2 Vegetarian Dinner Items"
+              nonVegetarian="Choice of 2 Non-Vegetarian Dinner Items"
+              columns={3}
+              sides={[
+                { label: '• Basmati Rice' },
+                { label: '• Cucumber Raita' },
+                { label: '• Garden Salad' },
+                { label: '• Fresh Butter Naan', span: true },
+              ]}
+            />
+            <CenteredMenuCourse
+              title="Dessert"
+              lines={[
+                'Choice of 1 Sweet (Raas Malai, Gulab Jamun, Moong Halwa, and/or Gajar Halwa)',
+                'Choice of 1 Ice Cream',
+              ]}
+            />
           </div>
         </div>
       </div>

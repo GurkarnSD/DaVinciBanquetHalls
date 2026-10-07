@@ -9,9 +9,7 @@ export default function ItalianAppetizersSection() {
     >
       {/* Hors D'Oeuvres */}
       <div className="mb-12">
-        <h3 className="mb-6 text-center font-serif text-3xl font-bold text-white md:text-4xl">
-          Hors D&apos;Oeuvres
-        </h3>
+        <h3 className="mb-6 text-center font-serif text-3xl font-bold text-white md:text-4xl">Hors D&apos;Oeuvres</h3>
         <div className="grid gap-8 md:grid-cols-2">
           <div className="menu-panel">
             <h4 className="mb-4 text-xl font-semibold">Butler Style</h4>

@@ -2,11 +2,7 @@ import MenuSectionCard from '@/components/MenuSectionCard';
 
 export default function ItalianBarSection() {
   return (
-    <MenuSectionCard
-      imageSrc="/assets/images/menus/italian/bar.jpg"
-      imageAlt="Bar Selections"
-      title="Bar Selections"
-    >
+    <MenuSectionCard imageSrc="/assets/images/menus/italian/bar.jpg" imageAlt="Bar Selections" title="Bar Selections">
       <div className="grid gap-8 md:grid-cols-2">
         <div className="menu-panel">
           <h3 className="mb-4 text-center font-serif text-2xl font-bold text-white">Standard Bar</h3>

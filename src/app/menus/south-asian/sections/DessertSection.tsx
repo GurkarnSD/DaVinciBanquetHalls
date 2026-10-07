@@ -55,8 +55,8 @@ export default function DessertSection() {
             <div className="mb-8">
               <h3 className="mb-4 text-center font-serif text-2xl font-bold text-white">Deluxe Sweet Table</h3>
               <p className="text-lg leading-relaxed text-gray-200">
-                Assortment of fresh cakes, delicious mini pastries, assorted tarts, fresh seasonal fruit platters,
-                and assortment of dessert cups
+                Assortment of fresh cakes, delicious mini pastries, assorted tarts, fresh seasonal fruit platters, and
+                assortment of dessert cups
               </p>
             </div>
 

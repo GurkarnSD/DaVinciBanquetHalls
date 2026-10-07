@@ -9,15 +9,7 @@ interface CTASectionProps {
   secondaryHref?: string;
 }
 
-function ActionLink({
-  href,
-  className,
-  children,
-}: {
-  href: string;
-  className: string;
-  children: React.ReactNode;
-}) {
+function ActionLink({ href, className, children }: { href: string; className: string; children: React.ReactNode }) {
   const isExternal = href.startsWith('tel:') || href.startsWith('mailto:') || href.startsWith('http');
   if (isExternal) {
     return (
@@ -44,7 +36,9 @@ export default function CTASection({
   return (
     <section className="cta-section py-20 md:py-24">
       <div className="container mx-auto px-4 text-center">
-        <h2 className={`text-theme-heading font-serif text-3xl font-normal md:text-4xl ${description ? 'mb-4' : 'mb-8'}`}>
+        <h2
+          className={`text-theme-heading font-serif text-3xl font-normal md:text-4xl ${description ? 'mb-4' : 'mb-8'}`}
+        >
           {title}
         </h2>
         {description && (

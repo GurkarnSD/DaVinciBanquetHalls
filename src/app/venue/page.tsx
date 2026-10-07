@@ -60,11 +60,7 @@ export default function VenuePage() {
       <VerticalVideoReel title="Our Halls in Motion" slots={venueVideoSlots} />
 
       <section className="section-edge container mx-auto max-w-5xl border-t px-4 py-16">
-        <SectionHeading
-          title="The Space"
-          subtitle="Exterior, lobby, halls, and event setups."
-          align="left"
-        />
+        <SectionHeading title="The Space" subtitle="Exterior, lobby, halls, and event setups." align="left" />
         <GalleryGrid slots={venueSlots} columns={3} />
       </section>
 

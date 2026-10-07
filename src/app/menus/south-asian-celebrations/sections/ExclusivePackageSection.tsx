@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { CenteredMenuCourse, PackageAppetizers, PackageDinner } from '@/components/PackageMenuBlocks';
 
 export default function ExclusivePackageSection() {
   return (
@@ -20,67 +21,26 @@ export default function ExclusivePackageSection() {
         </div>
         <div className="p-8 md:p-12">
           <div className="space-y-8">
-            {/* Cocktail Hour */}
-            <div>
-              <h3 className="menu-section-title">Cocktail Hour</h3>
-              <div className="menu-panel">
-                <div className="space-y-3 text-center text-lg leading-relaxed text-gray-200">
-                  <p>Choice of 2 Welcome Drinks</p>
-                  <p>Chef&apos;s Choice Hors D&apos;Oeuvres</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Appetizers */}
-            <div>
-              <h3 className="menu-section-title">Appetizers</h3>
-              <div className="menu-panel-accent">
-                <div className="mb-4 grid gap-6 md:grid-cols-2">
-                  <div>
-                    <h4 className="mb-3 text-xl font-semibold text-white">Vegetarian</h4>
-                    <p className="text-lg leading-relaxed text-gray-200">Choice of 4 Vegetarian Appetizers</p>
-                  </div>
-                  <div>
-                    <h4 className="mb-3 text-xl font-semibold text-white">Non-Vegetarian</h4>
-                    <p className="text-lg leading-relaxed text-gray-200">Choice of 3 Non-Vegetarian Appetizers</p>
-                  </div>
-                </div>
-                <div className="border-t border-[#C9A961]/30 pt-4 text-center">
-                  <p className="text-lg leading-relaxed text-gray-200">
-                    Sweet Platters to be included with Coffee & Tea
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Dinner */}
-            <div>
-              <h3 className="menu-section-title">Dinner</h3>
-              <div className="rounded-xl border border-[#C9A961]/20 bg-linear-to-br from-[#C9A961]/10 to-[#E5C97A]/10 p-6">
-                <div className="space-y-4">
-                  <div className="grid gap-6 md:grid-cols-2">
-                    <div>
-                      <h4 className="mb-3 text-xl font-semibold text-white">Vegetarian</h4>
-                      <p className="text-lg leading-relaxed text-gray-200">Choice of 4 Vegetarian Dinner Items</p>
-                    </div>
-                    <div>
-                      <h4 className="mb-3 text-xl font-semibold text-white">Non-Vegetarian</h4>
-                      <p className="text-lg leading-relaxed text-gray-200">
-                        Choice of 3 Non-Vegetarian Dinner Items
-                      </p>
-                    </div>
-                  </div>
-                  <div className="mt-4 grid grid-cols-2 gap-3 border-t border-[#C9A961]/20 pt-4 md:grid-cols-3">
-                    <p className="text-lg leading-relaxed text-gray-200">• Basmati Rice</p>
-                    <p className="text-lg leading-relaxed text-gray-200">• Cucumber Raita</p>
-                    <p className="text-lg leading-relaxed text-gray-200">• Salad Bar</p>
-                    <p className="text-lg leading-relaxed text-gray-200 md:col-span-3">
-                      • Fresh Butter & Garlic Naan
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <CenteredMenuCourse
+              title="Cocktail Hour"
+              lines={['Choice of 2 Welcome Drinks', "Chef's Choice Hors D'Oeuvres"]}
+            />
+            <PackageAppetizers
+              vegetarian="Choice of 4 Vegetarian Appetizers"
+              nonVegetarian="Choice of 3 Non-Vegetarian Appetizers"
+              note="Sweet Platters to be included with Coffee & Tea"
+            />
+            <PackageDinner
+              vegetarian="Choice of 4 Vegetarian Dinner Items"
+              nonVegetarian="Choice of 3 Non-Vegetarian Dinner Items"
+              columns={3}
+              sides={[
+                { label: '• Basmati Rice' },
+                { label: '• Cucumber Raita' },
+                { label: '• Salad Bar' },
+                { label: '• Fresh Butter & Garlic Naan', span: true },
+              ]}
+            />
 
             {/* Sweet Table */}
             <div>

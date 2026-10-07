@@ -26,9 +26,9 @@ export default function CorporateEventsPage() {
       <section className="container mx-auto mb-12 max-w-3xl space-y-8 px-4">
         <ContentCard title="A Professional Setting for Meetings, Celebrations, and Corporate Gatherings">
           <p>
-            Whether you are hosting a company meeting, corporate celebration, networking event, or large-scale gathering,
-            our venue offers a professional and welcoming environment designed to bring your event to life. With
-            versatile spaces, customizable menus, and a dedicated hospitality team, we provide the flexibility and
+            Whether you are hosting a company meeting, corporate celebration, networking event, or large-scale
+            gathering, our venue offers a professional and welcoming environment designed to bring your event to life.
+            With versatile spaces, customizable menus, and a dedicated hospitality team, we provide the flexibility and
             support needed for successful corporate events of all sizes.
           </p>
         </ContentCard>

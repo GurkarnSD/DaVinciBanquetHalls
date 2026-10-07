@@ -59,8 +59,8 @@ export default function ItalianEntreeSection() {
           <div className="menu-panel">
             <h4 className="mb-2 text-xl font-semibold text-white">Zuppa di Pesce</h4>
             <p className="text-lg leading-relaxed text-gray-300">
-              Jumbo shrimps, crab legs, calamari, seppiolini, monk fish and mussels. Served in your choice of a
-              light tomato or white wine sauce
+              Jumbo shrimps, crab legs, calamari, seppiolini, monk fish and mussels. Served in your choice of a light
+              tomato or white wine sauce
             </p>
           </div>
           <div className="menu-panel">
@@ -76,9 +76,7 @@ export default function ItalianEntreeSection() {
             <p className="text-lg leading-relaxed text-gray-300">• Fresh atlantic salmon filet</p>
           </div>
           <div className="menu-panel md:col-span-2">
-            <p className="text-lg leading-relaxed text-gray-300">
-              • Fish skewer with jumbo shrimps and calamari rings
-            </p>
+            <p className="text-lg leading-relaxed text-gray-300">• Fish skewer with jumbo shrimps and calamari rings</p>
           </div>
         </div>
       </div>
@@ -88,29 +86,23 @@ export default function ItalianEntreeSection() {
         <div>
           <h3 className="mb-4 text-center font-serif text-2xl font-bold text-white">Vegetables</h3>
           <div className="space-y-3">
-            {['Medley of vegetables', 'Asparagus bundle', 'Rapini', 'Roasted peppers', 'Green beans'].map(
+            {['Medley of vegetables', 'Asparagus bundle', 'Rapini', 'Roasted peppers', 'Green beans'].map((item) => (
+              <div key={item} className="text-lg leading-relaxed text-gray-300">
+                • {item}
+              </div>
+            ))}
+          </div>
+        </div>
+        <div>
+          <h3 className="mb-4 text-center font-serif text-2xl font-bold text-white">Potatoes</h3>
+          <div className="space-y-3">
+            {['Oven roasted rosemary potatoes', 'Mini reds', 'Parisienne', 'Mashed potatoes', 'Whole baked potato'].map(
               (item) => (
                 <div key={item} className="text-lg leading-relaxed text-gray-300">
                   • {item}
                 </div>
               )
             )}
-          </div>
-        </div>
-        <div>
-          <h3 className="mb-4 text-center font-serif text-2xl font-bold text-white">Potatoes</h3>
-          <div className="space-y-3">
-            {[
-              'Oven roasted rosemary potatoes',
-              'Mini reds',
-              'Parisienne',
-              'Mashed potatoes',
-              'Whole baked potato',
-            ].map((item) => (
-              <div key={item} className="text-lg leading-relaxed text-gray-300">
-                • {item}
-              </div>
-            ))}
           </div>
         </div>
         <div>

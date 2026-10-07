@@ -5,12 +5,7 @@ interface SectionHeadingProps {
   className?: string;
 }
 
-export default function SectionHeading({
-  title,
-  subtitle,
-  align = 'center',
-  className = '',
-}: SectionHeadingProps) {
+export default function SectionHeading({ title, subtitle, align = 'center', className = '' }: SectionHeadingProps) {
   const centered = align === 'center';
 
   return (

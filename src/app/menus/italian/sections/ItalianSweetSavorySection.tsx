@@ -34,8 +34,8 @@ export default function ItalianSweetSavorySection() {
                 <div className="menu-panel">
                   <h4 className="mb-2 font-semibold text-white">Deluxe Sweet Table</h4>
                   <p className="leading-relaxed text-gray-300">
-                    Assortment of fresh cakes, delicious mini pastries, assorted tarts, fresh seasonal fruit
-                    platters, and assortment of dessert cups
+                    Assortment of fresh cakes, delicious mini pastries, assorted tarts, fresh seasonal fruit platters,
+                    and assortment of dessert cups
                   </p>
                 </div>
                 <div className="menu-panel">

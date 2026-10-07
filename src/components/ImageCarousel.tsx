@@ -27,11 +27,7 @@ export default function ImageCarousel({ slots, autoPlayInterval = 4200, classNam
   const [dragStartX, setDragStartX] = useState<number | null>(null);
   const [dragOffset, setDragOffset] = useState(0);
   const dragStartTime = useRef<number | null>(null);
-  const prefersReducedMotion = useSyncExternalStore(
-    subscribeToReducedMotion,
-    getReducedMotionSnapshot,
-    () => false
-  );
+  const prefersReducedMotion = useSyncExternalStore(subscribeToReducedMotion, getReducedMotionSnapshot, () => false);
   const hasMultipleSlides = slots.length > 1;
 
   const goTo = useCallback(
@@ -106,7 +102,7 @@ export default function ImageCarousel({ slots, autoPlayInterval = 4200, classNam
       onMouseLeave={() => setIsPaused(false)}
     >
       <div
-        className={`carousel-track flex h-full touch-pan-y select-none${dragStartX !== null ? ' carousel-track--dragging' : ''}`}
+        className={`carousel-track flex h-full touch-pan-y select-none${dragStartX !== null ? 'carousel-track--dragging' : ''}`}
         style={{ transform: `translateX(calc(${-currentIndex * 100}% + ${dragOffset}px))` }}
         onPointerDown={handlePointerDown}
         onPointerMove={handlePointerMove}

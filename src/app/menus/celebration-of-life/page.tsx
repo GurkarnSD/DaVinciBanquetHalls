@@ -1,3 +1,4 @@
+import MenuCourse from '@/components/MenuCourse';
 import MenuPageHeader from '@/components/MenuPageHeader';
 import MenuSectionCard from '@/components/MenuSectionCard';
 import MenuCTA from '@/components/MenuCTA';
@@ -38,61 +39,31 @@ export default function CelebrationOfLifeMenuPage() {
               </div>
             </div>
 
-            {/* Pasta */}
-            <div>
-              <h3 className="menu-section-title">Pasta</h3>
-              <div className="menu-panel-accent">
-                <div className="space-y-3 text-lg leading-relaxed text-gray-200">
-                  <p>• Casarecce al Pomodoro</p>
-                  <p>• Tortellini Alla Panna</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Entree */}
-            <div>
-              <h3 className="menu-section-title">Entree</h3>
-              <div className="menu-panel">
-                <div className="space-y-3 text-lg leading-relaxed text-gray-200">
-                  <p>• Veal Parmigiana</p>
-                  <p>• Oven Roasted Chicken</p>
-                  <p>• Piselli with Mushrooms</p>
-                  <p>• Oven Roasted Rosemary Potatoes</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Dessert */}
-            <div>
-              <h3 className="menu-section-title">Dessert</h3>
-              <div className="menu-panel">
-                <div className="space-y-3 text-lg leading-relaxed text-gray-200">
-                  <p>• Assorted Fruit</p>
-                  <p>• Fresh Baked Cookies</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Bar */}
-            <div>
-              <h3 className="menu-section-title">Bar</h3>
-              <div className="menu-panel">
-                <div className="space-y-3 text-lg leading-relaxed text-gray-200">
-                  <p>• Coffee, Tea, Espresso</p>
-                  <p>• Red & White Wine on Tables</p>
-                  <p>• Soft Drinks & Juice</p>
-                  <p>• Still & Sparkling Water</p>
-                </div>
-              </div>
-            </div>
+            <MenuCourse title="Pasta" panel="accent" items={['• Casarecce al Pomodoro', '• Tortellini Alla Panna']} />
+            <MenuCourse
+              title="Entree"
+              items={[
+                '• Veal Parmigiana',
+                '• Oven Roasted Chicken',
+                '• Piselli with Mushrooms',
+                '• Oven Roasted Rosemary Potatoes',
+              ]}
+            />
+            <MenuCourse title="Dessert" items={['• Assorted Fruit', '• Fresh Baked Cookies']} />
+            <MenuCourse
+              title="Bar"
+              items={[
+                '• Coffee, Tea, Espresso',
+                '• Red & White Wine on Tables',
+                '• Soft Drinks & Juice',
+                '• Still & Sparkling Water',
+              ]}
+            />
           </div>
         </MenuSectionCard>
 
         {/* CTA */}
-        <MenuCTA
-          title="Discuss the Menu"
-          description="Tell us about the gathering and we will help shape the menu."
-        />
+        <MenuCTA title="Discuss the Menu" description="Tell us about the gathering and we will help shape the menu." />
       </div>
     </div>
   );

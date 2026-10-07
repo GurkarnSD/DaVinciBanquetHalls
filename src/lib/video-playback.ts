@@ -40,7 +40,11 @@ function deviceBudget() {
 
   const connection = (
     navigator as Navigator & {
-      connection?: { saveData?: boolean; effectiveType?: string; addEventListener?: (type: string, listener: () => void) => void };
+      connection?: {
+        saveData?: boolean;
+        effectiveType?: string;
+        addEventListener?: (type: string, listener: () => void) => void;
+      };
     }
   ).connection;
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -101,35 +105,42 @@ export function planPlayback(clips: ClipSnapshot[], budget: number, previouslyPl
   }
 
   const ranked = [...best.values()].sort((a, b) => b.ratio - a.ratio);
+  const ratioById = new Map(ranked.map((clip) => [clip.id, clip.ratio]));
   const play: number[] = [];
+  const selected = new Set<number>();
+  const take = (id: number) => {
+    play.push(id);
+    selected.add(id);
+  };
+
   for (const clip of ranked) {
     if (play.length >= budget) break;
-    if (stickyIds.has(clip.id)) play.push(clip.id);
+    if (stickyIds.has(clip.id)) take(clip.id);
   }
   for (const clip of ranked) {
     if (play.length >= budget) break;
-    if (play.includes(clip.id)) continue;
-    if (clip.ratio >= START_RATIO) play.push(clip.id);
+    if (selected.has(clip.id)) continue;
+    if (clip.ratio >= START_RATIO) take(clip.id);
   }
 
   if (play.length >= budget) {
-    const challenger = ranked.find((clip) => !play.includes(clip.id) && clip.ratio >= PREEMPT_RATIO);
+    const challenger = ranked.find((clip) => !selected.has(clip.id) && clip.ratio >= PREEMPT_RATIO);
     if (challenger) {
       let weakestIndex = 0;
-      const ratioOf = (id: number) => ranked.find((clip) => clip.id === id)?.ratio ?? 1;
+      const ratioOf = (id: number) => ratioById.get(id) ?? 1;
       for (let index = 1; index < play.length; index += 1) {
         if (ratioOf(play[index]!) < ratioOf(play[weakestIndex]!)) weakestIndex = index;
       }
       if (challenger.ratio > ratioOf(play[weakestIndex]!) + 0.2) {
+        selected.delete(play[weakestIndex]!);
         play[weakestIndex] = challenger.id;
+        selected.add(challenger.id);
       }
     }
   }
 
   const playing = new Set(play);
-  const warmPool = active
-    .filter((clip) => !playing.has(clip.id))
-    .sort((a, b) => a.soon - b.soon || b.ratio - a.ratio);
+  const warmPool = active.filter((clip) => !playing.has(clip.id)).sort((a, b) => a.soon - b.soon || b.ratio - a.ratio);
   const warm = warmPool.length > 0 ? [warmPool[0]!.id] : [];
   return { play, warm };
 }

@@ -30,13 +30,15 @@ export default function VerticalVideoReel({
       return () => document.removeEventListener('visibilitychange', onStoreChange);
     },
     () => document.visibilityState === 'visible',
-    () => true,
+    () => true
   );
 
   const visibleSlots = useMemo(() => slots.slice(0, maxSlots), [maxSlots, slots]);
-  const movingSlots = useMemo(() => [...visibleSlots, ...visibleSlots], [visibleSlots]);
+  const movingSlots = useMemo(
+    () => (['primary', 'loop'] as const).flatMap((copy) => visibleSlots.map((slot) => ({ slot, copy }))),
+    [visibleSlots]
+  );
   const playbackLimit = Math.max(1, Math.floor(idlePlaybackLimit));
-  const primaryCount = visibleSlots.length;
   const motionOn = reelInView && pageVisible;
 
   useEffect(() => setPlaybackCeiling(playbackLimit), [playbackLimit]);
@@ -51,7 +53,7 @@ export default function VerticalVideoReel({
       ([entry]) => {
         setReelInView(Boolean(entry?.isIntersecting));
       },
-      { rootMargin: '200px 0px', threshold: 0.01 },
+      { rootMargin: '200px 0px', threshold: 0.01 }
     );
 
     observer.observe(root);
@@ -77,10 +79,10 @@ export default function VerticalVideoReel({
           aria-label={title ? `${title} video reel` : 'Video reel'}
         >
           <div className={`${styles.track} video-reel-track flex w-max ${motionOn ? '' : styles.paused}`}>
-            {movingSlots.map((slot, index) => (
+            {movingSlots.map(({ slot, copy }) => (
               <div
-                key={`${slot.id}-${index}`}
-                aria-hidden={index >= primaryCount}
+                key={`${slot.id}-${copy}`}
+                aria-hidden={copy === 'loop'}
                 className="w-[62vw] max-w-[230px] shrink-0 sm:w-[220px] md:max-w-[245px]"
               >
                 <VerticalVideo slot={slot} active={reelInView} autoPlay className="max-w-none" />

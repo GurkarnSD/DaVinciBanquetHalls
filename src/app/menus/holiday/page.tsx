@@ -1,13 +1,13 @@
 import { type Metadata } from 'next';
 import { generateMetadata } from '@/lib/seo';
+import MenuCourse from '@/components/MenuCourse';
 import MenuPageHeader from '@/components/MenuPageHeader';
 import MenuSectionCard from '@/components/MenuSectionCard';
 import MenuCTA from '@/components/MenuCTA';
 
 export const metadata: Metadata = generateMetadata({
   title: 'Holiday Menus',
-  description:
-    'Holiday menu samples at Da Vinci Banquet Halls in Woodbridge, ON — Christmas and seasonal gatherings.',
+  description: 'Holiday menu samples at Da Vinci Banquet Halls in Woodbridge, ON — Christmas and seasonal gatherings.',
   path: '/menus/holiday',
   image: '/assets/images/menus/holiday/menu-1.jpg',
 });
@@ -49,16 +49,11 @@ export default function HolidayMenuPage() {
               </div>
             </div>
 
-            {/* Pasta Items */}
-            <div>
-              <h3 className="menu-section-title">Pasta Items</h3>
-              <div className="menu-panel-accent">
-                <div className="space-y-3 text-lg leading-relaxed text-gray-200">
-                  <p>• Rigatoni a&apos;la Forno (Meat or Vegetarian)</p>
-                  <p>• Cheese Tortellini in Vodka Sauce</p>
-                </div>
-              </div>
-            </div>
+            <MenuCourse
+              title="Pasta Items"
+              panel="accent"
+              items={["• Rigatoni a'la Forno (Meat or Vegetarian)", '• Cheese Tortellini in Vodka Sauce']}
+            />
 
             {/* Entree Items */}
             <div>
@@ -80,16 +75,7 @@ export default function HolidayMenuPage() {
               </div>
             </div>
 
-            {/* Bar Options */}
-            <div>
-              <h3 className="menu-section-title">Bar Options</h3>
-              <div className="menu-panel">
-                <div className="space-y-3 text-lg leading-relaxed text-gray-200">
-                  <p>• Wine & Beer Bar</p>
-                  <p>• Open Standard Bar</p>
-                </div>
-              </div>
-            </div>
+            <MenuCourse title="Bar Options" items={['• Wine & Beer Bar', '• Open Standard Bar']} />
           </div>
         </MenuSectionCard>
 
@@ -118,29 +104,21 @@ export default function HolidayMenuPage() {
               </div>
             </div>
 
-            {/* Pasta */}
-            <div>
-              <h3 className="menu-section-title">Pasta</h3>
-              <div className="menu-panel-accent">
-                <div className="space-y-3 text-lg leading-relaxed text-gray-200">
-                  <p>• Casareccia in Tomato Basil</p>
-                  <p>• Manicotti Stuffed with Ricotta & Spinach in Rose</p>
-                </div>
-              </div>
-            </div>
+            <MenuCourse
+              title="Pasta"
+              panel="accent"
+              items={['• Casareccia in Tomato Basil', '• Manicotti Stuffed with Ricotta & Spinach in Rose']}
+            />
 
-            {/* Entree */}
-            <div>
-              <h3 className="menu-section-title">Entree</h3>
-              <div className="menu-panel">
-                <div className="space-y-3 text-lg leading-relaxed text-gray-200">
-                  <p>• Veal Scallopini in Mushroom Sauce</p>
-                  <p>• Chicken Breast alla Limone</p>
-                  <p>• Oven Roasted Potatoes & Seasonal Vegetables</p>
-                  <p>• Green Salad</p>
-                </div>
-              </div>
-            </div>
+            <MenuCourse
+              title="Entree"
+              items={[
+                '• Veal Scallopini in Mushroom Sauce',
+                '• Chicken Breast alla Limone',
+                '• Oven Roasted Potatoes & Seasonal Vegetables',
+                '• Green Salad',
+              ]}
+            />
 
             {/* Dessert */}
             <div>
@@ -150,16 +128,7 @@ export default function HolidayMenuPage() {
               </div>
             </div>
 
-            {/* Bar Options */}
-            <div>
-              <h3 className="menu-section-title">Bar Options</h3>
-              <div className="menu-panel">
-                <div className="space-y-3 text-lg leading-relaxed text-gray-200">
-                  <p>• Wine & Beer Bar</p>
-                  <p>• Open Standard Bar</p>
-                </div>
-              </div>
-            </div>
+            <MenuCourse title="Bar Options" items={['• Wine & Beer Bar', '• Open Standard Bar']} />
           </div>
         </MenuSectionCard>
 
@@ -184,29 +153,21 @@ export default function HolidayMenuPage() {
               </div>
             </div>
 
-            {/* Pasta */}
-            <div>
-              <h3 className="menu-section-title">Pasta</h3>
-              <div className="menu-panel-accent">
-                <div className="space-y-3 text-lg leading-relaxed text-gray-200">
-                  <p>• Casareccia in Tomato Basil</p>
-                  <p>• Manicotti Stuffed with Ricotta & Spinach in Rose</p>
-                </div>
-              </div>
-            </div>
+            <MenuCourse
+              title="Pasta"
+              panel="accent"
+              items={['• Casareccia in Tomato Basil', '• Manicotti Stuffed with Ricotta & Spinach in Rose']}
+            />
 
-            {/* Entree */}
-            <div>
-              <h3 className="menu-section-title">Entree</h3>
-              <div className="menu-panel">
-                <div className="space-y-3 text-lg leading-relaxed text-gray-200">
-                  <p>• 10 oz Grilled Veal Chop</p>
-                  <p>• Whole Baked Potato</p>
-                  <p>• Rapini and Red & Yellow Roasted Peppers</p>
-                  <p>• Green Salad</p>
-                </div>
-              </div>
-            </div>
+            <MenuCourse
+              title="Entree"
+              items={[
+                '• 10 oz Grilled Veal Chop',
+                '• Whole Baked Potato',
+                '• Rapini and Red & Yellow Roasted Peppers',
+                '• Green Salad',
+              ]}
+            />
 
             {/* Dessert */}
             <div>
@@ -255,29 +216,20 @@ export default function HolidayMenuPage() {
               </div>
             </div>
 
-            {/* Pasta Items */}
-            <div>
-              <h3 className="menu-section-title">Pasta Items</h3>
-              <div className="menu-panel-accent">
-                <div className="space-y-3 text-lg leading-relaxed text-gray-200">
-                  <p>• Rigatoni in Tomato Basil Sauce</p>
-                  <p>• Cheese Tortellini in Vodka Sauce</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Entree Items */}
-            <div>
-              <h3 className="menu-section-title">Entree Items</h3>
-              <div className="menu-panel">
-                <div className="space-y-3 text-lg leading-relaxed text-gray-200">
-                  <p>• Chicken Breast in Mushroom Sauce</p>
-                  <p>• Italian Sausage, Peppers & Onions</p>
-                  <p>• Butter Chicken & Shahi Paneer with Fresh Naan</p>
-                  <p>• Potatoes & Choice of Rice</p>
-                </div>
-              </div>
-            </div>
+            <MenuCourse
+              title="Pasta Items"
+              panel="accent"
+              items={['• Rigatoni in Tomato Basil Sauce', '• Cheese Tortellini in Vodka Sauce']}
+            />
+            <MenuCourse
+              title="Entree Items"
+              items={[
+                '• Chicken Breast in Mushroom Sauce',
+                '• Italian Sausage, Peppers & Onions',
+                '• Butter Chicken & Shahi Paneer with Fresh Naan',
+                '• Potatoes & Choice of Rice',
+              ]}
+            />
 
             {/* Dessert */}
             <div>
@@ -287,16 +239,7 @@ export default function HolidayMenuPage() {
               </div>
             </div>
 
-            {/* Bar Options */}
-            <div>
-              <h3 className="menu-section-title">Bar Options</h3>
-              <div className="menu-panel">
-                <div className="space-y-3 text-lg leading-relaxed text-gray-200">
-                  <p>• Wine & Beer Bar</p>
-                  <p>• Open Standard Bar</p>
-                </div>
-              </div>
-            </div>
+            <MenuCourse title="Bar Options" items={['• Wine & Beer Bar', '• Open Standard Bar']} />
           </div>
         </MenuSectionCard>
 

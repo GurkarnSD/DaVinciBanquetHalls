@@ -1,5 +1,6 @@
 import { type Metadata } from 'next';
 import { generateMetadata } from '@/lib/seo';
+import MenuCourse from '@/components/MenuCourse';
 import MenuPageHeader from '@/components/MenuPageHeader';
 import MenuSectionCard from '@/components/MenuSectionCard';
 import MenuCTA from '@/components/MenuCTA';
@@ -52,18 +53,16 @@ export default function StagsMenuPage() {
               </div>
             </div>
 
-            {/* Entrée Items */}
-            <div>
-              <h3 className="menu-section-title">Entrée Items</h3>
-              <div className="menu-panel">
-                <div className="space-y-3 text-lg leading-relaxed text-gray-300">
-                  <p>• Oven Roasted Chicken</p>
-                  <p>• Veal al Sugo</p>
-                  <p>• Fresh Seasonal Vegetables</p>
-                  <p>• Oven Roasted Potatoes</p>
-                </div>
-              </div>
-            </div>
+            <MenuCourse
+              title="Entrée Items"
+              tone="muted"
+              items={[
+                '• Oven Roasted Chicken',
+                '• Veal al Sugo',
+                '• Fresh Seasonal Vegetables',
+                '• Oven Roasted Potatoes',
+              ]}
+            />
 
             {/* Late Night Optional Add-ons */}
             <div>

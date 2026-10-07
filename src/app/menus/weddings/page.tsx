@@ -1,5 +1,6 @@
 import { type Metadata } from 'next';
 import { generateMetadata } from '@/lib/seo';
+import MenuCourse from '@/components/MenuCourse';
 import MenuPageHeader from '@/components/MenuPageHeader';
 import MenuSectionCard from '@/components/MenuSectionCard';
 import MenuCTA from '@/components/MenuCTA';
@@ -34,9 +35,7 @@ export default function WeddingsMenuPage() {
               <h3 className="menu-section-title">Cocktail Hour</h3>
               <div className="menu-panel-accent">
                 <h4 className="mb-3 text-xl font-semibold text-white">Hors D&apos;Oeuvres</h4>
-                <p className="text-lg leading-relaxed text-gray-300">
-                  Assorted hors d&apos;oeuvres
-                </p>
+                <p className="text-lg leading-relaxed text-gray-300">Assorted hors d&apos;oeuvres</p>
               </div>
             </div>
 
@@ -45,20 +44,20 @@ export default function WeddingsMenuPage() {
               <h3 className="mb-2 font-serif text-xl font-medium text-white">Champagne for Toast</h3>
             </div>
 
-            {/* Plated Antipasto */}
-            <div>
-              <h3 className="menu-section-title">Plated Antipasto</h3>
-              <div className="menu-panel-accent">
-                <div className="grid grid-cols-2 gap-3 text-lg leading-relaxed text-gray-300 md:grid-cols-3">
-                  <p>• Proscuitto</p>
-                  <p>• Melone</p>
-                  <p>• Bocconcino & Tomatoes</p>
-                  <p>• Grilled Vegetables</p>
-                  <p>• Assorted Olives</p>
-                  <p>• Assorted Cheese</p>
-                </div>
-              </div>
-            </div>
+            <MenuCourse
+              title="Plated Antipasto"
+              panel="accent"
+              layout="grid"
+              tone="muted"
+              items={[
+                '• Proscuitto',
+                '• Melone',
+                '• Bocconcino & Tomatoes',
+                '• Grilled Vegetables',
+                '• Assorted Olives',
+                '• Assorted Cheese',
+              ]}
+            />
 
             {/* Pasta */}
             <div>
@@ -68,17 +67,15 @@ export default function WeddingsMenuPage() {
               </div>
             </div>
 
-            {/* Entrée */}
-            <div>
-              <h3 className="menu-section-title">Entrée</h3>
-              <div className="menu-panel">
-                <div className="space-y-3 text-lg leading-relaxed text-gray-300">
-                  <p className="font-semibold">• Chicken Breast</p>
-                  <p>• Fresh Seasonal Vegetables</p>
-                  <p>• Oven Roasted Garlic & Rosemary Potatoes</p>
-                </div>
-              </div>
-            </div>
+            <MenuCourse
+              title="Entrée"
+              tone="muted"
+              items={[
+                { label: '• Chicken Breast', emphasis: true },
+                '• Fresh Seasonal Vegetables',
+                '• Oven Roasted Garlic & Rosemary Potatoes',
+              ]}
+            />
 
             {/* Salad */}
             <div>
@@ -161,17 +158,15 @@ export default function WeddingsMenuPage() {
               </div>
             </div>
 
-            {/* Entrée */}
-            <div>
-              <h3 className="menu-section-title">Entrée</h3>
-              <div className="menu-panel">
-                <div className="space-y-3 text-lg leading-relaxed text-gray-300">
-                  <p className="font-semibold">• 10 oz Veal Rib Chop</p>
-                  <p>• Fresh Seasonal Vegetables</p>
-                  <p>• Oven Roasted Garlic & Rosemary Potatoes</p>
-                </div>
-              </div>
-            </div>
+            <MenuCourse
+              title="Entrée"
+              tone="muted"
+              items={[
+                { label: '• 10 oz Veal Rib Chop', emphasis: true },
+                '• Fresh Seasonal Vegetables',
+                '• Oven Roasted Garlic & Rosemary Potatoes',
+              ]}
+            />
 
             {/* Salad */}
             <div>
@@ -222,9 +217,7 @@ export default function WeddingsMenuPage() {
               <h3 className="menu-section-title">Cocktail Hour</h3>
               <div className="menu-panel-accent">
                 <h4 className="mb-3 text-xl font-semibold text-white">Hors D&apos;Oeuvres</h4>
-                <p className="text-lg leading-relaxed text-gray-300">
-                  Assorted hors d&apos;oeuvres
-                </p>
+                <p className="text-lg leading-relaxed text-gray-300">Assorted hors d&apos;oeuvres</p>
               </div>
             </div>
 
@@ -241,17 +234,15 @@ export default function WeddingsMenuPage() {
               </div>
             </div>
 
-            {/* Main Course */}
-            <div>
-              <h3 className="menu-section-title">Main Course</h3>
-              <div className="menu-panel">
-                <div className="space-y-3 text-lg leading-relaxed text-gray-300">
-                  <p className="font-semibold">• Chicken Breast</p>
-                  <p>• Fresh Seasonal Vegetables</p>
-                  <p>• Oven Roasted Garlic & Rosemary Potatoes</p>
-                </div>
-              </div>
-            </div>
+            <MenuCourse
+              title="Main Course"
+              tone="muted"
+              items={[
+                { label: '• Chicken Breast', emphasis: true },
+                '• Fresh Seasonal Vegetables',
+                '• Oven Roasted Garlic & Rosemary Potatoes',
+              ]}
+            />
 
             {/* Dessert */}
             <div>

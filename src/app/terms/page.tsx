@@ -19,8 +19,8 @@ export default function TermsPage() {
         />
         <ContentCard title="Website Use">
           <p>
-            This website provides information about Da Vinci Banquet Halls and a way to submit event inquiries. Content is
-            provided for general reference and may change without notice.
+            This website provides information about Da Vinci Banquet Halls and a way to submit event inquiries. Content
+            is provided for general reference and may change without notice.
           </p>
           <p>
             Submitting a form does not guarantee availability, pricing, or a confirmed booking. All reservations are

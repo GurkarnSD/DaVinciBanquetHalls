@@ -47,7 +47,7 @@ export default function VerticalVideo({
       const id = registrationRef.current?.id;
       return id == null ? 'idle' : getClipAssignment(id);
     },
-    () => 'idle',
+    () => 'idle'
   );
   const suspended = useSyncExternalStore(subscribePlayback, isPlaybackSuspended, () => false);
 
@@ -81,7 +81,7 @@ export default function VerticalVideo({
           if (!entry) return;
           registration.update(measureClip(entry));
         },
-        { rootMargin: LOOKAHEAD_MARGIN, threshold: [0, 0.2, 0.35, 0.55, 0.75, 1] },
+        { rootMargin: LOOKAHEAD_MARGIN, threshold: [0, 0.2, 0.35, 0.55, 0.75, 1] }
       );
       observer.observe(figure);
     } else if (figure) {

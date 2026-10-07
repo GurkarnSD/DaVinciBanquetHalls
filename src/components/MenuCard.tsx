@@ -30,7 +30,7 @@ export default function MenuCard({
             />
           </div>
         </div>
-        <h3 className="text-theme-heading group-hover:text-[var(--accent-gold)] mb-2 font-serif text-xl font-medium transition-colors duration-200">
+        <h3 className="text-theme-heading mb-2 font-serif text-xl font-medium transition-colors duration-200 group-hover:text-[var(--accent-gold)]">
           {title}
         </h3>
         {description && <p className="text-theme-muted mb-3 text-sm leading-relaxed">{description}</p>}

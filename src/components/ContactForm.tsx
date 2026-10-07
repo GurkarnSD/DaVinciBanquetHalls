@@ -1,116 +1,92 @@
 'use client';
 
-import { useState } from 'react';
-import { HiCheck, HiPhone } from 'react-icons/hi';
+import { useState, type ChangeEvent, type FormEvent } from 'react';
 import Link from 'next/link';
+import ContactEventFields from './ContactEventFields';
+import ContactFormSuccess from './ContactFormSuccess';
+import { EMPTY_CONTACT_FORM, type ContactFormData } from './contact-form-data';
 
 interface ContactFormProps {
   title?: string;
   variant?: 'contact' | 'booking';
 }
 
-const EVENT_TYPES = [
-  { value: 'wedding', label: 'Wedding' },
-  { value: 'corporate', label: 'Corporate' },
-  { value: 'social', label: 'Social event' },
-  { value: 'south-asian', label: 'South Asian celebration' },
-  { value: 'fundraiser', label: 'Fundraiser / trade show' },
-  { value: 'other', label: 'Other' },
-];
+const inputClass =
+  'w-full rounded-sm border border-theme bg-theme-input px-4 py-3 text-sm text-theme-heading placeholder:text-theme-faint focus:border-theme-strong focus:outline-none';
+
+const labelClass = 'mb-1.5 block text-sm font-medium text-theme-heading';
+
+function introCopy(isBooking: boolean) {
+  if (isBooking) return 'Fields marked with * are required. We typically respond within 48 hours.';
+  return 'Fill in your details and we will get back to you within 48 hours.';
+}
+
+function messageLabel(isBooking: boolean) {
+  if (isBooking) return 'Additional details';
+  return 'Message';
+}
+
+function messagePlaceholder(isBooking: boolean) {
+  if (isBooking) return 'Hall preference, menu interest, setup notes, or questions...';
+  return 'How can we help?';
+}
+
+function submitLabel(isSubmitting: boolean, isBooking: boolean) {
+  if (isSubmitting) return 'Sending…';
+  if (isBooking) return 'Submit Reservation Request';
+  return 'Send Message';
+}
+
+async function submitContactForm(formData: ContactFormData) {
+  try {
+    const response = await fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ ...formData }),
+    });
+    const data = (await response.json()) as { error?: string };
+    if (!response.ok) return data.error ?? 'Something went wrong. Please try again.';
+    return null;
+  } catch (err) {
+    return err instanceof Error ? err.message : 'Something went wrong. Please try again.';
+  }
+}
 
 export default function ContactForm({ title, variant = 'contact' }: ContactFormProps) {
   const isBooking = variant === 'booking';
-
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    message: '',
-    eventType: '',
-    date: '',
-    guests: '',
-  });
+  const [formData, setFormData] = useState(EMPTY_CONTACT_FORM);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState('');
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-    if (error) setError('');
+  const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    setFormData({ ...formData, [event.target.name]: event.target.value });
+    setError('');
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = async (event: FormEvent) => {
+    event.preventDefault();
     setIsSubmitting(true);
     setError('');
-
-    try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...formData }),
-      });
-
-      const data = (await response.json()) as { error?: string };
-      if (!response.ok) throw new Error(data.error ?? 'Something went wrong. Please try again.');
-
-      setSubmitted(true);
-      setFormData({ name: '', email: '', phone: '', message: '', eventType: '', date: '', guests: '' });
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Something went wrong. Please try again.');
-    } finally {
+    const nextError = await submitContactForm(formData);
+    if (nextError) {
+      setError(nextError);
       setIsSubmitting(false);
+      return;
     }
+    setSubmitted(true);
+    setFormData(EMPTY_CONTACT_FORM);
+    setIsSubmitting(false);
   };
 
-  const inputClass =
-    'w-full rounded-sm border border-theme bg-theme-input px-4 py-3 text-sm text-theme-heading placeholder:text-theme-faint focus:border-theme-strong focus:outline-none';
-
-  const labelClass = 'mb-1.5 block text-sm font-medium text-theme-heading';
-
   if (submitted) {
-    return (
-      <div className="surface p-8 md:p-10">
-        <div className="mx-auto max-w-md text-center">
-          <div className="border-theme bg-theme-elevated mx-auto mb-5 flex h-12 w-12 items-center justify-center rounded-full border">
-            <HiCheck className="text-theme-heading h-6 w-6" />
-          </div>
-          <h3 className="text-theme-heading mb-2 font-serif text-2xl font-medium">
-            {isBooking ? 'Request Received' : 'Message Sent'}
-          </h3>
-          <p className="text-theme-body mb-6 text-sm leading-relaxed">
-            {isBooking
-              ? 'Our team will review your date and expected guest count, then respond within 48 hours to confirm availability and schedule a tour.'
-              : 'We received your message and will respond within 48 hours.'}
-          </p>
-          <div className="surface text-theme-body mb-6 p-4 text-left text-sm">
-            <p className="text-theme-heading mb-1 font-medium">Need a Faster Response?</p>
-            <a
-              href="tel:905-851-3131"
-              className="hover:text-theme-heading inline-flex items-center gap-2 transition-colors"
-            >
-              <HiPhone className="h-4 w-4" />
-              905-851-3131
-            </a>
-          </div>
-          <button type="button" onClick={() => setSubmitted(false)} className="btn-text">
-            Submit Another Request
-          </button>
-        </div>
-      </div>
-    );
+    return <ContactFormSuccess isBooking={isBooking} onReset={() => setSubmitted(false)} />;
   }
-
-  const today = new Date().toISOString().split('T')[0];
 
   return (
     <div className="surface p-8 md:p-10">
       {title && <h2 className="text-theme-heading mb-2 font-serif text-2xl font-medium">{title}</h2>}
-      <p className="text-theme-body mb-8 text-sm">
-        {isBooking
-          ? 'Fields marked with * are required. We typically respond within 48 hours.'
-          : 'Fill in your details and we will get back to you within 48 hours.'}
-      </p>
+      <p className="text-theme-body mb-8 text-sm">{introCopy(isBooking)}</p>
 
       {error && (
         <div className="alert-error mb-6 px-4 py-3 text-sm" role="alert">
@@ -175,131 +151,24 @@ export default function ContactForm({ title, variant = 'contact' }: ContactFormP
           />
         </div>
 
-        {isBooking && (
-          <div className="grid gap-6 md:grid-cols-2">
-            <div>
-              <label htmlFor="eventType" className={labelClass}>
-                Event type *
-              </label>
-              <select
-                id="eventType"
-                name="eventType"
-                required
-                value={formData.eventType}
-                onChange={handleChange}
-                className={inputClass}
-              >
-                <option value="">Select event type</option>
-                {EVENT_TYPES.map((type) => (
-                  <option key={type.value} value={type.value}>
-                    {type.label}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <div>
-              <label htmlFor="date" className={labelClass}>
-                Preferred date *
-              </label>
-              <input
-                type="date"
-                id="date"
-                name="date"
-                required
-                min={today}
-                value={formData.date}
-                onChange={handleChange}
-                className={inputClass}
-              />
-            </div>
-          </div>
-        )}
-
-        {isBooking && (
-          <div>
-            <label htmlFor="guests" className={labelClass}>
-              Expected guest count
-            </label>
-            <input
-              type="text"
-              id="guests"
-              name="guests"
-              inputMode="numeric"
-              autoComplete="off"
-              placeholder="e.g. 250"
-              value={formData.guests}
-              onChange={handleChange}
-              className={inputClass}
-            />
-          </div>
-        )}
-
-        {!isBooking && (
-          <div className="grid gap-6 md:grid-cols-3">
-            <div>
-              <label htmlFor="eventType" className={labelClass}>
-                Event type
-              </label>
-              <select
-                id="eventType"
-                name="eventType"
-                value={formData.eventType}
-                onChange={handleChange}
-                className={inputClass}
-              >
-                <option value="">Select (optional)</option>
-                {EVENT_TYPES.map((type) => (
-                  <option key={type.value} value={type.value}>
-                    {type.label}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <div>
-              <label htmlFor="date" className={labelClass}>
-                Preferred date
-              </label>
-              <input
-                type="date"
-                id="date"
-                name="date"
-                min={today}
-                value={formData.date}
-                onChange={handleChange}
-                className={inputClass}
-              />
-            </div>
-            <div>
-              <label htmlFor="guests" className={labelClass}>
-                Expected guest count
-              </label>
-              <input
-                type="text"
-                id="guests"
-                name="guests"
-                inputMode="numeric"
-                autoComplete="off"
-                placeholder="e.g. 250"
-                value={formData.guests}
-                onChange={handleChange}
-                className={inputClass}
-              />
-            </div>
-          </div>
-        )}
+        <ContactEventFields
+          isBooking={isBooking}
+          formData={formData}
+          inputClass={inputClass}
+          labelClass={labelClass}
+          onChange={handleChange}
+        />
 
         <div>
           <label htmlFor="message" className={labelClass}>
-            {isBooking ? 'Additional details' : 'Message'} *
+            {messageLabel(isBooking)} *
           </label>
           <textarea
             id="message"
             name="message"
             required
             rows={4}
-            placeholder={
-              isBooking ? 'Hall preference, menu interest, setup notes, or questions...' : 'How can we help?'
-            }
+            placeholder={messagePlaceholder(isBooking)}
             value={formData.message}
             onChange={handleChange}
             className={inputClass}
@@ -307,7 +176,7 @@ export default function ContactForm({ title, variant = 'contact' }: ContactFormP
         </div>
 
         <button type="submit" disabled={isSubmitting} className="btn-primary w-full py-3.5 disabled:opacity-50">
-          {isSubmitting ? 'Sending…' : isBooking ? 'Submit Reservation Request' : 'Send Message'}
+          {submitLabel(isSubmitting, isBooking)}
         </button>
 
         <p className="text-theme-muted text-center text-xs">

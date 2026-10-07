@@ -35,8 +35,8 @@ export default function AboutPage() {
           <GalleryGrid slots={aboutSlots} columns={2} />
         </div>
 
-        <div className="mb-20 grid gap-8 md:grid-cols-2">
-          <article className="section-edge border-t pt-6">
+        <div className="mb-20 space-y-16">
+          <article className="section-edge max-w-2xl border-t pt-6">
             <h3 className="text-theme-heading mb-4 font-serif text-2xl font-medium">Venue & Catering</h3>
             <p className="text-theme-body text-sm leading-relaxed">
               Our versatile event spaces are designed to accommodate celebrations of all sizes, from intimate gatherings
@@ -48,15 +48,20 @@ export default function AboutPage() {
 
           <article className="section-edge border-t pt-6">
             <h3 className="text-theme-heading mb-4 font-serif text-2xl font-medium">Event Types</h3>
-            <p className="text-theme-body mb-4 text-sm leading-relaxed">
+            <p className="text-theme-body mb-8 max-w-2xl text-sm leading-relaxed">
               Proudly serving the Greater Toronto Area (Vaughan, Woodbridge, Brampton, Mississauga, Caledon, Toronto,
               Markham, Richmond Hill, and surrounding areas), we host a wide range of unforgettable events, including:
             </p>
-            <ul className="text-theme-body list-disc space-y-1 pl-5 text-sm leading-relaxed">
+            <ul className="grid grid-cols-2 gap-x-8 gap-y-3 sm:grid-cols-3 lg:grid-cols-4">
               {eventTypes.map((item) => (
-                <li key={item}>{item}</li>
+                <li
+                  key={item}
+                  className={`text-theme-body text-sm leading-snug ${item.startsWith('South Asian') ? 'col-span-2' : ''}`}
+                >
+                  {item}
+                </li>
               ))}
-              <li>and many more</li>
+              <li className="text-theme-muted text-sm leading-snug">and many more</li>
             </ul>
           </article>
         </div>

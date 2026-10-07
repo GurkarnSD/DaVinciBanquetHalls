@@ -12,10 +12,7 @@ export default function BookPage() {
   return (
     <div className="page-shell pb-16">
       <div className="container mx-auto max-w-5xl px-4">
-        <PageHero
-          title="Start Planning Your Event"
-          description="Submit your event details below."
-        />
+        <PageHero title="Start Planning Your Event" description="Submit your event details below." />
 
         <div className="grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">
           <ContactForm title="Reservation Request" variant="booking" />

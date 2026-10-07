@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, type ComponentProps } from 'react';
+import { useState, type ComponentProps } from 'react';
 import Image from 'next/image';
 import type { MediaSlot } from '@/config/media-slots';
 import MediaPlaceholder from './MediaPlaceholder';
@@ -14,7 +14,7 @@ interface MediaImageProps extends Omit<NextImageProps, 'src' | 'alt' | 'classNam
   placeholderClassName?: string;
 }
 
-export default function MediaImage({
+function LoadedMediaImage({
   slot,
   className = '',
   imageClassName = '',
@@ -22,17 +22,8 @@ export default function MediaImage({
   onLoad,
   fill,
   ...imageProps
-}: MediaImageProps) {
+}: MediaImageProps & { slot: MediaSlot & { src: string } }) {
   const [isLoaded, setIsLoaded] = useState(false);
-
-  useEffect(() => {
-    setIsLoaded(false);
-  }, [slot.src]);
-
-  if (!slot.src) {
-    return <MediaPlaceholder className={className} />;
-  }
-
   const shellClass = fill
     ? `bg-theme-media absolute inset-0 overflow-hidden ${className}`
     : `bg-theme-media relative h-full w-full overflow-hidden ${className}`;
@@ -53,4 +44,12 @@ export default function MediaImage({
       />
     </div>
   );
+}
+
+export default function MediaImage({ slot, ...props }: MediaImageProps) {
+  if (!slot.src) {
+    return <MediaPlaceholder className={props.className} />;
+  }
+
+  return <LoadedMediaImage key={slot.src} slot={{ ...slot, src: slot.src }} {...props} />;
 }

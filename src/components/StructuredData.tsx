@@ -3,10 +3,7 @@ interface StructuredDataProps {
 }
 
 function serializeJsonLd(data: Record<string, unknown>) {
-  return JSON.stringify(data)
-    .replace(/</g, '\\u003c')
-    .replace(/>/g, '\\u003e')
-    .replace(/&/g, '\\u0026');
+  return JSON.stringify(data).replace(/</g, '\\u003c').replace(/>/g, '\\u003e').replace(/&/g, '\\u0026');
 }
 
 export default function StructuredData({ data }: StructuredDataProps) {

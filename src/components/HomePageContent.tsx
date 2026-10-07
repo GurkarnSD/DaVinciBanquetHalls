@@ -73,7 +73,7 @@ export default function HomePageContent() {
               />
               <span
                 aria-hidden="true"
-                className="pointer-events-none absolute inset-x-0 bottom-0 z-[1] h-[46%] bg-linear-to-t from-davinci-black/85 to-transparent"
+                className="from-davinci-black/85 pointer-events-none absolute inset-x-0 bottom-0 z-[1] h-[46%] bg-linear-to-t to-transparent"
               />
               <span className="absolute bottom-3 left-3 z-[2] text-[0.6875rem] font-medium tracking-[0.16em] text-[var(--text-on-media)] uppercase">
                 {item.label}
@@ -127,12 +127,7 @@ export default function HomePageContent() {
         </div>
       </section>
 
-      <VerticalVideoReel
-        title="Recent Celebrations"
-        slots={homeReelVideoSlots}
-        maxSlots={6}
-        idlePlaybackLimit={3}
-      />
+      <VerticalVideoReel title="Recent Celebrations" slots={homeReelVideoSlots} maxSlots={6} idlePlaybackLimit={3} />
 
       <CTASection
         title="Plan Your Event"

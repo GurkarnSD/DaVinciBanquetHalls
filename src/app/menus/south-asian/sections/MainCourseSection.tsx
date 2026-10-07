@@ -56,9 +56,7 @@ export default function MainCourseSection() {
               </div>
             ))}
           </div>
-          <p className="mt-4 text-center text-sm text-gray-400 italic">
-            ** Premium - additional charges will apply
-          </p>
+          <p className="mt-4 text-center text-sm text-gray-400 italic">** Premium - additional charges will apply</p>
         </div>
 
         {/* Non-Vegetarian Options */}
@@ -86,9 +84,7 @@ export default function MainCourseSection() {
               </div>
             ))}
           </div>
-          <p className="mt-4 text-center text-sm text-gray-400 italic">
-            ** Premium - additional charges will apply
-          </p>
+          <p className="mt-4 text-center text-sm text-gray-400 italic">** Premium - additional charges will apply</p>
         </div>
       </div>
     </MenuSectionCard>

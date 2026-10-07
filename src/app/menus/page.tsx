@@ -72,11 +72,7 @@ export default function MenusPage() {
       </div>
 
       <section className="container mx-auto px-4 py-12">
-        <SectionHeading
-          title="Menu Brochures"
-          align="left"
-          className="max-w-4xl"
-        />
+        <SectionHeading title="Menu Brochures" align="left" className="max-w-4xl" />
         <div className="mx-auto grid max-w-4xl gap-10 md:grid-cols-2">
           {fullMenus.map((menu) => (
             <MenuCard {...menu} key={menu.href} />

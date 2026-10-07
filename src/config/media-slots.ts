@@ -90,10 +90,10 @@ export const gallerySlots: MediaSlot[] = [
   {
     id: 'gallery-hall-ab',
     category: 'Venue',
-    title: 'Hall A dinner tables and lighting',
+    title: 'Hall A and B with dance floor',
     aspect: '3:2 landscape · 1200×800',
     layout: 'landscape',
-    src: venueImage('hall-a-table-av-lights.jpg'),
+    src: venueImage('hall-ab-wide-corner.jpg'),
   },
   {
     id: 'gallery-hall-lobby',
@@ -112,28 +112,12 @@ export const gallerySlots: MediaSlot[] = [
     src: venueImage('overhead-dj-lights-chandelier.jpg'),
   },
   {
-    id: 'gallery-table-av-lights',
-    category: 'Venue',
-    title: 'Hall A setup with table lighting',
-    aspect: '3:2 landscape · 1200×800',
-    layout: 'landscape',
-    src: venueImage('hall-a-table-av-lights.jpg'),
-  },
-  {
     id: 'gallery-stage-loveseat',
     category: 'Venue',
     title: 'Stage loveseat setup from the left side',
     aspect: '3:2 landscape · 1200×800',
     layout: 'landscape',
     src: venueImage('stage-loveseat-left.jpg'),
-  },
-  {
-    id: 'gallery-lobby-fireplace',
-    category: 'Venue',
-    title: 'Front lobby fireplace and wedding display',
-    aspect: '3:2 landscape · 1200×800',
-    layout: 'landscape',
-    src: venueImage('front-lobby-fireplace-vertical.jpg'),
   },
   {
     id: 'gallery-exterior',
@@ -194,14 +178,6 @@ export const venueSlots: MediaSlot[] = [
     aspect: '3:2 landscape · 1200×800',
     layout: 'landscape',
     src: venueImage('stage-loveseat-left.jpg'),
-  },
-  {
-    id: 'venue-table-lighting',
-    category: 'Venue',
-    title: 'Hall A table lighting setup',
-    aspect: '3:2 landscape · 1200×800',
-    layout: 'landscape',
-    src: venueImage('hall-a-table-av-lights.jpg'),
   },
 ];
 
