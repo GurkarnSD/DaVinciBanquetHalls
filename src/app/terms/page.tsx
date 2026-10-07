@@ -14,10 +14,10 @@ export default function TermsPage() {
     <div className="page-shell pb-20">
       <div className="container mx-auto max-w-3xl px-4">
         <PageHero
-          title="Terms of service"
+          title="Terms of Service"
           description="Last updated July 2026. By using this website, you agree to the terms outlined below."
         />
-        <ContentCard title="Website use">
+        <ContentCard title="Website Use">
           <p>
             This website provides information about Da Vinci Banquet Halls and a way to submit event inquiries. Content is
             provided for general reference and may change without notice.
@@ -28,7 +28,7 @@ export default function TermsPage() {
           </p>
         </ContentCard>
         <div className="mt-8">
-          <ContentCard title="Content and media">
+          <ContentCard title="Content and Media">
             <p>
               Photographs, videos, and copy on this site are owned by Da Vinci Banquet Halls or used with permission.
               Reproduction without written consent is not permitted.

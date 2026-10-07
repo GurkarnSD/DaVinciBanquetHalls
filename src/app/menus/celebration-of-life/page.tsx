@@ -90,7 +90,7 @@ export default function CelebrationOfLifeMenuPage() {
 
         {/* CTA */}
         <MenuCTA
-          title="Discuss the menu"
+          title="Discuss the Menu"
           description="Tell us about the gathering and we will help shape the menu."
         />
       </div>

@@ -21,7 +21,7 @@ export default function SouthAsianCelebrationsMenuPage() {
         <ExclusivePackageSection />
 
         <MenuCTA
-          title="Choose a celebration package"
+          title="Choose a Celebration Package"
           description="Tell us your event timeline and guest count — we will outline the right package."
         />
       </div>

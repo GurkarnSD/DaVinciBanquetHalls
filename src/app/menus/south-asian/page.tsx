@@ -27,7 +27,7 @@ export default function SouthAsianMenuPage() {
         <BarSection />
 
         <MenuCTA
-          title="Build your South Asian menu"
+          title="Build Your South Asian Menu"
           description="Share your event type and dietary needs — we will help finalize the selection."
         />
       </div>

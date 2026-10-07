@@ -3,6 +3,15 @@
 import Image from 'next/image';
 import { useEffect, useRef, useState, useSyncExternalStore } from 'react';
 import type { VideoSlot } from '@/config/video-slots';
+import {
+  getClipAssignment,
+  isPlaybackSuspended,
+  measureClip,
+  playbackStartDelay,
+  registerClip,
+  subscribePlayback,
+  type ClipAssignment,
+} from '@/lib/video-playback';
 import MediaPlaceholder from './MediaPlaceholder';
 
 interface VerticalVideoProps {
@@ -13,10 +22,9 @@ interface VerticalVideoProps {
   active?: boolean;
   autoPlay?: boolean;
   controls?: boolean;
-  preload?: 'none' | 'metadata' | 'auto';
 }
 
-const subscribeToClient = () => () => {};
+const LOOKAHEAD_MARGIN = '180px 32% 180px 0px';
 
 export default function VerticalVideo({
   slot,
@@ -25,94 +33,102 @@ export default function VerticalVideo({
   active = true,
   autoPlay = true,
   controls = false,
-  preload = 'none',
 }: VerticalVideoProps) {
   const figureRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const registrationRef = useRef<ReturnType<typeof registerClip> | null>(null);
   const [hasError, setHasError] = useState(false);
-  const [isNearViewport, setIsNearViewport] = useState(false);
   const [isReady, setIsReady] = useState(false);
   const [trackedSrc, setTrackedSrc] = useState(slot.src);
-  const isClient = useSyncExternalStore(subscribeToClient, () => true, () => false);
-  const lacksIntersectionObserver = isClient && !('IntersectionObserver' in window);
+
+  const assignment = useSyncExternalStore<ClipAssignment>(
+    subscribePlayback,
+    () => {
+      const id = registrationRef.current?.id;
+      return id == null ? 'idle' : getClipAssignment(id);
+    },
+    () => 'idle',
+  );
+  const suspended = useSyncExternalStore(subscribePlayback, isPlaybackSuspended, () => false);
 
   if (slot.src !== trackedSrc) {
     setTrackedSrc(slot.src);
     setHasError(false);
-    setIsNearViewport(false);
     setIsReady(false);
   }
 
-  const effectivelyNearViewport = lacksIntersectionObserver || isNearViewport;
-  const shouldMountVideo = Boolean(slot.src) && active && !hasError && effectivelyNearViewport;
+  const shouldBuffer = autoPlay && (assignment === 'play' || assignment === 'warm');
+  const shouldMount = Boolean(slot.src) && active && !hasError && shouldBuffer;
   const hasPoster = Boolean(slot.poster);
-  const showFallbackPlaceholder = !hasPoster && (!shouldMountVideo || !isReady);
+  const showFallbackPlaceholder = !hasPoster && !isReady;
+  const [mountedVideo, setMountedVideo] = useState(shouldMount);
+  if (mountedVideo !== shouldMount) {
+    setMountedVideo(shouldMount);
+    if (!shouldMount) setIsReady(false);
+  }
 
   useEffect(() => {
-    if (!slot.src || hasError || !active || lacksIntersectionObserver) return;
+    if (!slot.src || !active) return;
+
+    const registration = registerClip(slot.src);
+    registrationRef.current = registration;
 
     const figure = figureRef.current;
-    if (!figure) return;
+    let observer: IntersectionObserver | null = null;
+    if (figure && 'IntersectionObserver' in window) {
+      observer = new IntersectionObserver(
+        ([entry]) => {
+          if (!entry) return;
+          registration.update(measureClip(entry));
+        },
+        { rootMargin: LOOKAHEAD_MARGIN, threshold: [0, 0.2, 0.35, 0.55, 0.75, 1] },
+      );
+      observer.observe(figure);
+    } else if (figure) {
+      registration.update({ ratio: 1, near: true, soon: 0 });
+    }
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsNearViewport(Boolean(entry?.isIntersecting));
-      },
-      { rootMargin: '120px 40px', threshold: 0.01 }
-    );
-
-    observer.observe(figure);
-    return () => observer.disconnect();
-  }, [slot.src, hasError, active, lacksIntersectionObserver]);
+    return () => {
+      observer?.disconnect();
+      registration.unregister();
+      if (registrationRef.current === registration) registrationRef.current = null;
+    };
+  }, [slot.src, active]);
 
   useEffect(() => {
-    if (!shouldMountVideo) return;
+    if (!shouldMount) return;
 
     const video = videoRef.current;
     if (!video) return;
 
-    if (!autoPlay) {
+    let timer = 0;
+    let cancelled = false;
+
+    const stop = () => {
+      cancelled = true;
+      window.clearTimeout(timer);
+    };
+
+    if (!autoPlay || assignment !== 'play' || suspended) {
       video.pause();
-      return () => {
-        video.pause();
-      };
+      return stop;
     }
 
-    const playVideo = () => {
+    const begin = () => {
+      if (cancelled || document.hidden) return;
       void video.play().catch(() => {
-        // Autoplay can be blocked; poster stays visible.
+        // Autoplay can be blocked; the poster stays visible.
       });
     };
 
-    if (lacksIntersectionObserver) {
-      playVideo();
-      return () => {
-        video.pause();
-      };
-    }
+    const delay = playbackStartDelay(video.readyState >= HTMLMediaElement.HAVE_FUTURE_DATA);
+    timer = window.setTimeout(begin, delay);
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry?.isIntersecting && entry.intersectionRatio >= 0.25) {
-          playVideo();
-        } else {
-          video.pause();
-        }
-      },
-      { threshold: [0, 0.25, 0.5] }
-    );
-
-    observer.observe(video);
     return () => {
-      observer.disconnect();
+      stop();
       video.pause();
     };
-  }, [shouldMountVideo, autoPlay, lacksIntersectionObserver, slot.src]);
-
-  useEffect(() => {
-    if (shouldMountVideo) return;
-    setIsReady(false);
-  }, [shouldMountVideo]);
+  }, [shouldMount, assignment, autoPlay, suspended, slot.src]);
 
   return (
     <figure
@@ -127,11 +143,13 @@ export default function VerticalVideo({
             fill
             sizes="(max-width: 640px) 62vw, 245px"
             className="object-cover"
+            loading="lazy"
+            fetchPriority="low"
             aria-hidden
           />
         )}
         {showFallbackPlaceholder && <MediaPlaceholder />}
-        {shouldMountVideo && (
+        {shouldMount && (
           <video
             ref={videoRef}
             key={slot.src}
@@ -143,14 +161,12 @@ export default function VerticalVideo({
             muted
             playsInline
             poster={slot.poster}
-            preload={preload === 'auto' ? 'metadata' : preload}
+            preload="auto"
             controlsList="nodownload noplaybackrate noremoteplayback"
-            className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-300 ${isReady ? 'opacity-100' : 'opacity-0'}`}
+            className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-200 ${isReady ? 'opacity-100' : 'opacity-0'}`}
             onError={() => setHasError(true)}
+            onCanPlay={() => setIsReady(true)}
             onPlaying={() => setIsReady(true)}
-            onLoadedData={() => {
-              if (!autoPlay) setIsReady(true);
-            }}
           >
             <source src={slot.src} type="video/mp4" />
           </video>

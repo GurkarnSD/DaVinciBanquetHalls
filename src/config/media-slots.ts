@@ -230,10 +230,10 @@ export const eventHeroSlots = {
   weddings: {
     id: 'hero-weddings',
     category: 'Event photo',
-    title: 'Wedding reception celebration',
+    title: 'Bride and groom walking through guests',
     aspect: '21:9 banner · 2100×900',
     layout: 'banner',
-    src: eventImage('weddings', 'hero.jpg'),
+    src: eventImage('weddings', 'couple.jpg'),
   },
   social: {
     id: 'hero-social',
@@ -274,10 +274,10 @@ export const eventCardSlots = {
   weddings: {
     id: 'card-weddings',
     category: 'Event',
-    title: 'Wedding reception celebration',
+    title: 'Bride and groom walking through guests',
     aspect: '3:2 landscape · 1200×800',
     layout: 'card',
-    src: eventImage('weddings', 'hero.jpg'),
+    src: eventImage('weddings', 'couple.jpg'),
   },
   social: {
     id: 'card-social',

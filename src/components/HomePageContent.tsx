@@ -40,12 +40,11 @@ export default function HomePageContent() {
           </div>
 
           <div className="lookbook-hero-copy flex flex-col justify-center px-4 py-10 sm:px-8 sm:py-14 lg:px-12 lg:py-24 xl:px-16">
-            <h1 className="hero-enter text-theme-heading font-serif text-[2.75rem] leading-[1.05] font-normal tracking-tight sm:text-5xl md:text-6xl lg:text-[4.25rem]">
-              Banquet halls for weddings, corporate events, and celebrations
+            <h1 className="hero-enter text-theme-heading font-serif text-5xl leading-[1.05] font-normal tracking-tight md:text-6xl lg:text-[4.25rem]">
+              Banquet Hall for Weddings, Corporate Events, and Private Celebrations
             </h1>
             <p className="hero-enter hero-enter-delay-1 text-theme-body mt-6 max-w-[38ch] text-[0.9375rem] leading-relaxed sm:mt-8">
-              Six halls in Woodbridge with Italian and South Asian catering, bar service, and on-site coordination for 50
-              to 1,000 guests.
+              Full-service catering, seamless event execution, and exceptional hospitality for 50 to 1,000 guests.
             </p>
             <div className="hero-enter hero-enter-delay-2 mt-8 flex flex-col items-start gap-4 sm:mt-10 sm:flex-row sm:items-center">
               <a href="tel:905-851-3131" className="btn-primary px-7 py-3.5">
@@ -72,7 +71,11 @@ export default function HomePageContent() {
                 sizes="(max-width: 640px) 100vw, 33vw"
                 quality={75}
               />
-              <span className="absolute bottom-3 left-3 text-[0.625rem] font-medium tracking-[0.16em] text-white uppercase drop-shadow">
+              <span
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-x-0 bottom-0 z-[1] h-[46%] bg-linear-to-t from-davinci-black/85 to-transparent"
+              />
+              <span className="absolute bottom-3 left-3 z-[2] text-[0.6875rem] font-medium tracking-[0.16em] text-[var(--text-on-media)] uppercase">
                 {item.label}
               </span>
               <span className="sr-only">View venue — look {index + 1}</span>
@@ -87,25 +90,28 @@ export default function HomePageContent() {
             <div className="grid gap-16 lg:grid-cols-12 lg:gap-10">
               <div className="lg:col-span-4">
                 <h2 className="text-theme-heading font-serif text-3xl font-normal tracking-tight md:text-4xl">
-                  Full service in one booking
+                  Full Service in One Booking
                 </h2>
               </div>
               <div className="grid gap-12 sm:grid-cols-3 lg:col-span-8">
                 {[
                   {
-                    title: 'The space',
-                    description: 'Six configurable halls, lighting, sound, and seating for 50 to 1,000 guests.',
+                    title: 'The Space',
+                    description:
+                      'From intimate celebrations to large-scale events, our flexible spaces provide the perfect setting for gatherings of every size.',
                     href: '/venue',
                   },
                   {
-                    title: 'The menu',
-                    description: 'Italian and South Asian cuisine with packages for every event type.',
+                    title: 'The Menu',
+                    description:
+                      'Multiple catering options, including Italian and South Asian, with customizable packages for every type of event.',
                     href: '/menus',
                   },
                   {
-                    title: 'The service',
-                    description: 'On-site coordination, bar service, and catering from setup through service.',
-                    href: '/contact',
+                    title: 'The Service',
+                    description:
+                      'From setup to celebration, our experienced team ensures every detail is handled with care and professionalism.',
+                    href: '/about',
                   },
                 ].map((item) => (
                   <Link key={item.title} href={item.href} className="group block">
@@ -122,15 +128,15 @@ export default function HomePageContent() {
       </section>
 
       <VerticalVideoReel
-        title="Recent celebrations"
+        title="Recent Celebrations"
         slots={homeReelVideoSlots}
         maxSlots={6}
         idlePlaybackLimit={3}
       />
 
       <CTASection
-        title="Plan your event"
-        description="Share your date, guest count, and event type. We will outline hall options and menu selections."
+        title="Plan Your Event"
+        description="Share your date and expected guest count."
         primaryLabel="Call 905-851-3131"
         primaryHref="tel:905-851-3131"
         secondaryLabel="Submit an inquiry"

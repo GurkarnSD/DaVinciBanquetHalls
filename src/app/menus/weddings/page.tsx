@@ -278,7 +278,7 @@ export default function WeddingsMenuPage() {
 
         {/* CTA */}
         <MenuCTA
-          title="Finalize your wedding menu"
+          title="Finalize Your Wedding Menu"
           description="Share your guest count and preferences — we will help lock in the selection."
         />
       </div>

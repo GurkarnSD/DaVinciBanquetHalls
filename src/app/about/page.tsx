@@ -1,7 +1,26 @@
 import PageHero from '@/components/PageHero';
-import SectionHeading from '@/components/SectionHeading';
 import GalleryGrid from '@/components/GalleryGrid';
 import { aboutSlots } from '@/config/media-slots';
+
+const eventTypes = [
+  'Weddings',
+  'Corporate Events',
+  'Birthdays',
+  'Anniversaries',
+  'Engagements',
+  'Galas',
+  'Fundraisers',
+  'Holiday Parties',
+  'South Asian Gatherings (Sangeet, Jago, Mehndi)',
+  'Baby Showers',
+  'Bridal Showers',
+  'Stags',
+  'Retirement Parties',
+  'Baptisms',
+  'Communion',
+  'Confirmation',
+  'Graduations',
+];
 
 export default function AboutPage() {
   return (
@@ -9,7 +28,7 @@ export default function AboutPage() {
       <div className="container mx-auto max-w-5xl px-4">
         <PageHero
           title="Da Vinci Banquet Halls"
-          description="Wedding and event venue in Woodbridge with six configurable halls, in-house catering, and on-site coordination."
+          description="Creating unforgettable weddings and events in Woodbridge and across the GTA with elegant spaces, exceptional cuisine, and dedicated hospitality."
         />
 
         <div className="mb-16">
@@ -19,39 +38,27 @@ export default function AboutPage() {
         <div className="mb-20 grid gap-8 md:grid-cols-2">
           <article className="section-edge border-t pt-6">
             <h3 className="text-theme-heading mb-4 font-serif text-2xl font-medium">Venue & Catering</h3>
-            <p className="text-theme-body mb-4 text-sm leading-relaxed">
-              Halls accommodate 50 to 1,000 guests with flexible seating, professional lighting, sound, and a
-              full-service bar. Italian and South Asian menus are available across all event types.
-            </p>
             <p className="text-theme-body text-sm leading-relaxed">
-              Layout, décor, and service are coordinated with your event requirements.
+              Our versatile event spaces are designed to accommodate celebrations of all sizes, from intimate gatherings
+              to grand events of up to 1,000 guests. With in-house catering featuring Italian and South Asian (Punjabi,
+              Pakistani, Gujarati) cuisine, our experienced team provides exceptional hospitality and personalized
+              support to bring your vision to life.
             </p>
           </article>
 
           <article className="section-edge border-t pt-6">
             <h3 className="text-theme-heading mb-4 font-serif text-2xl font-medium">Event Types</h3>
             <p className="text-theme-body mb-4 text-sm leading-relaxed">
-              Weddings, corporate meetings, South Asian celebrations, social gatherings, fundraisers, and trade shows
-              across the Greater Toronto Area.
+              Proudly serving the Greater Toronto Area (Vaughan, Woodbridge, Brampton, Mississauga, Caledon, Toronto,
+              Markham, Richmond Hill, and surrounding areas), we host a wide range of unforgettable events, including:
             </p>
-            <p className="text-theme-body text-sm leading-relaxed">
-              Located at 5732 Highway 7, Woodbridge, with ample on-site parking.
-            </p>
+            <ul className="text-theme-body list-disc space-y-1 pl-5 text-sm leading-relaxed">
+              {eventTypes.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+              <li>and many more</li>
+            </ul>
           </article>
-        </div>
-
-        <SectionHeading title="Included with every booking" align="left" />
-        <div className="grid gap-8 md:grid-cols-3">
-          {[
-            { title: 'Event Space', description: 'Configurable rooms and flexible seating layouts.' },
-            { title: 'Catering & Bar', description: 'In-house kitchen and full bar service.' },
-            { title: 'Coordination', description: 'On-site support for setup and event flow.' },
-          ].map((item) => (
-            <div key={item.title} className="section-edge border-t pt-5">
-              <h3 className="text-theme-heading mb-2 font-serif text-lg font-medium">{item.title}</h3>
-              <p className="text-theme-muted text-sm">{item.description}</p>
-            </div>
-          ))}
         </div>
       </div>
     </div>

@@ -14,7 +14,7 @@ const fullMenus = [
   },
   {
     title: 'South Asian Menu',
-    description: 'Full catalog — welcome drinks through dessert.',
+    description: 'Full catalog — welcome drinks through dessert (Punjabi, Pakistani, Gujarati).',
     href: '/menus/south-asian',
     image: '/assets/images/menus/south-asian/card.webp',
   },
@@ -64,8 +64,8 @@ export default function MenusPage() {
     <div className="page-shell pb-0">
       <div className="container mx-auto px-4">
         <PageHero
-          title="Italian and South Asian menus for every event type"
-          description="Full catalogs list every available item. Sample menus are starting points — dishes can be added or removed."
+          title="Curated Menus for Every Occasion"
+          description="Explore our collection of customizable menus featuring appetizers, entrees, desserts, stations, and more - crafted to suit every celebration."
           align="center"
           className="mx-auto max-w-3xl"
         />
@@ -73,8 +73,7 @@ export default function MenusPage() {
 
       <section className="container mx-auto px-4 py-12">
         <SectionHeading
-          title="Full menus"
-          subtitle="Browse complete dish lists and build a custom selection."
+          title="Menu Brochures"
           align="left"
           className="max-w-4xl"
         />
@@ -85,12 +84,12 @@ export default function MenusPage() {
         </div>
       </section>
 
-      <VerticalVideoReel title="Food and table setups" slots={foodVideoSlots} />
+      <VerticalVideoReel title="Food Presentation" slots={foodVideoSlots} />
 
       <section className="section-edge container mx-auto border-t px-4 py-16">
         <SectionHeading
-          title="Sample menus"
-          subtitle="Starting points by event type. Items can be added or removed."
+          title="Sample Menus"
+          subtitle="Discover our sample menus. Use these as inspiration; every menu can be personalized to create the perfect culinary experience for your event."
           align="left"
         />
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
@@ -101,7 +100,7 @@ export default function MenusPage() {
       </section>
 
       <CTASection
-        title="Build your menu"
+        title="Build Your Menu"
         description="Share dietary needs or dish preferences and we will help finalize the selection."
         primaryLabel="Contact us"
         primaryHref="/contact"

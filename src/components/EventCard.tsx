@@ -7,9 +7,18 @@ interface EventCardProps {
   description?: string;
   href: string;
   slot: MediaSlot;
+  imageLoading?: 'lazy' | 'eager';
+  fetchPriority?: 'high' | 'low' | 'auto';
 }
 
-export default function EventCard({ title, description, href, slot }: EventCardProps) {
+export default function EventCard({
+  title,
+  description,
+  href,
+  slot,
+  imageLoading = 'lazy',
+  fetchPriority,
+}: EventCardProps) {
   return (
     <Link href={href} className="group block">
       <article>
@@ -21,7 +30,8 @@ export default function EventCard({ title, description, href, slot }: EventCardP
               imageClassName="object-cover"
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               quality={75}
-              loading="lazy"
+              loading={imageLoading}
+              fetchPriority={fetchPriority}
             />
           </div>
         </div>

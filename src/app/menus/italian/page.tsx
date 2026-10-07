@@ -25,7 +25,7 @@ export default function ItalianMenuPage() {
         <ItalianBarSection />
 
         <MenuCTA
-          title="Build your Italian menu"
+          title="Build Your Italian Menu"
           description="Share your event type and dietary needs — we will help finalize the selection."
         />
       </div>

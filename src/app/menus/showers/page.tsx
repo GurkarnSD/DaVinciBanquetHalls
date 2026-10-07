@@ -254,7 +254,7 @@ export default function ShowersMenuPage() {
 
         {/* CTA */}
         <MenuCTA
-          title="Finalize your shower menu"
+          title="Finalize Your Shower Menu"
           description="Share your guest count and preferences — we will help lock in the selection."
         />
       </div>

@@ -21,7 +21,7 @@ export default function Footer() {
               />
             </Link>
             <p className="text-theme-body max-w-xs text-sm leading-relaxed">
-              Banquet halls for weddings, corporate events, and private celebrations in Woodbridge.
+              Banquet Hall for Weddings, Corporate Events, and Private Celebrations in Woodbridge.
             </p>
           </div>
 
@@ -85,10 +85,10 @@ export default function Footer() {
           <p suppressHydrationWarning>&copy; {new Date().getFullYear()} Da Vinci Banquet Halls</p>
           <div className="flex gap-4">
             <Link href="/privacy" className="link-subtle">
-              Privacy policy
+              Privacy Policy
             </Link>
             <Link href="/terms" className="link-subtle">
-              Terms of service
+              Terms of Service
             </Link>
           </div>
         </div>

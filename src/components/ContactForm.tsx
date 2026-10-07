@@ -18,16 +18,6 @@ const EVENT_TYPES = [
   { value: 'other', label: 'Other' },
 ];
 
-const GUEST_RANGES = [
-  { value: '', label: 'Select guest count' },
-  { value: '50-120', label: '50-120 (Hall D)' },
-  { value: '80-260', label: '80-260 (Hall C)' },
-  { value: '150-380', label: '150-380 (Hall A or B/C)' },
-  { value: '320-550', label: '320-550 (Hall A & B)' },
-  { value: '500-1000', label: '500-1,000 (Hall A, B & C)' },
-  { value: 'unsure', label: 'Not sure yet' },
-];
-
 export default function ContactForm({ title, variant = 'contact' }: ContactFormProps) {
   const isBooking = variant === 'booking';
 
@@ -86,15 +76,15 @@ export default function ContactForm({ title, variant = 'contact' }: ContactFormP
             <HiCheck className="text-theme-heading h-6 w-6" />
           </div>
           <h3 className="text-theme-heading mb-2 font-serif text-2xl font-medium">
-            {isBooking ? 'Request received' : 'Message sent'}
+            {isBooking ? 'Request Received' : 'Message Sent'}
           </h3>
           <p className="text-theme-body mb-6 text-sm leading-relaxed">
             {isBooking
-              ? 'Our team will review your date and guest count, then respond within 24-48 hours to confirm availability and schedule a tour.'
-              : 'We received your message and will respond within 24-48 hours.'}
+              ? 'Our team will review your date and expected guest count, then respond within 48 hours to confirm availability and schedule a tour.'
+              : 'We received your message and will respond within 48 hours.'}
           </p>
           <div className="surface text-theme-body mb-6 p-4 text-left text-sm">
-            <p className="text-theme-heading mb-1 font-medium">Need a faster response?</p>
+            <p className="text-theme-heading mb-1 font-medium">Need a Faster Response?</p>
             <a
               href="tel:905-851-3131"
               className="hover:text-theme-heading inline-flex items-center gap-2 transition-colors"
@@ -104,7 +94,7 @@ export default function ContactForm({ title, variant = 'contact' }: ContactFormP
             </a>
           </div>
           <button type="button" onClick={() => setSubmitted(false)} className="btn-text">
-            Submit another request
+            Submit Another Request
           </button>
         </div>
       </div>
@@ -118,8 +108,8 @@ export default function ContactForm({ title, variant = 'contact' }: ContactFormP
       {title && <h2 className="text-theme-heading mb-2 font-serif text-2xl font-medium">{title}</h2>}
       <p className="text-theme-body mb-8 text-sm">
         {isBooking
-          ? 'Fields marked with * are required. We typically respond within 24-48 hours.'
-          : 'Fill in your details and we will get back to you within 24-48 hours.'}
+          ? 'Fields marked with * are required. We typically respond within 48 hours.'
+          : 'Fill in your details and we will get back to you within 48 hours.'}
       </p>
 
       {error && (
@@ -228,20 +218,24 @@ export default function ContactForm({ title, variant = 'contact' }: ContactFormP
         {isBooking && (
           <div>
             <label htmlFor="guests" className={labelClass}>
-              Estimated guests
+              Expected guest count
             </label>
-            <select id="guests" name="guests" value={formData.guests} onChange={handleChange} className={inputClass}>
-              {GUEST_RANGES.map((range) => (
-                <option key={range.value || 'empty'} value={range.value}>
-                  {range.label}
-                </option>
-              ))}
-            </select>
+            <input
+              type="text"
+              id="guests"
+              name="guests"
+              inputMode="numeric"
+              autoComplete="off"
+              placeholder="e.g. 250"
+              value={formData.guests}
+              onChange={handleChange}
+              className={inputClass}
+            />
           </div>
         )}
 
         {!isBooking && (
-          <div className="grid gap-6 md:grid-cols-2">
+          <div className="grid gap-6 md:grid-cols-3">
             <div>
               <label htmlFor="eventType" className={labelClass}>
                 Event type
@@ -275,6 +269,22 @@ export default function ContactForm({ title, variant = 'contact' }: ContactFormP
                 className={inputClass}
               />
             </div>
+            <div>
+              <label htmlFor="guests" className={labelClass}>
+                Expected guest count
+              </label>
+              <input
+                type="text"
+                id="guests"
+                name="guests"
+                inputMode="numeric"
+                autoComplete="off"
+                placeholder="e.g. 250"
+                value={formData.guests}
+                onChange={handleChange}
+                className={inputClass}
+              />
+            </div>
           </div>
         )}
 
@@ -297,7 +307,7 @@ export default function ContactForm({ title, variant = 'contact' }: ContactFormP
         </div>
 
         <button type="submit" disabled={isSubmitting} className="btn-primary w-full py-3.5 disabled:opacity-50">
-          {isSubmitting ? 'Sending…' : isBooking ? 'Submit reservation request' : 'Send message'}
+          {isSubmitting ? 'Sending…' : isBooking ? 'Submit Reservation Request' : 'Send Message'}
         </button>
 
         <p className="text-theme-muted text-center text-xs">

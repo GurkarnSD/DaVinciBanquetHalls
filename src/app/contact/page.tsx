@@ -46,7 +46,7 @@ export default function ContactPage() {
     <div className="page-shell pb-16">
       <div className="container mx-auto max-w-3xl px-4">
         <PageHero
-          title="Get in touch"
+          title="Get in Touch"
           description="Questions about availability, capacity, or menus? Send us a note and we will follow up."
         />
 

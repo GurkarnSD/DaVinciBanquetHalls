@@ -7,7 +7,7 @@ export const metadata: Metadata = generateMetadata({
   description:
     'Da Vinci Banquet Halls hosts weddings, corporate events, social gatherings, South Asian celebrations, and fundraisers. Serving Woodbridge, Brampton, Mississauga, Vaughan, and the GTA.',
   path: '/events',
-  image: '/assets/images/events/weddings/hero.jpg',
+  image: '/assets/images/events/weddings/couple.jpg',
 });
 
 export default function EventsLayout({ children }: { children: React.ReactNode }) {

@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 interface CTASectionProps {
   title: string;
-  description: string;
+  description?: string;
   primaryLabel: string;
   primaryHref: string;
   secondaryLabel?: string;
@@ -44,8 +44,12 @@ export default function CTASection({
   return (
     <section className="cta-section py-20 md:py-24">
       <div className="container mx-auto px-4 text-center">
-        <h2 className="text-theme-heading mb-4 font-serif text-3xl font-normal md:text-4xl">{title}</h2>
-        <p className="text-theme-body mx-auto mb-8 max-w-xl text-base leading-relaxed">{description}</p>
+        <h2 className={`text-theme-heading font-serif text-3xl font-normal md:text-4xl ${description ? 'mb-4' : 'mb-8'}`}>
+          {title}
+        </h2>
+        {description && (
+          <p className="text-theme-body mx-auto mb-8 max-w-xl text-base leading-relaxed">{description}</p>
+        )}
         <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
           <ActionLink href={primaryHref} className="btn-primary px-7 py-3">
             {primaryLabel}

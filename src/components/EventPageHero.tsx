@@ -5,13 +5,19 @@ interface EventPageHeroProps {
   slot: MediaSlot;
   title: string;
   subtitle: string;
+  imageClassName?: string;
 }
 
-export default function EventPageHero({ slot, title, subtitle }: EventPageHeroProps) {
+export default function EventPageHero({
+  slot,
+  title,
+  subtitle,
+  imageClassName = 'object-cover',
+}: EventPageHeroProps) {
   return (
     <section className="section-edge relative mb-14 border-b">
       <div className="media-frame relative aspect-[21/9] max-h-[420px] w-full md:aspect-[21/8]">
-        <MediaImage slot={slot} fill imageClassName="object-cover" sizes="100vw" priority quality={85} />
+        <MediaImage slot={slot} fill imageClassName={imageClassName} sizes="100vw" priority quality={85} />
         <div className="event-hero-scrim absolute inset-0" />
         <div className="on-media absolute inset-0 flex flex-col justify-end p-6 md:p-10">
           <div className="event-hero-copy max-w-2xl p-5 md:p-6">

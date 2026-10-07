@@ -14,10 +14,10 @@ export default function PrivacyPage() {
     <div className="page-shell pb-20">
       <div className="container mx-auto max-w-3xl px-4">
         <PageHero
-          title="Privacy policy"
+          title="Privacy Policy"
           description="Last updated July 2026. This policy describes how we handle information submitted through our website and booking forms."
         />
-        <ContentCard title="Information we collect">
+        <ContentCard title="Information We Collect">
           <p>
             When you contact us or submit a booking request, we collect details you provide such as your name, email,
             phone number, event date, guest count, and message content.
@@ -28,7 +28,7 @@ export default function PrivacyPage() {
           </p>
         </ContentCard>
         <div className="mt-8">
-          <ContentCard title="How we use your information">
+          <ContentCard title="How We Use Your Information">
             <p>
               We use your information to respond to inquiries, coordinate venue tours, prepare quotes, and manage event
               bookings. We do not sell your personal information to third parties.

@@ -2,10 +2,10 @@ import ContactForm from '@/components/ContactForm';
 import PageHero from '@/components/PageHero';
 
 const STEPS = [
-  { step: '1', title: 'Submit This Form', detail: 'Include your date, guest count, and event type.' },
-  { step: '2', title: 'We Confirm Availability', detail: 'Response within 24-48 hours by email or phone.' },
-  { step: '3', title: 'Venue Tour', detail: 'Walk the halls and review floorplan options.' },
-  { step: '4', title: 'Menu & Booking', detail: 'Finalize hall, catering, and deposit details.' },
+  { step: '1', title: 'Submit This Form', detail: 'Include your date, expected guest count, and event type.' },
+  { step: '2', title: 'We Confirm Availability', detail: 'Response within 48 hours by email or phone.' },
+  { step: '3', title: 'Venue Tour', detail: 'Take a guided venue tour.' },
+  { step: '4', title: 'Finalize Booking', detail: 'Finalize package, sign contract, and submit deposit.' },
 ];
 
 export default function BookPage() {
@@ -13,8 +13,8 @@ export default function BookPage() {
     <div className="page-shell pb-16">
       <div className="container mx-auto max-w-5xl px-4">
         <PageHero
-          title="Reserve your date"
-          description="Submit your event details below. Our team will confirm availability and schedule a tour."
+          title="Start Planning Your Event"
+          description="Submit your event details below."
         />
 
         <div className="grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-start">

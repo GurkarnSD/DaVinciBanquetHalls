@@ -86,7 +86,7 @@ export default function StagsMenuPage() {
 
         {/* CTA */}
         <MenuCTA
-          title="Finalize your stag menu"
+          title="Finalize Your Stag Menu"
           description="Share your guest count and preferences — we will help lock in the selection."
         />
       </div>

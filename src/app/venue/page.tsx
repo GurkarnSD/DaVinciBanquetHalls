@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import PageHero from '@/components/PageHero';
 import SectionHeading from '@/components/SectionHeading';
 import CTASection from '@/components/CTASection';
@@ -8,7 +7,6 @@ import GalleryGrid from '@/components/GalleryGrid';
 import { venueSlots } from '@/config/media-slots';
 import { venueVideoSlots } from '@/config/video-slots';
 import {
-  FaBuilding,
   FaVolumeUp,
   FaLightbulb,
   FaChair,
@@ -16,6 +14,11 @@ import {
   FaUtensils,
   FaKey,
   FaParking,
+  FaHandsHelping,
+  FaWheelchair,
+  FaTshirt,
+  FaLeaf,
+  FaUserFriends,
 } from 'react-icons/fa';
 
 const floorplans = [
@@ -28,14 +31,20 @@ const floorplans = [
 ];
 
 const features = [
-  { name: 'Décor options', icon: FaBuilding },
-  { name: 'Sound system', icon: FaVolumeUp },
-  { name: 'Professional lighting', icon: FaLightbulb },
-  { name: 'Flexible seating', icon: FaChair },
-  { name: 'Full-service bar', icon: FaWineGlass },
-  { name: 'Catering kitchen', icon: FaUtensils },
-  { name: 'Bridal suite', icon: FaKey },
-  { name: 'Ample parking', icon: FaParking },
+  { name: 'Linens', icon: FaTshirt },
+  { name: 'Professional Service', icon: FaUserFriends },
+  { name: 'Event Support', icon: FaHandsHelping },
+  { name: 'Accessible Facility', icon: FaWheelchair },
+  { name: 'Coat Check', icon: FaKey },
+  { name: 'Dietary Accommodations', icon: FaLeaf },
+  { name: 'Preferred Vendor Recommendations', icon: FaUserFriends },
+  { name: 'Sound System', icon: FaVolumeUp },
+  { name: 'Professional Lighting', icon: FaLightbulb },
+  { name: 'Customizable Floorplan', icon: FaChair },
+  { name: 'Full-Service Bar', icon: FaWineGlass },
+  { name: 'Catering', icon: FaUtensils },
+  { name: 'Bridal Suite', icon: FaKey },
+  { name: 'Complimentary Parking', icon: FaParking },
 ];
 
 export default function VenuePage() {
@@ -43,16 +52,16 @@ export default function VenuePage() {
     <div className="page-shell pb-0">
       <div className="container mx-auto max-w-5xl px-4">
         <PageHero
-          title="Spaces that scale with your guest list"
-          description="Renovated halls with flexible configurations, from intimate dinners to events of a thousand."
+          title="Spaces That Scale with Your Guest List"
+          description="From intimate celebrations to large-scale events, our versatile venue offers a setting that feels just right for every occasion."
         />
       </div>
 
-      <VerticalVideoReel title="The halls in motion" slots={venueVideoSlots} />
+      <VerticalVideoReel title="Our Halls in Motion" slots={venueVideoSlots} />
 
       <section className="section-edge container mx-auto max-w-5xl border-t px-4 py-16">
         <SectionHeading
-          title="The space"
+          title="The Space"
           subtitle="Exterior, lobby, halls, and event setups."
           align="left"
         />
@@ -62,7 +71,7 @@ export default function VenuePage() {
       <section className="container mx-auto max-w-5xl px-4 py-16">
         <SectionHeading
           title="Floorplans"
-          subtitle="Select a configuration that fits your guest count."
+          subtitle="Select a configuration that fits your guest count. Updated layouts are available on request."
           align="left"
         />
 
@@ -78,7 +87,7 @@ export default function VenuePage() {
       </section>
 
       <section className="section-edge container mx-auto max-w-5xl border-t px-4 py-16">
-        <SectionHeading title="Included amenities" align="left" />
+        <SectionHeading title="Included Amenities" align="left" />
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {features.map((feature) => {
             const Icon = feature.icon;
@@ -93,8 +102,7 @@ export default function VenuePage() {
       </section>
 
       <CTASection
-        title="Schedule a tour"
-        description="Walk the halls in person and discuss layout options with our team."
+        title="Schedule a Tour"
         primaryLabel="Submit an inquiry"
         primaryHref="/book"
         secondaryLabel="Contact us"

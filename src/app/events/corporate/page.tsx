@@ -20,29 +20,71 @@ export default function CorporateEventsPage() {
       <EventPageHero
         slot={eventHeroSlots.corporate}
         title="Corporate Events"
-        subtitle="Meetings, seminars, launches, and company celebrations."
+        subtitle="Conferences, meetings, seminars, networking events, award galas, holiday parties, and team-building events."
       />
 
-      <section className="container mx-auto mb-12 max-w-3xl px-4">
-        <ContentCard title="Corporate Events">
+      <section className="container mx-auto mb-12 max-w-3xl space-y-8 px-4">
+        <ContentCard title="A Professional Setting for Meetings, Celebrations, and Corporate Gatherings">
           <p>
-            From small meetings to large conferences, our halls support breakout sessions, AV requirements, and
-            full-service catering.
+            Whether you are hosting a company meeting, corporate celebration, networking event, or large-scale gathering,
+            our venue offers a professional and welcoming environment designed to bring your event to life. With
+            versatile spaces, customizable menus, and a dedicated hospitality team, we provide the flexibility and
+            support needed for successful corporate events of all sizes.
           </p>
-          <ul className="space-y-2">
-            <li>Corporate meetings</li>
-            <li>Seminars</li>
-            <li>Trade shows</li>
-            <li>Product launches</li>
-            <li>Promotional events</li>
+        </ContentCard>
+
+        <ContentCard title="Flexible Spaces Designed for Business Events">
+          <p>
+            From intimate team meetings to large conferences and award galas, our versatile event spaces can be
+            customized to suit your agenda, guest count, and event objectives. With flexible layouts and a team
+            experienced in hosting professional gatherings, we help create a seamless experience for both organizers and
+            attendees.
+          </p>
+          <p>Corporate events we host:</p>
+          <ul>
+            <li>Conferences</li>
+            <li>Business meetings</li>
+            <li>Seminars & workshops</li>
+            <li>Networking events</li>
+            <li>Award galas</li>
+            <li>Holiday parties</li>
+            <li>Team building events</li>
+            <li>Company milestone celebrations</li>
+            <li>Corporate dinners</li>
+            <li>Employee appreciation events</li>
+            <li>and many more</li>
           </ul>
-          <p>Professional service, AV support, and catering for full-day programs.</p>
+        </ContentCard>
+
+        <ContentCard title="Customized Catering & Hospitality">
+          <p>
+            Great corporate events require great service. Our in-house culinary team offers customizable menu options
+            designed to suit your event, while our experienced staff ensures guests receive attentive, professional
+            service from start to finish.
+          </p>
+        </ContentCard>
+
+        <ContentCard title="Support Every Step of the Way">
+          <p>
+            From selecting the right space to preparing the details for your event day, our team provides dedicated
+            support to help ensure a smooth and successful experience for your organization and guests.
+          </p>
+        </ContentCard>
+
+        <ContentCard title="Why Choose Us for Your Corporate Event">
+          <ul>
+            <li>Flexible event spaces for small and large gatherings</li>
+            <li>Customizable catering options</li>
+            <li>Professional hospitality team</li>
+            <li>Convenient GTA location with ample parking</li>
+            <li>Experience hosting corporate and community events</li>
+          </ul>
         </ContentCard>
       </section>
 
       <CTASection
         title="Plan Your Corporate Event"
-        description="Tell us about your format, guest count, and technical needs."
+        description="Share your date and expected guest count."
         primaryLabel="Contact us"
         primaryHref="/contact"
       />

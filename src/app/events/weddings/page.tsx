@@ -11,7 +11,7 @@ export const metadata: Metadata = generateMetadata({
   description:
     'Wedding venues at Da Vinci Banquet Halls — ceremonies, receptions, stags, and showers. Serving Woodbridge, Brampton, Mississauga, Vaughan, and the GTA.',
   path: '/events/weddings',
-  image: '/assets/images/events/weddings/hero.jpg',
+  image: '/assets/images/events/weddings/couple.jpg',
 });
 
 export default function WeddingsEventsPage() {
@@ -20,34 +20,66 @@ export default function WeddingsEventsPage() {
       <EventPageHero
         slot={eventHeroSlots.weddings}
         title="Weddings"
-        subtitle="Ceremonies, receptions, stags, and showers across our halls."
+        subtitle="Ceremonies, receptions, engagement parties, bridal showers, rehearsal dinners, stags & does, and many more."
+        imageClassName="object-cover object-[center_18%]"
       />
 
       <section className="container mx-auto mb-12 max-w-3xl space-y-8 px-4">
-        <ContentCard title="Wedding Service">
+        <ContentCard title="Your Wedding Day">
           <p>
-            Venue layout, décor, cuisine, and service for guest counts from intimate gatherings to large receptions.
-          </p>
-          <p>
-            Linens, backdrops, and tableware are available. Halls accommodate a range of seating and floor-plan
-            configurations.
+            Your wedding day deserves a venue that brings together beautiful spaces, exceptional cuisine, and attentive
+            hospitality. From intimate ceremonies to grand receptions, our experienced team works with you to create a
+            seamless celebration that reflects your vision, style, and traditions.
           </p>
         </ContentCard>
 
-        <ContentCard title="Stag">
+        <ContentCard title="A Space for Every Wedding Moment">
           <p>
-            Stag events with buffet or plated service, bar packages, and hall configurations for groups of all sizes.
+            From your first look and ceremony to your reception and late-night celebrations, our versatile event spaces
+            can be tailored to accommodate weddings of all sizes. Whether you are planning an intimate gathering or a
+            grand celebration with hundreds of guests, we provide the setting to make every moment memorable.
+          </p>
+          <p>Wedding celebrations we host:</p>
+          <ul>
+            <li>Ceremonies</li>
+            <li>Wedding receptions</li>
+            <li>Engagement parties</li>
+            <li>Bridal showers</li>
+            <li>Rehearsal dinners</li>
+            <li>Stags & does</li>
+            <li>Anniversary celebrations</li>
+            <li>and many more</li>
+          </ul>
+        </ContentCard>
+
+        <ContentCard title="Exceptional Cuisine & Hospitality">
+          <p>
+            Our in-house culinary team creates memorable dining experiences featuring customizable menus, thoughtfully
+            prepared cuisine, and professional service designed around your celebration.
           </p>
         </ContentCard>
 
-        <ContentCard title="Bridal Shower">
-          <p>Bridal and wedding showers with seated or buffet menus across our smaller and mid-size halls.</p>
+        <ContentCard title="Why Couples Choose Us">
+          <ul>
+            <li>Flexible spaces for intimate and large celebrations</li>
+            <li>In-house catering</li>
+            <li>Full-service bar options</li>
+            <li>Experienced and dedicated hospitality team</li>
+            <li>Convenient GTA location with parking</li>
+          </ul>
+        </ContentCard>
+
+        <ContentCard title="Your Celebration, Supported Every Step of the Way">
+          <p>
+            From selecting your space and menu to preparing the details for your event day, our dedicated team is here
+            to provide guidance and support to help bring your wedding vision to life.
+          </p>
         </ContentCard>
       </section>
 
       <CTASection
         title="Plan Your Wedding"
-        description="Share your date and guest count. We will outline hall options and menu selections."
+        description="Share your date and expected guest count."
         primaryLabel="Contact us"
         primaryHref="/contact"
         secondaryLabel="Wedding menus"

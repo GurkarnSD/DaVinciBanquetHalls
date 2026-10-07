@@ -1,0 +1,37 @@
+.scroll .track {
+  --video-reel-gap: 2rem;
+  gap: var(--video-reel-gap);
+  animation: video-reel-marquee-seamless 56s linear infinite;
+  backface-visibility: hidden;
+  will-change: transform;
+}
+
+.scroll:hover .track,
+.scroll:focus-within .track,
+.scroll:active .track,
+.scroll .paused {
+  animation-play-state: paused;
+  will-change: auto;
+}
+
+@keyframes video-reel-marquee-seamless {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(calc(-50% - (var(--video-reel-gap) / 2)), 0, 0);
+  }
+}
+
+@media (min-width: 768px) {
+  .scroll .track {
+    --video-reel-gap: 2.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll .track {
+    animation: none;
+    will-change: auto;
+  }
+}
